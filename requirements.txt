@@ -1,0 +1,7 @@
+streamlit>=1.39
+pydantic>=2.7
+python-dotenv>=1.0
+pandas>=2.2
+# Add your model SDK(s) when you start building, e.g.:
+# anthropic
+# openai
