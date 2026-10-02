@@ -1,36 +1,13 @@
----
-title: Dhaga MVP
-emoji: 🧵
-colorFrom: pink
-colorTo: indigo
-sdk: docker
-app_port: 8501
-pinned: false
----
+# Dhaga MVP — returns insights (stage 1: no AI)
 
-# Dhaga & Co. MVP
-
-> FDE Academy - Mini Project 1. (The block above is config for Hugging Face Spaces. Leave it at the top.)
-
-## What it does
-_TODO: one paragraph, in the client's language._
-
-## Run it locally (under 5 minutes)
 ```bash
-git clone <repo-url> && cd dhaga-mvp
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env                                  # add your API key(s)
-streamlit run app.py
+python scripts/generate_demo_data.py   # regenerates data/*.csv (seeded)
+python -m backend.pipeline             # prints report, writes data/processed/
+pytest -q                              # tests
+uvicorn backend.main:app --reload      # API docs at http://127.0.0.1:8000/docs
 ```
-Open http://localhost:8501
 
-## What it expects
-_TODO: input format (CSV columns / free text)._
-
-## What happens when something goes wrong
-_TODO: validation failures, low-confidence results, API errors, and what the screen shows._
-
-## Docs
-- [Discovery note](docs/discovery-note.md)
-- [Build note](docs/build-note.md)
+Flow: ingest -> validate -> normalize -> aggregate -> candidate insights.
+Rows with return_reason = "Other" + a comment are flagged `needs_llm=True` (stage 2 will classify them).
+`data/returns_ground_truth.csv` is for evaluating the classifier later; the app never reads it.
