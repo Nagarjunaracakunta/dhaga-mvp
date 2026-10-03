@@ -1,23 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Bot, Inbox, Layers, MessageSquareText, PackageX, RotateCcw, Sparkles, TriangleAlert, Zap } from "lucide-react";
+import { ArrowRight, Bot, ClipboardCheck, Inbox, MessageSquareText, PackageX, RotateCcw, TriangleAlert, Zap } from "lucide-react";
 import { api } from "../api.js";
 import { num, pct, useApi } from "../useApi.js";
-import { Empty, ErrorBox, IntentPill, Panel, Skeleton, Stat, StatusPill } from "../components/ui.jsx";
+import { Empty, ErrorBox, IntentPill, PageHeader, Panel, Skeleton, Stat, StatusPill } from "../components/ui.jsx";
 
-const LOOP = [
-  ["1 · Classify", "Haiku 4.5 reads the message (English or Hinglish) and picks the intent.", "model"],
-  ["2 · Facts", "Code finds the order and works out delay, cancellability and return window.", "code"],
-  ["3 · Rules", "Risky cases (RTO, lost parcel, unclear) go straight to a person.", "code"],
-  ["4 · Draft", "Opus 5.5 writes the reply from the facts and the matching policy only.", "model"],
-  ["5 · Check", "Every date, amount and number is checked against the order, then Haiku reviews.", "code + model"],
-  ["6 · Decide", "The agent approves, edits or escalates. Nothing is sent without them.", "human"],
+const STEPS = [
+  ["Classify", "Haiku reads the message, English or Hinglish, and picks the intent."],
+  ["Facts", "Code finds the order and works out delay and return window."],
+  ["Rules", "Risky cases (RTO, lost parcel, unclear) go to a person."],
+  ["Draft", "Opus writes the reply from the facts and policy only."],
+  ["Check", "Every date and amount is checked against the order."],
+  ["Decide", "The agent approves, edits or escalates."],
 ];
-const TONE = { model: "pink", code: "violet", "code + model": "violet", human: "green" };
+
+const CATEGORY = { FIT: "Fit", COLOUR: "Colour", QUALITY: "Quality", DAMAGE: "Damage", WRONG_ITEM: "Wrong item", CHANGED_MIND: "Changed mind", UNCLEAR: "Unclear" };
 
 export default function Overview({ onDemo }) {
   const navigate = useNavigate();
   const cx = useApi(() => api.cxMetrics(), []);
-  const open = useApi(() => api.tickets({ status: "OPEN", limit: 5 }), []);
+  const open = useApi(() => api.tickets({ status: "OPEN", limit: 6 }), []);
+  const review = useApi(() => api.returnsReviewQueue({ limit: 6 }), []);
   const summary = useApi(() => api.returnsSummary(), []);
   const insights = useApi(() => api.returnsInsights(), []);
 
@@ -25,72 +27,83 @@ export default function Overview({ onDemo }) {
   const s = summary.data;
 
   return (
-    <div className="grid">
-      <section className="panel hero">
-        <div className="left">
-          <div className="ico"><Sparkles size={22} color="#fff" /></div>
-          <div>
-            <h1>CX Copilot &amp; Returns Insights <span className="pill green"><span className="dot" /> Active</span></h1>
-            <p>58% of support tickets ask "where is my order". 44% of returns say "Other". This workbench handles both.</p>
-          </div>
-        </div>
-        <button className="btn hot" onClick={onDemo}><Zap size={15} /> Launch 1-Click Demo</button>
-      </section>
+    <>
+      <PageHeader
+        title="Good to see you. Here's what needs you."
+        subtitle={`58% of support tickets ask "where is my order", and 44% of returns just say "Other". Copilot drafts the first; AI explains the second. You make the call on both.`}
+        actions={<button className="btn hot" onClick={onDemo}><Zap size={15} /> Run the demo</button>}
+      />
 
       <div className="grid stats">
-        <Stat label="Open tickets" value={num((byStatus.OPEN ?? 0) + (byStatus.DRAFTED ?? 0))} sub={`${byStatus.DRAFTED ?? 0} with a draft ready`} icon={Inbox} loading={cx.loading} />
-        <Stat label="Resolved" value={num(byStatus.RESOLVED ?? 0)} sub={`${byStatus.ESCALATED ?? 0} escalated to a person`} icon={MessageSquareText} tone="green" loading={cx.loading} />
+        <Stat label="Open tickets" value={num((byStatus.OPEN ?? 0) + (byStatus.DRAFTED ?? 0))} sub={`${num(byStatus.DRAFTED ?? 0)} with a draft ready`} icon={Inbox} loading={cx.loading} />
+        <Stat label="Resolved" value={num(byStatus.RESOLVED ?? 0)} sub={`${num(byStatus.ESCALATED ?? 0)} escalated to a person`} icon={MessageSquareText} tone="green" loading={cx.loading} />
         <Stat label="Return rate" value={pct(s?.return_rate)} sub={s ? `${num(s.total_returns)} of ${num(s.total_orders)} orders` : ""} icon={RotateCcw} tone="red" loading={summary.loading} />
-        <Stat label='"Other" with comment' value={num(s?.other_with_comment)} sub="Waiting for AI classification" icon={Bot} tone="amber" loading={summary.loading} />
-        <Stat label="Flagged segments" value={num(insights.data?.length)} sub="Products, sizes or colours returned too often" icon={TriangleAlert} tone="pink" loading={insights.loading} />
+        <Stat label='"Other" with a comment' value={num(s?.other_with_comment)} sub="Explained by AI, checked by people" icon={Bot} tone="amber" loading={summary.loading} />
+        <Stat label="Flagged segments" value={num(insights.data?.length)} sub="Returned 1.5× the shop average or more" icon={TriangleAlert} tone="cyan" loading={insights.loading} />
       </div>
 
-      <div className="grid two">
-        <Panel icon={Layers} title="How Copilot answers a ticket" subtitle="Models for language, code for facts, people for the final call">
-          <div className="steps-list">
-            {LOOP.map(([n, t, who]) => (
-              <div className="step-row" key={n}>
-                <span className="n">{n}</span>
-                <span className="t">{t}</span>
-                <span className={`pill ${TONE[who]}`}>{who}</span>
-              </div>
-            ))}
-          </div>
+      <div className="grid three">
+        <Panel icon={Inbox} title="Tickets waiting" subtitle="Open, oldest first" bodyClass=""
+          actions={<button className="btn sm" onClick={() => navigate("/cx")}>Inbox <ArrowRight size={13} /></button>}>
+          {open.loading ? <div className="panel-body"><Skeleton rows={4} height={36} /></div>
+            : open.error ? <div className="panel-body"><ErrorBox error={open.error} onRetry={open.reload} /></div>
+            : open.data.length === 0 ? <Empty title="Inbox clear">No open tickets right now.</Empty>
+            : <div className="rowlist">
+                {open.data.map((t) => (
+                  <button key={t.ticket_id} className="rowlink" onClick={() => navigate(`/cx?t=${t.ticket_number}`)}>
+                    <span className="main">{t.customer_name}</span>
+                    <span className="side">{t.last_intent ? <IntentPill intent={t.last_intent} /> : <StatusPill status={t.status} />}</span>
+                    <span className="sub">{t.message}</span>
+                  </button>
+                ))}
+              </div>}
         </Panel>
 
-        <div className="grid">
-          <Panel icon={Inbox} title="Waiting in the inbox" subtitle="Open tickets, oldest first"
-            actions={<button className="btn sm" onClick={() => navigate("/cx")}>Open inbox <ArrowRight size={13} /></button>}>
-            {open.loading ? <Skeleton rows={4} height={36} />
-              : open.error ? <ErrorBox error={open.error} onRetry={open.reload} />
-              : open.data.length === 0 ? <Empty title="Inbox clear">No open tickets right now.</Empty>
-              : <div className="rowlist">
-                  {open.data.map((t) => (
-                    <button key={t.ticket_id} className="rowlink" onClick={() => navigate(`/cx?t=${t.ticket_number}`)}>
-                      <span className="main">{t.customer_name} <span className="dim mono" style={{ fontWeight: 400 }}>{t.ticket_number}</span></span>
-                      <span className="side"><StatusPill status={t.status} /> <IntentPill intent={t.last_intent} /></span>
-                      <span className="sub">{t.message}</span>
-                    </button>
-                  ))}
-                </div>}
-          </Panel>
+        <Panel icon={ClipboardCheck} title="Return reasons to check" subtitle="AI wasn't sure, so a person decides" bodyClass=""
+          actions={<button className="btn sm" onClick={() => navigate("/returns")}>Review <ArrowRight size={13} /></button>}>
+          {review.loading ? <div className="panel-body"><Skeleton rows={4} height={36} /></div>
+            : review.error ? <div className="panel-body"><ErrorBox error={review.error} onRetry={review.reload} /></div>
+            : review.data.length === 0 ? <Empty icon={ClipboardCheck} title="Nothing to check">Run a classification on the Returns page to fill this queue.</Empty>
+            : <div className="rowlist">
+                {review.data.map((r) => (
+                  <button key={r.return_id} className="rowlink" onClick={() => navigate("/returns")}>
+                    <span className="main">"{r.return_comment}"</span>
+                    <span className="side"><span className="pill amber">{CATEGORY[r.ai_category] ?? r.ai_category} · {pct(r.ai_confidence, 0)}</span></span>
+                    <span className="sub">{r.product_name} · {[r.size, r.colour].filter(Boolean).join(", ")}</span>
+                  </button>
+                ))}
+              </div>}
+        </Panel>
 
-          <Panel icon={PackageX} title="Top return problems" subtitle="Highest lift over the shop average"
-            actions={<button className="btn sm" onClick={() => navigate("/returns")}>All returns <ArrowRight size={13} /></button>}>
-            {insights.loading ? <Skeleton rows={4} height={36} />
-              : insights.error ? <ErrorBox error={insights.error} onRetry={insights.reload} />
-              : <div className="rowlist">
-                  {insights.data.slice(0, 4).map((i) => (
-                    <button key={i.insight_id} className="rowlink" onClick={() => navigate(`/returns?segment=${encodeURIComponent(i.insight_id)}`)}>
-                      <span className="main">{i.product_name} · {Object.values(i.segment).join(", ") || "whole product"}</span>
-                      <span className="side"><b style={{ color: "var(--pink)", fontSize: 16 }}>{i.lift}×</b></span>
-                      <span className="sub">{i.returns} of {i.orders} returned ({pct(i.return_rate)}) · {pct(i.unclassified_share, 0)} unclassified</span>
-                    </button>
-                  ))}
-                </div>}
-          </Panel>
-        </div>
+        <Panel icon={PackageX} title="Products returned too often" subtitle="Highest lift over the shop average" bodyClass=""
+          actions={<button className="btn sm" onClick={() => navigate("/returns")}>All <ArrowRight size={13} /></button>}>
+          {insights.loading ? <div className="panel-body"><Skeleton rows={4} height={36} /></div>
+            : insights.error ? <div className="panel-body"><ErrorBox error={insights.error} onRetry={insights.reload} /></div>
+            : insights.data.length === 0 ? <Empty title="No flagged products" />
+            : <div className="rowlist">
+                {insights.data.slice(0, 6).map((i) => (
+                  <button key={i.insight_id} className="rowlink" onClick={() => navigate(`/returns?segment=${encodeURIComponent(i.insight_id)}`)}>
+                    <span className="main">{i.product_name}</span>
+                    <span className="side"><b style={{ color: "var(--accent-ink)", fontFamily: "var(--display)", fontSize: 17 }}>{i.lift}×</b></span>
+                    <span className="sub">{Object.values(i.segment).join(", ") || "Whole product"} · {i.returns} of {i.orders} returned</span>
+                  </button>
+                ))}
+              </div>}
+        </Panel>
       </div>
-    </div>
+
+      <section>
+        <div className="navgroup-label" style={{ color: "var(--muted)", padding: "0 0 8px" }}>How Copilot answers a ticket</div>
+        <div className="steps-strip">
+          {STEPS.map(([t, d], i) => (
+            <div key={t}>
+              <span className="n">{String(i + 1).padStart(2, "0")}</span>
+              <span className="t">{t}</span>
+              <span className="d">{d}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

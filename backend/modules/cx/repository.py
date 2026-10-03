@@ -13,6 +13,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Optional, Protocol
 
+from backend.shared.db import execute
 from backend.shared.errors import AppError
 from backend.shared.settings import ROOT
 
@@ -197,7 +198,7 @@ class SupabaseRepository:
 
     def _run(self, query, what: str):
         try:
-            return query.execute()
+            return execute(query)
         except Exception as e:  # postgrest/httpx errors all mean "database unavailable" to the caller
             if _is_missing_table(e):
                 raise AppError("DB_TABLE_MISSING", f"Could not {what}: a table is missing. "
@@ -208,7 +209,7 @@ class SupabaseRepository:
     def _read_interactions(self, query, what, empty):
         """ai_interactions may not exist yet; reads then return nothing instead of breaking the inbox."""
         try:
-            return query.execute().data
+            return execute(query).data
         except Exception as e:
             if _is_missing_table(e):
                 log.warning("ai_interactions table is missing; run %s", SETUP_SQL)

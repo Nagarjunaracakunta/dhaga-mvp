@@ -1,5 +1,6 @@
 """Returns Insights API. Mounted at /api/returns."""
 import json
+import threading
 from functools import lru_cache
 from typing import Literal, Optional
 
@@ -16,6 +17,7 @@ from .store import MemoryStore, SupabaseStore
 
 router = APIRouter(tags=["returns"])
 _cache = {}
+_lock = threading.RLock()
 
 
 @lru_cache
@@ -24,9 +26,10 @@ def get_store():
 
 
 def _result(refresh: bool = False):
-    if refresh or "res" not in _cache:
-        _cache["res"] = run_pipeline(source=get_settings().returns_mode, store=get_store())
-    return _cache["res"]
+    with _lock:  # page loads fire several requests at once; build the pipeline result only once
+        if refresh or "res" not in _cache:
+            _cache["res"] = run_pipeline(source=get_settings().returns_mode, store=get_store())
+        return _cache["res"]
 
 
 def _records(df):

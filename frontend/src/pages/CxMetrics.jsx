@@ -3,9 +3,10 @@ import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer,
 import { BarChart3, Bot, Clock, Gauge, IndianRupee, ListChecks, UserRound, Zap } from "lucide-react";
 import { api } from "../api.js";
 import { label, num, pct, useApi } from "../useApi.js";
-import { ChartTip, Empty, ErrorBox, HBars, INTENT_TEXT, Panel, Skeleton, Stat } from "../components/ui.jsx";
+import { ChartTip, Empty, ErrorBox, HBars, INTENT_TEXT, Panel, Skeleton, Stat, PageHeader } from "../components/ui.jsx";
+import { CHART } from "../theme.js";
 
-const RESULT_COLOURS = { DRAFTED: "#8b7cf8", NEEDS_HUMAN: "#f2707e", NEEDS_INFO: "#f5b84a" };
+const RESULT_COLOURS = { DRAFTED: CHART.primary, NEEDS_HUMAN: CHART.bad, NEEDS_INFO: CHART.accent };
 const RESULT_TEXT = { DRAFTED: "Draft ready", NEEDS_HUMAN: "Needs a person", NEEDS_INFO: "Needs info" };
 
 export default function CxMetrics() {
@@ -23,6 +24,7 @@ export default function CxMetrics() {
 
   return (
     <div className="grid">
+      <PageHeader title="Copilot metrics" subtitle="How often Copilot drafts, how often agents approve, and what each run costs." />
       <div className="grid stats">
         <Stat label="Copilot runs" value={num(d.analysed)} sub={`${d.fallback_runs} in fallback mode`} icon={Bot} />
         <Stat label="Approved as drafted" value={pct(d.acceptance_rate, 0)} sub="Of drafts an agent decided on" icon={Gauge} tone="green" />
@@ -33,7 +35,7 @@ export default function CxMetrics() {
       {d.analysed === 0 ? (
         <Panel>
           <Empty icon={BarChart3} title="No Copilot runs yet">
-            Analyse a ticket in the inbox or run the 1-Click Demo, then come back.
+            Analyse a ticket in the inbox or run the demo, then come back.
             <div style={{ marginTop: 12 }}><button className="btn primary" onClick={() => navigate("/cx")}><Zap size={14} /> Go to inbox</button></div>
           </Empty>
         </Panel>
@@ -46,8 +48,8 @@ export default function CxMetrics() {
                   <CartesianGrid horizontal={false} />
                   <XAxis type="number" allowDecimals={false} />
                   <YAxis type="category" dataKey="name" width={150} />
-                  <Tooltip cursor={{ fill: "rgba(255,255,255,.04)" }} content={<ChartTip render={(p) => <><b>{p.name}</b>{p.value} runs</>} />} />
-                  <Bar dataKey="value" fill="#8b7cf8" isAnimationActive={false} radius={[0, 6, 6, 0]} barSize={18} />
+                  <Tooltip cursor={{ fill: CHART.cursor }} content={<ChartTip render={(p) => <><b>{p.name}</b>{p.value} runs</>} />} />
+                  <Bar dataKey="value" fill={CHART.primary} isAnimationActive={false} radius={[0, 6, 6, 0]} barSize={18} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -59,7 +61,7 @@ export default function CxMetrics() {
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie data={results} isAnimationActive={false} dataKey="value" nameKey="name" innerRadius={55} outerRadius={85} paddingAngle={3} stroke="none">
-                      {results.map((r) => <Cell key={r.key} fill={RESULT_COLOURS[r.key] ?? "#5f6782"} />)}
+                      {results.map((r) => <Cell key={r.key} fill={RESULT_COLOURS[r.key] ?? CHART.neutral} />)}
                     </Pie>
                     <Tooltip content={<ChartTip render={(p) => <><b>{p.name}</b>{p.value} runs</>} />} />
                   </PieChart>

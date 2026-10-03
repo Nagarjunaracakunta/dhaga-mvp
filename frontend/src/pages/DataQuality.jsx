@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { CircleCheck, Filter, Search, ShieldCheck, TriangleAlert } from "lucide-react";
 import { api } from "../api.js";
 import { label, num, useApi } from "../useApi.js";
-import { Empty, ErrorBox, HBars, Panel, Skeleton, Stat } from "../components/ui.jsx";
+import { Empty, ErrorBox, HBars, Panel, Skeleton, Stat, PageHeader } from "../components/ui.jsx";
 
 const EXPLAIN = {
   duplicate_order_id: "Same order ID appears twice; the first copy is kept",
@@ -35,6 +35,7 @@ export default function DataQuality() {
 
   return (
     <div className="grid">
+      <PageHeader title="Data quality" subtitle="What we cleaned before counting: rows kept, rows rejected, and the reason for each." />
       <div className="grid stats">
         <Stat label="Raw orders" value={num(s?.raw_orders)} sub={`${num(s?.total_orders)} kept after cleaning`} icon={ShieldCheck} loading={summary.loading} />
         <Stat label="Raw returns" value={num(s?.raw_returns)} sub={`${num(s?.total_returns)} kept after cleaning`} icon={ShieldCheck} tone="cyan" loading={summary.loading} />

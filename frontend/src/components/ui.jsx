@@ -130,3 +130,15 @@ export function ChartTip({ active, payload, label: l, render }) {
   if (!active || !payload?.length) return null;
   return <div className="chart-tip">{render ? render(payload[0].payload) : <><b>{l}</b>{payload[0].value}</>}</div>;
 }
+
+export function PageHeader({ title, subtitle, actions }) {
+  return (
+    <header className="page-head">
+      <div>
+        <h1>{title}</h1>
+        {subtitle && <p>{subtitle}</p>}
+      </div>
+      {actions && <div className="page-actions">{actions}</div>}
+    </header>
+  );
+}

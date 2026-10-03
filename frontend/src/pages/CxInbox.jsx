@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Bot, Inbox, MessageSquareText, Package, RefreshCw, Search, Sparkles, WandSparkles } from "lucide-react";
 import { api } from "../api.js";
 import { day, inr, label, time, useApi } from "../useApi.js";
-import { CloseButton, Empty, ErrorBox, INTENT_TEXT, IntentPill, Overlay, Panel, Skeleton, StatusPill } from "../components/ui.jsx";
+import { CloseButton, Empty, ErrorBox, INTENT_TEXT, IntentPill, Overlay, PageHeader, Panel, Skeleton, StatusPill } from "../components/ui.jsx";
 import CopilotPanel, { LoadingSteps } from "../components/CopilotPanel.jsx";
 import { useToast } from "../components/Toast.jsx";
 
@@ -34,6 +34,12 @@ export default function CxInbox() {
   }, [selected, tickets, setParams]);
 
   return (
+    <>
+    <PageHeader
+      title="Support inbox"
+      subtitle="Pick a ticket, let Copilot draft a reply from the real order facts, then approve, edit or escalate."
+      actions={<button className="btn" onClick={() => setTryOpen(true)}><WandSparkles size={15} /> Try Copilot on any message</button>}
+    />
     <div className="inbox">
       <section className="panel inbox-list" aria-label="Tickets">
         <div className="filters">
@@ -49,13 +55,10 @@ export default function CxInbox() {
               <button key={l} className="chip" aria-pressed={status === v} onClick={() => setStatus(v)}>{l}</button>
             ))}
           </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <select id="intent-filter" className="select" value={intent} onChange={(e) => setIntent(e.target.value)} style={{ flex: 1 }}>
-              <option value="">All intents</option>
-              {Object.entries(INTENT_TEXT).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-            </select>
-            <button className="btn sm" onClick={() => setTryOpen(true)}><WandSparkles size={14} /> Try Copilot</button>
-          </div>
+          <select id="intent-filter" className="select" value={intent} onChange={(e) => setIntent(e.target.value)}>
+            <option value="">All intents</option>
+            {Object.entries(INTENT_TEXT).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          </select>
         </div>
         <div className="tickets">
           {list.loading && <div style={{ padding: 14 }}><Skeleton rows={6} height={46} /></div>}
@@ -64,11 +67,11 @@ export default function CxInbox() {
             <Empty title="No tickets here">Try another filter, or clear the search.</Empty>
           )}
           {tickets.map((t) => (
-            <button key={t.ticket_id} className="tk" aria-current={selected === t.ticket_number} onClick={() => setParams({ t: t.ticket_number })}>
+            <button key={t.ticket_id} className="tk" data-status={t.status} aria-current={selected === t.ticket_number} onClick={() => setParams({ t: t.ticket_number })}>
               <span className="r1"><span className="who">{t.customer_name}</span><span>{t.channel} · {time(t.created_at)}</span></span>
               <span className="msg">{t.message}</span>
               <span className="tags">
-                <span className="pill grey mono">{t.ticket_number}</span>
+                <span className="dim mono" style={{ fontSize: 11.5, alignSelf: "center" }}>{t.ticket_number}</span>
                 <StatusPill status={t.status} />
                 <IntentPill intent={t.last_intent} />
               </span>
@@ -79,10 +82,11 @@ export default function CxInbox() {
 
       {selected
         ? <TicketView key={selected} ticketRef={selected} insights={insights.data ?? []} onChanged={list.reload} toast={toast} />
-        : <Panel><Empty icon={Inbox} title="Select a ticket">Pick a ticket on the left to see the customer's message and order.</Empty></Panel>}
+        : <Panel className="span-rest"><Empty icon={Inbox} title="Select a ticket">Pick a ticket on the left to see the customer's message and order.</Empty></Panel>}
 
       {tryOpen && <TryCopilot onClose={() => setTryOpen(false)} />}
     </div>
+    </>
   );
 }
 
@@ -108,8 +112,8 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
   const [busy, setBusy] = useState(false);
   const [runError, setRunError] = useState(null);
 
-  if (detail.loading) return <Panel><Skeleton rows={6} height={22} /></Panel>;
-  if (detail.error) return <Panel><ErrorBox error={detail.error} onRetry={detail.reload} /></Panel>;
+  if (detail.loading) return <Panel className="span-rest"><Skeleton rows={6} height={22} /></Panel>;
+  if (detail.error) return <Panel className="span-rest"><ErrorBox error={detail.error} onRetry={detail.reload} /></Panel>;
 
   const { ticket, facts: linkedFacts } = detail.data;
   // Only show saved results made by this app's Copilot (seeded rows in Supabase have a different shape)
@@ -148,6 +152,7 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
   }
 
   return (
+    <>
     <div className="detail">
       <Panel>
         <div style={{ display: "grid", gap: 18 }}>
@@ -187,8 +192,10 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
           )}
         </div>
       </Panel>
+    </div>
 
-      <Panel icon={Bot} title="Copilot" subtitle="Classify → order facts → rules → draft → check. You approve before anything is sent."
+    <div className="copilot-col">
+      <Panel icon={Bot} title="Copilot" subtitle="Drafts from facts and policy. You approve before anything is sent."
         actions={!closed && !analyzing && (
           <button className={shown ? "btn" : "btn primary"} onClick={analyze}>
             <Sparkles size={15} /> {shown ? "Analyse again" : "Analyse with Copilot"}
@@ -200,6 +207,7 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
           : <Empty icon={MessageSquareText} title="Not analysed yet">Copilot reads the message, finds the order, and drafts a reply for you to review.</Empty>}
       </Panel>
     </div>
+    </>
   );
 }
 

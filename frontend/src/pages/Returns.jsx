@@ -4,8 +4,9 @@ import { Bar, BarChart, CartesianGrid, Cell, ReferenceLine, ResponsiveContainer,
 import { ArrowDownUp, Bot, Check, Layers, LoaderCircle, MessageSquareText, Package, PackageX, RotateCcw, Scale, Sparkles, TriangleAlert, UserRound } from "lucide-react";
 import { api } from "../api.js";
 import { label, num, pct, useApi } from "../useApi.js";
-import { ChartTip, CloseButton, Empty, ErrorBox, HBars, Overlay, Panel, Skeleton, Stat } from "../components/ui.jsx";
+import { ChartTip, CloseButton, Empty, ErrorBox, HBars, Overlay, Panel, Skeleton, Stat, PageHeader } from "../components/ui.jsx";
 import { useToast } from "../components/Toast.jsx";
+import { CHART } from "../theme.js";
 
 const DIMENSIONS = [["size", "Size"], ["colour", "Colour"], ["category", "Category"], ["product_id", "Product"]];
 
@@ -50,6 +51,7 @@ export default function Returns() {
 
   return (
     <div className="grid">
+      <PageHeader title="Return insights" subtitle={'Which products, sizes and colours come back too often, and why. "Other" comments are explained by AI and checked by people.'} />
       <div className="grid stats">
         <Stat label="Return rate" value={pct(s?.return_rate)} sub={s ? `${num(s.total_returns)} returns · ${num(s.total_orders)} orders` : ""} icon={RotateCcw} tone="red" loading={summary.loading} />
         <Stat label='Marked "Other"' value={pct(s?.other_share, 0)} sub="The dropdown gives no real reason" icon={MessageSquareText} tone="amber" loading={summary.loading} />
@@ -104,10 +106,10 @@ export default function Returns() {
                     <CartesianGrid vertical={false} />
                     <XAxis dataKey="name" interval={by === "product_id" ? "preserveStartEnd" : 0} angle={by === "product_id" || by === "category" ? -30 : 0} textAnchor={by === "product_id" || by === "category" ? "end" : "middle"} height={by === "product_id" || by === "category" ? 60 : 30} />
                     <YAxis tickFormatter={(v) => `${Math.round(v * 100)}%`} width={42} />
-                    <Tooltip cursor={{ fill: "rgba(255,255,255,.04)" }} content={<ChartTip render={(p) => <><b>{p.name}</b>{pct(p.return_rate)} returned · {num(p.returns)} of {num(p.orders)}</>} />} />
-                    <ReferenceLine y={baseline} stroke="#f5b84a" strokeDasharray="5 4" />
+                    <Tooltip cursor={{ fill: CHART.cursor }} content={<ChartTip render={(p) => <><b>{p.name}</b>{pct(p.return_rate)} returned · {num(p.returns)} of {num(p.orders)}</>} />} />
+                    <ReferenceLine y={baseline} stroke={CHART.accent} strokeDasharray="5 4" />
                     <Bar dataKey="return_rate" isAnimationActive={false} radius={[6, 6, 0, 0]} maxBarSize={46}>
-                      {chartRows.map((r) => <Cell key={r.name} fill={r.return_rate >= baseline * 1.5 ? "#e8509a" : "#8b7cf8"} />)}
+                      {chartRows.map((r) => <Cell key={r.name} fill={r.return_rate >= baseline * 1.5 ? CHART.accent : CHART.primary} />)}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>

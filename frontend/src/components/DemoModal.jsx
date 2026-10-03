@@ -50,7 +50,7 @@ export default function DemoModal({ onClose }) {
     <Overlay kind="modal" onClose={onClose} labelledBy="demo-title">
       <div className="dhead">
         <div>
-          <h2 id="demo-title" style={{ display: "flex", gap: 8, alignItems: "center" }}><Zap size={18} color="var(--pink)" /> 1-Click Copilot Demo</h2>
+          <h2 id="demo-title" style={{ display: "flex", gap: 8, alignItems: "center" }}><Zap size={18} color="var(--accent)" /> Copilot demo</h2>
           <p className="muted" style={{ margin: "4px 0 0" }}>
             Runs Copilot on up to {MAX_TICKETS} open tickets: classify, find the order, apply rules, draft and check. Every result waits in the inbox for an agent.
           </p>

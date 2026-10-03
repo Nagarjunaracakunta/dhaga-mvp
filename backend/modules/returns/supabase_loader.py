@@ -5,7 +5,7 @@ Returns carry no size, colour or product of their own: they come from the order 
 """
 import pandas as pd
 
-from backend.shared.db import get_supabase
+from backend.shared.db import execute, get_supabase
 
 PAGE = 1000  # PostgREST returns at most 1000 rows per request
 
@@ -13,7 +13,7 @@ PAGE = 1000  # PostgREST returns at most 1000 rows per request
 def _all(table: str, select: str) -> list[dict]:
     sb, rows, start = get_supabase(), [], 0
     while True:
-        batch = sb.table(table).select(select).range(start, start + PAGE - 1).execute().data
+        batch = execute(sb.table(table).select(select).range(start, start + PAGE - 1)).data
         rows += batch
         if len(batch) < PAGE:
             return rows
