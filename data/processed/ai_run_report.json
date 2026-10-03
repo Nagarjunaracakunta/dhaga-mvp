@@ -1,7 +1,7 @@
 {
   "models": {
-    "fast": "mock:mock",
-    "strong": "mock:mock",
+    "fast": "openrouter:anthropic/claude-haiku-4.5",
+    "strong": "openrouter:openai/gpt-4o",
     "fallback": null
   },
   "classification": {
@@ -19,16 +19,22 @@
     "still_pending": 0
   },
   "cost": {
-    "calls": 13,
-    "estimated_usd": 0.0,
+    "calls": 17,
+    "estimated_usd": 0.0427,
     "budget_usd": 0.5,
     "budget_calls": 500,
     "by_model": {
-      "mock:mock": {
-        "calls": 13,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "usd": 0.0
+      "openrouter:anthropic/claude-haiku-4.5": {
+        "calls": 8,
+        "input_tokens": 10537,
+        "output_tokens": 2010,
+        "usd": 0.0206
+      },
+      "openrouter:openai/gpt-4o": {
+        "calls": 9,
+        "input_tokens": 4621,
+        "output_tokens": 1054,
+        "usd": 0.0221
       }
     },
     "unpriced_models": []
@@ -258,5 +264,5 @@
     "body_area_accuracy_on_fit": 1.0,
     "top_mismatches": {}
   },
-  "run_id": "a2be869c33a8"
+  "run_id": "54c5d7322a5e"
 }
