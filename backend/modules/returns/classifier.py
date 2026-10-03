@@ -1,18 +1,18 @@
 """Stage 2: read the "Other" comment on a return and give it a real reason (Haiku 4.5, temperature 0).
 
-Comments are independent of each other, so they are classified in parallel (parallelization pattern).
+Comments are independent of each other, so they run through one LangChain chain with .batch(),
+8 at a time (parallelization pattern).
 Results are saved to the returns table (ai_category / ai_subcategory / ai_confidence); a person can
 accept or correct each one (final_category). The pipeline then uses them in place of "UNCLASSIFIED".
 """
 import time
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Literal, Optional
 
 import pandas as pd
 from pydantic import BaseModel, Field
 
-from backend.shared.llm import LLM, LLMOutputError, LLMUnavailable
+from backend.shared.llm import LLM, LLMUnavailable, parse_many
 from backend.shared.settings import Settings
 
 PROMPT_VERSION = "classify_return_v1"
@@ -45,30 +45,26 @@ def needs_review(category: Optional[str], confidence) -> bool:
 
 
 def classify_comments(llm: LLM, settings: Settings, comments: dict[str, str]) -> dict:
-    """comments: {return_id: text}. Returns {"results": {return_id: {...}}, "failed": {...}, cost, latency, fallback}."""
-    def one(item):
-        rid, text = item
-        try:
-            r = llm.parse(model=settings.model_fast, system=SYSTEM, user=f"<comment>\n{text}\n</comment>",
-                          output_format=ReturnClassification, max_tokens=256, temperature=0)
-        except LLMUnavailable as e:
-            return rid, None, f"unavailable: {e}", 0.0
-        except LLMOutputError as e:
-            return rid, None, str(e), 0.0
-        c = r.parsed
-        c.confidence = min(max(c.confidence, 0.0), 1.0)
-        return rid, {"ai_category": c.category, "ai_subcategory": subcategory(c),
-                     "ai_confidence": round(c.confidence, 4)}, None, r.cost_usd
-
+    """comments: {return_id: text}. One LangChain chain run over all comments with .batch(),
+    MAX_WORKERS at a time (parallelization). Returns results, failures, cost and time."""
+    ids = list(comments)
     start = time.perf_counter()
+    outputs = parse_many(llm, model=settings.model_fast, system=SYSTEM,
+                         users=[f"<comment>\n{comments[rid]}\n</comment>" for rid in ids],
+                         output_format=ReturnClassification, max_tokens=256, temperature=0,
+                         max_concurrency=MAX_WORKERS)
     results, failed, cost = {}, {}, 0.0
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        for rid, res, err, c in pool.map(one, comments.items()):
-            cost += c
-            if res:
-                results[rid] = res
-            else:
-                failed[rid] = err
+    for rid, out in zip(ids, outputs):
+        if isinstance(out, LLMUnavailable):
+            failed[rid] = f"unavailable: {out}"
+        elif isinstance(out, Exception):
+            failed[rid] = str(out)
+        else:
+            c = out.parsed
+            c.confidence = min(max(c.confidence, 0.0), 1.0)
+            results[rid] = {"ai_category": c.category, "ai_subcategory": subcategory(c),
+                            "ai_confidence": round(c.confidence, 4)}
+            cost += out.cost_usd
     return {"results": results, "failed": failed, "cost_usd": round(cost, 6),
             "latency_ms": int((time.perf_counter() - start) * 1000), "model": settings.model_fast,
             "prompt_version": PROMPT_VERSION}

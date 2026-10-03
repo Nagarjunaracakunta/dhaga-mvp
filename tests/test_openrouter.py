@@ -63,3 +63,17 @@ def test_no_credit_and_bad_requests_mean_unavailable():
         call(llm_returning(402, {"error": {"message": "Insufficient credits", "code": 402}}))
     with pytest.raises(LLMUnavailable):
         call(llm_returning(400, {"error": {"message": "bad request", "code": 400}}))
+
+
+def test_batch_runs_many_inputs_and_returns_errors_per_item():
+    def handler(request):
+        user = json.loads(request.content)["messages"][1]["content"]
+        if "broken" in user:
+            return httpx.Response(402, json={"error": {"message": "Insufficient credits", "code": 402}})
+        return httpx.Response(200, json=completion(GOOD))
+    llm = LangChainLLM("sk-or-test", "https://openrouter.test/api/v1", 5,
+                       http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    outs = llm.parse_many(model="claude-haiku-4-5", system="s", users=["one", "broken", "three"],
+                          output_format=TicketClassification, max_tokens=100, temperature=0, max_concurrency=2)
+    assert [type(o).__name__ for o in outs] == ["LLMResult", "LLMUnavailable", "LLMResult"]
+    assert outs[0].parsed.intent == "WISMO" and "credit" in str(outs[1])

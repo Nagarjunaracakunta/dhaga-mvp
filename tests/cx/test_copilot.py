@@ -82,3 +82,13 @@ def test_no_api_key_runs_every_demo_ticket_in_fallback_mode(repo, settings):
     }
     got = {t: service.analyze_ticket(deps, t).status for t in expected}
     assert got == expected
+
+
+def test_workflow_is_a_langchain_runnable_sequence_with_a_routing_branch():
+    from langchain_core.runnables import RunnableBranch, RunnableSequence
+    from backend.modules.cx.copilot import COPILOT_CHAIN, STEP_NAMES
+    assert isinstance(COPILOT_CHAIN, RunnableSequence) and len(COPILOT_CHAIN.steps) == len(STEP_NAMES)
+    branch = COPILOT_CHAIN.steps[5].mapper.steps__["outcome"]
+    assert isinstance(branch, RunnableBranch)
+    assert [b[1].name for b in branch.branches] == ["hand_to_person", "ask_for_order_number"]
+    assert branch.default.name == "draft_and_check"

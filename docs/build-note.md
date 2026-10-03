@@ -25,7 +25,7 @@ Live: https://nagarjuna2026-dhaga-mvp.hf.space · Data: Supabase (1,800 tickets,
 
 **Two models, why this split:** Haiku runs on every ticket (classify and check) because it's about 4× cheaper and gives a fast yes/no. Opus only writes the reply, where quality is what the customer sees. Tickets the rules send to a person never reach Opus: measured cost $0.00095 instead of $0.0104.
 
-**Framework:** each model step is a LangChain chain: a `ChatPromptTemplate` piped into `ChatOpenAI.with_structured_output(schema, method="json_schema", strict=True)` against OpenRouter. LangChain handles the prompt, the provider call, retries and parsing the output into a Pydantic schema. The workflow that connects the steps (routing, rules, the redraft loop) stays as readable Python in `copilot.py`, because it's a short fixed sequence that the team should be able to read top to bottom.
+**Framework (LangChain):** each model step is a chain: a `ChatPromptTemplate` piped into `ChatOpenAI.with_structured_output(schema, method="json_schema", strict=True)` against OpenRouter. The CX workflow itself is a LangChain `RunnableSequence` (`COPILOT_CHAIN` in `copilot.py`): named steps pass a state forward, and routing is a `RunnableBranch` (hand to a person / ask for the order number / draft and check). The redraft-once loop stays inside the `draft_and_check` step, because a sequence only flows forward. Returns uses the same chain with `.batch()` for its parallel run.
 
 **When validation fails:** every model call must return JSON that matches a Pydantic schema. If the answer is invalid, cut off or refused, the ticket becomes `NEEDS_HUMAN` with the reason on screen. If OpenRouter is down or out of credit, Copilot switches to keyword matching and the agents' existing template replies, and shows a "Fallback mode" banner.
 
@@ -79,7 +79,7 @@ Returns runs on the same Supabase data: 563 returns, 216 of them "Other" with a 
 | 4 | Accept or correct | **Human** (Neha's team) | – | The final call on anything uncertain |
 | 5 | Return rate per product, size and colour; flag ≥1.5× the shop average with ≥8 returns | Code | – | Arithmetic |
 
-**Parallelization** (step 2): each comment is independent, so 8 run at once. All 216 took 50 seconds instead of about 6 minutes one by one. *Without it*, a classify run is too slow to press in front of a category manager.
+**Parallelization** (step 2): each comment is independent, so one LangChain chain runs them with `.batch()`, 8 at once. All 216 took 50 seconds instead of about 6 minutes one by one. *Without it*, a classify run is too slow to press in front of a category manager.
 
 **Cost and accuracy** (measured 3 October 2026): $0.226 for 216 comments ≈ **$0.00105 each**. At Dhaga's volume, about 6,550 unexplained returns a week (48,000 × 31% × 44%, calc) × $0.00105 ≈ **$6.90 a week** ≈ ₹590. Scored against the known reason for each generated comment (`python evals/returns_eval.py`): **215 of 216 correct**. The one miss ("funtion cancel ho gaya", a typo) had low confidence and went to a person: **0 wrong answers skipped review**. Body area was right for 105 of 105 fit comments. The same caveat applies as for tickets: generated text is easier than real text.
 

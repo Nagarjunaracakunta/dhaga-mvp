@@ -73,9 +73,11 @@ Modules never import each other, only `backend/shared`.
 
 ## CX models
 
-Model calls run as LangChain chains (`ChatPromptTemplate | ChatOpenAI.with_structured_output(...)`) against
-OpenRouter, in `backend/shared/llm.py`. The workflow that strings the steps together is plain Python in
-`backend/modules/cx/copilot.py`.
+LangChain does three jobs:
+
+- every model call is a chain (`ChatPromptTemplate | ChatOpenAI.with_structured_output(...)`) against OpenRouter, in `backend/shared/llm.py`;
+- the CX workflow is a `RunnableSequence` with a `RunnableBranch` for routing (`COPILOT_CHAIN` in `backend/modules/cx/copilot.py`);
+- Returns classifies "Other" comments with the chain's `.batch()`, 8 at a time.
 
 
 | Step | Model | Setting |

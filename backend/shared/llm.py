@@ -10,6 +10,7 @@ Two failure types, handled differently by callers:
 """
 import logging
 import time
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from functools import lru_cache
 from typing import Generic, Optional, Protocol, TypeVar
@@ -145,36 +146,38 @@ class LangChainLLM:
             kwargs["http_client"] = self.http_client
         return ChatOpenAI(**kwargs)
 
-    def parse(self, *, model, system, user, output_format, max_tokens,
-              temperature=None, effort=None, allow_fallback_model=False):
+    def _chain(self, model, output_format, max_tokens, temperature, effort):
         structured = self._chat_model(model, max_tokens, temperature, effort).with_structured_output(
             output_format, method="json_schema", strict=True, include_raw=True)
-        chain = self.PROMPT | structured
+        return self.PROMPT | structured
 
-        start = time.perf_counter()
-        try:
-            out = chain.invoke({"system": system, "user": user})
-        except openai.LengthFinishReasonError as e:
-            raise LLMOutputError(f"{model} ran out of tokens before finishing") from e
-        except openai.ContentFilterFinishReasonError as e:
-            raise LLMOutputError(f"{model} declined to answer") from e
-        except pydantic.ValidationError as e:
-            raise LLMOutputError(f"{model} returned output that failed the schema: {e.error_count()} errors") from e
-        except openai.APIStatusError as e:
+    @staticmethod
+    def _as_llm_error(e: Exception, model: str) -> Exception:
+        """Turn a LangChain/OpenAI exception into one of our two error types."""
+        if isinstance(e, openai.LengthFinishReasonError):
+            return LLMOutputError(f"{model} ran out of tokens before finishing")
+        if isinstance(e, openai.ContentFilterFinishReasonError):
+            return LLMOutputError(f"{model} declined to answer")
+        if isinstance(e, pydantic.ValidationError):
+            return LLMOutputError(f"{model} returned output that failed the schema: {e.error_count()} errors")
+        if isinstance(e, openai.APIStatusError):
             log.error("OpenRouter %s for %s: %s", e.status_code, model, e.message)
             if e.status_code == 402:
-                raise LLMUnavailable("OpenRouter credit used up") from e
-            raise LLMUnavailable(f"OpenRouter error {e.status_code}: {e.message}") from e
-        except (openai.APIConnectionError, openai.APITimeoutError) as e:
-            raise LLMUnavailable("Could not reach OpenRouter") from e
-        latency_ms = int((time.perf_counter() - start) * 1000)
+                return LLMUnavailable("OpenRouter credit used up")
+            return LLMUnavailable(f"OpenRouter error {e.status_code}: {e.message}")
+        if isinstance(e, (openai.APIConnectionError, openai.APITimeoutError)):
+            return LLMUnavailable("Could not reach OpenRouter")
+        return LLMOutputError(f"{model} call failed: {type(e).__name__}: {e}")
 
+    def _to_result(self, out, model: str, latency_ms: int):
+        """One chain output -> LLMResult, or an LLM error (returned, not raised)."""
+        if isinstance(out, Exception):
+            return self._as_llm_error(out, model)
         raw, parsed = out["raw"], out["parsed"]
         if raw.additional_kwargs.get("refusal"):
-            raise LLMOutputError(f"{model} declined to answer")
+            return LLMOutputError(f"{model} declined to answer")
         if out["parsing_error"] is not None or parsed is None:
-            raise LLMOutputError(f"{model} returned output that failed the schema: {out['parsing_error']}")
-
+            return LLMOutputError(f"{model} returned output that failed the schema: {out['parsing_error']}")
         usage = raw.usage_metadata or {}
         tokens_in, tokens_out = usage.get("input_tokens", 0), usage.get("output_tokens", 0)
         cost = (raw.response_metadata.get("token_usage") or {}).get("cost")
@@ -182,6 +185,50 @@ class LangChainLLM:
         return LLMResult(parsed=parsed, model=served_by, input_tokens=tokens_in, output_tokens=tokens_out,
                          cost_usd=round(cost, 6) if isinstance(cost, (int, float)) else cost_usd(model, tokens_in, tokens_out),
                          latency_ms=latency_ms)
+
+    def parse(self, *, model, system, user, output_format, max_tokens,
+              temperature=None, effort=None, allow_fallback_model=False):
+        chain = self._chain(model, output_format, max_tokens, temperature, effort)
+        start = time.perf_counter()
+        try:
+            out = chain.invoke({"system": system, "user": user})
+        except Exception as e:  # mapped to LLMUnavailable / LLMOutputError
+            raise self._as_llm_error(e, model) from e
+        result = self._to_result(out, model, int((time.perf_counter() - start) * 1000))
+        if isinstance(result, Exception):
+            raise result
+        return result
+
+    def parse_many(self, *, model, system, users, output_format, max_tokens, temperature=None, effort=None,
+                   max_concurrency=8):
+        """Same chain over many inputs with LangChain's .batch(), max_concurrency at a time.
+        Returns one item per input, in order: an LLMResult, or an LLMUnavailable / LLMOutputError."""
+        chain = self._chain(model, output_format, max_tokens, temperature, effort)
+        start = time.perf_counter()
+        outs = chain.batch([{"system": system, "user": u} for u in users],
+                           config={"max_concurrency": max_concurrency}, return_exceptions=True)
+        elapsed = int((time.perf_counter() - start) * 1000)
+        return [self._to_result(o, model, elapsed) for o in outs]
+
+
+def parse_many(llm: LLM, *, model, system, users, output_format, max_tokens, temperature=None, effort=None,
+               max_concurrency=8) -> list:
+    """Run many prompts. Uses the client's own batch (LangChain .batch()) when it has one; otherwise
+    calls parse() from a small thread pool (direct-Anthropic client, test fakes). Errors are returned, not raised."""
+    if hasattr(llm, "parse_many"):
+        return llm.parse_many(model=model, system=system, users=users, output_format=output_format,
+                              max_tokens=max_tokens, temperature=temperature, effort=effort,
+                              max_concurrency=max_concurrency)
+
+    def one(u):
+        try:
+            return llm.parse(model=model, system=system, user=u, output_format=output_format,
+                             max_tokens=max_tokens, temperature=temperature, effort=effort)
+        except (LLMUnavailable, LLMOutputError) as e:
+            return e
+
+    with ThreadPoolExecutor(max_workers=max_concurrency) as pool:
+        return list(pool.map(one, users))
 
 
 class UnconfiguredLLM:
