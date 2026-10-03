@@ -35,6 +35,7 @@ export const api = {
 
   // CX Copilot
   tickets: (params) => request("/api/cx/tickets", { params }),
+  inbox: (params) => request("/api/cx/inbox", { params }),
   ticket: (ref) => request(`/api/cx/tickets/${encodeURIComponent(ref)}`),
   analyze: (ref) => request(`/api/cx/tickets/${encodeURIComponent(ref)}/analyze`, { method: "POST" }),
   decide: (ref, body) => request(`/api/cx/tickets/${encodeURIComponent(ref)}/decision`, { method: "POST", body }),

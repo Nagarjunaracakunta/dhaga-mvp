@@ -7,6 +7,8 @@ import io
 import json
 import logging
 import re
+import threading
+import time
 import uuid
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
@@ -58,6 +60,9 @@ class CXRepository(Protocol):
     def get_interaction(self, interaction_id: str) -> Optional[dict]: ...
     def update_interaction(self, interaction_id: str, fields: dict) -> None: ...
     def latest_interactions(self, ticket_ids: list[str]) -> dict[str, dict]: ...
+    def ticket_index(self) -> list[dict]: ...
+    def latest_results(self) -> dict[str, dict]: ...
+    def customer_tickets(self, customer_id: str, limit: int) -> list[TicketRecord]: ...
     def list_interactions(self) -> list[dict]: ...
     def count_tickets_by_status(self) -> dict[str, int]: ...
     def load_policies(self) -> dict[str, Policy]: ...
@@ -152,6 +157,28 @@ class DemoRepository:
     def list_interactions(self):
         return list(self.interactions.values())
 
+    def ticket_index(self):
+        rows = []
+        for t in self.tickets.values():
+            o = self.orders.get(t.get("order_id")) or {}
+            rows.append({**t, "customer_name": self.customers[t["customer_id"]]["name"],
+                         "order_number": o.get("order_number"), "order_status": o.get("order_status"),
+                         "expected_delivery": o.get("expected_delivery")})
+        return sorted(rows, key=lambda r: r["ticket_number"])
+
+    def latest_results(self):
+        out = {}
+        for row in sorted(self.interactions.values(), key=lambda r: r["created_at"]):
+            o = row.get("output") or {}
+            out[row["input_reference_id"]] = {"result": o.get("status"), "human_action": row.get("human_action"),
+                                              "intent": (o.get("classification") or {}).get("intent")}
+        return out
+
+    def customer_tickets(self, customer_id, limit):
+        rows = sorted((t for t in self.tickets.values() if t["customer_id"] == customer_id),
+                      key=lambda t: t["ticket_number"], reverse=True)
+        return [self._ticket(t) for t in rows[:limit]]
+
     def count_tickets_by_status(self):
         counts = {s: 0 for s in TICKET_STATUSES}
         for t in self.tickets.values():
@@ -173,6 +200,9 @@ ORDER_SELECT = ("order_id,order_number,customer_id,order_date,payment_mode,order
                 "tracking_number,expected_delivery,delivered_at,total_amount,"
                 "order_items(product_id,quantity,unit_price,size,colour,products(product_name))")
 TICKET_SELECT = "ticket_id,ticket_number,customer_id,channel,message,status,created_at,order_id,customers(name,city)"
+INDEX_SELECT = ("ticket_id,ticket_number,customer_id,channel,message,status,created_at,order_id,customers(name),"
+                "orders(order_number,order_status,expected_delivery)")
+INDEX_TTL_S = 60  # the whole-ticket index takes ~3 s to read, so keep it briefly; our own status changes update it
 TICKET_NUMBER = re.compile(r"^TKT\d+$", re.I)
 PAGE = 1000  # PostgREST returns at most 1000 rows per request by default
 MISSING_TABLE = "PGRST205"
@@ -195,6 +225,9 @@ class SupabaseRepository:
     def __init__(self, client, bucket: str):
         self.sb = client
         self.bucket = bucket
+        self._index: Optional[list[dict]] = None
+        self._index_at = 0.0
+        self._index_lock = threading.Lock()
 
     def _run(self, query, what: str):
         try:
@@ -266,6 +299,49 @@ class SupabaseRepository:
         self._run(self.sb.table("support_tickets").update({"status": STATUS_TO_DB.get(status, status)})
                   .eq("ticket_id", ticket_id),
                   "update the ticket status")
+        for row in self._index or []:
+            if row["ticket_id"] == ticket_id:
+                row["status"] = status
+
+    def ticket_index(self):
+        """Every ticket with its customer name and order basics, for search, filters and priority."""
+        with self._index_lock:
+            if self._index is None or time.monotonic() - self._index_at > INDEX_TTL_S:
+                rows, start = [], 0
+                while True:
+                    q = self.sb.table("support_tickets").select(INDEX_SELECT).order("ticket_number").range(start, start + PAGE - 1)
+                    batch = self._run(q, "load the ticket index").data
+                    rows += batch
+                    if len(batch) < PAGE:
+                        break
+                    start += PAGE
+                for r in rows:
+                    order = r.pop("orders", None) or {}
+                    r["customer_name"] = (r.pop("customers", None) or {}).get("name") or "Unknown customer"
+                    r["status"] = STATUS_FROM_DB.get(r.get("status"), r.get("status") or "OPEN")
+                    r.update(order_number=order.get("order_number"), order_status=order.get("order_status"),
+                             expected_delivery=order.get("expected_delivery"))
+                self._index, self._index_at = rows, time.monotonic()
+            return self._index
+
+    def latest_results(self):
+        rows, start = [], 0
+        while True:
+            q = (self.sb.table("ai_interactions")
+                 .select("input_reference_id,created_at,human_action,result:output->>status,"
+                         "intent:output->classification->>intent")
+                 .eq("workflow", WORKFLOW).order("created_at").range(start, start + PAGE - 1))
+            batch = self._read_interactions(q, "load Copilot results", [])
+            rows += batch
+            if len(batch) < PAGE:
+                break
+            start += PAGE
+        return {r["input_reference_id"]: r for r in rows if r.get("input_reference_id")}
+
+    def customer_tickets(self, customer_id, limit):
+        q = (self.sb.table("support_tickets").select(TICKET_SELECT).eq("customer_id", customer_id)
+             .order("ticket_number", desc=True).limit(limit))
+        return [self._ticket(r) for r in self._run(q, "load the customer's tickets").data]
 
     def insert_interaction(self, row):
         data = self._run(self.sb.table("ai_interactions").insert(row), "save the AI interaction").data

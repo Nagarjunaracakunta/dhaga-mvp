@@ -7,7 +7,7 @@ from . import bulk, service
 from .copilot import Deps
 from .schemas import (AnalyzeTextRequest, BulkApproveRequest, BulkApproveResponse, BulkDraftRequest,
                       BulkDraftResponse, BulkQueue, CopilotResult, CXMetrics, DecisionRequest, DecisionResponse,
-                      TicketDetail, TicketSummary)
+                      InboxPage, InboxSort, InboxView, TicketDetail, TicketSummary)
 
 router = APIRouter(tags=["cx"])
 
@@ -18,6 +18,14 @@ def list_tickets(status: Optional[str] = Query(None, pattern="^(OPEN|DRAFTED|RES
                  limit: int = Query(50, ge=1, le=200), offset: int = Query(0, ge=0),
                  deps: Deps = Depends(service.get_deps)):
     return service.list_tickets(deps, status, channel, intent, limit, offset)
+
+
+@router.get("/inbox", response_model=InboxPage)
+def inbox(view: InboxView = "all", intent: Optional[str] = None, q: Optional[str] = Query(None, max_length=100),
+          sort: InboxSort = "priority", limit: int = Query(50, ge=1, le=500), offset: int = Query(0, ge=0),
+          deps: Deps = Depends(service.get_deps)):
+    """Search, views and priority across every ticket (not just one page)."""
+    return service.inbox(deps, view, intent, q, sort, limit, offset)
 
 
 @router.get("/tickets/{ticket_ref}", response_model=TicketDetail)

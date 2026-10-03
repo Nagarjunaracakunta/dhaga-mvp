@@ -1,7 +1,7 @@
 """What each endpoint does. The router only parses requests and calls these functions."""
 import json
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from functools import lru_cache
 from typing import Optional
 
@@ -15,7 +15,7 @@ from .knowledge import KnowledgeBase
 from .order_facts import build_facts
 from .repository import DemoRepository, SupabaseRepository
 from .schemas import (AnalyzeTextRequest, CopilotResult, CXMetrics, DecisionRequest, DecisionResponse,
-                      TicketDetail, TicketSummary)
+                      InboxItem, InboxPage, TicketDetail, TicketSummary)
 
 DECIDED_STATUS = {"APPROVED": "RESOLVED", "EDITED": "RESOLVED", "REJECTED": "ESCALATED", "ESCALATED": "ESCALATED"}
 
@@ -68,7 +68,73 @@ def ticket_detail(deps: Deps, ref: str) -> TicketDetail:
     last = deps.repo.latest_interactions([ticket.ticket_id]).get(ticket.ticket_id)
     last_result = {**_output(last), "interaction_id": last["interaction_id"],
                    "human_action": last.get("human_action")} if last else None
-    return TicketDetail(ticket=ticket, order=order, facts=facts, last_result=last_result)
+    history = [TicketSummary(ticket_id=t.ticket_id, ticket_number=t.ticket_number, customer_name=t.customer_name,
+                             channel=t.channel, message=t.message, status=t.status, created_at=t.created_at)
+               for t in deps.repo.customer_tickets(ticket.customer_id, 6) if t.ticket_id != ticket.ticket_id][:5]
+    return TicketDetail(ticket=ticket, order=order, facts=facts, last_result=last_result, history=history)
+
+
+# ---------- Inbox: search, views and priority over every ticket ----------
+ACTIVE = {"OPEN", "DRAFTED"}
+NOT_IN_TRANSIT = {"DELIVERED", "CANCELLED", "RTO", "RETURNED"}
+URGENT_DAYS_LATE = 7
+
+
+def _days_late(row: dict, today: date) -> Optional[int]:
+    exp = row.get("expected_delivery")
+    if not exp or (row.get("order_status") or "").upper() in NOT_IN_TRANSIT:
+        return None
+    late = (today - (date.fromisoformat(exp[:10]) if isinstance(exp, str) else exp)).days
+    return late if late > 0 else None
+
+
+def _view(item: InboxItem) -> str:
+    if item.needs_person:
+        return "needs_person"
+    return {"OPEN": "open", "DRAFTED": "drafted", "RESOLVED": "resolved", "ESCALATED": "escalated"}.get(item.status, "open")
+
+
+def _priority(item: InboxItem):
+    """Higher first: unresolved, then very late orders and repeat askers, then the oldest."""
+    score = min(item.days_late or 0, 30) + 15 * (item.repeat_count - 1)
+    return (item.status not in ACTIVE, -score, item.ticket_number)
+
+
+def inbox(deps: Deps, view: str, intent: Optional[str], q: Optional[str], sort: str,
+          limit: int, offset: int) -> InboxPage:
+    index = deps.repo.ticket_index()
+    results = deps.repo.latest_results()
+    today = deps.today()
+    repeats = Counter(r["order_id"] for r in index if r.get("order_id") and r["status"] in ACTIVE)
+
+    items = []
+    for r in index:
+        res = results.get(r["ticket_id"]) or {}
+        active = r["status"] in ACTIVE
+        late = _days_late(r, today)
+        repeat = repeats.get(r.get("order_id"), 1) if active else 1
+        items.append(InboxItem(
+            ticket_id=r["ticket_id"], ticket_number=r["ticket_number"], customer_name=r["customer_name"],
+            channel=r.get("channel"), message=r["message"], status=r["status"], created_at=r.get("created_at"),
+            last_intent=res.get("intent"), last_result=res.get("result"), order_number=r.get("order_number"),
+            days_late=late, repeat_count=repeat,
+            needs_person=r["status"] == "OPEN" and res.get("result") == "NEEDS_HUMAN" and not res.get("human_action"),
+            urgent=active and ((late or 0) >= URGENT_DAYS_LATE or repeat > 1),
+        ))
+
+    counts = Counter(_view(i) for i in items)
+    counts["all"] = len(items)
+    needle = (q or "").strip().lower()
+    hits = [i for i in items
+            if (view == "all" or _view(i) == view)
+            and (not intent or i.last_intent == intent)
+            and (not needle or any(needle in (v or "").lower()
+                                   for v in (i.ticket_number, i.customer_name, i.message, i.order_number)))]
+    if sort == "priority":
+        hits.sort(key=_priority)
+    else:
+        hits.sort(key=lambda i: i.ticket_number, reverse=sort == "newest")
+    return InboxPage(total=len(hits), counts=dict(counts), items=hits[offset:offset + limit])
 
 
 def analyze_ticket(deps: Deps, ref: str) -> CopilotResult:

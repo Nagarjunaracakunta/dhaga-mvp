@@ -18,7 +18,7 @@ const CATEGORY = { FIT: "Fit", COLOUR: "Colour", QUALITY: "Quality", DAMAGE: "Da
 export default function Overview({ onDemo }) {
   const navigate = useNavigate();
   const cx = useApi(() => api.cxMetrics(), []);
-  const open = useApi(() => api.tickets({ status: "OPEN", limit: 6 }), []);
+  const open = useApi(() => api.inbox({ view: "open", sort: "priority", limit: 6 }).then((p) => p.items), []);
   const review = useApi(() => api.returnsReviewQueue({ limit: 6 }), []);
   const summary = useApi(() => api.returnsSummary(), []);
   const insights = useApi(() => api.returnsInsights(), []);
@@ -43,7 +43,7 @@ export default function Overview({ onDemo }) {
       </div>
 
       <div className="grid three">
-        <Panel icon={Inbox} title="Tickets waiting" subtitle="Open, oldest first" bodyClass=""
+        <Panel icon={Inbox} title="Tickets waiting" subtitle="Open, most urgent first" bodyClass=""
           actions={<button className="btn sm" onClick={() => navigate("/cx")}>Inbox <ArrowRight size={13} /></button>}>
           {open.loading ? <div className="panel-body"><Skeleton rows={4} height={36} /></div>
             : open.error ? <div className="panel-body"><ErrorBox error={open.error} onRetry={open.reload} /></div>

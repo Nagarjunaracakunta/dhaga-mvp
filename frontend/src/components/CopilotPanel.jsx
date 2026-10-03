@@ -55,6 +55,21 @@ export default function CopilotPanel({ result, onDecide, busy, segmentLink }) {
   const c = result.classification;
   const decided = result.human_action;
   const canDecide = onDecide && !decided;
+  const canApprove = canDecide && !!result.draft && result.status !== "NEEDS_HUMAN";
+
+  // A approves the draft, E edits it, Esc cancels an edit
+  useEffect(() => {
+    if (!canDecide) return undefined;
+    const onKey = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || busy || document.querySelector(".overlay")) return;
+      if (e.key === "Escape" && editing) { setEditing(false); setText(result.draft ?? ""); return; }
+      if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
+      if (e.key === "a" && canApprove && !editing) { e.preventDefault(); onDecide("APPROVED"); }
+      else if (e.key === "e" && !editing) { e.preventDefault(); setEditing(true); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [canDecide, canApprove, editing, busy, onDecide, result.draft]);
 
   return (
     <div style={{ display: "grid", gap: 14 }}>
@@ -131,6 +146,13 @@ export default function CopilotPanel({ result, onDecide, busy, segmentLink }) {
               {result.status === "DRAFTED" && <button className="btn danger" disabled={busy} onClick={() => onDecide("REJECTED")}><Ban size={14} /> Reject</button>}
             </>
           )}
+        </div>
+      )}
+      {canDecide && !editing && (
+        <div className="shortcuts">
+          {canApprove && <span><kbd>A</kbd> approve</span>}
+          <span><kbd>E</kbd> {result.status === "NEEDS_HUMAN" ? "reply manually" : "edit"}</span>
+          <span><kbd>J</kbd> <kbd>K</kbd> next / previous ticket</span>
         </div>
       )}
 

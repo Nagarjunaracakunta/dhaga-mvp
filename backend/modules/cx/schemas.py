@@ -130,6 +130,25 @@ class TicketDetail(BaseModel):
     order: Optional[OrderRecord]
     facts: Optional[OrderFacts]
     last_result: Optional[dict] = None
+    history: list["TicketSummary"] = Field([], description="The customer's other tickets, newest first")
+
+
+InboxView = Literal["all", "open", "needs_person", "drafted", "resolved", "escalated"]
+InboxSort = Literal["priority", "oldest", "newest"]
+
+
+class InboxItem(TicketSummary):
+    order_number: Optional[str] = None
+    days_late: Optional[int] = None
+    repeat_count: int = Field(1, description="Unresolved tickets about the same order")
+    needs_person: bool = Field(False, description="Copilot handed it to a person and nobody has acted yet")
+    urgent: bool = False
+
+
+class InboxPage(BaseModel):
+    total: int
+    counts: dict[str, int] = Field(description="Tickets in each view, before the search and intent filters")
+    items: list[InboxItem]
 
 
 class DecisionRequest(BaseModel):

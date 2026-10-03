@@ -1,43 +1,86 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Bot, Inbox, MessageSquareText, Package, RefreshCw, Search, Sparkles, WandSparkles } from "lucide-react";
+import { Bot, History, Inbox, MessageSquareText, Package, RefreshCw, Search, Sparkles, WandSparkles } from "lucide-react";
 import { api } from "../api.js";
-import { day, inr, label, time, useApi } from "../useApi.js";
+import { day, inr, label, num, time, useApi } from "../useApi.js";
 import { CloseButton, Empty, ErrorBox, INTENT_TEXT, IntentPill, Overlay, PageHeader, Panel, Skeleton, StatusPill } from "../components/ui.jsx";
 import CopilotPanel, { LoadingSteps } from "../components/CopilotPanel.jsx";
 import { useToast } from "../components/Toast.jsx";
 
-const STATUS_CHIPS = [["", "All"], ["OPEN", "Open"], ["DRAFTED", "Drafted"], ["RESOLVED", "Resolved"], ["ESCALATED", "Escalated"]];
+const VIEWS = [
+  ["open", "Open"], ["needs_person", "Needs a person"], ["drafted", "Drafted"],
+  ["resolved", "Resolved"], ["escalated", "Escalated"], ["all", "All"],
+];
+const PAGE = 50;
+
+function useDebounced(value, ms = 300) {
+  const [v, setV] = useState(value);
+  useEffect(() => {
+    const id = setTimeout(() => setV(value), ms);
+    return () => clearTimeout(id);
+  }, [value, ms]);
+  return v;
+}
+
+const typing = (e) => ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName) || e.target.isContentEditable;
 
 export default function CxInbox() {
   const toast = useToast();
   const [params, setParams] = useSearchParams();
   const selected = params.get("t");
-  const [status, setStatus] = useState("");
+  const [view, setView] = useState("open");
   const [intent, setIntent] = useState("");
+  const [sort, setSort] = useState("priority");
   const [query, setQuery] = useState("");
+  const [limit, setLimit] = useState(PAGE);
   const [tryOpen, setTryOpen] = useState(false);
+  const q = useDebounced(query);
 
-  const list = useApi(() => api.tickets({ status, limit: 200 }), [status]);
+  useEffect(() => setLimit(PAGE), [view, intent, sort, q]);
+  const list = useApi(() => api.inbox({ view, intent, sort, q, limit }), [view, intent, sort, q, limit]);
   const insights = useApi(() => api.returnsInsights().catch(() => []), []);
 
-  const tickets = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return (list.data ?? []).filter((t) =>
-      (!intent || t.last_intent === intent) &&
-      (!q || [t.ticket_number, t.customer_name, t.message].some((s) => s?.toLowerCase().includes(q))));
-  }, [list.data, intent, query]);
+  const tickets = useMemo(() => list.data?.items ?? [], [list.data]);
+  const counts = list.data?.counts ?? {};
+  const select = useCallback((t) => t && setParams({ t }), [setParams]);
+  const neighbour = useCallback((step) => {
+    const i = tickets.findIndex((t) => t.ticket_number === selected);
+    return tickets[Math.min(Math.max(i + step, 0), tickets.length - 1)]?.ticket_number;
+  }, [tickets, selected]);
 
   // Select the first ticket when nothing is selected yet
   useEffect(() => {
     if (!selected && tickets.length) setParams({ t: tickets[0].ticket_number }, { replace: true });
   }, [selected, tickets, setParams]);
 
+  // J / K move through the list, / jumps to search
+  useEffect(() => {
+    const onKey = (e) => {
+      if (typing(e) || e.metaKey || e.ctrlKey || e.altKey || document.querySelector(".overlay")) return;
+      if (e.key === "j" || e.key === "ArrowDown") { e.preventDefault(); select(neighbour(1)); }
+      else if (e.key === "k" || e.key === "ArrowUp") { e.preventDefault(); select(neighbour(-1)); }
+      else if (e.key === "/") { e.preventDefault(); document.getElementById("ticket-search")?.focus(); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [select, neighbour]);
+
+  useEffect(() => {
+    document.querySelector(`.tk[aria-current="true"]`)?.scrollIntoView({ block: "nearest" });
+  }, [selected]);
+
+  // After a decision, move straight on to the next ticket in the list
+  const afterDecision = useCallback(() => {
+    const next = neighbour(1);
+    list.reload();
+    if (next && next !== selected) select(next);
+  }, [neighbour, list, select, selected]);
+
   return (
     <>
     <PageHeader
       title="Support inbox"
-      subtitle="Pick a ticket, let Copilot draft a reply from the real order facts, then approve, edit or escalate."
+      subtitle="Most urgent first. Let Copilot draft a reply from the real order facts, then approve, edit or escalate."
       actions={<button className="btn" onClick={() => setTryOpen(true)}><WandSparkles size={15} /> Try Copilot on any message</button>}
     />
     <div className="inbox">
@@ -46,42 +89,63 @@ export default function CxInbox() {
           <div style={{ display: "flex", gap: 8 }}>
             <label className="search" style={{ flex: 1 }}>
               <Search size={15} className="dim" />
-              <input id="ticket-search" placeholder="Search name, message, TKT…" value={query} onChange={(e) => setQuery(e.target.value)} />
+              <input id="ticket-search" placeholder="Search name, message, TKT, DHC…  ( / )" value={query} onChange={(e) => setQuery(e.target.value)} />
             </label>
             <button className="btn sm" title="Reload" onClick={list.reload}><RefreshCw size={14} /></button>
           </div>
-          <div className="chips" role="group" aria-label="Status">
-            {STATUS_CHIPS.map(([v, l]) => (
-              <button key={l} className="chip" aria-pressed={status === v} onClick={() => setStatus(v)}>{l}</button>
+          <div className="chips" role="group" aria-label="View">
+            {VIEWS.map(([v, l]) => (
+              <button key={v} className={`chip${v === "needs_person" && counts[v] ? " alert" : ""}`} aria-pressed={view === v} onClick={() => setView(v)}>
+                {l} {counts[v] != null && <span className="count">{num(counts[v])}</span>}
+              </button>
             ))}
           </div>
-          <select id="intent-filter" className="select" value={intent} onChange={(e) => setIntent(e.target.value)}>
-            <option value="">All intents</option>
-            {Object.entries(INTENT_TEXT).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
+          <div style={{ display: "flex", gap: 8 }}>
+            <select id="intent-filter" className="select" value={intent} onChange={(e) => setIntent(e.target.value)} style={{ flex: 1, minWidth: 0 }}>
+              <option value="">All intents</option>
+              {Object.entries(INTENT_TEXT).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+            </select>
+            <select className="select" aria-label="Sort" value={sort} onChange={(e) => setSort(e.target.value)}>
+              <option value="priority">Most urgent</option>
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+          <div className="dim" style={{ fontSize: 11.5 }}>
+            {list.data ? `${num(list.data.total)} tickets` : "Loading…"} · <kbd>J</kbd> <kbd>K</kbd> to move
+          </div>
         </div>
         <div className="tickets">
-          {list.loading && <div style={{ padding: 14 }}><Skeleton rows={6} height={46} /></div>}
+          {list.loading && !list.data && <div style={{ padding: 14 }}><Skeleton rows={6} height={46} /></div>}
           {list.error && <div style={{ padding: 14 }}><ErrorBox error={list.error} onRetry={list.reload} /></div>}
-          {!list.loading && !list.error && tickets.length === 0 && (
-            <Empty title="No tickets here">Try another filter, or clear the search.</Empty>
+          {list.data && tickets.length === 0 && (
+            <Empty title="No tickets here">Try another view, or clear the search.</Empty>
           )}
           {tickets.map((t) => (
-            <button key={t.ticket_id} className="tk" data-status={t.status} aria-current={selected === t.ticket_number} onClick={() => setParams({ t: t.ticket_number })}>
-              <span className="r1"><span className="who">{t.customer_name}</span><span>{t.channel} · {time(t.created_at)}</span></span>
+            <button key={t.ticket_id} className="tk" data-status={t.needs_person ? "NEEDS_HUMAN" : t.status} aria-current={selected === t.ticket_number} onClick={() => select(t.ticket_number)}>
+              <span className="r1"><span className="who">{t.customer_name}</span><span>{[t.channel, t.created_at && day(t.created_at)].filter(Boolean).join(" · ")}</span></span>
               <span className="msg">{t.message}</span>
               <span className="tags">
                 <span className="dim mono" style={{ fontSize: 11.5, alignSelf: "center" }}>{t.ticket_number}</span>
-                <StatusPill status={t.status} />
+                {t.needs_person ? <StatusPill status="NEEDS_HUMAN" /> : <StatusPill status={t.status} />}
+                {t.urgent && t.days_late >= 7 && <span className="pill red">{num(t.days_late)} days late</span>}
+                {t.repeat_count > 1 && <span className="pill amber">Asked {t.repeat_count}×</span>}
                 <IntentPill intent={t.last_intent} />
               </span>
             </button>
           ))}
+          {list.data && tickets.length < list.data.total && (
+            <div style={{ padding: 12, display: "grid" }}>
+              <button className="btn sm" disabled={list.loading} onClick={() => setLimit((n) => n + PAGE)} style={{ justifyContent: "center" }}>
+                {list.loading ? "Loading…" : `Show ${Math.min(PAGE, list.data.total - tickets.length)} more`}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
       {selected
-        ? <TicketView key={selected} ticketRef={selected} insights={insights.data ?? []} onChanged={list.reload} toast={toast} />
+        ? <TicketView key={selected} ticketRef={selected} insights={insights.data ?? []} onChanged={list.reload} onDecided={afterDecision} onOpen={select} toast={toast} />
         : <Panel className="span-rest"><Empty icon={Inbox} title="Select a ticket">Pick a ticket on the left to see the customer's message and order.</Empty></Panel>}
 
       {tryOpen && <TryCopilot onClose={() => setTryOpen(false)} />}
@@ -105,7 +169,7 @@ function segmentFor(facts, insights) {
   return { to: `/returns?segment=${encodeURIComponent(hit.insight_id)}`, label: `See ${hit.product_name} (${seg}) in Returns →` };
 }
 
-function TicketView({ ticketRef, insights, onChanged, toast }) {
+function TicketView({ ticketRef, insights, onChanged, onDecided, onOpen, toast }) {
   const detail = useApi(() => api.ticket(ticketRef), [ticketRef]);
   const [result, setResult] = useState(null);
   const [analyzing, setAnalyzing] = useState(false);
@@ -142,8 +206,7 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
       const res = await api.decide(ticket.ticket_number, { interaction_id: shown.interaction_id, action, final_reply: finalReply });
       toast(`${ticket.ticket_number}: ${label(res.human_action)} · ticket ${res.ticket_status.toLowerCase()}`);
       setResult(null);
-      await detail.reload();
-      onChanged();
+      onDecided();
     } catch (e) {
       toast(e.message, "bad");
     } finally {
@@ -189,6 +252,22 @@ function TicketView({ ticketRef, insights, onChanged, toast }) {
             </div>
           ) : (
             <p className="muted" style={{ margin: 0 }}>No order is linked to this ticket. Copilot will look for one.</p>
+          )}
+          {detail.data.history?.length > 0 && (
+            <div style={{ display: "grid", gap: 8 }}>
+              <div className="muted" style={{ fontSize: 12, fontWeight: 600, display: "flex", gap: 6, alignItems: "center" }}>
+                <History size={14} /> Earlier tickets from {ticket.customer_name.split(" ")[0]}
+              </div>
+              <div className="history">
+                {detail.data.history.map((h) => (
+                  <button key={h.ticket_id} onClick={() => onOpen(h.ticket_number)}>
+                    <span className="dim mono">{h.ticket_number}</span>
+                    <span className="msg">{h.message}</span>
+                    <StatusPill status={h.status} />
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </Panel>
