@@ -1,7 +1,12 @@
-streamlit>=1.39
+pandas>=2.0
+fastapi>=0.110
+uvicorn>=0.29
 pydantic>=2.7
-python-dotenv>=1.0
-pandas>=2.2
-# Add your model SDK(s) when you start building, e.g.:
-# anthropic
-# openai
+pydantic-settings>=2.15
+anthropic>=1.11,<2
+langchain-core>=1.6,<2
+langchain-openai>=1.6,<2
+supabase>=2.32,<3
+pypdf>=6.0
+pytest>=8.0
+httpx>=0.28
