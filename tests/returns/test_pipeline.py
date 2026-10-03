@@ -1,6 +1,6 @@
 import pandas as pd
-from backend import normalization as n, validation as v, aggregation as a, config
-from backend.pipeline import run_pipeline
+from backend.modules.returns import normalization as n, validation as v, aggregation as a
+from backend.modules.returns.pipeline import run_pipeline
 
 
 def test_size_normalization():

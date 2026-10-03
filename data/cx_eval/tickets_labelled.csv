@@ -1,0 +1,1801 @@
+ticket_number,order_status,expected_intent,message
+TKT200001,IN_TRANSIT,WISMO,"dhaga team, where is my order?"
+TKT200002,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, order order d DHC100124 marked delivered, nobody came to my house pls reply"
+TKT200003,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, I received a damaged kurti?"
+TKT200004,DELIVERED,RETURN_REFUND,"Dhaga team, return kaise karu dhc101903"
+TKT200005,DELIVERED,OTHER,"Namaste, I was charged twice 🙏"
+TKT200006,RTO_INITIATED,WISMO,"HII SHIPPED DIKHA RAHA HAI 2 DIN SE, AAGE KUCH UPDATE NAHI."
+TKT200007,DELIVERED,WISMO,"Hi, Shipped dikha raha hai 4 din se, aage kuch update nahi"
+TKT200008,DELIVERED,DAMAGED_OR_WRONG_ITEM,"received a different product, not what i ordered #DHC100439"
+TKT200009,DELIVERED,WISMO,"Hello team, where is my order order id DHC100129."
+TKT200010,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, App shows delivered but I never received the parcel pls reply"
+TKT200011,DELIVERED,WISMO,Hii pls tell me delivery date for ls reply
+TKT200012,CONFIRMED,WISMO,Hii courier wala phone nah utha raha asap
+TKT200013,RTO_INITIATED,WISMO,"Dhaga team, kab tak aayega mera kurta set? (order id DHC100045) asap"
+TKT200014,RTO_INITIATED,COD_PAYMENT,"Hi, delivery boy change nahi de raha, kya karu plz help"
+TKT200015,RTO_INITIATED,WISMO,excuse me kab tak delivery hoga?
+TKT200016,IN_TRANSIT,OTHER,"Hi, app crash ho raha hai asap"
+TKT200017,DELIVERED,OTHER,Excuse me app crash ho raha hai pls reply
+TKT200018,CANCELLED,OTHER,HII COUPON CODE KAAM NAHI KAR RAHA
+TKT200019,DELIVERED,WISMO,"Hi, tracking not updating since 5 days very bad service"
+TKT200020,CONFIRMED,WISMO,"Dhaga team, mujhe puja ke liye chahiye tha, kab milega?"
+TKT200021,RTO_INITIATED,WISMO,can you check my order order id DHC10236? no update?
+TKT200022,CONFIRMED,WISMO,Sir/Mam courier wala phone nahi utha raha urgent!!
+TKT200023,DELIVERED,DAMAGED_OR_WRONG_ITEM,"received a different product, not what i ordered #DHC100342 urgent!!"
+TKT200024,OUT_FOR_DELIVERY,WISMO,"mujhe office ke liye chahiye tha, kab milega third time messaging"
+TKT200025,CONFIRMED,WISMO,"Hello team, pls tell me delivery date for order no DHC100795 asap"
+TKT200026,DELIVERED,RETURN_REFUND,"hi, refund status for dhc101835 please asap"
+TKT200027,SHIPPED,WISMO,parcel kahan atka hua hai? plz help
+TKT200028,IN_TRANSIT,WISMO,"DHAGA TEAM, MY DRESS WAS SUPPOSED TO COME LAST WEEK, STILL NOT HERE?"
+TKT200029,DELIVERED,WISMO,Excuse me status check karo please order id DHC101768 urgent!!
+TKT200030,DELIVERED,RETURN_REFUND,refund kab aayega? pickup ho gaya 9 din pehle
+TKT200031,SHIPPED,WISMO,Hii tracking not updating since 5 days :(
+TKT200032,DELIVERED,COD_PAYMENT,COD amount kitna dena hai dhc100921 plz help
+TKT200033,DELIVERED,OTHER,Hii ok ok please check
+TKT200034,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, watchman ne bhi nahi liya, phir delivered kaise dikha raha asap"
+TKT200035,DELIVERED,RETURN_REFUND,"Hi, shoulders se bahut tight hai, return please please check"
+TKT200036,IN_TRANSIT,WISMO,"Dhaga team, my palazzo was supposed to ome on Monday, still not here."
+TKT200037,DELIVERED,WISMO,dhc101903 ka status kya hai plz help
+TKT200038,OUT_FOR_DELIVERY,WISMO,Excuse me order abhi tak nahi aaya?
+TKT200039,DELIVERED,WISMO,pls tell me delivery date for DHC100472
+TKT200040,DELIVERED,DAMAGED_OR_WRONG_ITEM,stitching khul gayi pehli baar pehente hi.
+TKT200041,CONFIRMED,CANCEL_ORDER,"Dhaga team, cancel , found it cheaper elsewhere urgent!!"
+TKT200042,SHIPPED,WISMO,"Dhaga team, delivery date nikal gayi, abhi tak kuch nahi aaya asap"
+TKT200043,DELIVERED,RETURN_REFUND,"HI, RETURN REQUEST KAISE DAALUN APP MEIN VERY BAD SERVICE"
+TKT200044,DELIVERED,COD_PAYMENT,hii i need help with cod.
+TKT200045,RTO_INITIATED,WISMO,Excuse me when will my order reach? need it for puja?
+TKT200046,OUT_FOR_DELIVERY,OTHER,"Hi, ok ok"
+TKT200047,CONFIRMED,WISMO,parcel kahan atka hua hai??
+TKT200048,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi
+TKT200049,DELIVERED,OTHER,hi plz help
+TKT200050,DELIVERED,WISMO,"Namaste, dhc100624 ka status kya hai"
+TKT200051,CONFIRMED,WISMO,"Excuse me delivery date nikal gayi, abhi takkuch nahi aaya"
+TKT200052,DELIVERED,OTHER,"hello team, invoice chahiye gst wala very bad service"
+TKT200053,DELIVERED,WISMO,Excuse me parcel kahan atka hua hai? (dhc100152) asap
+TKT200054,CANCELLED,RETURN_REFUND,Hii pickup boy aaya hi nahi return ke lye (order no DHC101222) very bad service
+TKT200055,OUT_FOR_DELIVERY,WISMO,"hello team, kab tak delivery hoga third time messaging"
+TKT200056,DELIVERED,RETURN_REFUND,"Excuse me shirt fit nahi hua, return karna hai (order no DHC101251) very bad service"
+TKT200057,DELIVERED,RETURN_REFUND,Excuse me refund status for order no DHC100404 please 🙏
+TKT200058,SHIPPED,WISMO,"Dhaga team, Mera order kaha hai very bad service"
+TKT200059,IN_TRANSIT,WISMO,Mera order kaha hai order no DHC101193 very bad service
+TKT200060,DELIVERED,OTHER,"Dhaga team, app crash ho raha hai 🙏"
+TKT200061,DELIVERED,WISMO,"Hi, Shipped dikha raha hai 8 din se, aage kuch update nahi third time messaging"
+TKT200062,DELIVERED,RETURN_REFUND,"Hi, refund status for order no DHC101397 please"
+TKT200063,DELIVERED,RETURN_REFUND,hii refund kab aayega? pickup ho gaya 2 din pehle :(
+TKT200064,IN_TRANSIT,WISMO,"my shirt was supposed to come last week, still not here urgent!!"
+TKT200065,IN_TRANSIT,WISMO,It's been 11 days since I ordered. Where is it?
+TKT200066,IN_TRANSIT,WISMO,"Dhaga team, mujhe shaadi ke liye chahiye tha, kab milega pls reply"
+TKT200067,DELIVERED,WISMO,Hii status check karo please order id DHC101973 very ad service
+TKT200068,DELIVERED,WISMO,"Excuse me delivery date nikal gayi, abhi tak kuch nahi aaya (order id DHC102102) very bad service"
+TKT200069,DELIVERED,COD_PAYMENT,I need help with COD
+TKT200070,RTO_INITIATED,WISMO,"hello team, order status plz"
+TKT200071,SHIPPED,WISMO,status check karo please dhc101861?
+TKT200072,RTO_INITIATED,OTHER,"Dhaga team, thanks pls reply"
+TKT200073,SHIPPED,WISMO,"Sir/Mam mujhe shaadi ke liye chahiye tha, kab milega 🙏"
+TKT200074,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai?"
+TKT200075,DELIVERED,WISMO,"Hello team, order id DHC101844 ka status kya hai pls reply"
+TKT200076,IN_TRANSIT,WISMO,"order mila nahi abhi tak, kya hua?"
+TKT200077,CANCELLED,WISMO,"Hello team, pls tell me delivery date for plz help"
+TKT200078,OUT_FOR_DELIVERY,WISMO,"Hello team, courier wala phone nahi utha raha please check"
+TKT200079,OUT_FOR_DELIVERY,WISMO,Excuse me It's been 12 days since I ordered. Where is it?.
+TKT200080,OUT_FOR_DELIVERY,COD_PAYMENT,"Hi, COD charges kyun lag rahe hai third time messaging"
+TKT200081,DELIVERED,WISMO,Excuse me Kab tak delivery hoga (order id DHC102322) urgent!!
+TKT200082,DELIVERED,RETURN_REFUND,"Hii I want to return my frock, didn't like the fabric plz help"
+TKT200083,SHIPPED,COD_PAYMENT,"Namaste, delivery boy change nahi de raha, kya karu (order no DHC102490) 🙏"
+TKT200084,OUT_FOR_DELIVERY,WISMO,"hello team, tracking not updating since 5 days :("
+TKT200085,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam button toote hue the kurti mein please check
+TKT200086,IN_TRANSIT,WISMO,"Hello team, courier wala phone nahi utha raha plz help"
+TKT200087,RTO_INITIATED,WISMO,"Hello team, order mila nhi abhi tak, kya hua? pls reply"
+TKT200088,DELIVERED,WISMO,"dhaga team, where is my order order no dhc101783"
+TKT200089,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the saree when it arrived, pls replace asap"
+TKT200090,DELIVERED,WISMO,"my lehenga was supposed to come 3 days back, still not here."
+TKT200091,DELIVERED,DELIVERED_NOT_RECEIVED,"watchman ne bhi nahi liya, phir delivered kaise diha raha please check"
+TKT200092,SHIPPED,OTHER,Sir/Mam do you have this dress in XXL??
+TKT200093,CANCELLED,RETURN_REFUND,"not happy with the palazzo, need refund third time messaging"
+TKT200094,RTO_INITIATED,CANCEL_ORDER,"dhaga team, how to cancel order? option nahi dikh raha third time messaging"
+TKT200095,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, colour completely different, mustard ki jagah yellow aaya?"
+TKT200096,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, stitching khul gayi pehli baar pehente hi asap"
+TKT200097,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam I received a damaged frock urgent!!
+TKT200098,IN_TRANSIT,WISMO,It's been 3 days since I ordered. Where is it? asap
+TKT200099,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, dress ton hai, very bad quality."
+TKT200100,DELIVERED,RETURN_REFUND,"Dhaga team, return kaise karu urgent!!"
+TKT200101,RTO_INITIATED,WISMO,"Namaste, kab tak aayega mera dupatta? 🙏"
+TKT200102,DELIVERED,RETURN_REFUND,"HI, HOW CAN I GET A REFUND? VERY BAD SERVICE"
+TKT200103,IN_TRANSIT,WISMO,"Hello team, out for delivery tha kal, aaj tak nahi aaya urgent!!"
+TKT200104,IN_TRANSIT,WISMO,"Hi, Mera order kaha hai."
+TKT200105,IN_TRANSIT,WISMO,status check karo please?
+TKT200106,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, wrong item delivered, ye mera order nahi hai asap"
+TKT200107,DELIVERED,DAMAGED_OR_WRONG_ITEM,"excuse me wrong item delivered, ye mera order nahi hai (dc102298)?"
+TKT200108,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, stain on the kurti when it arrived, pls replace very bad service"
+TKT200109,DELIVERED,DAMAGED_OR_WRONG_ITEM,"sir/mam wrong item delivered,ye mera order nahi hai very bad service"
+TKT200110,DELIVERED,OTHER,"Dhaga team, ok ok plz help"
+TKT200111,OUT_FOR_DELIVERY,WISMO,"Dhaga team, tracking not updating since 5 days"
+TKT200112,DELIVERED,WISMO,parcel kahan atka hua hai? (#DHC100264) pls reply
+TKT200113,DELIVERED,RETURN_REFUND,Hii return request kaise daalun app mein pls reply
+TKT200114,SHIPPED,WISMO,were is my order please check
+TKT200115,IN_TRANSIT,WISMO,"Hello team, status check karo please DHC102300 asap"
+TKT200116,CONFIRMED,WISMO,"Namaste, It's been 2 days since I ordered. Where is it? pls reply"
+TKT200117,OUT_FOR_DELIVERY,WISMO,Hii where is my order asap
+TKT200118,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, wrong size aaya hai, maine XL order kiya tha asap"
+TKT200119,DELIVERED,OTHER,NEW COLLECTION KAB AAYEGA PLS REPLY
+TKT200120,DELIVERED,RETURN_REFUND,How can I et a refund?
+TKT200121,IN_TRANSIT,WISMO,"Hello team, ka statu kya hai"
+TKT200122,OUT_FOR_DELIVERY,WISMO,"Namaste, can you check my order order id DHC102237? no update?"
+TKT200123,CONFIRMED,WISMO,"Hii Shipped dikha raha hai 6 din se, aage kuch update nahi third time messaging"
+TKT200124,CONFIRMED,WISMO,Hii ka status kya hai 🙏
+TKT200125,OUT_FOR_DELIVERY,WISMO,"Namaste, order abhi tak nahi aaya pls reply"
+TKT200126,DELIVERED,OTHER,"Hello team, thanks."
+TKT200127,IN_TRANSIT,WISMO,"Hello team, my kurta set was supposed to come last week, still not here third time messaging"
+TKT200128,DELIVERED,RETURN_REFUND,"Hello team, return kaise karu oder id DHC101734 third time messaging"
+TKT200129,DELIVERED,OTHER,"Hi, aapka store kahan hai? plz help"
+TKT200130,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, stain on the saree when it arrived, pls replace urgent!!"
+TKT200131,OUT_FOR_DELIVERY,WISMO,"Excuse me mujhe college fest ke liye chahiye tha, kab milega please check"
+TKT200132,CONFIRMED,WISMO,"hello team, mujhe office ke liye chahiye tha, kab milega (#dhc100716) :("
+TKT200133,DELIVERED,WISMO,Sir/Mam Order status please #DHC100952 plz help
+TKT200134,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, delivered status galat hai, maine kuch receive nahi kiya #DHC100140 third time messaging"
+TKT200135,SHIPPED,WISMO,"Dhaga team, It's been 3 days since I ordered. Where is it? (DHC101968)"
+TKT200136,OUT_FOR_DELIVERY,WISMO,when will my order reach? need it for puja
+TKT200137,OUT_FOR_DELIVERY,WISMO,"Hello team, courier wala phone nahi utha raha pls reply"
+TKT200138,DELIVERED,WISMO,"Hi, where is my order order id DHC101526"
+TKT200139,DELIVERED,RETURN_REFUND,"Namaste, not happy with the dress, need refund (order no DHC101087)?"
+TKT200140,RTO_INITIATED,WISMO,sir/mam status check karo please
+TKT200141,RTO_INITIATED,WISMO,Hii where is my order order no DHC102234 urgent!!
+TKT200142,RTO_INITIATED,WISMO,Excuse me pls tell me delivery date for order id DHC102226.
+TKT200143,CONFIRMED,COD_PAYMENT,COD amount kitna dena hai please check
+TKT200144,DELIVERED,RETURN_REFUND,return request kaise daalun app mein (#DHC101679)?
+TKT200145,DELIVERED,WISMO,status check karo please order no DHC101845 🙏
+TKT200146,DELIVERED,WISMO,"Excuse me out for delivery tha kal, aaj tak nahi aaya"
+TKT200147,IN_TRANSIT,WISMO,"dhaga team, kab tak aayega mera kurta set?."
+TKT200148,DELIVERED,RETURN_REFUND,"dhagateam, paise wapas kab milenge"
+TKT200149,DELIVERED,WISMO,"Shipped dikha raha hai 5 din se, aage kuch update nahi 🙏"
+TKT200150,CONFIRMED,WISMO,"Hi, out for delivery tha kal, aaj tak nahi aaya very bad service"
+TKT200151,DELIVERED,DELIVERED_NOT_RECEIVED,"order order no DHC101346 marked delivered, nobody came to my house"
+TKT200152,CANCELLED,RETURN_REFUND,"Hii shirt fit nahi hua, return karna hai 🙏"
+TKT200153,IN_TRANSIT,WISMO,"Dhaga team, It's been 2 days since I ordered. Where is it??"
+TKT200154,DELIVERED,OTHER,"Dhaga team, I was charged twice 🙏"
+TKT200155,DELIVERED,OTHER,"Hello team, size chart sahi hai kya?."
+TKT200156,DELIVERED,RETURN_REFUND,"Hi, I want to return my dress, didn't like the fabric very bad service"
+TKT200157,DELIVERED,DELIVERED_NOT_RECEIVED,"Excuse me watchman ne bhi nahi liya, phir delivered kaise dikha raha"
+TKT200158,DELIVERED,WISMO,"Excuse me delivery date nikal gayi, abhi tak kuch nahi aaya?"
+TKT200159,OUT_FOR_DELIVERY,WISMO,"Shipped dikha raha hai 5din se, aage kuch update nahi (#DHC101272)"
+TKT200160,CONFIRMED,WISMO,Hii Mera order kaha hai order id DHC101803 very bad service
+TKT200161,IN_TRANSIT,WISMO,"DELIVERY DATE NIKAL GAYI, ABHI TAK KUCH NAHI AAYA (ORDER NO DHC101873) ASAP"
+TKT200162,OUT_FOR_DELIVERY,WISMO,It's been 3 days since I ordered. Where is it? pls reply
+TKT200163,DELIVERED,RETURN_REFUND,"Hi, refund status for please urgent!!"
+TKT200164,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, I received a damaged palazzo 🙏"
+TKT200165,CONFIRMED,WISMO,"Excuse me order mila nahi abhi tak, kya hua? pls reply"
+TKT200166,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, saree torn hai, very bad quality"
+TKT200167,DELIVERED,OTHER,size chart sahi hai kya?.
+TKT200168,CANCELLED,RETURN_REFUND,"Namaste, return kaise karu pls reply"
+TKT200169,DELIVERED,OTHER,"Dhaga team, app crash ho raha hai"
+TKT200170,DELIVERED,OTHER,coupon code kaam nahi kar raha 🙏
+TKT200171,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the frock when it arrived, pls replace very bad service"
+TKT200172,DELIVERED,WISMO,"TRACKING LINK KAAM NAHI KAR RAHA, ORDER KAB AAYEGA URGENT!!"
+TKT200173,OUT_FOR_DELIVERY,WISMO,"Hello team, pls tell me delivery date for DHC101219 very bad service"
+TKT200174,CONFIRMED,WISMO,kab tak aayega mera saree??
+TKT200175,OUT_FOR_DELIVERY,WISMO,sir/mam when will my order reach? need it for shaadi very bad service
+TKT200176,SHIPPED,WISMO,"Dhaga team, Mera order kaha hai DHC101849 please check"
+TKT200177,SHIPPED,WISMO,Excuse me Mera order kaha hai
+TKT200178,DELIVERED,RETURN_REFUND,"hello team, how can i get a refund? (order id dhc101306)"
+TKT200179,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, delivered status galat hai, maine kuch receive nahi kiya DHC100544?"
+TKT200180,DELIVERED,WISMO,courier wala phone nahi utha raha
+TKT200181,OUT_FOR_DELIVERY,WISMO,"out for delivery tha kal, aaj tak nahi aaya"
+TKT200182,DELIVERED,OTHER,Hii do you have this frck in XXL? please check
+TKT200183,RTO_INITIATED,WISMO,Excuse me parcel kahan atka hua hai? (order id DHC102372) :(
+TKT200184,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, delivered status galat hai, maine kuch receive nahi kiya order id DHC100366?"
+TKT200185,OUT_FOR_DELIVERY,WISMO,"Helo team, mujhe Diwali ke liye chahiye tha, kab milega please check"
+TKT200186,RTO_INITIATED,WISMO,Hii order abhi tak nahi aaya
+TKT200187,CONFIRMED,WISMO,"Hi, Shipped dikha raha hai 12 din se, aage kuch update nahi (DHC101122) asap"
+TKT200188,DELIVERED,WISMO,"HI, MERA ORDER KAHA HAI DHC100908 PLZ HELP"
+TKT200189,OUT_FOR_DELIVERY,WISMO,can you check my order order no DHC101033? no update pls reply
+TKT200190,DELIVERED,OTHER,invoice chahye GST wala very bad service
+TKT200191,DELIVERED,OTHER,Sir/Mam address change karna hai urgent!!
+TKT200192,DELIVERED,OTHER,Hii do you have this saree in XXL??
+TKT200193,DELIVERED,WISMO,"dhaga team, kab tak aayega mera lehenga? (#dhc101401)."
+TKT200194,CANCELLED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye please check
+TKT200195,RTO_INITIATED,WISMO,"my kurti was supposed to come on Monday, still not here (DHC100730) pls reply"
+TKT200196,OUT_FOR_DELIVERY,WISMO,"Hi, out for delivery tha kal, aaj tak nahi aaya please check"
+TKT200197,OUT_FOR_DELIVERY,WISMO,"Dhaga team, status check karo please 🙏"
+TKT200198,CONFIRMED,WISMO,"Hi, where is my order order no DHC101147 please check"
+TKT200199,DELIVERED,WISMO,sir/mam it's been 3 days since i ordered. where is it?.
+TKT200200,OUT_FOR_DELIVERY,OTHER,"namaste, app crash ho raha hai?"
+TKT200201,IN_TRANSIT,WISMO,"Hi, Order status please DHC101308 pls reply"
+TKT200202,DELIVERED,WISMO,"Dhaga team, parcel kahan atka hua hai? very bad service"
+TKT200203,DELIVERED,COD_PAYMENT,Sir/Mam COD charges kyun lag rahe hai 🙏
+TKT200204,DELIVERED,WISMO,Hii Mera order kaha hai DHC102045 :(
+TKT200205,DELIVERED,WISMO,"namaste, out for delivery tha kal, aaj tak nahi aaya."
+TKT200206,DELIVERED,DELIVERED_NOT_RECEIVED,delivered dikha raha hai par mujhe mila nahi (#DHC102311)
+TKT200207,DELIVERED,WISMO,excuse me pls tell me delivery date for please check
+TKT200208,DELIVERED,DAMAGED_OR_WRONG_ITEM,button toote hue the palazzo mein plz help
+TKT200209,SHIPPED,WISMO,Mera order kaha hai order no DHC100933.
+TKT200210,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hii wrong item delivered, ye mera order nahi hai please check"
+TKT200211,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, I received a damaged lehenga (DHC100023) :("
+TKT200212,IN_TRANSIT,WISMO,"Dhaga team, Order status pleae order no DHC102239 asap"
+TKT200213,DELIVERED,RETURN_REFUND,"hi, refund kab aayega? pickup ho gaya 5 din pehle (dhc101471) asap"
+TKT200214,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, wrong size aaya hai, maine XL order kiya tha?"
+TKT200215,OUT_FOR_DELIVERY,WISMO,excuse me mera order kaha hai dhc101195 urgent!!
+TKT200216,DELIVERED,RETURN_REFUND,SIR/MAM REFUND STATUS FOR PLEASE THIRD TIME MESSAGING
+TKT200217,OUT_FOR_DELIVERY,WISMO,"Namaste, kab tak aayega mera top? please check"
+TKT200218,SHIPPED,WISMO,"out for delivery tha kal, aaj tak nahi aaya plz help"
+TKT200219,SHIPPED,WISMO,Hii ka status kya hai.
+TKT200220,DELIVERED,WISMO,"Hello team, order mila nahi abhi tak, kya hua?"
+TKT200221,RTO_INITIATED,WISMO,Hii parcel kahan atka hua hai?
+TKT200222,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, parcel deliver hua bol raha hai lekin aaya hi nahi"
+TKT200223,DELIVERED,WISMO,"Hello team, courier wala phone nahi utha raha (order no DHC102022) please check"
+TKT200224,CANCELLED,WISMO,"MUJHE OFFICE KE LIYE CHAHIYE THA, KAB MILEGA (#DHC102417) PLS REPLY"
+TKT200225,OUT_FOR_DELIVERY,WISMO,"tracking link kaam nahi kar raha, order kab aayega"
+TKT200226,CONFIRMED,COD_PAYMENT,"Dhaga team, COD charges kyun lag rahe hai (order id DHC100859) :("
+TKT200227,SHIPPED,WISMO,"Sir/Mam order mila nahi abhi tak, kya hua?."
+TKT200228,RTO_INITIATED,WISMO,Hii order kidhar hai bhai third time messaging
+TKT200229,CONFIRMED,WISMO,"Dhaga team, Shipped dikha raha hai 12 din se, aage kuch update nahi"
+TKT200230,IN_TRANSIT,WISMO,"dhaga team, where is my order order no dhc100260 very bad service"
+TKT200231,CONFIRMED,WISMO,order no DHC100530 ka status kya hai please check
+TKT200232,DELIVERED,DELIVERED_NOT_RECEIVED,"WATCHMAN NE BHI NAHI LIYA, PHIR DELIVERED KAIE DIKHA RAHA?"
+TKT200233,RTO_INITIATED,WISMO,excuse me status check karo please order id dhc100110 pls reply
+TKT200234,CONFIRMED,CANCEL_ORDER,"Hello team, cancel , found it cheaper elsewhere"
+TKT200235,SHIPPED,WISMO,Excuse me courier wala phone nahi utha raha asap
+TKT200236,DELIVERED,COD_PAYMENT,"Hi, online pay kiya tha phir bhi COD maang rahe (dhc101261)"
+TKT200237,DELIVERED,RETURN_REFUND,return kaise karu DHC102011 :(
+TKT200238,OUT_FOR_DELIVERY,WISMO,"Hi, out for delivery tha kal, aaj tak nahi aaya asap"
+TKT200239,IN_TRANSIT,WISMO,Mera order kaha hai DHC102399 pls reply
+TKT200240,CONFIRMED,WISMO,Excuse me Order status plz?
+TKT200241,CANCELLED,RETURN_REFUND,Hii refund kab aayega? pickup ho gaya 8 din pehle please check
+TKT200242,SHIPPED,WISMO,"Hii my frock was supposed to come by Friday,still not here third time messaging"
+TKT200243,DELIVERED,WISMO,tracking not updating since 3 days?
+TKT200244,RTO_INITIATED,COD_PAYMENT,"Hi, COD pe UPI se pay kar sakte hai? pls reply"
+TKT200245,DELIVERED,WISMO,"Sir/Mam my lehenga was supposed to come 3 days back, still not here (#DHC100825) :("
+TKT200246,DELIVERED,RETURN_REFUND,"Namaste, not happy with the palazzo, need refund third time messaging"
+TKT200247,DELIVERED,DAMAGED_OR_WRONG_ITEM,"dupatta torn hai, very bad quality"
+TKT200248,DELIVERED,WISMO,Hii status check karo please asap
+TKT200249,DELIVERED,WISMO,"Dhaga team, Order status please 🙏"
+TKT200250,DELIVERED,WISMO,Kab tak delivery hoga very bad service
+TKT200251,DELIVERED,WISMO,Order status please order id DHC100582?
+TKT200252,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam I received a damaged frock (dhc102022)
+TKT200253,IN_TRANSIT,WISMO,"excuse me out for delivery tha kal, aaj tak nahi aaya plz check"
+TKT200254,OUT_FOR_DELIVERY,WISMO,order abhi tak nahi aaya (order no DHC100870)
+TKT200255,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai plz help"
+TKT200256,CONFIRMED,WISMO,"mujhe mehndi ke liye chahiye tha, kab milega."
+TKT200257,CONFIRMED,WISMO,"Namaste, order id DHC102175 ka status kya hai."
+TKT200258,DELIVERED,WISMO,"Hello team, Mera order kaha hai order no DHC10147"
+TKT200259,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, I didn't get my top bu status says delivered (DHC100568)"
+TKT200260,OUT_FOR_DELIVERY,WISMO,"Excuse me mujhe mehndi ke liye chahiye tha, kab milega asap"
+TKT200261,DELIVERED,RETURN_REFUND,"Namaste, How can I get a refund? (order no DHC100494)"
+TKT200262,DELIVERED,RETURN_REFUND,Hii How can I get a refund? (dhc100278) pls reply
+TKT200263,CONFIRMED,WISMO,order no DHC101754 ka status kya hai please check
+TKT200264,DELIVERED,DELIVERED_NOT_RECEIVED,"hii watchman ne bhi nahi liya, phir deivered kaise dikha raha please check"
+TKT200265,DELIVERED,DELIVERED_NOT_RECEIVED,"delivered status galat hai, maine kuch receive nahi kiya order id DHC100264 plz help"
+TKT200266,DELIVERED,DELIVERED_NOT_RECEIVED,"NAMASTE, DELIVERED DIKHA RAHA HAI PAR MUJHE MILA NAHI (DHC100578) PLZ HELP"
+TKT200267,OUT_FOR_DELIVERY,WISMO,can you check my order dhc100080? no update.
+TKT200268,DELIVERED,RETURN_REFUND,How can I get a refund? 🙏
+TKT200269,DELIVERED,WISMO,pls tell me delivery date for DHC102083 🙏
+TKT200270,CANCELLED,WISMO,Excuse me Kab tak delivery hoga very bad service
+TKT200271,DELIVERED,WISMO,"Hi, ka status kya hai third time messaging"
+TKT200272,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hii wrong size aaya hai,maine l order kiya tha please check"
+TKT200273,DELIVERED,OTHER,"Namaste, I was charged twice very bad service"
+TKT200274,OUT_FOR_DELIVERY,WISMO,"Hi, order abhi tak nahi aaya"
+TKT200275,CONFIRMED,WISMO,"Namaste, order kidhar hai bhai (order id DHC100529)."
+TKT200276,DELIVERED,OTHER,address change karna hai please check
+TKT200277,OUT_FOR_DELIVERY,WISMO,"Excuse me order mila nahi abhi tak, kya hua? please check"
+TKT200278,DELIVERED,RETURN_REFUND,Sir/Mam paise wapas kab milenge (#DHC101806)
+TKT200279,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam wrong item delivered, ye mera order nahi hai third time messaging"
+TKT200280,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hii colour completely different, mustard ki jagah yellow aaya sap"
+TKT200281,DELIVERED,RETURN_REFUND,refund status for please pls reply
+TKT200282,DELIVERED,COD_PAYMENT,"Namaste, COD chages kyun lag rahe hai pls reply"
+TKT200283,OUT_FOR_DELIVERY,WISMO,"Dhaga team, Mera order kaha hai DHC100676 plz help"
+TKT200284,DELIVERED,RETURN_REFUND,"NAMASTE, RETURN KAISE KARU DHC101707 PLZ HELP"
+TKT200285,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, App shows delivered but I never received the parcel."
+TKT200286,OUT_FOR_DELIVERY,WISMO,order id DHC100912 ka status kya hai
+TKT200287,DELIVERED,RETURN_REFUND,Excuse me return request kaise daalun app mein (dhc102251) third time messaging
+TKT200288,DELIVERED,WISMO,Sir/Mam parcel kahan atka hua hai? pls reply
+TKT200289,IN_TRANSIT,WISMO,"order mila nahi abhi tak, kya hua? (DHC101528) :("
+TKT200290,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the top when it arrived, pls replace pls reply"
+TKT200291,DELIVERED,WISMO,excuse me it's been 12 days since i ordered. where is it? plz help
+TKT200292,CONFIRMED,WISMO,order abhi tak nahi aaya (#DHC100736) third time messaging
+TKT200293,IN_TRANSIT,CANCEL_ORDER,"Excuse me galti se 2 baar order ho gaya, ek cancel karo"
+TKT200294,DELIVERED,OTHER,"dhaga team, i was charged twice urgent!!"
+TKT200295,DELIVERED,DAMAGED_OR_WRONG_ITEM,galat colour bhej diya aapne plz help
+TKT200296,CONFIRMED,COD_PAYMENT,I need help with COD asap
+TKT200297,DELIVERED,RETURN_REFUND,excuse me refund kab aayega? pickup ho gaya 6 din pehle (dhc102067) pls reply
+TKT200298,DELIVERED,WISMO,"Hi, order kidhar hai bhai (#DHC101838)."
+TKT200299,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, stitching khul gayi pehli baar pehente hi (DHC101576) urgent!!"
+TKT200300,IN_TRANSIT,WISMO,"hi, mera order kaha hai dhc101254?"
+TKT200301,IN_TRANSIT,WISMO,"Namaste, order mila nahi abhi tak, kya hua? asap"
+TKT200302,CONFIRMED,WISMO,Sir/Mam order kidhar hai bhai (dhc101670)?
+TKT200303,DELIVERED,WISMO,Excuse me Order status please dhc100624
+TKT200304,CONFIRMED,WISMO,"Namaste, kab tak aayega mera palazzo??"
+TKT200305,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, order marked delivered, nobody came to my house 🙏"
+TKT200306,CONFIRMED,OTHER,"Hello team, new collection kab aayega very bad service"
+TKT200307,DELIVERED,DELIVERED_NOT_RECEIVED,I didn't get my shirt but sttus says delivered urgent!!
+TKT200308,OUT_FOR_DELIVERY,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya 🙏"
+TKT200309,DELIVERED,DELIVERED_NOT_RECEIVED,Sir/Mam I didn't get my top but status says delivered
+TKT200310,SHIPPED,WISMO,"Namaste, pls tell me delivery dte for dhc100905"
+TKT200311,DELIVERED,WISMO,"Excuse me delivery date nikal gayi, abhi tak kuch nahi aaya."
+TKT200312,SHIPPED,WISMO,order kidhar hai bha 🙏
+TKT200313,DELIVERED,OTHER,ok ok pls reply
+TKT200314,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, stain on the frock when it arrived, pl replace please check"
+TKT200315,RTO_INITIATED,WISMO,Sir/Mam tracking not updating since 3 days :(
+TKT200316,OUT_FOR_DELIVERY,WISMO,"Sir/Mam delivery date nikal gayi, abhi tak kuch nahi aaya 🙏"
+TKT200317,OUT_FOR_DELIVERY,WISMO,"Hello team, parcel kahan atka hua hai? 🙏"
+TKT200318,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, parcel deliver hua bol raha hai lekin aaya hi nahi plz help"
+TKT200319,DELIVERED,RETURN_REFUND,refund kab aayega? pickup h gaya 11 din pehle?
+TKT200320,OUT_FOR_DELIVERY,WISMO,"Hii out for delivery tha kal, aaj tak nahi aaya plz help"
+TKT200321,RTO_INITIATED,WISMO,sir/mam kab tak delivery hoga (order id dhc101638)
+TKT200322,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam wrong size aaya hai, maine M order kiya tha?"
+TKT200323,OUT_FOR_DELIVERY,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT200324,DELIVERED,RETURN_REFUND,"Namaste, pickup boy aaya hi nahi return ke liye (DHC100948)"
+TKT200325,DELIVERED,OTHER,EXCUSE ME ADDRESS CHANGE KARNA HAI?
+TKT200326,IN_TRANSIT,WISMO,"Hello team, Shipped dikha raha hai 9 din se, age kuch update nahi."
+TKT200327,DELIVERED,RETURN_REFUND,"Hello team, return request kaise daalun app mein?"
+TKT200328,OUT_FOR_DELIVERY,WISMO,"Excuse me delivery date nikal gayi, abhi tak kuch nahi aaya (order no DHC100603)."
+TKT200329,DELIVERED,RETURN_REFUND,"Dhaga team, return kaise karu dhc101087 asap"
+TKT200330,DELIVERED,COD_PAYMENT,sir/mam online pay kiya tha phir bhi cod maang rahe plz help
+TKT200331,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega."
+TKT200332,OUT_FOR_DELIVERY,WISMO,order kidhar hai bhai third time messaging
+TKT200333,CONFIRMED,WISMO,"Dhaga team, parcel kahan atka hua hai? :("
+TKT200334,OUT_FOR_DELIVERY,WISMO,"Sir/Mam tracking link kaam nahi kar raha, orderkab aayega (order id DHC100701)"
+TKT200335,IN_TRANSIT,WISMO,Sir/Mam courier wala phone nahi utha rahapls reply
+TKT200336,CONFIRMED,WISMO,Hii parcel kahan atka hua hai? pls reply
+TKT200337,CONFIRMED,WISMO,"order mila nahi abhi tak, kya hua? urgent!!"
+TKT200338,DELIVERED,COD_PAYMENT,sir/mam cod amount kitna dena hai.
+TKT200339,DELIVERED,RETURN_REFUND,Excuse me paise wapas kab milenge.
+TKT200340,DELIVERED,WISMO,"Hii delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT200341,DELIVERED,DELIVERED_NOT_RECEIVED,Hii parcel deliver hua bol raha hai lekin aaya hi nahi third time messaging
+TKT200342,DELIVERED,OTHER,"Hello team, app crash ho raha hai?"
+TKT200343,CONFIRMED,WISMO,Excuse me courier wala phone nahi utha raha (order no DHC101839).
+TKT200344,OUT_FOR_DELIVERY,WISMO,"Sir/Mam order mila nahi abhi tak, kya hua? urgent!!"
+TKT200345,DELIVERED,OTHER,"namaste, hi"
+TKT200346,DELIVERED,WISMO,"Sir/Mam mujhe mehndi ke liye chahiye tha, kab milega"
+TKT200347,OUT_FOR_DELIVERY,WISMO,"Hello team, Kab tak delivery hoga 🙏"
+TKT200348,CANCELLED,OTHER,"Hello team, size chart sahi hai kya? asap"
+TKT200349,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, order order id DHC102021 marked delivered, nobody came to my house"
+TKT200350,IN_TRANSIT,WISMO,"order mila nahi abhi tak, kya hua? very bad service"
+TKT200351,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me button toote hue the kurti mein (dhc100456)
+TKT200352,DELIVERED,WISMO,pls tell me delivery date for urgent!!
+TKT200353,OUT_FOR_DELIVERY,CANCEL_ORDER,"Sir/Mam cncel , found it cheaper elsewhere :("
+TKT200354,DELIVERED,COD_PAYMENT,"Hi, COD amount kitna dena hai third time messaging"
+TKT200355,CANCELLED,RETURN_REFUND,"hello team, refund kab aayega? pickup ho gaya 9 din pehle 🙏"
+TKT200356,IN_TRANSIT,CANCEL_ORDER,"Hi, mujhe ye order nahi chahiye, cancel kardo"
+TKT200357,OUT_FOR_DELIVERY,WISMO,"Namaste, order id DHC100144 ka status kya hai"
+TKT200358,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya?"
+TKT200359,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, stain on the top when it arrived, pls replace third time messaging"
+TKT200360,DELIVERED,OTHER,thanks plz check
+TKT200361,DELIVERED,DELIVERED_NOT_RECEIVED,"order marked delivered, nobody came to my house 🙏"
+TKT200362,OUT_FOR_DELIVERY,WISMO,"mujhe college fest ke liye chahiye tha, kab milega please check"
+TKT200363,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, galat colour bhej diya aapne"
+TKT200364,RTO_INITIATED,WISMO,Hii order kidhar hai bhai
+TKT200365,SHIPPED,WISMO,"Helloteam, tracking not updating since 11 days."
+TKT200366,CONFIRMED,WISMO,"Dhaga team, where is my ordr."
+TKT200367,DELIVERED,RETURN_REFUND,"Namaste, pickup boy aaya hi nahi return ke liye (DHC101749) plz help"
+TKT200368,CONFIRMED,WISMO,Excuse me tracking not updating since 11 days third time messaging
+TKT200369,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, order dhc101469 marked delivered, nobody came to my house third time messaging"
+TKT200370,SHIPPED,WISMO,"Dhaga team, delivery date nikal gayi, abhi tak kuch nahi aaya 🙏"
+TKT200371,OUT_FOR_DELIVERY,WISMO,"Hi, Mera order kaha hai order no DHC101452 🙏"
+TKT200372,IN_TRANSIT,WISMO,order kidhar hai bhai
+TKT200373,CANCELLED,WISMO,courier wala phone nahi utha raha :(
+TKT200374,DELIVERED,WISMO,"Namaste, #DHC101592 ka status kya hai"
+TKT200375,DELIVERED,DELIVERED_NOT_RECEIVED,EXCUSE ME I DIDN'T GET MY KURTI BUT STATUS SAYS DELIVERED URGENT!!
+TKT200376,RTO_INITIATED,WISMO,"my frock was supposed to come by Friday, still not here 🙏"
+TKT200377,DELIVERED,COD_PAYMENT,"Hello team, COD pe UPI se pay ka sakte hai? urgent!!"
+TKT200378,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, received a different product, not what i ordered order no DHC100559 very bad service"
+TKT200379,DELIVERED,OTHER,"Hello team, hi urgent!!"
+TKT200380,DELIVERED,WISMO,"Namaste, out for delivery tha kal, aaj tak nahi aaya urgent!!"
+TKT200381,DELIVERED,RETURN_REFUND,Excuse me return request kaise daalun app mein.
+TKT200382,CANCELLED,RETURN_REFUND,refund kab aayega? pickup ho gaya 3 din pehle urgent!!
+TKT200383,CANCELLED,OTHER,Hii new collection kab aayega
+TKT200384,DELIVERED,OTHER,thans
+TKT200385,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong size aaya hai, maine XL order kiya tha plz help"
+TKT200386,OUT_FOR_DELIVERY,WISMO,pls tell me delivery date for #DHC101773 urgent!!
+TKT200387,DELIVERED,OTHER,hi :(
+TKT200388,DELIVERED,WISMO,"Hello team, my shirt was supposed to come by Friday, still not here plz help"
+TKT200389,DELIVERED,RETURN_REFUND,"dhaga team, return request kaise daalun app mein very bad service"
+TKT200390,RTO_INITIATED,COD_PAYMENT,cash on delivery available hai kya DHC101556 very bad service
+TKT200391,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi (DHC01331) 🙏
+TKT200392,OUT_FOR_DELIVERY,WISMO,Hii Mera oder kaha hai #DHC100623
+TKT200393,OUT_FOR_DELIVERY,CANCEL_ORDER,"hi, i ordered y mistake, cancel it?"
+TKT200394,RTO_INITIATED,WISMO,Excuse me tracking not updating since 2 days (order id DHC100266) please check
+TKT200395,IN_TRANSIT,WISMO,"Dhaga team, Kab tak delivery hoga (order no DHC100337)"
+TKT200396,DELIVERED,DELIVERED_NOT_RECEIVED,Hii App shows delivered but I never received the parcel pls reply
+TKT200397,IN_TRANSIT,WISMO,order abhi tak nahi aaya (dhc102097)
+TKT200398,OUT_FOR_DELIVERY,WISMO,courier wala phone nahi utha raha (dhc101448)
+TKT200399,SHIPPED,WISMO,Excuse me parcel kahan atka hua hai? (order id DHC100155) plz help
+TKT200400,DELIVERED,WISMO,"Hello team, order abhi tak nahi aaya (order no DHC100600) tird time messaging"
+TKT200401,IN_TRANSIT,WISMO,"Hello team, mujhe Diwali ke liye chahiye tha, kab milega?"
+TKT200402,DELIVERED,WISMO,can you check my order order no DHC102294? no update?
+TKT200403,RTO_INITIATED,WISMO,Order status please order id DHC101922 third time messaging
+TKT200404,OUT_FOR_DELIVERY,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya (order no DHC100061) urgent!!"
+TKT200405,OUT_FOR_DELIVERY,WISMO,"Excuse me out for delivery tha kal, aaj tak nahi aaya?"
+TKT200406,DELIVERED,WISMO,"Hello team, status check karo please DHC100570 🙏"
+TKT200407,CONFIRMED,WISMO,Order status please #DHC100800 third time messaging
+TKT200408,CONFIRMED,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya please check"
+TKT200409,IN_TRANSIT,COD_PAYMENT,"hi, delivery boy change nahi de raha, kya karu please check"
+TKT200410,IN_TRANSIT,WISMO,"Hello team, Shipped dikha raha hai 12 din se, aage kuch update nahi"
+TKT200411,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return please pls reply"
+TKT200412,SHIPPED,WISMO,Sir/Mam It's been 8 days since I ordered. Where is it? please check
+TKT200413,CONFIRMED,WISMO,#DHC101161 ka status kya hai.
+TKT200414,DELIVERED,COD_PAYMENT,"hello team, cod charges kyun lag rahe hai please check"
+TKT200415,IN_TRANSIT,WISMO,Sir/Mam order ahi tak nahi aaya pls reply
+TKT200416,IN_TRANSIT,WISMO,"Hello team, Shipped dikha raha hai 10 din se, aage kuch update nahi"
+TKT200417,OUT_FOR_DELIVERY,WISMO,"Hi, pls tell me delivery date for order id DHC101802 pls reply"
+TKT200418,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega urgent!!"
+TKT200419,DELIVERED,WISMO,"Dhaga team, parcel kahan atka hua hai? (order no DHC100135) pls reply"
+TKT200420,OUT_FOR_DELIVERY,WISMO,"HELLO TEAM, OUT FOR DELIVERY THA KAL, AAJ TAK NAHI AAYA 🙏"
+TKT200421,DELIVERED,WISMO,"my palazzo was supposed to come by Friday, stillnot here (order no DHC100891)"
+TKT200422,DELIVERED,RETURN_REFUND,"I want to return my saree, didn't like the fabric plz help"
+TKT200423,DELIVERED,WISMO,parcel kahan atka hua hai? (dhc101540) pls reply
+TKT200424,IN_TRANSIT,WISMO,Sir/Mam courier wala phone nahi utha raha (#DHC100168) asap
+TKT200425,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye very bad service
+TKT200426,SHIPPED,CANCEL_ORDER,"HI, ORDER CANCEL KARNA HAI PLS REPLY"
+TKT200427,DELIVERED,RETURN_REFUND,"Hello team, paise wapas kab milenge :("
+TKT200428,OUT_FOR_DELIVERY,WISMO,Hii Kab tak delivey hoga urgent!!
+TKT200429,OUT_FOR_DELIVERY,WISMO,"hello team, tracking link kaam nahi kar raha, order kab aayega (#dhc102405)."
+TKT200430,DELIVERED,WISMO,Excuse me It's been 10 days since I ordered. Where is it? please check
+TKT200431,OUT_FOR_DELIVERY,WISMO,"Namaste, out for delivery tha kal, aaj tak nahi aaya third time messaging"
+TKT200432,CONFIRMED,WISMO,Sir/Mam parcel kahan atka hua hai? very bad servce
+TKT200433,DELIVERED,OTHER,thanks
+TKT200434,DELIVERED,RETURN_REFUND,"I want to return my shirt, didn't like the fabric urgent!!"
+TKT200435,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Excuse me received a different product, not what i ordered third time messaging"
+TKT200436,SHIPPED,WISMO,order abhi ta nahi aaya?
+TKT200437,SHIPPED,WISMO,"Excuse me out for delivery tha kal, aaj tak nahi aaya (dhc101558) urgent!!"
+TKT200438,DELIVERED,RETURN_REFUND,Hii refund kab aayega? pickup ho gaya 7 din pehle asap
+TKT200439,DELIVERED,WISMO,"Namaste, tracking no updating since 6 days?"
+TKT200440,DELIVERED,WISMO,"Namaste, mujhe Diwali ke liye chahiye tha, kab milega please check"
+TKT200441,IN_TRANSIT,WISMO,"Hello team, parcel kahan atka hua hai?"
+TKT200442,DELIVERED,RETURN_REFUND,"Hi, pickup boy aaya hi nahi return ke liye very bad service"
+TKT200443,SHIPPED,WISMO,Excuse me order no DHC101948 ka status kya hai very bad service
+TKT200444,CONFIRMED,WISMO,hii order stats please dhc102266
+TKT200445,DELIVERED,DAMAGED_OR_WRONG_ITEM,packet phata hua tha aur kurta set pe daag hai plz check
+TKT200446,CANCELLED,RETURN_REFUND,excuse me paise wapas kab milenge
+TKT200447,OUT_FOR_DELIVERY,WISMO,Mera order kaha hai #DHC102500?
+TKT200448,DELIVERED,COD_PAYMENT,can i pay by gpay at delivery? (order id DHC101601) plz help
+TKT200449,IN_TRANSIT,WISMO,Kab tak delivery hoga (DHC102497) third time messaging
+TKT200450,DELIVERED,WISMO,order abhi tak nahi aaya?
+TKT200451,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi (dhc102009)?
+TKT200452,SHIPPED,WISMO,"Hi, can you check my order dhc101727? no update :("
+TKT200453,DELIVERED,RETURN_REFUND,"Dhaga team, How can I get a refund?"
+TKT200454,DELIVERED,WISMO,Kab tak delivery hoga please check
+TKT200455,DELIVERED,WISMO,"dhaga team, order mila nahi abhi tak, kya hua? very bad service"
+TKT200456,IN_TRANSIT,OTHER,ok ok
+TKT200457,IN_TRANSIT,WISMO,tracking not updating since 9 day pls reply
+TKT200458,DELIVERED,WISMO,tracking not updating since 6 days asap
+TKT200459,CANCELLED,RETURN_REFUND,"Dhaga team, shoulders sebahut tight hai, return please (DHC101631)?"
+TKT200460,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, colour completely different, mustard ki jagah yellow aaya plz help"
+TKT200461,DELIVERED,OTHER,Excuse me I was charged twice pease check
+TKT200462,OUT_FOR_DELIVERY,WISMO,"Hi, Order status please dhc101963 asap"
+TKT200463,DELIVERED,WISMO,"HI, SHIPPED DIKHA RAHA HAI 8 DIN SE, AAGE KUCH UPDATE NAHI"
+TKT200464,DELIVERED,WISMO,"excuse me order mila nahi abhi tak, kya hua? urgent!!"
+TKT200465,CANCELLED,RETURN_REFUND,"Hello team, shirt fit nahi hua, return karna hai (order no DHC101919) very bad service"
+TKT200466,DELIVERED,RETURN_REFUND,SIR/MAM HOW CAN I GET A REFUND? 🙏
+TKT200467,DELIVERED,WISMO,Excuse me kab tak aayega mera dupatta?
+TKT200468,DELIVERED,RETURN_REFUND,"Namaste, How can I get arefund? (order no DHC100566)"
+TKT200469,IN_TRANSIT,WISMO,status check karo plz order no DHC100242 third time messaging
+TKT200470,RTO_INITIATED,WISMO,Excuse me when will my order reach? need it for puja plz help
+TKT200471,IN_TRANSIT,WISMO,"my shirt was supposed to come by Friday, still not here very bad service"
+TKT200472,RTO_INITIATED,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya (dhc102286) urgent!!"
+TKT200473,DELIVERED,WISMO,"Namaste, Kab tak delivery hoga urgent!!"
+TKT200474,RTO_INITIATED,WISMO,"Hii mujhe shaadi ke liye chahiye tha, kab milega :("
+TKT200475,DELIVERED,DAMAGED_OR_WRONG_ITEM,"KURTA SET TORN HAI, VERY BAD QUALITY 🙏"
+TKT200476,DELIVERED,OTHER,sir/mm size chart sahi hai kya? asap
+TKT200477,OUT_FOR_DELIVERY,WISMO,"Dhaga team, tracking not updating since 3 days."
+TKT200478,DELIVERED,RETURN_REFUND,"not happy with the shirt, need refund"
+TKT200479,OUT_FOR_DELIVERY,WISMO,"Namaste, where is my order order no DHC101675"
+TKT200480,OUT_FOR_DELIVERY,WISMO,"Hello team, my kurti was supposed to cme on Monday, still not here"
+TKT200481,DELIVERED,DELIVERED_NOT_RECEIVED,"watchman ne bhi nahi liya, phir delivered kaise dikha raha (dhc102171) pls reply"
+TKT200482,IN_TRANSIT,WISMO,courier wala phone nahi utha raha very bad service
+TKT200483,DELIVERED,WISMO,"Hello team, pls tell me delivery date for"
+TKT200484,IN_TRANSIT,WISMO,"Namaste, Mera order kaha hai #DHC101723 :("
+TKT200485,DELIVERED,RETURN_REFUND,"Dhaga team, How can I get a refund? (order id DHC100638) 🙏"
+TKT200486,DELIVERED,OTHER,"Hi, do you have this kurta set in XXL? 🙏"
+TKT200487,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye
+TKT200488,SHIPPED,WISMO,kab tak aayega mera dress?.
+TKT200489,DELIVERED,RETURN_REFUND,hii refund kab aayega? pickup ho gaya 2 din pehle
+TKT200490,SHIPPED,WISMO,"Hello team, order no DHC100643 ka status kya hai please check"
+TKT200491,DELIVERED,RETURN_REFUND,"Sir/Mam not happy with the palazzo, need refund plz help"
+TKT200492,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong size aaya hai, maine XL order kiya tha"
+TKT200493,IN_TRANSIT,WISMO,"Excuse me my lehenga was supposed to come on Monday, still not here urgent!!"
+TKT200494,DELIVERED,OTHER,Hii ok ok plz help
+TKT200495,SHIPPED,WISMO,"HELLO TEAM, SHIPPED DIKHA RAHA HAI 4 DIN SE, AAGE KUCH UPDATE NAHI (ORDER NO DHC101429) PLEASE CHECK"
+TKT200496,SHIPPED,WISMO,"Helloteam, pls tell me delivery date for please check"
+TKT200497,DELIVERED,WISMO,Hii where is my order very bad service
+TKT200498,DELIVERED,OTHER,new collection kab aayega
+TKT200499,DELIVERED,RETURN_REFUND,Hii paise wapas kab milenge plz help
+TKT200500,CONFIRMED,WISMO,hii order status please dhc100396.
+TKT200501,DELIVERED,WISMO,"Dhaga team, order mila nahi abhi tak, kya hua? 🙏"
+TKT200502,IN_TRANSIT,WISMO,tracking not updating since 6 days
+TKT200503,RTO_INITIATED,WISMO,"Hi, parcel kahan atka hua hai? (#DHC100184) pls reply"
+TKT200504,OUT_FOR_DELIVERY,WISMO,Excuse me parcel kahan atka hua hai? 🙏
+TKT200505,DELIVERED,WISMO,"Naaste, pls tell me delivery date for #DHC100319"
+TKT200506,CANCELLED,RETURN_REFUND,return request kaise daalun app mein very bad service
+TKT200507,DELIVERED,WISMO,"HELLO TEAM, OUT FOR DELIVERY THA KAL, AAJ TAK AHI AAYA :("
+TKT200508,DELIVERED,WISMO,Excuse me kab tak aayega mera shirt? very bad service
+TKT200509,DELIVERED,OTHER,thanks asap
+TKT200510,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, parcel deliver hua bol raha hai lekin aaya hi nahi third time messaging"
+TKT200511,OUT_FOR_DELIVERY,WISMO,"delivery date nikl gayi, abhi tak kuch nahi aaya."
+TKT200512,CONFIRMED,WISMO,"Hi, mujhe college fest ke liye chahiye tha, kab milega"
+TKT200513,DELIVERED,WISMO,Order status please DHC100996 asap
+TKT200514,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, galat colour bhej diya aapne very bad service"
+TKT200515,OUT_FOR_DELIVERY,WISMO,Sir/Mam when will my order reach? need it for mehndi please check
+TKT200516,CONFIRMED,WISMO,"Hello team, kab tak aayega mera kurti? third time messaging"
+TKT200517,DELIVERED,DAMAGED_OR_WRONG_ITEM,Hii packet phata hua tha aur palazzo pe daag hai very bad service
+TKT200518,RTO_INITIATED,WISMO,"Hi, Order status pleaseorder id DHC101329 asap"
+TKT200519,IN_TRANSIT,WISMO,"tracking link kaam nahi kar raha, order kab aayega (#DHC100678) urgent!!"
+TKT200520,RTO_INITIATED,WISMO,"Hi, Order status please #DHC102305"
+TKT200521,OUT_FOR_DELIVERY,WISMO,"Dhaga team, order kidhar hai bhai (order id DHC100870) asap"
+TKT200522,DELIVERED,WISMO,"Hello team, can you check my order dhc101354? no update please check"
+TKT200523,RTO_INITIATED,WISMO,status chec karo please
+TKT200524,IN_TRANSIT,WISMO,"Namaste, order mila nahi abhi tak, kya hua? 🙏"
+TKT200525,DELIVERED,OTHER,"NAMASTE, INVICE CHAHIYE GST WALA"
+TKT200526,IN_TRANSIT,WISMO,"Hello team, courier wal phone nahi utha raha pls reply"
+TKT200527,SHIPPED,WISMO,courier wala phone nahi utha raha (dhc100552)
+TKT200528,DELIVERED,DELIVERED_NOT_RECEIVED,"watchman ne bhi nahi liya, phir delivered kais dikha raha 🙏"
+TKT200529,DELIVERED,OTHER,Sir/Mam size chart sahi hai kya?.
+TKT200530,OUT_FOR_DELIVERY,WISMO,sir/mam kab tak aayega mera saree? urgent!!
+TKT200531,DELIVERED,WISMO,Hii can ou check my order ? no update plz help
+TKT200532,IN_TRANSIT,CANCEL_ORDER,"Hii I ordered by mistake, cancel it third time messaging"
+TKT200533,DELIVERED,RETURN_REFUND,Hii return kaise karu #DHC100492 plz help
+TKT200534,CANCELLED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya."
+TKT200535,CANCELLED,RETURN_REFUND,"Namaste, return request kaise daalun app mein"
+TKT200536,DELIVERED,WISMO,Sir/Mam kab tak aayega mera saree? (dhc101444)
+TKT200537,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the saree when it arrived, pls replace (#DHC100281)"
+TKT200538,DELIVERED,RETURN_REFUND,"I want to return my frock, didn't like the fabric (order no DHC101204)."
+TKT200539,RTO_INITIATED,WISMO,Mera order kaha hai dhc100671 please check
+TKT200540,RTO_INITIATED,WISMO,"Namaste, parcel kahan atka hua hai? (dhc100071) urgent!!"
+TKT200541,CONFIRMED,WISMO,courier wala phone nahi utha raha(order no DHC100724)?
+TKT200542,DELIVERED,OTHER,new collection kab aayega.
+TKT200543,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, wrong item delivered, ye mera order nahi hai very bad service"
+TKT200544,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT200545,DELIVERED,DELIVERED_NOT_RECEIVED,i didn't get my lehenga but status says delivered asap
+TKT200546,OUT_FOR_DELIVERY,WISMO,"hello team, when will my order rach? need it for mehndi"
+TKT200547,DELIVERED,OTHER,size chart sahi hai kya? very bad service
+TKT200548,OUT_FOR_DELIVERY,WISMO,Sir/Mam parcel kahan atka hua hai? plz help
+TKT200549,DELIVERED,OTHER,"hello team, address change karna hai urgent!!"
+TKT200550,CANCELLED,RETURN_REFUND,paise wapas kab milenge
+TKT200551,DELIVERED,DAMAGED_OR_WRONG_ITEM,sir/mam galat colour bhej diya aapne plz help
+TKT200552,OUT_FOR_DELIVERY,WISMO,Hii dhc100015 ka status kya hai plese check
+TKT200553,CONFIRMED,WISMO,"Hello team, my dupatta was supposed to come 3 days back, still not here?"
+TKT200554,OUT_FOR_DELIVERY,WISMO,"Dhaga team, when will my order reach? need it for college fest plz help"
+TKT200555,IN_TRANSIT,WISMO,"Dhaga team, It's been 3 days since I ordered. Where is it? please check"
+TKT200556,OUT_FOR_DELIVERY,WISMO,"namaste, out for delivery tha kal, aj tak nahi aaya very bad service"
+TKT200557,DELIVERED,WISMO,"Dhaga team, courier wala phone nahi utha raha plase check"
+TKT200558,DELIVERED,RETURN_REFUND,Excuse me refund kab aayega? pickup ho gaya 11 din pehle.
+TKT200559,CONFIRMED,CANCEL_ORDER,"muje ye order nahi chahiye, cancel kardo"
+TKT200560,OUT_FOR_DELIVERY,WISMO,"order mila nahi abhi tak, kya hua? :("
+TKT200561,SHIPPED,WISMO,"HELLO TEAM, CAN YOU CHECK MY ORDER ORDER NO DHC101814? NO UPDATE."
+TKT200562,DELIVERED,RETURN_REFUND,"Dhaga team, kurti fit nahi hua, return karna hai third time messaging"
+TKT200563,DELIVERED,WISMO,"Hii mujhe puja ke liye chahiye tha, kab milega very bad service"
+TKT200564,DELIVERED,WISMO,"hii mujhe office ke liye chahiye tha, kab milega"
+TKT200565,OUT_FOR_DELIVERY,CANCEL_ORDER,"Dhaga team, mujhe ye order nahi chahiye, cancel kardo?"
+TKT200566,OUT_FOR_DELIVERY,WISMO,"Hi, when will my order reach? need it for mehndi 🙏"
+TKT200567,DELIVERED,RETURN_REFUND,"Hii not happy with the lehenga, eed refund"
+TKT200568,IN_TRANSIT,OTHER,Excuse me I was charged twice plase check
+TKT200569,DELIVERED,WISMO,"tracking link kaam nahi kar raha, rder kab aayega (#DHC102024)."
+TKT200570,OUT_FOR_DELIVERY,WISMO,hii kab tak delivery hoga please check
+TKT200571,RTO_INITIATED,WISMO,"Shipped dikha raha hai 2 din se, aage kuch update nahi asap"
+TKT200572,SHIPPED,WISMO,"Excuse me out for delivery tha kal, aaj tak nahi aaya very bad service"
+TKT200573,DELIVERED,OTHER,"Hi, address change karna hai pls reply"
+TKT200574,DELIVERED,COD_PAYMENT,"HI, ONLINE PAY KIYA THA PHIR BHI COD MAANG RAHE PLS REPLY"
+TKT200575,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, order order no DHC100808 marked delivered, nobody came to m house :("
+TKT200576,OUT_FOR_DELIVERY,WISMO,"Hi, courier wala phone nahi utha raha third time messaging"
+TKT200577,DELIVERED,WISMO,"Shipped dikha raha hai 5 din se, aage kuch update nahi third time messaing"
+TKT200578,IN_TRANSIT,WISMO,"Hi, Order status please #DHC101427."
+TKT200579,DELIVERED,WISMO,excuse me status check karo please dhc100336 very bad service
+TKT200580,CONFIRMED,WISMO,"Hello team, out fo delivery tha kal, aaj tak nahi aaya."
+TKT200581,SHIPPED,WISMO,"namaste, tracking link kaam nahi kar raha, order kab aayega (order id dhc101801)"
+TKT200582,DELIVERED,DAMAGED_OR_WRONG_ITEM,GALAT COLOUR BHEJ DIYA AAPNE.
+TKT200583,RTO_INITIATED,WISMO,parcel kahan atka hua hai? urgent!!
+TKT200584,OUT_FOR_DELIVERY,WISMO,"Namaste, when will my order reach? need it for college fest plz help"
+TKT200585,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return plz(order no DHC100579)?"
+TKT200586,SHIPPED,WISMO,courier wala phone nahi utha raha pls reply
+TKT200587,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, I didn't get my palazzo but status says delivered"
+TKT200588,CANCELLED,RETURN_REFUND,"Hi, shirt fit nahi hua, return karna hai third time messaging"
+TKT200589,DELIVERED,RETURN_REFUND,"Namaste, return request kaise daalun app mein third time messaging"
+TKT200590,DELIVERED,WISMO,"Dhaga team, delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT200591,DELIVERED,RETURN_REFUND,refund kab aayega? pickup ho gaya 6 din pehle asap
+TKT200592,IN_TRANSIT,WISMO,"Namaste, tracking link kaam nahi kar raha, order kab aayega"
+TKT200593,DELIVERED,RETURN_REFUND,"Hello team, refund kab aayega? pickup ho gaya 11 din pehle 🙏"
+TKT200594,CONFIRMED,WISMO,Order status please #DHC101848 very bad service
+TKT200595,DELIVERED,WISMO,"Hello team, Kab tak delivery hoga please check"
+TKT200596,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hi, stain on the top when it arrived, pls replace very bad service"
+TKT200597,CONFIRMED,WISMO,"Namaste, mujhe Diwali ke liye chahiye tha, kab milega very bad service"
+TKT200598,OUT_FOR_DELIVERY,WISMO,Excuse me Kab tak delivery hoga urgent!!
+TKT200599,DELIVERED,WISMO,Hii dhc102081 ka status kya hai 🙏
+TKT200600,RTO_INITIATED,WISMO,"Hello team, delivery date nikal gayi, abhi tak kuch nahi aaya pls reply"
+TKT200601,DELIVERED,DAMAGED_OR_WRONG_ITEM,"dhaga team, colour completely different, mustard ki jagah yellow aaya (order id dhc100902) please check"
+TKT200602,DELIVERED,WISMO,"excuse me tracking link kaam nahi kar raha, order kab aayega pls reply"
+TKT200603,DELIVERED,RETURN_REFUND,"Dhaga team, pickup boy aaya hi nahi return ke liye very bad service"
+TKT200604,DELIVERED,OTHER,coupon code kaam nahi kar raha pls reply
+TKT200605,OUT_FOR_DELIVERY,CANCEL_ORDER,Excuse me order cancel karna hai (order id DHC100612) third time messaging
+TKT200606,DELIVERED,WISMO,"shipped dikha raha hai 7 din se, aage kuch update nahi urgent!!"
+TKT200607,DELIVERED,DELIVERED_NOT_RECEIVED,it says delivered yesterday but I got nothing urgent!!
+TKT200608,CONFIRMED,WISMO,Hii Mera order kaha hai HC100667 :(
+TKT200609,DELIVERED,WISMO,"Hello team, can you check my order ? no update plz help"
+TKT200610,DELIVERED,WISMO,Excuse me Order status please dhc101021?
+TKT200611,OUT_FOR_DELIVERY,WISMO,Hii tracking not updating since 10 days?
+TKT200612,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega pls reply"
+TKT200613,RTO_INITIATED,WISMO,"order mila nahi abhi tak, kya hua?."
+TKT200614,CONFIRMED,WISMO,Sir/Mam status check karo please DHC102318?
+TKT200615,DELIVERED,RETURN_REFUND,"dhaga team, pickup boy aaya hi nahi return ke liye 🙏"
+TKT200616,DELIVERED,COD_PAYMENT,"Namaste, cash on delivery available hai kya order id DHC101586 very bad service"
+TKT200617,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi very bad service
+TKT200618,DELIVERED,DELIVERED_NOT_RECEIVED,it says delivered yesterday but I got nothing
+TKT200619,DELIVERED,RETURN_REFUND,Hii refund status for please plz help
+TKT200620,OUT_FOR_DELIVERY,COD_PAYMENT,COD charges kyun lag rahe hai (order id DHC102039) pls reply
+TKT200621,DELIVERED,RETURN_REFUND,"size chhota hai, exchange ya return chahiye"
+TKT200622,DELIVERED,RETURN_REFUND,"Dhaga team, paise wapas kab milenge (dhc100033)"
+TKT200623,RTO_INITIATED,WISMO,"TRACKING LINK KAAM NAHI KAR RAHA, ORDER KAB AAYEGA (ORDER ID DHC102305)"
+TKT200624,CANCELLED,RETURN_REFUND,"Dhaga team, How can I get a refund? very bad service"
+TKT200625,IN_TRANSIT,WISMO,Excuse me status check karo please dhc100412 pls reply
+TKT200626,CANCELLED,RETURN_REFUND,hii pickup boy aaya hi nahi return ke liye?
+TKT200627,DELIVERED,DELIVERED_NOT_RECEIVED,it says delivered yesterday but I got nothing 🙏
+TKT200628,DELIVERED,WISMO,"order mila nahi abhi tak, kya hua??"
+TKT200629,RTO_INITIATED,WISMO,"out for delivery tha kal, aaj tak nahi aaya (#DHC100841) asap"
+TKT200630,OUT_FOR_DELIVERY,WISMO,order kidhar hai bhai plz help
+TKT200631,DELIVERED,COD_PAYMENT,"Hello team, delivery boy change nahi de raha, kya karu"
+TKT200632,CONFIRMED,WISMO,"mujhe puja ke liye chahiye tha, kab milega"
+TKT200633,DELIVERED,WISMO,"Namaste, ka status kya hai very bad service"
+TKT200634,CONFIRMED,WISMO,Sir/Mam where is my order order no DHC101271.
+TKT200635,OUT_FOR_DELIVERY,WISMO,"Namaste, can you check my order order id DHC102432? no update plz help"
+TKT200636,OUT_FOR_DELIVERY,WISMO,"NAMASTE, STATUS CHECK KARO PLEASE DHC100623 :("
+TKT200637,IN_TRANSIT,WISMO,"Hello team, Shipped dikha raha hai 7 din se, aage kuch update nahi :("
+TKT200638,DELIVERED,OTHER,Excuse me thanks please check
+TKT200639,DELIVERED,DAMAGED_OR_WRONG_ITEM,I received a damaged leenga (order id DHC101891) very bad service
+TKT200640,OUT_FOR_DELIVERY,WISMO,"Hello team, order abhitak nahi aaya (order no DHC100543) 🙏"
+TKT200641,OUT_FOR_DELIVERY,WISMO,DHC100089 ka status kya hai 🙏
+TKT200642,DELIVERED,OTHER,thanks please check
+TKT200643,DELIVERED,WISMO,"Hello team, when will my order reach? need it for office."
+TKT200644,SHIPPED,WISMO,"Hi, Mera order aha hai 🙏"
+TKT200645,OUT_FOR_DELIVERY,WISMO,"order mila nahi abhi tak, kya hua? (order id DHC101514)?"
+TKT200646,DELIVERED,DELIVERED_NOT_RECEIVED,"Hii delivered status galat hai, maine kuch receive nahi kiya #DHC101871"
+TKT200647,CANCELLED,RETURN_REFUND,Excse me refund status for order id DHC100971 please :(
+TKT200648,DELIVERED,RETURN_REFUND,"size chhota hai, exchange ya return chahiye (dhc100394) 🙏"
+TKT200649,CONFIRMED,WISMO,"Excuse me Shipped dikha raha ha 2 din se, aage kuch update nahi (order no DHC100128)"
+TKT200650,DELIVERED,RETURN_REFUND,"Hello team, refund status for please."
+TKT200651,DELIVERED,WISMO,"hi, when will my order reach? need it for collee fest?"
+TKT200652,DELIVERED,WISMO,when will my order reach? need it for shaadi asap
+TKT200653,DELIVERED,RETURN_REFUND,"Namaste, shoulders se bahut tight hai, return please third time messaging"
+TKT200654,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya please check"
+TKT200655,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, App shows delivered but I never received the parcel."
+TKT200656,IN_TRANSIT,WISMO,"Excuse me Shipped dikha raha hai 6 din se, aage kuch update nahi 🙏"
+TKT200657,CONFIRMED,WISMO,"Hello team, status check karo plz"
+TKT200658,DELIVERED,WISMO,"Namaste, where is my order order id DHC101013 third time messaging"
+TKT200659,OUT_FOR_DELIVERY,WISMO,"Dhaga team, Mera order kaha hai dhc101802 please check"
+TKT200660,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai very bad service"
+TKT200661,SHIPPED,COD_PAYMENT,Excuse me COD pe UPI se pay kar sakte hai? please check
+TKT200662,DELIVERED,RETURN_REFUND,return kaise karu order no DHC100279
+TKT200663,DELIVERED,RETURN_REFUND,How can I get a refund? (#DHC100416)
+TKT200664,SHIPPED,WISMO,"shipped dikha raha hai 9 din se, aage kuch update nahi"
+TKT200665,IN_TRANSIT,WISMO,"Hello team, out for delivery tha kal, aaj tak nahi aaya very bad service"
+TKT200666,IN_TRANSIT,WISMO,"DHAGA TEAM, #DHC101192 KA STATUS KYA HAI PLS REPLY"
+TKT200667,RTO_INITIATED,WISMO,mera order kaha hai order id dhc102430?
+TKT200668,DELIVERED,WISMO,"Dhaga team, delivery date nikal gay, abhi tak kuch nahi aaya"
+TKT200669,SHIPPED,WISMO,"Hello team, Mera order kaha hai order no DHC101926 urgent!!"
+TKT200670,CONFIRMED,WISMO,can you check my order order no DHC101752? no update urgent!!
+TKT200671,CANCELLED,OTHER,Sir/Mam thanks urgent!!
+TKT200672,OUT_FOR_DELIVERY,WISMO,"Dhaga team, pls tell me delivery date for dhc101552."
+TKT200673,OUT_FOR_DELIVERY,WISMO,"NAMASTE, TRACKING LINK KAAM NAHI KAR RAHA, ORDER KAB AAYEGA THIRD TIME MESSAGING"
+TKT200674,DELIVERED,DELIVERED_NOT_RECEIVED,Excuse me parcel deliver hua bol raha hai lekin aaya hi nahi
+TKT200675,CONFIRMED,WISMO,order abhi tak nahi aaya asap
+TKT200676,OUT_FOR_DELIVERY,WISMO,"Dhaga team, order abhi tak nahi aaya (order no DHC100590)"
+TKT200677,DELIVERED,DAMAGED_OR_WRONG_ITEM,Hii stitching khul gayi pehli baar pehente hi urgent!!
+TKT200678,SHIPPED,WISMO,"Dhaga team, can you check my order order id DHC101429? no update 🙏"
+TKT200679,DELIVERED,RETURN_REFUND,"Namaste, How can I get a refund? (DHC100851) please check"
+TKT200680,DELIVERED,DAMAGED_OR_WRONG_ITEM,"kurti torn hai, very bad quality?"
+TKT200681,OUT_FOR_DELIVERY,WISMO,"HI, WHERE IS MY ORDER DHC100853 PLZ HELP"
+TKT200682,DELIVERED,WISMO,"Hello team, delivery date nikal gayi, abhi tak kuch nahi aaya urgent!!"
+TKT200683,DELIVERED,RETURN_REFUND,"Namaste, paise wapas kab milenge 🙏"
+TKT200684,RTO_INITIATED,WISMO,"Namaste, when will my orderreach? need it for Diwali please check"
+TKT200685,CANCELLED,OTHER,"Dhaga team, I was charged twice plz check"
+TKT200686,DELIVERED,RETURN_REFUND,How can I get a refund? urgent!!
+TKT200687,DELIVERED,WISMO,Kab tak delivery hoga plz help
+TKT200688,DELIVERED,WISMO,WHERE IS MY ORDER 🙏
+TKT200689,DELIVERED,WISMO,"Hi, #DHC102055 ka status kya hai asap"
+TKT200690,RTO_INITIATED,WISMO,"namaste, where is my order dhc101187 asap"
+TKT200691,DELIVERED,WISMO,Exuse me status check karo please order no DHC101110?
+TKT200692,OUT_FOR_DELIVERY,WISMO,Sir/Mam order kidhar hai bhai (order id DHC100989) pls reply
+TKT200693,SHIPPED,WISMO,Sir/Mam It's been 12 days since I ordered. Where is it? 🙏
+TKT200694,OUT_FOR_DELIVERY,WISMO,"Dhaga team, out for delivery tha kal, aaj tak nahi aaya (order id DHC101248)."
+TKT200695,OUT_FOR_DELIVERY,CANCEL_ORDER,"Namaste, order cancel karna hai urgent!!"
+TKT200696,DELIVERED,WISMO,"Sir/Mam mujhe Diwali ke liye chahiye tha, kab milega plz check"
+TKT200697,IN_TRANSIT,WISMO,Sir/Mam can you check my order order id DHC101688? no update
+TKT200698,CONFIRMED,CANCEL_ORDER,"cancel dhc100541, found it cheaper elsewhere."
+TKT200699,OUT_FOR_DELIVERY,WISMO,"EXCUSE ME OUT FOR DELIVERY THA KAL, AAJ TAK NAHI AAYA THIRD TIME MESSAGING"
+TKT200700,IN_TRANSIT,WISMO,"Hello team, Shippe dikha raha hai 12 din se, aage kuch update nahi (order no DHC102467)"
+TKT200701,OUT_FOR_DELIVERY,WISMO,kab ak delivery hoga asap
+TKT200702,DELIVERED,RETURN_REFUND,"hello team, size chhota hai, exchange ya return chahiye plz help"
+TKT200703,CANCELLED,WISMO,"Hi, order kidhar hai bhai."
+TKT200704,IN_TRANSIT,WISMO,courier wala phone nahi utha raha?
+TKT200705,SHIPPED,WISMO,order kidhar hai bhai.
+TKT200706,DELIVERED,RETURN_REFUND,Excuse me return request kaise daalun app mein
+TKT200707,SHIPPED,WISMO,"Hello team, order mila nahi abhi tak, kya hua?."
+TKT200708,RTO_INITIATED,WISMO,"Hii mujhe shaadi ke liye chahiye tha, kab milega please check"
+TKT200709,DELIVERED,WISMO,"Excuse me Shipped dikha raha hai 11 din se, aage kuch update nahi (dhc101784)"
+TKT200710,SHIPPED,WISMO,"Helo team, tracking not updating since 6 days asap"
+TKT200711,IN_TRANSIT,WISMO,Hii where is my order #DHC100779
+TKT200712,SHIPPED,WISMO,"Dhaga team, It's been 9 days since I ordered. Where is it?"
+TKT200713,DELIVERED,WISMO,"Namaste, Shipped dikha raha hai 8 din se, aage kuch update nahi"
+TKT200714,SHIPPED,WISMO,courier wala phone nahi utha raha (dhc101716)
+TKT200715,IN_TRANSIT,COD_PAYMENT,can i pay by gpay at delivery? (order id DHC102300) urgent!!
+TKT200716,DELIVERED,WISMO,"Namaste, order abhi tak nahi aaya :("
+TKT200717,RTO_INITIATED,OTHER,coupon code kaam nahi kar raha
+TKT200718,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya third time mssaging"
+TKT200719,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Excuse me received a different product, not what i ordered DHC100281 urgent!!"
+TKT200720,IN_TRANSIT,WISMO,Excuse me can you check my order ? no update
+TKT200721,RTO_INITIATED,WISMO,"Namaste, Order status plz dhc100364 urgent!!"
+TKT200722,CANCELLED,OTHER,"Hi, size chart sahi hai kya? third time messaging"
+TKT200723,IN_TRANSIT,WISMO,"Namaste, kab tak aayega mera lehenga? urgent!!"
+TKT200724,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, I received a damaged shirt urgent!!"
+TKT200725,DELIVERED,OTHER,Sir/Mam thanks
+TKT200726,IN_TRANSIT,WISMO,"shipped dikha raha hai 2 din se, aage kuch update nahi 🙏"
+TKT200727,DELIVERED,OTHER,new collection kab aayega very bad service
+TKT200728,RTO_INITIATED,CANCEL_ORDER,"Hi, how to cancel order? option nahi dikh raha (DHC101537)?"
+TKT200729,DELIVERED,WISMO,"namaste, can you check my order dhc102082? no update"
+TKT200730,IN_TRANSIT,WISMO,"Hi, order mila nahi abhi tak, kya hua? very bad service"
+TKT200731,DELIVERED,WISMO,"Namaste, Kab tak delivery hoga (dhc101587) plz check"
+TKT200732,IN_TRANSIT,WISMO,kab tak delivery hoga 🙏
+TKT200733,IN_TRANSIT,WISMO,"Hello team, delivery date nikal gayi, abhi tak kuch nahi aaya?"
+TKT200734,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega very bad service"
+TKT200735,DELIVERED,WISMO,"Dhaga team, pls tell me delivery date for urgent!!"
+TKT200736,DELIVERED,WISMO,"MUJHE COLLEGE FEST KE LIYE CHAHIYE THA, KAB MILEGA (ORDER NO DHC102162) THIRD TIME MESSAGING"
+TKT200737,DELIVERED,RETURN_REFUND,"size chhota hai, exchange ya return chahiye?"
+TKT200738,DELIVERED,WISMO,"Hi, mujhe college fest ke liye chahiye tha, kabmilega :("
+TKT200739,CANCELLED,RETURN_REFUND,"shoulders se bahut tight hai, return please."
+TKT200740,CONFIRMED,WISMO,"mujhe shaadi ke liye chahiye tha, kab milega 🙏"
+TKT200741,SHIPPED,WISMO,SIR/MAM ORDER STATUS PLEASE DHC100905?
+TKT200742,IN_TRANSIT,COD_PAYMENT,Excuse me online pay kiya tha phir bhi COD maang rahe
+TKT200743,SHIPPED,WISMO,"dhagateam, tracking link kaam nahi kar raha, order kab aayega asap"
+TKT200744,DELIVERED,WISMO,HII STATUS CHECK KARO PLEASE #DHC100622.
+TKT200745,DELIVERED,WISMO,"Dhaga team, when will my order reach? need it for college fest (order id DHC100317) :("
+TKT200746,DELIVERED,OTHER,"Namaste, invoice chahiye GST wala urgent!!"
+TKT200747,DELIVERED,OTHER,new collection kab aayega asap
+TKT200748,CANCELLED,RETURN_REFUND,How can I get a refund? very bad service
+TKT200749,DELIVERED,DAMAGED_OR_WRONG_ITEM,"colour completely different, mustard ki jagah yellow aaya (#dhc101269) pls reply"
+TKT200750,DELIVERED,WISMO,Excuse me status check karo please DHC102196
+TKT200751,DELIVERED,WISMO,where is my order order id dhc101906?
+TKT200752,RTO_INITIATED,WISMO,"Shipped dikha raha hai 7 din se, aage kuch update nahi?"
+TKT200753,DELIVERED,WISMO,"Namaste, when will my order reach? need it for Diwali (DHC100200) asap"
+TKT200754,DELIVERED,DAMAGED_OR_WRONG_ITEM,stitching khul gayi pehli baar pehente hi (order id DHC100825).
+TKT200755,DELIVERED,DAMAGED_OR_WRONG_ITEM,"kuri torn hai, very bad quality 🙏"
+TKT200756,CANCELLED,RETURN_REFUND,Sir/Mam How can I get a refund? (order id DHC100646) urgent!!
+TKT200757,OUT_FOR_DELIVERY,WISMO,Sir/Mam can you check my order order no DHC100710? no update urgent!!
+TKT200758,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, wrong item delivered, ye mera order nahi hai"
+TKT200759,OUT_FOR_DELIVERY,WISMO,HII WHEN WILL MY ORDER REACH? NEED IT FOR COLLEGE FEST?
+TKT200760,IN_TRANSIT,WISMO,when will my order reach? need it or puja?
+TKT200761,OUT_FOR_DELIVERY,CANCEL_ORDER,"galti s 2 baar order ho gaya, ek cancel karo please check"
+TKT200762,CONFIRMED,WISMO,It's been 3 days since I ordered. Where is it? plz help
+TKT200763,OUT_FOR_DELIVERY,WISMO,It's been 11 days since I ordered. Where is it?.
+TKT200764,DELIVERED,COD_PAYMENT,COD charges kyun lag rahe hai plz help
+TKT200765,DELIVERED,WISMO,prcel kahan atka hua hai?
+TKT200766,DELIVERED,COD_PAYMENT,Hii I need help with COD please check
+TKT200767,DELIVERED,WISMO,"Hi, my lehenga was supposed to come by Friday, still not here please check"
+TKT200768,DELIVERED,OTHER,hi urgent!!
+TKT200769,OUT_FOR_DELIVERY,WISMO,"Sir/Mam tracking link kaam nahi kar raha, order kab aayega :("
+TKT200770,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, stain on the lehenga when it arrived, pls replace plz help"
+TKT200771,CONFIRMED,WISMO,"Hii my dress was supposed to come yesterday, still not here urgent!!"
+TKT200772,OUT_FOR_DELIVERY,WISMO,EXCUSE ME IT'S BEEN 7 DAYS SINCE I ORDERED. WHERE IS IT? (#DHC100612) 🙏
+TKT200773,IN_TRANSIT,WISMO,Excuse me where is my order very bad service
+TKT200774,DELIVERED,DAMAGED_OR_WRONG_ITEM,"receved a different product, not what i ordered dhc100005 third time messaging"
+TKT200775,DELIVERED,DELIVERED_NOT_RECEIVED,Sir/Mam it says delivered yesterday but I got nothing (#DHC102350) 🙏
+TKT200776,DELIVERED,RETURN_REFUND,"Hi, dupatta fit nahi hua, return karna hai third time messaging"
+TKT200777,DELIVERED,WISMO,"Hello team, when will my order reach? need it for mehdi (#DHC100992) pls reply"
+TKT200778,IN_TRANSIT,WISMO,sir/mam pls tell me delivery date for third time messaging
+TKT200779,CONFIRMED,WISMO,parcel kahan atka hua hai? please check
+TKT200780,OUT_FOR_DELIVERY,WISMO,"Hello team, mujhe office ke liye chahiye tha, kab milega pls reply"
+TKT200781,OUT_FOR_DELIVERY,WISMO,Excuse me status check karo please order id DHC102261 asap
+TKT200782,DELIVERED,OTHER,"HELLO TEAM, INVOICE CHAHIYE GST WALA :("
+TKT200783,DELIVERED,OTHER,Hii addres change karna hai pls reply
+TKT200784,IN_TRANSIT,WISMO,"Hello team, tracking link kaam nahi kar raha, order kab aayega urgent!!"
+TKT200785,RTO_INITIATED,WISMO,Hii #DHC101314 ka status kya hai urgent!!
+TKT200786,OUT_FOR_DELIVERY,WISMO,"Dhaga team, Kab tak delivery hoga 🙏"
+TKT200787,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, colour completely different, mustard ki jagah yellow aaya (DHC101841) asap"
+TKT200788,SHIPPED,CANCEL_ORDER,"Namast, cancel , found it cheaper elsewhere very bad service"
+TKT200789,IN_TRANSIT,WISMO,parcel kahan atka hua hai? (dhc101047)
+TKT200790,DELIVERED,WISMO,ka status kya hai
+TKT200791,DELIVERED,RETURN_REFUND,"Hi, return kaise karu DHC102343"
+TKT200792,CONFIRMED,WISMO,It's been 12 days since I ordered. Where is it? urgent!!
+TKT200793,DELIVERED,DAMAGED_OR_WRONG_ITEM,sir/mam packet phata hua tha aur lehenga pe daag hai?
+TKT200794,OUT_FOR_DELIVERY,WISMO,"Namaste, parcel kahan atka hua hai??"
+TKT200795,IN_TRANSIT,WISMO,"hii tracking link kaam nahi kar raha, order kab aayega (order no dhc100132) very bad service"
+TKT200796,DELIVERED,OTHER,"Hello team, ok ok asap"
+TKT200797,DELIVERED,OTHER,hii ok ok :(
+TKT200798,OUT_FOR_DELIVERY,WISMO,"NAMASTE, MERA ORDER KAHA HAI"
+TKT200799,OUT_FOR_DELIVERY,WISMO,"Hi, Mera order kaha hai asap"
+TKT200800,OUT_FOR_DELIVERY,WISMO,"Dhaga team, tracking link kaam nahi kar raha, order kab aayega"
+TKT200801,IN_TRANSIT,WISMO,"Shipped dikha raha hai 6 din se, aage kuch update nahi pls reply"
+TKT200802,DELIVERED,DELIVERED_NOT_RECEIVED,it says delivered yesterday but I got nothing asap
+TKT200803,OUT_FOR_DELIVERY,WISMO,"shipped dikha raha hai 12 din se, aage kuch update nahi third time messaging"
+TKT200804,OUT_FOR_DELIVERY,WISMO,when will my order reach? need it for college fest plz help
+TKT200805,IN_TRANSIT,WISMO,Excuse me Mera order kaha hai order id DHC100337 plz check
+TKT200806,DELIVERED,RETURN_REFUND,"hi, refund kab aayega? pickup ho gaya 3 din pehle"
+TKT200807,CONFIRMED,WISMO,"namaste, can you check my order ? no update?"
+TKT200808,DELIVERED,DELIVERED_NOT_RECEIVED,Hii parcel deliver hua bol raha hai lekin aaya hi nahi (order no DHC100314) asap
+TKT200809,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hii wrong size aaya hai, maine XL order kiya tha asap"
+TKT200810,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return plz (order id DHC102341) plz check"
+TKT200811,IN_TRANSIT,CANCEL_ORDER,"mujhe ye order nahi chahiye, cancel kardo (dhc101770) asap"
+TKT200812,CONFIRMED,OTHER,"Namaste, size chart sahi hai kya?"
+TKT200813,OUT_FOR_DELIVERY,WISMO,Hii where is my order #DHC101487 third time messaging
+TKT200814,DELIVERED,WISMO,"dhaga team, mujhe shaadi ke liye chahiye tha, kab milega plz help"
+TKT200815,DELIVERED,DAMAGED_OR_WRONG_ITEM,"palazzo torn hai, very bad quality 🙏"
+TKT200816,DELIVERED,RETURN_REFUND,Excuse me How can I get a refund? (#DHC100808) 🙏
+TKT200817,OUT_FOR_DELIVERY,WISMO,"out for delivery tha kal, aaj tak nahi aaya 🙏"
+TKT200818,DELIVERED,WISMO,"Hello team, order mila nahi abhi tak, kya hua? please check"
+TKT200819,DELIVERED,RETURN_REFUND,excuse me refund status for dhc101333 please
+TKT200820,DELIVERED,OTHER,"dhaga team, coupon code kaam nahi kar raha"
+TKT200821,SHIPPED,WISMO,mera order kaha hai order no dhc101776 vry bad service
+TKT200822,CONFIRMED,WISMO,Sir/Mam status check karo please #DHC101754
+TKT200823,IN_TRANSIT,WISMO,courier wala phone nahi utha raha (
+TKT200824,RTO_INITIATED,WISMO,Hii tracking not updating since 4 days plz help
+TKT200825,DELIVERED,RETURN_REFUND,"top fit nahi hua, return karna hai (order id dhc10445)?"
+TKT200826,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, colour completely different, mustard ki jagah yellow aaya very bad service"
+TKT200827,SHIPPED,WISMO,"Dhaga team, out for delivery tha kal, aaj tak nahi aaya pls reply"
+TKT200828,RTO_INITIATED,CANCEL_ORDER,"Excuse me I ordered by mistake, cancel it."
+TKT200829,DELIVERED,RETURN_REFUND,Sir/Mam return request kaise daalun app mein 🙏
+TKT200830,CONFIRMED,WISMO,Excuse me Mera order kaha hai #DHC100609 asap
+TKT200831,DELIVERED,DELIVERED_NOT_RECEIVED,"order DHC101083 marked delivered, nobody came to my house plz help"
+TKT200832,IN_TRANSIT,WISMO,order kidhar hai bhai?
+TKT200833,DELIVERED,WISMO,"Namaste, Shipped dikha raha hai 7 din se, aage kuch update nahi"
+TKT200834,CONFIRMED,WISMO,hii courier wala phone nahi utha raha pls reply
+TKT200835,DELIVERED,DELIVERED_NOT_RECEIVED,delivered dikha raha hai par mujhe mila nahi?
+TKT200836,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hii stan on the top when it arrived, pls replace?"
+TKT200837,CONFIRMED,WISMO,"dhaga team, order mila nahi abhi tak, kya hua? pls reply"
+TKT200838,DELIVERED,WISMO,"mujhe office ke liye chahiye tha, kab milega?"
+TKT200839,CONFIRMED,CANCEL_ORDER,"Excuse me cancel order no DHC102479, found it cheaper elsewhere please check"
+TKT200840,SHIPPED,WISMO,"Sir/Mam mujhe saadi ke liye chahiye tha, kab milega urgent!!"
+TKT200841,DELIVERED,DELIVERED_NOT_RECEIVED,PARCEL DELIVER HUA BOL RAHA HAI LEKIN AAYA HI NAHI (DHC102285) ASAP
+TKT200842,IN_TRANSIT,CANCEL_ORDER,"i ordered by mistake, cancel it 🙏"
+TKT200843,DELIVERED,OTHER,"Namaste, I was chaged twice"
+TKT200844,DELIVERED,WISMO,"Dhaga team, tracking link kaam nahi kar raha, order kab aayega urgent!!"
+TKT200845,OUT_FOR_DELIVERY,WISMO,Excuse me ka status kya hai asap
+TKT200846,CONFIRMED,WISMO,"Sir/Mam order mila nahi abhi tak, kya hua? :("
+TKT200847,OUT_FOR_DELIVERY,WISMO,"DHAGA TEAM, KAB TAK DELIVERY HOGA :("
+TKT200848,IN_TRANSIT,WISMO,Sir/Mam Kab tak delivry hoga plz check
+TKT200849,DELIVERED,OTHER,copon code kaam nahi kar raha asap
+TKT200850,DELIVERED,WISMO,Kab tak delivery hoga (order no DHC101197) urgent!!
+TKT200851,CONFIRMED,WISMO,"Namaste, Order status please order no DHC101869 please check"
+TKT200852,DELIVERED,RETURN_REFUND,"Hello team, I want to return my dupatta, didn't like the fabric (#DHC102288)"
+TKT200853,CONFIRMED,WISMO,"Sir/Mam mujhe shaadi ke liye chahiye tha, kab milega?"
+TKT200854,DELIVERED,DAMAGED_OR_WRONG_ITEM,"dhaga team, stain on the dupatta when it arrived, pls replace pls reply"
+TKT200855,OUT_FOR_DELIVERY,WISMO,"out for delivery tha kal, aaj tak nahi aaya asap"
+TKT200856,OUT_FOR_DELIVERY,WISMO,order id DHC102057 ka status kya hai urgent!!
+TKT200857,DELIVERED,WISMO,tracking not updating since 5 days (order no DHC100156) plz help
+TKT200858,DELIVERED,RETURN_REFUND,"Hello team, kurti fit nahi hua, return karna hai (order no DHC102202) plz help"
+TKT200859,SHIPPED,WISMO,"hii tracking link kaam nahi kar raha, order kab aayega"
+TKT200860,CONFIRMED,WISMO,"Hi, Mera order kaha hai order no DHC100648 pls reply"
+TKT200861,DELIVERED,RETURN_REFUND,"top fit nahi hua, return karna hai (#dhc101906) urgent!!"
+TKT200862,DELIVERED,DAMAGED_OR_WRONG_ITEM,"received a different product, not what i ordered order id DHC100967 please check"
+TKT200863,DELIVERED,RETURN_REFUND,"Hello team, return kaise karu?"
+TKT200864,RTO_INITIATED,OTHER,app crash ho raha hai pls reply
+TKT200865,DELIVERED,DAMAGED_OR_WRONG_ITEM,packet phata hua tha aur lehenga pe daag hai (#DHC101072) pls reply
+TKT200866,DELIVERED,DELIVERED_NOT_RECEIVED,"order marked delivered, nobody came to my house pls reply"
+TKT200867,DELIVERED,WISMO,pls tell me delivery date for dhc101262
+TKT200868,DELIVERED,WISMO,Sir/Mam It's been 8 days since I ordered. Where is it? (#DHC101460) very bad service
+TKT200869,OUT_FOR_DELIVERY,WISMO,"namaste, mera order kaha hai third time messaging"
+TKT200870,OUT_FOR_DELIVERY,WISMO,Sir/Mam order kidhar hai bhai 🙏
+TKT200871,CANCELLED,WISMO,"Namaste, kab tak ayega mera dupatta?."
+TKT200872,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hello team, colour completely different, mustard ki jagah yellow aaya urgent!!"
+TKT200873,OUT_FOR_DELIVERY,WISMO,"Namaste, pls tell me delivery date for #DHC100103 :("
+TKT200874,IN_TRANSIT,WISMO,courier wala phone nahi utha raha (#DHC101821) pls reply
+TKT200875,DELIVERED,WISMO,Excuse me when will my order reach? need it for puja (dhc100272) please check
+TKT200876,SHIPPED,WISMO,HII WHEN WILL MY ORDER REACH? NEED IT FOR MEHNDI VERY BAD SERVICE
+TKT200877,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, button toote hue the kurti mein."
+TKT200878,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, watchman ne bhi nahi liya, phir delivered kaise dikha raha (order id DHC101855)."
+TKT200879,DELIVERED,DAMAGED_OR_WRONG_ITEM,HII PACKET PHATA HUA THA AUR KURTA SET PE DAAG HAI (#DHC101958)
+TKT200880,RTO_INITIATED,WISMO,order id DHC100730 ka status kya hai plz help
+TKT200881,OUT_FOR_DELIVERY,CANCEL_ORDER,"excuse me mujhe ye order nahi chahiye, cancel kardo (#dhc101916) please check"
+TKT200882,IN_TRANSIT,WISMO,where is my order order no DHC11905 very bad service
+TKT200883,RTO_INITIATED,WISMO,order abhi tak nahi aaya third time messaging
+TKT200884,DELIVERED,WISMO,courier wala phone nahi utha raha (order no DHC101278) please check
+TKT200885,OUT_FOR_DELIVERY,WISMO,"Excuse me tracking link kaam nahi kar raha, order kab aayega asap"
+TKT200886,SHIPPED,WISMO,Excuse me order id DHC100669 ka status kya hai very bad service
+TKT200887,DELIVERED,WISMO,"Hi, order abhi tak nahi aaya 🙏"
+TKT200888,DELIVERED,WISMO,"Dhaga team, parcel kahan atka hua hai??"
+TKT200889,RTO_INITIATED,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nahi aaya (DHC100977) 🙏"
+TKT200890,RTO_INITIATED,WISMO,"Hi, can you check my order DHC100745? no update"
+TKT200891,DELIVERED,OTHER,Excuse me do you have this dupatta in XXL?
+TKT200892,DELIVERED,RETURN_REFUND,paisewapas kab milenge (DHC101326)?
+TKT200893,CONFIRMED,WISMO,Hii when will my order reach? need it for college fest?
+TKT200894,DELIVERED,OTHER,"namaste, address change karna hai"
+TKT200895,RTO_INITIATED,WISMO,"Namaste, when will my order reach? need it for puja (order id DHC102372)?"
+TKT200896,DELIVERED,RETURN_REFUND,"HELLO TEAM, HOW CAN IGET A REFUND? PLS REPLY"
+TKT200897,SHIPPED,WISMO,Excuse me where is my order DHC101137 urgent!!
+TKT200898,DELIVERED,WISMO,"excuse me shipped dikha raha hai 8 din se, aage kuch update nahi pls reply"
+TKT200899,OUT_FOR_DELIVERY,WISMO,"dhaga team, tracking not updating since 12 days very bad service"
+TKT200900,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, watchman ne bhi nahi liya, phir delivered kaise dikha raha very bad service"
+TKT200901,RTO_INITIATED,WISMO,kab tak aayega mera palazzo? third time messaging
+TKT200902,IN_TRANSIT,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahiaaya"
+TKT200903,DELIVERED,WISMO,"Hello team, my saree was supposed to come yesterday, still not here :("
+TKT200904,OUT_FOR_DELIVERY,WISMO,pls tell me delivery date for order no DHC100332
+TKT200905,DELIVERED,RETURN_REFUND,"DHAGA TEAM, SIZE CHHOTA HAI, EXCHANGE YA RETURN CHAHIYE VERY BAD SERVICE"
+TKT200906,SHIPPED,WISMO,"Hi, Mera order kaha hai order id DHC100944."
+TKT200907,DELIVERED,WISMO,Hii DHC101620 ka status kya hai :(
+TKT200908,DELIVERED,OTHER,invoice chahiye GST wala asap
+TKT200909,CONFIRMED,WISMO,"Hello team, tracking link kaam nahi kar raha, order kab aayega"
+TKT200910,DELIVERED,RETURN_REFUND,"excuse me i want to return my top, didn't like the fabric very bad service"
+TKT200911,DELIVERED,OTHER,hii thanks.
+TKT200912,DELIVERED,DELIVERED_NOT_RECEIVED,"order order id DHC101279 marked delivered, nobody came to my house"
+TKT200913,OUT_FOR_DELIVERY,WISMO,can you check my order ? no update third time messaging
+TKT200914,CONFIRMED,WISMO,courier wala phone nahi utha raha (order id DHC100561)
+TKT200915,DELIVERED,DAMAGED_OR_WRONG_ITEM,"frock torn hai, very bad quality"
+TKT200916,IN_TRANSIT,WISMO,"Hii delivery date nikal gayi, abhi tak uch nahi aaya (DHC102384) pls reply"
+TKT200917,DELIVERED,WISMO,Hii tracking not updating since 4 days (order no DHC101845) :(
+TKT200918,RTO_INITIATED,COD_PAYMENT,"DHAGA TEAM, ONLINE PAY KIYA THA PHIR BHI COD MAAN RAHE?"
+TKT200919,OUT_FOR_DELIVERY,WISMO,"Dhaga team, Mera order kaha hai DHC100285 🙏"
+TKT200920,OUT_FOR_DELIVERY,WISMO,Order status please order no DHC102069 pls reply
+TKT200921,RTO_INITIATED,WISMO,"Namaste, It's been 9 days since I ordered. Where is it? very bad service"
+TKT200922,CANCELLED,RETURN_REFUND,"Dhaga team, size chhota hai, exchange ya return chahiye plz help"
+TKT200923,DELIVERED,WISMO,Excuse me Kab tak delivery hoga
+TKT200924,CONFIRMED,WISMO,"HI, MY FROCK WAS SUPPOSED TO COME YESTERDAY, STILL NOT HERE PLEASE CHECK"
+TKT200925,DELIVERED,DELIVERED_NOT_RECEIVED,Hii delivered dikha raha hai par mujhe mila nahi (#DHC101130) pls reply
+TKT200926,SHIPPED,WISMO,courier wala phone nahi utha raha (order id DHC100924) 🙏
+TKT200927,DELIVERED,COD_PAYMENT,COD amount kitna dena hai order no DHC101906 🙏
+TKT200928,IN_TRANSIT,WISMO,"Sir/Mam mujhe mehndi ke liye chahiye tha, kab milega?"
+TKT200929,OUT_FOR_DELIVERY,WISMO,order abhi tak nahi aaya.
+TKT200930,DELIVERED,RETURN_REFUND,"I want to return my kurti, didn't like the fabric very bad service"
+TKT200931,DELIVERED,DELIVERED_NOT_RECEIVED,"Hi, App shows delivered but I never received the parcel urgent!!"
+TKT200932,OUT_FOR_DELIVERY,WISMO,It's been 10 days since I ordered. Where is it? third time messaging
+TKT200933,DELIVERED,DELIVERED_NOT_RECEIVED,"order #dhc102360 marked delivered, nobody came to my house?"
+TKT200934,DELIVERED,DELIVERED_NOT_RECEIVED,"hii watchman ne bhi nahi liya, phir delivered kaise dikha raha"
+TKT200935,IN_TRANSIT,WISMO,"sir/mam order mila nahi abhi tak, kya hua? asp"
+TKT200936,RTO_INITIATED,WISMO,Order status please order id DHC100364 third time messaging
+TKT200937,OUT_FOR_DELIVERY,WISMO,where is my order
+TKT200938,CONFIRMED,WISMO,"Namaste, Kab tak delivery hoga"
+TKT200939,OUT_FOR_DELIVERY,WISMO,status check karo please #DHC101188 third time messaging
+TKT200940,IN_TRANSIT,WISMO,Excuse me parcel kahan atka hua hai? (order no DHC101349) pls reply
+TKT200941,RTO_INITIATED,WISMO,"Hi, mujhe mehndi ke liye chahiye tha, kab milega (oder no DHC102218) plz help"
+TKT200942,DELIVERED,WISMO,Excuse me parcel kahan atka hua hai??
+TKT200943,DELIVERED,WISMO,"hi, mera order kaha hai dhc10199."
+TKT200944,DELIVERED,WISMO,"Hii out for delivery tha kal, aaj tak nahi aaya (dhc100023)"
+TKT200945,IN_TRANSIT,WISMO,"my top was supposed to come 3 days back, still not here please check"
+TKT200946,OUT_FOR_DELIVERY,WISMO,"Hii delivery date nikal gayi, abhi tak kuch nahi aaya."
+TKT200947,DELIVERED,COD_PAYMENT,"Dhaga team, I need help with COD urgent!!"
+TKT200948,IN_TRANSIT,WISMO,"Hello team, where is my order #DHC102217 🙏"
+TKT200949,IN_TRANSIT,WISMO,order id dhc102101 ka status kya hai pls reply
+TKT200950,CONFIRMED,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nahi aaya (dhc101122) asap"
+TKT200951,CONFIRMED,WISMO,"tracking link kaam nahi kar raha, order kab aayega (dhc101205) urgent!!"
+TKT200952,OUT_FOR_DELIVERY,WISMO,"Namaste, It's been 6 days since I ordered. Where is it?"
+TKT200953,DELIVERED,RETURN_REFUND,"not happy with the saree, need refund very bad service"
+TKT200954,SHIPPED,WISMO,"Namaste, Kab ta delivery hoga."
+TKT200955,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye?
+TKT200956,DELIVERED,WISMO,"Namaste, pls tell me delivery date for"
+TKT200957,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hello team, wrong size aaya hai, maine xl order kiya tha plz help"
+TKT200958,RTO_INITIATED,WISMO,"my lehenga was supposed to come 3 daysback, still not here plz help"
+TKT200959,CONFIRMED,WISMO,Hii tracking not updating since 11 days asap
+TKT200960,CONFIRMED,WISMO,kab tak aayega mera dupatta?
+TKT200961,DELIVERED,OTHER,"Dhaga team, do you have this saree in XXL?"
+TKT200962,RTO_INITIATED,WISMO,Hii order kidhar hai bhai (#DHC100841) very bad service
+TKT200963,RTO_INITIATED,WISMO,Hii Order status please DHC101187 third time messaging
+TKT200964,DELIVERED,RETURN_REFUND,"Sir/Mam I want to return my palazzo, didn't like the fabric third tme messaging"
+TKT200965,DELIVERED,WISMO,"hello team, order kidhar hai bhai 🙏"
+TKT200966,CANCELLED,RETURN_REFUND,Sir/Mam paise wapas kab milenge plz help
+TKT200967,SHIPPED,WISMO,"my frock was supposed to come yesterday, still not here"
+TKT200968,DELIVERED,WISMO,"Hello team, mujhe puja ke liye chahiy tha, kab milega asap"
+TKT200969,DELIVERED,WISMO,SIR/MAM TRACKING NOT UPDATING SINCE 5 DAYS :(
+TKT200970,SHIPPED,WISMO,"Namaste, can you check my order ? no update please check"
+TKT200971,DELIVERED,RETURN_REFUND,"size chhota hai, exchange ya return chahiye asap"
+TKT200972,DELIVERED,RETURN_REFUND,return request kaise daalun app mein (dhc102397) :(
+TKT200973,DELIVERED,COD_PAYMENT,Sir/Mam COD amount kitna dena hai #DHC101576?
+TKT200974,OUT_FOR_DELIVERY,CANCEL_ORDER,"Namaste, I ordered by mistake, cancel it"
+TKT200975,CONFIRMED,WISMO,"Hello team, parcel kahan atka hua hai? (DHC101820) very bad service"
+TKT200976,DELIVERED,OTHER,HII THANKS THIRD TIME MESSAGING
+TKT200977,RTO_INITIATED,WISMO,"Namaste, courier wala phone nahi utha raha very bad service"
+TKT200978,DELIVERED,WISMO,"Namaste, pls tell me delivery date for dhc100536 please check"
+TKT200979,DELIVERED,RETURN_REFUND,"HI, PICKUP BOY AAYA HI NAHI RETURN KE LIYE :("
+TKT200980,RTO_INITIATED,OTHER,"Hi, size chart sahi hai kya?"
+TKT200981,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, top torn hai, very bad quality."
+TKT200982,SHIPPED,WISMO,"Dhaga team, Shipped dikha raha hai 5 din se, aage kuch update nahi"
+TKT200983,RTO_INITIATED,WISMO,"Hi, parcel kahan atka hua hai? asap"
+TKT200984,OUT_FOR_DELIVERY,WISMO,status check karo plz #DHC100675 plz check
+TKT200985,DELIVERED,RETURN_REFUND,paise wapas kab milenge :(
+TKT200986,IN_TRANSIT,WISMO,"Hi, can you check my order ? no update very bad service"
+TKT200987,DELIVERED,WISMO,Kab tak delivery hoga third time messaging
+TKT200988,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Excuse me stain on the saree when it arrived, pls replace"
+TKT200989,DELIVERED,RETURN_REFUND,refund kab aayega? pickup ho gaya 8 din pehle
+TKT200990,DELIVERED,RETURN_REFUND,Hii How can I get a refund? :(
+TKT200991,CANCELLED,RETURN_REFUND,Excuse me refund kab aayega? pickup ho gaya 10 din pehle third time messaging
+TKT200992,DELIVERED,RETURN_REFUND,Hii return kaise karu order no DHC101706
+TKT200993,SHIPPED,WISMO,"Hello team, Shipped dikha raha hai 7 din se, aage kuch update nahi"
+TKT200994,DELIVERED,OTHER,address change karna hai 🙏
+TKT200995,DELIVERED,RETURN_REFUND,"Sir/Mam shoulders se bahut tight hai, return please urgent!!"
+TKT200996,OUT_FOR_DELIVERY,WISMO,"Namaste, Kab tak delivery hoga asap"
+TKT200997,SHIPPED,WISMO,"sir/mam tracking link kaam nahi kar raha, order kab aayega please check"
+TKT200998,DELIVERED,DELIVERED_NOT_RECEIVED,SIR/MAM IT SAYS DELIVERED YESTERDAY BUT I GOT NOTHING VERY BAD SERVICE
+TKT200999,IN_TRANSIT,WISMO,"namaste, kab tak delivery hoga (#dhc101423)"
+TKT201000,IN_TRANSIT,WISMO,Excuse me Order status plz #DHC101569 :(
+TKT201001,DELIVERED,WISMO,"Hello team, parcel kahan atka hua hai? pls reply"
+TKT201002,DELIVERED,WISMO,"Hello tea, mujhe puja ke liye chahiye tha, kab milega plz help"
+TKT201003,OUT_FOR_DELIVERY,WISMO,"Hii tracking link kaam nahi kar raha, order kab aayega"
+TKT201004,DELIVERED,WISMO,"Excuse me Shipped dikha raha hai 12 din se, aae kuch update nahi"
+TKT201005,OUT_FOR_DELIVERY,WISMO,can you check my order ? no update 🙏
+TKT201006,DELIVERED,RETURN_REFUND,"Dhaga team, shoulders se bahut tight hai, return please"
+TKT201007,CONFIRMED,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahi aya"
+TKT201008,DELIVERED,WISMO,HII PLS TELL ME DELIVERY DATE FOR DHC100366
+TKT201009,DELIVERED,OTHER,"Hi, I was chared twice"
+TKT201010,DELIVERED,RETURN_REFUND,"Dhaga team, paise wapas kab milenge (dhc101371)"
+TKT201011,RTO_INITIATED,WISMO,"Hi, parcel kahan atka hua ai? 🙏"
+TKT201012,DELIVERED,RETURN_REFUND,Hii return request kaise daalun app mein?
+TKT201013,DELIVERED,WISMO,Sir/Mam order kidhar hai bhai (dhc100630)?
+TKT201014,OUT_FOR_DELIVERY,WISMO,"Hello team, when will my order reach? need it for Diwali"
+TKT201015,RTO_INITIATED,WISMO,when will my order reach? need it for puja third time messaging
+TKT201016,DELIVERED,RETURN_REFUND,paise wapas kab milenge pls reply
+TKT201017,CANCELLED,OTHER,"dhaga team, address change karna hai very bad service"
+TKT201018,DELIVERED,RETURN_REFUND,"not happy with the top, need refund please check"
+TKT201019,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me stitching khul gayi pehli baar pehente hi
+TKT201020,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, delivered status galat hai, maine kuch receive nahi kiya #DHC100521"
+TKT201021,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hii received a different product, not what i ordered dhc100488 urgent!!"
+TKT201022,DELIVERED,OTHER,new collction kab aayega urgent!!
+TKT201023,DELIVERED,WISMO,"Dhaga team, order kidhar hai bhai very bad service"
+TKT201024,IN_TRANSIT,WISMO,"Dhaga team, Order status please order id DHC100333."
+TKT201025,DELIVERED,WISMO,"Hello team, my palazzo was supposed to come by Friday, still not here"
+TKT201026,OUT_FOR_DELIVERY,WISMO,"Hi, order abhi tak nahi aaya urgent!!"
+TKT201027,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the shirt when it arrived, pls replae urgent!!"
+TKT201028,DELIVERED,WISMO,"HELLO TEAM, ORDER STATUS PLEASE ORDER ID DHC101279 :("
+TKT201029,DELIVERED,WISMO,"Dhaga team, can you check my order ? no update pls reply"
+TKT201030,DELIVERED,RETURN_REFUND,"i want to return my frock, didn't like the fabric"
+TKT201031,OUT_FOR_DELIVERY,WISMO,"Namaste, pl tell me delivery date for order no DHC101574."
+TKT201032,IN_TRANSIT,WISMO,Hii order no DHC101228 ka status kya hai very bad service
+TKT201033,CONFIRMED,WISMO,courier wala phone nahi utha raha (#DHC100652) 🙏
+TKT201034,IN_TRANSIT,WISMO,"Dhaga team, Shipped dikha raha hai 6 din se, aage kuch update nahi?"
+TKT201035,CONFIRMED,WISMO,"Shipped dikha raha hai 7 din se, aage kuch update nahi 🙏"
+TKT201036,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye 🙏
+TKT201037,SHIPPED,WISMO,"NAMASTE, PARCEL KAHAN ATKA HUA HAI??"
+TKT201038,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega 🙏"
+TKT201039,RTO_INITIATED,COD_PAYMENT,"Dhaga team, COD amount kitna dena hai :("
+TKT201040,OUT_FOR_DELIVERY,WISMO,Sir/Mam courier wala phone nahi utha raha (dhc100049) :(
+TKT201041,DELIVERED,OTHER,EXCUSE ME APP CRASH HO RAHA HAI
+TKT201042,DELIVERED,WISMO,"Hello team, #DHC100075 ka status kya hai pls reply"
+TKT201043,DELIVERED,OTHER,"dhaga team, aapka store kahan hai?"
+TKT201044,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam stain on the shirt when it arrived, pls replace pls reply"
+TKT201045,SHIPPED,WISMO,"Namaste, mujhe college fest ke liye chahiye tha, kab milega plz help"
+TKT201046,IN_TRANSIT,WISMO,SIR/MAM CAN YOU CHECK MY ORDER DHC100192? NO UPDATE PLZ HELP
+TKT201047,CANCELLED,RETURN_REFUND,hii pickup boy aaya hi nahi return ke liye third time messaging
+TKT201048,IN_TRANSIT,WISMO,Hii kab tak aayega mera kurta set? :(
+TKT201049,DELIVERED,DAMAGED_OR_WRONG_ITEM,"colour completely different, mustard ki jagah yellow aaya asap"
+TKT201050,DELIVERED,WISMO,"hi, shipped dikha raha hai 11 din se, aage kuch update nahi third time messaging"
+TKT201051,DELIVERED,WISMO,"Namaste, mujhe Diwali ke iye chahiye tha, kab milega"
+TKT201052,OUT_FOR_DELIVERY,WISMO,"Hello team, status check karo please order no DHC102331"
+TKT201053,DELIVERED,RETURN_REFUND,how can i get a refund? plz check
+TKT201054,IN_TRANSIT,WISMO,Excuse me tracking not updating since 7 days pls reply
+TKT201055,SHIPPED,COD_PAYMENT,i need help with cod?
+TKT201056,DELIVERED,OTHER,"namaste, thanks asap"
+TKT201057,DELIVERED,WISMO,KABTAK DELIVERY HOGA VERY BAD SERVICE
+TKT201058,DELIVERED,DELIVERED_NOT_RECEIVED,PARCEL DELIVER HUA BOL RAHA HAI LEKIN AAYA HI NAHI?
+TKT201059,OUT_FOR_DELIVERY,WISMO,parcel kahan atka hua hai?
+TKT201060,OUT_FOR_DELIVERY,WISMO,"dhaga team, delivery date nikal gayi, abhi tak kuchnahi aaya"
+TKT201061,SHIPPED,WISMO,"Dhaga team, order abhi tak nahi aaya :("
+TKT201062,DELIVERED,RETURN_REFUND,"Excuse me not happy with the kurta set, need refund plz help"
+TKT201063,OUT_FOR_DELIVERY,WISMO,"Hello team, tracking not updating since 2 days urgent!!"
+TKT201064,RTO_INITIATED,WISMO,mera order kaha hai order id dhc101933 asap
+TKT201065,DELIVERED,WISMO,"OUT FOR DELIVERY THA KAL, AAJ TAK NAHI AAYA :("
+TKT201066,DELIVERED,WISMO,"hello team, pls tell me delivery date fr."
+TKT201067,DELIVERED,OTHER,"Dhaga team, new collection kab aayega plz help"
+TKT201068,DELIVERED,OTHER,Sir/Mam coupon code kaam ahi kar raha?
+TKT201069,DELIVERED,RETURN_REFUND,hii return kaise karu #dhc100852
+TKT201070,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me I received a damaged palazzo thirdtime messaging
+TKT201071,IN_TRANSIT,WISMO,"Hi, tracking not updating since 6 days."
+TKT201072,DELIVERED,RETURN_REFUND,"Sir/Mam shoulders se bahut tight hai, return please plz help"
+TKT201073,DELIVERED,WISMO,"Hii out for delivery tha kal, aaj tak nahi aaya"
+TKT201074,RTO_INITIATED,WISMO,"Hi, order kidhar hai bhai plz help"
+TKT201075,CONFIRMED,WISMO,Hii status check karo please order no DHC100535
+TKT201076,DELIVERED,OTHER,coupon code kaam nahi kar raha asap
+TKT201077,DELIVERED,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahi aaya pls reply"
+TKT201078,DELIVERED,WISMO,"Hello team, It's been 8 days since I ordered. Where is it? pls reply"
+TKT201079,DELIVERED,WISMO,"Namaste, order mila nahi abhi tak, kya hua? very bad service"
+TKT201080,DELIVERED,WISMO,"Hi, dhc100578 ka status kya hai urgent!!"
+TKT201081,DELIVERED,DELIVERED_NOT_RECEIVED,Excuse me delivred dikha raha hai par mujhe mila nahi urgent!!
+TKT201082,IN_TRANSIT,WISMO,Mera order kaha hai.
+TKT201083,DELIVERED,OTHER,"daga team, app crash ho raha hai?"
+TKT201084,DELIVERED,COD_PAYMENT,online pay kiya tha phir bhi COD maang rahe 🙏
+TKT201085,DELIVERED,RETURN_REFUND,Hii return request kaise daalun app mein
+TKT201086,DELIVERED,RETURN_REFUND,RETURN KAISE KARU
+TKT201087,CONFIRMED,WISMO,"Hello team, tracking not updating since 12 days (order no DHC102276) very bad service"
+TKT201088,DELIVERED,WISMO,Excuse me can you check my order dhc101146? no update asap
+TKT201089,DELIVERED,OTHER,"Dhaga team, invoice chahiye GST wala"
+TKT201090,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, stitching khul gayi pehli baar pehente hi asap"
+TKT201091,DELIVERED,RETURN_REFUND,return kaise karu #DHC100159
+TKT201092,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aaega (DHC102148) asap"
+TKT201093,DELIVERED,WISMO,Excuse me #DHC102170 ka status kya hai please check
+TKT201094,DELIVERED,DAMAGED_OR_WRONG_ITEM,i received a damaged saree third time messaging
+TKT201095,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, stitching khul gayi pehli baar pehente hi (order no DHC100408) pls reply"
+TKT201096,CONFIRMED,WISMO,"Dhaga team, kab tak aayega mera top? please check"
+TKT201097,DELIVERED,DELIVERED_NOT_RECEIVED,Sir/Mam it says delivered yesterday but I got nothing 🙏
+TKT201098,SHIPPED,WISMO,Sir/Mam Mera order kahahai asap
+TKT201099,OUT_FOR_DELIVERY,WISMO,kab tak aayega mera top? asap
+TKT201100,SHIPPED,WISMO,"Namaste, It's been 3 days since I ordered. Where is it? (DHC102448) :("
+TKT201101,DELIVERED,DAMAGED_OR_WRONG_ITEM,"colour completely different, mustard ki jagah yellow aaya plz help"
+TKT201102,RTO_INITIATED,WISMO,"out for delivery tha kal, aaj tak nahi aaya very bad service"
+TKT201103,DELIVERED,WISMO,"order mila nahi abhi tak, kya hua? please check"
+TKT201104,CONFIRMED,WISMO,Excuse me tracking not updating since 12 days urgent!!
+TKT201105,RTO_INITIATED,WISMO,"dhaga team, shipped dikha raha hai 12 din se, aage kuch update nahi very bad service"
+TKT201106,OUT_FOR_DELIVERY,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahi aaya asap"
+TKT201107,DELIVERED,RETURN_REFUND,"Excuse me shoulders se bahut tight hai, return please (DHC100910)"
+TKT201108,IN_TRANSIT,WISMO,"Hii delivery date nikal gay, abhi tak kuch nahi aaya (DHC102399) third time messaging"
+TKT201109,DELIVERED,WISMO,"Hi, Mera order kaha hai DHC100598 pls reply"
+TKT201110,CONFIRMED,WISMO,Hii when will my order reach? need it for college fest very bad service
+TKT201111,DELIVERED,OTHER,app crash ho raha hai 🙏
+TKT201112,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, galat colour bhej diya aapne very bad service"
+TKT201113,DELIVERED,WISMO,can you check my order order no DHC102228? no update?
+TKT201114,IN_TRANSIT,WISMO,KAB TAK AAYEGA MERA LEHENGA? THIRD TIME MESSAGING
+TKT201115,SHIPPED,WISMO,"Sir/Mam tracking link kaam nahi kar raha, order kab aayega"
+TKT201116,DELIVERED,OTHER,Sir/Mam aapka store kahan hai?
+TKT201117,DELIVERED,RETURN_REFUND,"Hello team, return request kaise daalun app mein third time messaging"
+TKT201118,OUT_FOR_DELIVERY,WISMO,Sir/Mam when will my order reach? need it for office.
+TKT201119,OUT_FOR_DELIVERY,OTHER,"HELLO TEAM, I WAS CHARGED TWICE"
+TKT201120,DELIVERED,DELIVERED_NOT_RECEIVED,"NAMASTE, WATCHMAN NE BHI NAHI LIYA, PHIR DELIVERED KAISE DIKHA RAHA ASAP"
+TKT201121,CONFIRMED,WISMO,"Namaste, order abhi tak nahi aaya?"
+TKT201122,DELIVERED,WISMO,Sir/Mam when will my order reach? need it for Diwali
+TKT201123,SHIPPED,WISMO,"Hi, mujhe shaadi ke liye chahiye tha, kab milega third time messaging"
+TKT201124,OUT_FOR_DELIVERY,WISMO,Mera order kaha hai order id DHC102023 very bad service
+TKT201125,CONFIRMED,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT201126,OUT_FOR_DELIVERY,COD_PAYMENT,Excuse me cash on delivery available hai kya
+TKT201127,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, App shows delivered but I never received the parcel urgent!!"
+TKT201128,OUT_FOR_DELIVERY,WISMO,Hii It's been 9 days since I ordered. Where is it? urgent!!
+TKT201129,SHIPPED,OTHER,Excuse me do you have his dress in XXL? asap
+TKT201130,RTO_INITIATED,WISMO,"Namaste, tracking not updating since 10 days"
+TKT201131,DELIVERED,OTHER,size chart sahi hai kya? plz help
+TKT201132,OUT_FOR_DELIVERY,WISMO,"Dhaga team, kab tak aayegamera dupatta? (#DHC100814) :("
+TKT201133,CONFIRMED,WISMO,when will my order reach? need it for puja plz help
+TKT201134,DELIVERED,RETURN_REFUND,"Hello team, How can I get a refund? plz help"
+TKT201135,DELIVERED,RETURN_REFUND,"Dhaga team, return request kaise daalun app mein"
+TKT201136,DELIVERED,WISMO,"Dhaga team, courier wala phone nahi utha raha asap"
+TKT201137,CANCELLED,RETURN_REFUND,paise wapas kab milenge (DHC101745) very bad service
+TKT201138,DELIVERED,RETURN_REFUND,return kaise karu :(
+TKT201139,CONFIRMED,OTHER,address chnge karna hai 🙏
+TKT201140,CONFIRMED,WISMO,"tracking link kaam nahi kar raha, order kab aayega please check"
+TKT201141,DELIVERED,RETURN_REFUND,Hii paise wapas kab milenge (DHC10202) plz help
+TKT201142,DELIVERED,RETURN_REFUND,"Excuse me lehenga fit nahi hua, return karna hai asap"
+TKT201143,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, received a different product, not what i ordered #DHC100649 third time messaging"
+TKT201144,DELIVERED,WISMO,"Hello team, ka status kya hai third time messaging"
+TKT201145,OUT_FOR_DELIVERY,CANCEL_ORDER,"I ordered by mistake, cancel it?"
+TKT201146,OUT_FOR_DELIVERY,WISMO,Sir/Mam kab tak aayega mera palazzo? third time messaging
+TKT201147,DELIVERED,WISMO,"dhaga team, pls tell me delivery date for"
+TKT201148,IN_TRANSIT,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nah aaya third time messaging"
+TKT201149,DELIVERED,WISMO,Order status please order id DHC102285 :(
+TKT201150,IN_TRANSIT,WISMO,"SIR/MAM TRACKING LINK KAAM NAHI KAR RAHA, ORDER KAB AAYEGA"
+TKT201151,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, parcel deliver hua bol raha hai lekin aaya hi nahi plz help"
+TKT201152,CONFIRMED,WISMO,"out for deivery tha kal, aaj tak nahi aaya?"
+TKT201153,IN_TRANSIT,WISMO,"Hi, status check karo please urgent!!"
+TKT201154,DELIVERED,RETURN_REFUND,"Hi, shoulders se bahut tght hai, return please"
+TKT201155,IN_TRANSIT,WISMO,Excuse me courier wala phne nahi utha raha 🙏
+TKT201156,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye.
+TKT201157,OUT_FOR_DELIVERY,WISMO,Mera order kaha hai order id DHC101195 pls reply
+TKT201158,CONFIRMED,WISMO,"hi, shipped dikha raha hai 2 din se, aage kuch update nahi"
+TKT201159,RTO_INITIATED,COD_PAYMENT,Excuse me cash on delivery available hai kya DHC100407 very bad service
+TKT201160,RTO_INITIATED,WISMO,"namaste, when will my order reach? need it for puja urgent!!"
+TKT201161,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return please?"
+TKT201162,IN_TRANSIT,WISMO,"HI, KAB TAK AAEGA MERA KURTI? (DHC100735)."
+TKT201163,DELIVERED,RETURN_REFUND,"Hello team, return request kaise daalun app mein (dhc100715) pls reply"
+TKT201164,CONFIRMED,WISMO,"Hi, order kidhar hai bhai"
+TKT201165,DELIVERED,WISMO,"hi, out for delivery tha kal, aaj tak nahi aaya pls reply"
+TKT201166,DELIVERED,COD_PAYMENT,COD charges kyun lag rahe hai (order no DC100200) :(
+TKT201167,DELIVERED,OTHER,Sir/Mam aapka store kahan hai? asap
+TKT201168,OUT_FOR_DELIVERY,WISMO,Sir/Mam It's been 3 days since I ordered. Where is it? urgent!!
+TKT201169,DELIVERED,WISMO,"Sir/Mam Shipped dikha raha hai 6 din se, aage kuch update nahi plz help"
+TKT201170,CONFIRMED,CANCEL_ORDER,"Hi, please cancel my order urgent!!"
+TKT201171,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, order DHC102469 marked delivered, nobody came to my house please check"
+TKT201172,RTO_INITIATED,WISMO,excuse me orderno dhc100753 ka status kya hai
+TKT201173,SHIPPED,WISMO,Hii It's been 10 days since I ordered. Where is it?
+TKT201174,IN_TRANSIT,WISMO,Excuse me DHC102179 ka sttus kya hai very bad service
+TKT201175,DELIVERED,COD_PAYMENT,"Excuse me delivery boy change nahi de raha, kya karu (dhc100695) 🙏"
+TKT201176,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi pls reply
+TKT201177,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam stain on the kurti when it arrived, pls replace"
+TKT201178,CANCELLED,OTHER,invoice chahiye GST wala
+TKT201179,RTO_INITIATED,CANCEL_ORDER,"Dhaga team, mujhe ye order nahi chahiye, cancel kardo urgent!!"
+TKT201180,CONFIRMED,COD_PAYMENT,Hii COD amount kitna dena hai.
+TKT201181,DELIVERED,OTHER,Excuse me ok ok pls reply
+TKT201182,DELIVERED,OTHER,"Hi, coupon code kaam nahi kar raha very bad service"
+TKT201183,DELIVERED,WISMO,"Hello team, out for delivery tha kal, aaj tak nahi aaya (DHC102063) pls reply"
+TKT201184,DELIVERED,WISMO,"dhaga team, where is my order order no dhc100824 🙏"
+TKT201185,DELIVERED,WISMO,"Excuse me order mila nahi abhi tak, kya hua??"
+TKT201186,OUT_FOR_DELIVERY,WISMO,"Namaste, out for delivery tha ka, aaj tak nahi aaya (DHC102319) asap"
+TKT201187,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai (dhc102328) urgent!!"
+TKT201188,DELIVERED,WISMO,ka status kya hai?
+TKT201189,DELIVERED,RETURN_REFUND,"Hello team, I want to return my shirt, didn't like the fabric"
+TKT201190,DELIVERED,OTHER,"Hi, app crash ho raha hai pls reply"
+TKT201191,IN_TRANSIT,WISMO,WHEN WILL MY ORDER REACH? NEED IT FOR DIWALI.
+TKT201192,DELIVERED,OTHER,"Hi, invoice chahiye GST wala 🙏"
+TKT201193,OUT_FOR_DELIVERY,WISMO,"Namaste, delivery date nikal gayi, abhi tak kuch nahi aaya (order id DHC102313) please check"
+TKT201194,RTO_INITIATED,WISMO,"Hii tracking link kaam nahi kar raha, order kab aayega third time messaging"
+TKT201195,RTO_INITIATED,WISMO,"Hi, can you check my order ? no update?"
+TKT201196,OUT_FOR_DELIVERY,WISMO,"namaste, my dupatta was supposed to come yesterday, still not here (dhc102500) third time messaging"
+TKT201197,SHIPPED,WISMO,"namaste, order mila nahi abhi tak, kya hua? :("
+TKT201198,DELIVERED,WISMO,"DHAGA TEAM, ORDER MILA NAHI ABHI TAK, KYA HUA? PLS REPLY"
+TKT201199,DELIVERED,WISMO,"Sir/Mam Shipped dikha raha hai 8 din se, aage kuch update nahi?"
+TKT201200,DELIVERED,OTHER,Excuse me I was charged twice :(
+TKT201201,DELIVERED,RETURN_REFUND,"Hi, refund status for order id DHC100625 plz very bad service"
+TKT201202,DELIVERED,RETURN_REFUND,"Dhaga team, return request kaise daalun app mein?"
+TKT201203,OUT_FOR_DELIVERY,WISMO,kab tak aayega mera shirt??
+TKT201204,OUT_FOR_DELIVERY,WISMO,"HELLO TEAM, STATUS CHECK KARO PLEASE ORDER NO DHC101225?"
+TKT201205,DELIVERED,WISMO,Excuse me can you check my order ? no update asap
+TKT201206,DELIVERED,WISMO,"Dhaga team, delivery date nikal gayi, abhi tak kuch nahi aaya pls reply"
+TKT201207,OUT_FOR_DELIVERY,WISMO,"Excuse me tracking link kaam nahi kar raha, order kab aayega (#DHC100688) very bad service"
+TKT201208,RTO_INITIATED,WISMO,Excuse me order abhi tak nahi aaya 🙏
+TKT201209,DELIVERED,WISMO,tracking not updating since 10 days please check
+TKT201210,DELIVERED,RETURN_REFUND,"I want to return my top, didn't like the fabric very bad service"
+TKT201211,DELIVERED,OTHER,"Hi, size chart sahi hai kya? pls reply"
+TKT201212,DELIVERED,OTHER,"Hello team, aapka store kahan hai?"
+TKT201213,SHIPPED,WISMO,"Sir/Mam order mila nahi abhi tak, kya hua? pls reply"
+TKT201214,SHIPPED,WISMO,"Hello team, delivery date nikal gayi, abhi tak kuch nahi aaya very bad service"
+TKT201215,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam packet phata hua tha aur top pe daag hai (order no DHC100632) pls reply
+TKT201216,DELIVERED,COD_PAYMENT,excuse me i need help with cod 🙏
+TKT201217,IN_TRANSIT,WISMO,"Namaste, Mer order kaha hai?"
+TKT201218,RTO_INITIATED,WISMO,"DELIVERY DATE NIKAL GAYI, ABHI TAK KUCH NAHI AAYA 🙏"
+TKT201219,IN_TRANSIT,CANCEL_ORDER,"Namaste, order cancel karna hai 🙏"
+TKT201220,DELIVERED,OTHER,"HELLO TEAM, APP CRASH HO RAHA HAI."
+TKT201221,DELIVERED,RETURN_REFUND,"Hii not happy with the kurta set, need refund."
+TKT201222,DELIVERED,RETURN_REFUND,"Dhaga team, refund kab aayega? pickup ho gaya 4 din pehle"
+TKT201223,IN_TRANSIT,COD_PAYMENT,"DHAGA TEAM, I NEED HELP WITH COD (DHC101729) PLS REPLY"
+TKT201224,CANCELLED,OTHER,excuse me thanks
+TKT201225,DELIVERED,DAMAGED_OR_WRONG_ITEM,Hii galat colour bhej diya aapne 🙏
+TKT201226,DELIVERED,WISMO,"Hii out for delivery tha kal, aaj tak nahi aaya (#DHC100786)"
+TKT201227,IN_TRANSIT,WISMO,"Hii my palazzo was supposed to come 3 days back, still not here"
+TKT201228,IN_TRANSIT,WISMO,where is my order DHC102321 please check
+TKT201229,OUT_FOR_DELIVERY,WISMO,"dhaga team, kab tak delivery hoga (#dhc100080)?"
+TKT201230,DELIVERED,OTHER,Hii sze chart sahi hai kya? plz help
+TKT201231,CANCELLED,RETURN_REFUND,"Excuse me not happy with the lehenga, need refund?"
+TKT201232,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam stain on the kurti when it arrived, pls replace plz check"
+TKT201233,DELIVERED,WISMO,"Hello team, kab ta aayega mera dress?"
+TKT201234,DELIVERED,WISMO,"Hello team, when will my order reach? need it for puja please check"
+TKT201235,OUT_FOR_DELIVERY,WISMO,"Namaste, status check karo please order no DHC101044 very bad service"
+TKT201236,DELIVERED,OTHER,invoice chahiye gst wala very bad service
+TKT201237,DELIVERED,OTHER,"Namaste, size chart sahi hai kya? :("
+TKT201238,OUT_FOR_DELIVERY,WISMO,Sir/Mam courier wala phone nahi utha raha
+TKT201239,CONFIRMED,CANCEL_ORDER,how to cancel order? option nahi dikh raha plz help
+TKT201240,OUT_FOR_DELIVERY,WISMO,"namaste, tracking link kaam nahi kar raha, order kab aayega plz help"
+TKT201241,DELIVERED,RETURN_REFUND,"I want to return my saree, didn't like the fabric very bad service"
+TKT201242,SHIPPED,WISMO,can you check my order dhc101309? no update third time messaging
+TKT201243,SHIPPED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya asap"
+TKT201244,DELIVERED,DAMAGED_OR_WRONG_ITEM,"received a different product, not what i ordered urget!!"
+TKT201245,RTO_INITIATED,WISMO,"Dhaga team, tracking not updating since 8 days"
+TKT201246,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, lehenga torn hai, very bad quality please check"
+TKT201247,DELIVERED,DELIVERED_NOT_RECEIVED,"order order id DHC101815 marked delivered, nobody came to my houe"
+TKT201248,DELIVERED,OTHER,"Hi, size chart sahi hai kya? :("
+TKT201249,DELIVERED,WISMO,"Dhaga team, delivery date nikal gayi, abhi tak kuch nahi aaya plz check"
+TKT201250,DELIVERED,RETURN_REFUND,"NOT HAPPY WITH THE SHIRT, NEED REFUND VERY BAD SERVICE"
+TKT201251,DELIVERED,OTHER,Sir/Mam ok ok 🙏
+TKT201252,OUT_FOR_DELIVERY,WISMO,"hello team, shipped dikha raha hai 7 din se, aage kuch update nahi :("
+TKT201253,CONFIRMED,CANCEL_ORDER,"mujhe ye order nahi chahiye, cancel kardo"
+TKT201254,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the lehenga when it arrived, pls replace (#DHC101829) third time messaging"
+TKT201255,DELIVERED,WISMO,pls tell me delivery date for order id DHC101332 🙏
+TKT201256,RTO_INITIATED,WISMO,tracking not updating since 9 days please check
+TKT201257,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai asap"
+TKT201258,DELIVERED,RETURN_REFUND,"Hello team, refund kab aayega? pickup ho gaya 4 din pehle."
+TKT201259,DELIVERED,WISMO,"hi, courier wala phone nahi utha raha?"
+TKT201260,SHIPPED,COD_PAYMENT,"NAMASTE, CAN I PAY BY GPAY AT DELIVERY?"
+TKT201261,DELIVERED,WISMO,Sir/Mam Mera order kaha hai #DHC12209 urgent!!
+TKT201262,RTO_INITIATED,WISMO,"Dhaga team, tracking not updating since 4 days :("
+TKT201263,DELIVERED,OTHER,aapka store kahan hai? third time messaging
+TKT201264,DELIVERED,DELIVERED_NOT_RECEIVED,it says delivered yesterday but I got nothing third time messaging
+TKT201265,CONFIRMED,WISMO,order abhi tak nahi aaya
+TKT201266,IN_TRANSIT,WISMO,can you check my order DHC101709? no update
+TKT201267,DELIVERED,OTHER,"Namaste, ok ok very bad serice"
+TKT201268,IN_TRANSIT,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nahi aaya (dhc101000)"
+TKT201269,DELIVERED,RETURN_REFUND,"not happy with the saree, need refund"
+TKT201270,CONFIRMED,WISMO,order kidhar hai bhai (dhc102465)?
+TKT201271,OUT_FOR_DELIVERY,WISMO,"Namaste, when will my order reach? need it for mehndi"
+TKT201272,DELIVERED,WISMO,dhc100998 ka status kya hai.
+TKT201273,OUT_FOR_DELIVERY,WISMO,excuse me pls tell me delivery date for #dhc102338 urgent!!
+TKT201274,IN_TRANSIT,WISMO,"hello team, when will my order reach? need it for office (order id dhc100420) 🙏"
+TKT201275,DELIVERED,WISMO,"Hello team, my saree was supposed to come 3 days back, still not here?"
+TKT201276,DELIVERED,DAMAGED_OR_WRONG_ITEM,"top torn hai, very bad quality please check"
+TKT201277,DELIVERED,WISMO,"Namaste, ka status kyahai"
+TKT201278,DELIVERED,OTHER,Excuse me app crash ho raha hai very bad service
+TKT201279,SHIPPED,WISMO,"Hii Shipped dikha raha hai 8 din se, aage kuch update nahi very bad service"
+TKT201280,DELIVERED,COD_PAYMENT,"Dhaga team, COD charges kyun lag rahe hai very bad service"
+TKT201281,IN_TRANSIT,WISMO,EXCUSE ME COURIER WALA PHONE NAHI UTHA RAHA?
+TKT201282,DELIVERED,WISMO,"Dhaga team, when will my order reach? need it for puja urgent!!"
+TKT201283,DELIVERED,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya?"
+TKT201284,DELIVERED,OTHER,I was charged twice very bad service
+TKT201285,DELIVERED,WISMO,Excuse me Kab tak delivery hoga :(
+TKT201286,CONFIRMED,WISMO,Sir/Mam courier wala phone nahi utha raha asap
+TKT201287,SHIPPED,WISMO,"Hello team, were is my order order no DHC100329 pls reply"
+TKT201288,OUT_FOR_DELIVERY,WISMO,courier wala phone nahi utha raha (dhc100012) asap
+TKT201289,DELIVERED,WISMO,"NAMASTE, SHIPPED DIKHA RAHA HAI 10 DIN SE, AAGE KUCH UPDATE NAHI (DHC101443) PLS REPLY"
+TKT201290,SHIPPED,WISMO,Order status plz
+TKT201291,DELIVERED,RETURN_REFUND,"hii dress fit nahi hua, return karna hai very bad service"
+TKT201292,DELIVERED,DAMAGED_OR_WRONG_ITEM,"COLOUR COMPLETELY DIFFERENT, MUSTARD KI JAGAH YELLOW AAYA :("
+TKT201293,DELIVERED,COD_PAYMENT,"Hi, I need help with COD pls reply"
+TKT201294,OUT_FOR_DELIVERY,WISMO,mera order kaha hai dhc101315 third time messaging
+TKT201295,DELIVERED,WISMO,"out for delivery tha kal, aaj tak nahi aaya :("
+TKT201296,DELIVERED,RETURN_REFUND,"hi, frock fit nahi hua, return karna hai"
+TKT201297,DELIVERED,WISMO,Sir/Mam courier wala phone nahi utha raha?
+TKT201298,DELIVERED,RETURN_REFUND,"hi, return request kaise daalun app mein very bad service"
+TKT201299,SHIPPED,WISMO,"Dhaga team, where is my order :("
+TKT201300,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, button toote hue the frock mein pls reply"
+TKT201301,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hii dress torn hai, very bad quality (dhc102081) urgent!!"
+TKT201302,IN_TRANSIT,WISMO,when will my order reach? need it for office (order no DHC101917) please check
+TKT201303,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, galat colour bhej diya aapne plz help"
+TKT201304,DELIVERED,RETURN_REFUND,paise wapas kab milenge (order no DHC102255) 🙏
+TKT201305,DELIVERED,WISMO,"dhaga team, order status please dhc100433 tird time messaging"
+TKT201306,DELIVERED,RETURN_REFUND,"hello team, saree fit nahi hua, return karna hai :("
+TKT201307,CONFIRMED,WISMO,Sir/Mam order i DHC102151 ka status kya hai urgent!!
+TKT201308,DELIVERED,OTHER,"dhaga team, do you have this frock in xxl?"
+TKT201309,DELIVERED,WISMO,It's been 11 days since I ordered. Where is it? plz help
+TKT201310,DELIVERED,RETURN_REFUND,hii return kaise karu #dhc100256
+TKT201311,RTO_INITIATED,WISMO,order id dhc102419 ka status kya hai plz help
+TKT201312,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return please plz help"
+TKT201313,OUT_FOR_DELIVERY,WISMO,Excuse me It's been 2 days since I ordered. Where is it? asap
+TKT201314,DELIVERED,WISMO,"hello team, kab tak aaega mera lehenga?."
+TKT201315,DELIVERED,WISMO,Hii where is my order dhc100663
+TKT201316,DELIVERED,OTHER,Hii size chart sahi hai kya? urgent!!
+TKT201317,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, button toote hue the dress mein"
+TKT201318,IN_TRANSIT,WISMO,Hii order abhi tak nahi aaya very bad service
+TKT201319,DELIVERED,WISMO,"Namaste, where is my order order no DHC101515."
+TKT201320,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam stitching khul gayi pehli baar pehente hi very bad service
+TKT201321,DELIVERED,DELIVERED_NOT_RECEIVED,"Sir/Mam order marked delivered, nobody came to my house very bad service"
+TKT201322,SHIPPED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya urgent!!"
+TKT201323,DELIVERED,RETURN_REFUND,"Hi, I want to return my top, didn't like the fabric please check"
+TKT201324,DELIVERED,WISMO,can you check my order dhc101313? no update?
+TKT201325,RTO_INITIATED,COD_PAYMENT,"Namaste,I need help with COD"
+TKT201326,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, I received a damaged lehenga"
+TKT201327,DELIVERED,WISMO,"Hi, tracking not updating since 2 days"
+TKT201328,CONFIRMED,WISMO,"Dhaga team, when will my order reach? need it for Diwali (DHC101296) :("
+TKT201329,DELIVERED,WISMO,"order mila nahi abhi tak, kya hua? plz help"
+TKT201330,RTO_INITIATED,COD_PAYMENT,can i pay by gpay at delivery?
+TKT201331,SHIPPED,WISMO,"hi, status chck karo please asap"
+TKT201332,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam colour completely different, mustard ki jagah yellow aaya"
+TKT201333,DELIVERED,OTHER,Hii coupon code kaam nai kar raha plz help
+TKT201334,IN_TRANSIT,WISMO,"Namaste, order kidhar hai bhai pls reply"
+TKT201335,RTO_INITIATED,WISMO,"Namaste, can you check my order dhc100085? no update urgent!!"
+TKT201336,OUT_FOR_DELIVERY,WISMO,"NAMASTE,TRACKING NOT UPDATING SINCE 5 DAYS URGENT!!"
+TKT201337,OUT_FOR_DELIVERY,WISMO,"dhaga team, when will my order reach? need it for office (#dhc101773) :("
+TKT201338,OUT_FOR_DELIVERY,WISMO,parcel kahan atka hua hi? urgent!!
+TKT201339,OUT_FOR_DELIVERY,WISMO,"DHAGA TEAM, ORDER ABHI TAK NAHI AAYA URGENT!!"
+TKT201340,SHIPPED,WISMO,Sir/Mam It's been  days since I ordered. Where is it? pls reply
+TKT201341,SHIPPED,WISMO,when will my order reach? need it for Diwali (order id DHC100641) very bad service
+TKT201342,DELIVERED,WISMO,"Namaste, when will my order reach? need it for shaadi (#DHC100370)?"
+TKT201343,IN_TRANSIT,WISMO,Hii order kidhar hai bhai plz help
+TKT201344,DELIVERED,OTHER,I was charged twice please check
+TKT201345,DELIVERED,WISMO,can you check my order #dhc100482? no update plz help
+TKT201346,CONFIRMED,WISMO,"my shirt was supposed to come yesteray, still not here plz help"
+TKT201347,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam received a different product, not what i ordered asap"
+TKT201348,DELIVERED,RETURN_REFUND,"Excuse me I want to return my palazzo, didn't like the fabric (dhc101437) :("
+TKT201349,DELIVERED,WISMO,"Hello team, where is my order?"
+TKT201350,OUT_FOR_DELIVERY,WISMO,"Dhaga team, pls tell me deliery date for #DHC100547 :("
+TKT201351,DELIVERED,DELIVERED_NOT_RECEIVED,Sir/Mam parcel deliver hua bol raha hai lekin aaya hi nahi
+TKT201352,IN_TRANSIT,WISMO,"dhaga team, shipped dikha raa hai 3 din se, aage kuch update nahi please check"
+TKT201353,DELIVERED,DELIVERED_NOT_RECEIVED,"Excuse me delivered status galat hai, mainekuch receive nahi kiya #DHC102453 urgent!!"
+TKT201354,DELIVERED,RETURN_REFUND,"i want to return my shirt, didn't like the fabric."
+TKT201355,DELIVERED,WISMO,"EXCUSE ME ORDER MILA NAHI ABHI TAK, KYA HUA? URGENT!!"
+TKT201356,OUT_FOR_DELIVERY,WISMO,"Sir/Mam my kurta set was supposed to come on Monday, still not here"
+TKT201357,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the shirt when it arrived, pls replace (order no DHC100323)?"
+TKT201358,SHIPPED,WISMO,"Shipped dikha raha hai 8 din se, aage kuch update nahi 🙏"
+TKT201359,DELIVERED,RETURN_REFUND,Sir/Mam refund status for order id DHC101367 please
+TKT201360,DELIVERED,WISMO,parcel kahan atka hua hai? pls reply
+TKT201361,SHIPPED,OTHER,Excuse me address change karna hai asap
+TKT201362,DELIVERED,RETURN_REFUND,"Dhaga team, kurti fit nahi hua, return karna hai plz help"
+TKT201363,OUT_FOR_DELIVERY,OTHER,"Hello team, invoice chahiye GST wala plz help"
+TKT201364,IN_TRANSIT,WISMO,where is my order order id dhc102224 please check
+TKT201365,DELIVERED,WISMO,"Hi, ka status kya hai :("
+TKT201366,OUT_FOR_DELIVERY,WISMO,pls tell me delivery date for order id dhc100080?
+TKT201367,OUT_FOR_DELIVERY,WISMO,"Hi, tracking not updating since 2 days urgent!!"
+TKT201368,DELIVERED,COD_PAYMENT,can i pay by gpay at delivery? third time messaging
+TKT201369,DELIVERED,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nahi aaya please check"
+TKT201370,OUT_FOR_DELIVERY,WISMO,"Hi, where is my order urgent!!"
+TKT201371,DELIVERED,RETURN_REFUND,"Hello team, not happy with the shirt, need refund"
+TKT201372,DELIVERED,RETURN_REFUND,"Hello team, return request kaie daalun app mein pls reply"
+TKT201373,DELIVERED,DAMAGED_OR_WRONG_ITEM,stitching khul gayi pehli baar pehente hi?
+TKT201374,DELIVERED,OTHER,Excuseme new collection kab aayega?
+TKT201375,DELIVERED,WISMO,"Hello team, It's been 4 days since I ordered. Where is it?"
+TKT201376,RTO_INITIATED,WISMO,"Hello team, out for delivery tha kal, aaj tak nahi aaya"
+TKT201377,DELIVERED,WISMO,"dhaga team, parcel kahan atka hua hai?(order id dhc101432) please check"
+TKT201378,DELIVERED,RETURN_REFUND,"Hi, kurta set fit nahi hua, return karna hai?"
+TKT201379,OUT_FOR_DELIVERY,WISMO,kab tak aayega mera lehenga? (order id DHC100739) :(
+TKT201380,SHIPPED,WISMO,"mujhe shaadi ke liye chahiye tha, kab milega pls reply"
+TKT201381,CONFIRMED,WISMO,Excuse me order abhi tak nahi aaya (order no DHC100267).
+TKT201382,DELIVERED,DAMAGED_OR_WRONG_ITEM,button toote hue the dupatta mein (order no dhc100568) 🙏
+TKT201383,OUT_FOR_DELIVERY,WISMO,"Excuse me Shipped dikha raha hai 11 din se, aage kuch update nahi pls reply"
+TKT201384,CONFIRMED,WISMO,"Hii Shipped dikha raha hai 4 din se, aage kuch update ahi plz help"
+TKT201385,OUT_FOR_DELIVERY,WISMO,"hello team, order mila nahi abhi tak, kya hua? 🙏"
+TKT201386,RTO_INITIATED,WISMO,order abhi tak nahi aaya plz help
+TKT201387,DELIVERED,COD_PAYMENT,"Hello team, COD amount kitna dena hai order no DHC102270 please check"
+TKT201388,IN_TRANSIT,WISMO,Hii tracking not updating since 5 days (#DHC100829) 🙏
+TKT201389,DELIVERED,WISMO,when will my order reach? need it for shaadi third time messaging
+TKT201390,CANCELLED,RETURN_REFUND,return kaise karu order id DHC101287.
+TKT201391,DELIVERED,DAMAGED_OR_WRONG_ITEM,"excuse me wrong item delivered, ye mera order nahi hai urgent!!"
+TKT201392,DELIVERED,RETURN_REFUND,"shoulders se bahut tight hai, return plz"
+TKT201393,DELIVERED,RETURN_REFUND,Hii refund status for DHC10216 please
+TKT201394,RTO_INITIATED,WISMO,"Dhaga team, Kab tak delivery hoga (order id DHC101267) please check"
+TKT201395,CANCELLED,RETURN_REFUND,"namaste, not happy with the dupatta, need refund"
+TKT201396,CANCELLED,RETURN_REFUND,"Hi, kurta set fit nahi hua, eturn karna hai."
+TKT201397,RTO_INITIATED,WISMO,Sir/Mam order id DHC100930 ka status kya hai please check
+TKT201398,DELIVERED,DAMAGED_OR_WRONG_ITEM,"received a different product, not what i ordered #DHC102248"
+TKT201399,DELIVERED,COD_PAYMENT,hii cod e upi se pay kar sakte hai? very bad service
+TKT201400,SHIPPED,CANCEL_ORDER,"cancel dhc100980, found it cheaper elsewhere very bad service"
+TKT201401,OUT_FOR_DELIVERY,WISMO,sir/mam order status please orderno dhc100091 please check
+TKT201402,DELIVERED,DELIVERED_NOT_RECEIVED,"Sir/Mam watchman ne bhinahi liya, phir delivered kaise dikha raha urgent!!"
+TKT201403,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, stitching khul gayi pehli baar pehente hi"
+TKT201404,IN_TRANSIT,WISMO,"Hii Shipped dikha raha hai 6 din se, aage kuch update nahi asap"
+TKT201405,CONFIRMED,WISMO,"Hi, sttus check karo please order id DHC102316."
+TKT201406,CANCELLED,OTHER,Hii aapka store kahan hai? third time messaging
+TKT201407,DELIVERED,WISMO,EXCUSE ME WHERE IS MY ORDER PLEASE CHECK
+TKT201408,DELIVERED,WISMO,status check karo please order id DHC100400 🙏
+TKT201409,OUT_FOR_DELIVERY,WISMO,"Hello team, Kab tak delivery hoga?"
+TKT201410,OUT_FOR_DELIVERY,WISMO,hii order no dhc101325ka status kya hai.
+TKT201411,RTO_INITIATED,WISMO,"Hi, when will my order reach? need it for college fest urgent!!"
+TKT201412,SHIPPED,WISMO,CAN YOU CHECK MY ORDER ORDER NO DHC100142? NO UPDATE URGENT!!
+TKT201413,OUT_FOR_DELIVERY,WISMO,Sir/Mam kab tak aayega mera dupatta? (order id DHC101364) very bad service
+TKT201414,SHIPPED,WISMO,Hii Mera order kaha hai :(
+TKT201415,IN_TRANSIT,WISMO,Excuse me courier wala phone nahi utha raha urgent!!
+TKT201416,CANCELLED,RETURN_REFUND,"Hi, paise wapas kab milenge"
+TKT201417,SHIPPED,WISMO,status check karo please please check
+TKT201418,DELIVERED,WISMO,"Hii Shipped dikha raha hi 5 din se, aage kuch update nahi (#DHC100203) third time messaging"
+TKT201419,DELIVERED,RETURN_REFUND,"Hello team, I want to return my top, didn't like the fabric urgent!!"
+TKT201420,DELIVERED,OTHER,"Hi, invoice chahiye GST wala plz help"
+TKT201421,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong size aaya hai, maine M order kiya tha plz help"
+TKT201422,RTO_INITIATED,WISMO,when will my order reach? need it for office please check
+TKT201423,DELIVERED,RETURN_REFUND,"Hello team, Ho can I get a refund?"
+TKT201424,DELIVERED,RETURN_REFUND,"Namaste, ow can I get a refund?"
+TKT201425,SHIPPED,WISMO,It's been 5 days since I ordered. Where is it? asap
+TKT201426,DELIVERED,OTHER,Hii ok ok.
+TKT201427,DELIVERED,WISMO,"order mila nahi abhi tak, kya hua? asap"
+TKT201428,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, watchman ne bhi nahi liya, phir delivered kaise dikha raha (order id DHC101586)"
+TKT201429,OUT_FOR_DELIVERY,WISMO,SIR/MAM ORDER KIDHAR HAI BHAI 🙏
+TKT201430,OUT_FOR_DELIVERY,WISMO,"Hi, kab tak aayega mera saree?"
+TKT201431,DELIVERED,RETURN_REFUND,"Hi, dress fit nahi hua, return karna hai plz help"
+TKT201432,CANCELLED,OTHER,Hii do you have this palazzo in XXL?
+TKT201433,DELIVERED,COD_PAYMENT,Hii I need help with COD plz help
+TKT201434,DELIVERED,RETURN_REFUND,"Dhaga team, pickup boy aaya hi nahi return ke liye please check"
+TKT201435,DELIVERED,WISMO,"HI, CAN YOU HECK MY ORDER ? NO UPDATE"
+TKT201436,DELIVERED,RETURN_REFUND,"Hi, pickup boy aaya hi nahi return ke liye (#DHC101604)"
+TKT201437,OUT_FOR_DELIVERY,WISMO,Hii where is my orde dhc100269 :(
+TKT201438,DELIVERED,WISMO,Order status please DH101804
+TKT201439,OUT_FOR_DELIVERY,WISMO,"Dhaga team, can you check my order ? no update third time messaging"
+TKT201440,DELIVERED,RETURN_REFUND,"Hii top fit nahi hua, return karna hai please check"
+TKT201441,CONFIRMED,CANCEL_ORDER,"Hi, how to cancel order? option nahi dikh raha pls reply"
+TKT201442,IN_TRANSIT,WISMO,"Namaste, courier wala phone nahi utha raha"
+TKT201443,OUT_FOR_DELIVERY,WISMO,ka status kya hai urget!!
+TKT201444,DELIVERED,WISMO,Excuse me kab tak aayega mera saree? (order no DHC101666) urgent!!
+TKT201445,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam wrong size aaya hai, maine L order kiya tha pls reply"
+TKT201446,DELIVERED,WISMO,"tracking link kaam nahi kar raha, order kab aayega (order id DHC01759)?"
+TKT201447,CANCELLED,RETURN_REFUND,"Dhaga eam, return kaise karu dhc100111"
+TKT201448,RTO_INITIATED,WISMO,Kab tak delivery hoga
+TKT201449,OUT_FOR_DELIVERY,WISMO,order kidhar hai bhai (order no DHC102404) :(
+TKT201450,CONFIRMED,CANCEL_ORDER,"Sir/Mam galti se 2 baar order ho gaya, ek cancel karo urgen!!"
+TKT201451,DELIVERED,OTHER,aapka store kahan hai? very bad service
+TKT201452,OUT_FOR_DELIVERY,WISMO,hii pls tell me delivery date for pls reply
+TKT201453,IN_TRANSIT,WISMO,Mera order kaha hai please check
+TKT201454,OUT_FOR_DELIVERY,WISMO,Hii Kab tak delivery hoga urgent!!
+TKT201455,DELIVERED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye (order no DHC101145) please check
+TKT201456,DELIVERED,WISMO,"Hello team, my dress was supposed to come yesterday, still not here"
+TKT201457,RTO_INITIATED,WISMO,"Excuse me mujhe puja ke liye chahiye tha, kab milega"
+TKT201458,DELIVERED,RETURN_REFUND,"Excuse me size chhota hai, exchange ya return chahiye (dhc100588) urgent!!"
+TKT201459,CANCELLED,RETURN_REFUND,Hii pickup boy aaya hi nahi return ke liye please check
+TKT201460,CONFIRMED,WISMO,Sir/Mam kab tak aayega mera frock? :(
+TKT201461,IN_TRANSIT,WISMO,"Dhaga team, courier wala phone nahi utha raha (DHC100826) please check"
+TKT201462,IN_TRANSIT,COD_PAYMENT,HII CAN I PAY BY GPAY AT DELIVERY? PLEASE CHECK
+TKT201463,DELIVERED,RETURN_REFUND,"Dhaga team, return request kaise daalun app mein pls reply"
+TKT201464,IN_TRANSIT,WISMO,"Hi, Shipped dkha raha hai 12 din se, aage kuch update nahi urgent!!"
+TKT201465,DELIVERED,DAMAGED_OR_WRONG_ITEM,stitching khul gayi pehli baar pehente hi (#DHC100323) please check
+TKT201466,DELIVERED,WISMO,"out for delivery tha kal, aaj tak nahi aaya (#DHC100410) urgent!!"
+TKT201467,DELIVERED,OTHER,"Namaste, coupon code kaam nahi kar raha plz help"
+TKT201468,CANCELLED,RETURN_REFUND,Hii refund kab aayega? pickup ho gaya 9 din pehle?
+TKT201469,DELIVERED,DELIVERED_NOT_RECEIVED,parcel deliver hua bol raha hai lekin aaya hi nahi?
+TKT201470,DELIVERED,OTHER,"Hello team, coupon code kaam nahi kar raha plz help"
+TKT201471,DELIVERED,COD_PAYMENT,Hii COD pe UPI se pay kar sakte hai?
+TKT201472,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the frck when it arrived, pls replace?"
+TKT201473,DELIVERED,OTHER,Sir/Mam thanks please check
+TKT201474,RTO_INITIATED,WISMO,"Dhaga team, status check karo please dhc100327 asap"
+TKT201475,IN_TRANSIT,WISMO,Hii order abhi tak nahi aaya (order no DHC100420) urgent!!
+TKT201476,SHIPPED,WISMO,"Sir/Mam out for delivery tha kal, aaj tak nahi aaya (#DHC101409) asap"
+TKT201477,CANCELLED,RETURN_REFUND,"Hello team, paise wapas kab milenge?"
+TKT201478,OUT_FOR_DELIVERY,WISMO,"Hi, Order status plz urgent!!"
+TKT201479,OUT_FOR_DELIVERY,WISMO,Hii can you check my order ? no update
+TKT201480,DELIVERED,RETURN_REFUND,"saree fit nahi hua, return karn hai plz help"
+TKT201481,DELIVERED,DELIVERED_NOT_RECEIVED,"watchman ne bhi nahi liya, phir delivered kaise dikha raha (#DHC10034)"
+TKT201482,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Dhaga team, button toote hue the top mein pls reply"
+TKT201483,CONFIRMED,WISMO,Hii where is my order order id DHC101190 please check
+TKT201484,IN_TRANSIT,WISMO,"hii delivery date nikal gayi, abhi tak kuch nahi aaya :("
+TKT201485,DELIVERED,RETURN_REFUND,return request kaise daalun app mein 🙏
+TKT201486,IN_TRANSIT,COD_PAYMENT,I need help with COD 🙏
+TKT201487,DELIVERED,RETURN_REFUND,"hi, paise wapas kab milenge (dhc100021) 🙏"
+TKT201488,DELIVERED,COD_PAYMENT,"Dhaga team, delivery boy change nahi de raha, kya karu please check"
+TKT201489,DELIVERED,WISMO,"Dhaga team, courier wala phone nahi utha raha (order id DHC100749) third time messaging"
+TKT201490,RTO_INITIATED,CANCEL_ORDER,"Namaste, I ordered by mistake, cancel it (order id DHC101638)urgent!!"
+TKT201491,CONFIRMED,WISMO,"SHIPPED DIKHA RAHA HAI 2 DIN SE, AAGE KUCH UPDATE NAHI PLZ HELP"
+TKT201492,CANCELLED,RETURN_REFUND,refund status for order id DHC102334 please :(
+TKT201493,DELIVERED,RETURN_REFUND,"Excuse me top fit nahi hua, return karna ai very bad service"
+TKT201494,IN_TRANSIT,CANCEL_ORDER,"hi, i ordered by mistake, cancel it (#dhc101681) urgent!!"
+TKT201495,SHIPPED,WISMO,"Hello team, parcel kahan atka hua hai? plz help"
+TKT201496,OUT_FOR_DELIVERY,WISMO,"Hi, when will my order reach? need it for puja third time messaging"
+TKT201497,SHIPPED,WISMO,"Dhaga team, order abhi tak nahi aaya 🙏"
+TKT201498,DELIVERED,DAMAGED_OR_WRONG_ITEM,"hello team, button toote hue the dupatta mein urgent!!"
+TKT201499,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Excuse me received a different product, not hat i ordered order id DHC101649?"
+TKT201500,RTO_INITIATED,WISMO,"Hi, can you check my order order no DHC100204? no update :("
+TKT201501,CONFIRMED,WISMO,excuse me order abhi tak nahi aaya plz check
+TKT201502,DELIVERED,WISMO,"Hi, delivery date nikal gayi, abhi tak kuch nahi aaya urgent!!"
+TKT201503,DELIVERED,WISMO,Sir/Mam kab tak aayega mera kurta set?
+TKT201504,DELIVERED,WISMO,sir/mam mera order kaha hai very bad service
+TKT201505,DELIVERED,OTHER,sir/mam coupon code kaam nahi kar raha?
+TKT201506,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, I didn't get my dress but status says delivered (DHC100519) 🙏"
+TKT201507,DELIVERED,WISMO,courier wala phone nahi utha raha third time messaging
+TKT201508,IN_TRANSIT,WISMO,"Hi, parcel kahan atka hua hai? third time messaging"
+TKT201509,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, parcel deliver hua bol raha hai lekin aaya hi nahi very bad service"
+TKT201510,DELIVERED,WISMO,Excuse me It's been 3 days since I ordered. Where is it? third time messaging
+TKT201511,DELIVERED,RETURN_REFUND,"Hi, refund kab aayega? pickup ho gaya 6 din pehle"
+TKT201512,DELIVERED,WISMO,Kab tak delivery hoga?
+TKT201513,DELIVERED,RETURN_REFUND,"Namaste, lehenga fit nahi hua, return karna hai urgent!!"
+TKT201514,OUT_FOR_DELIVERY,WISMO,"Hii mujhe college fest ke liye chahiye tha, kab milega pls reply"
+TKT201515,DELIVERED,WISMO,"Hi, It's been 9 days since I ordered. Where is it?"
+TKT201516,OUT_FOR_DELIVERY,WISMO,dhc100879 ka status kya hai
+TKT201517,RTO_INITIATED,WISMO,"Hii mujhe mehndi ke liye chahiye tha, kab milega?"
+TKT201518,CANCELLED,RETURN_REFUND,"Sir/Mam dupatta fit nahi hua, return karna hai?"
+TKT201519,OUT_FOR_DELIVERY,WISMO,can you check my order DHC102012? no update urgent!!
+TKT201520,DELIVERED,RETURN_REFUND,excuse me refund status for dhc102408 please :(
+TKT201521,SHIPPED,WISMO,"hello team, when will my order reach? need it for puja"
+TKT201522,OUT_FOR_DELIVERY,WISMO,IT'S BEEN6 DAYS SINCE I ORDERED. WHERE IS IT? PLZ HELP
+TKT201523,IN_TRANSIT,WISMO,"tracking link kaam nahi kar raha, order kab aayega (order id DHC100759)"
+TKT201524,SHIPPED,CANCEL_ORDER,"galti se 2 baar order ho gaya, ek cancel karo (#DHC100145)"
+TKT201525,CANCELLED,RETURN_REFUND,"Hello team, refund kab aayega? pickup ho gaya 5 din pehle please check"
+TKT201526,DELIVERED,DELIVERED_NOT_RECEIVED,delivered dikha raha hai par mujhe mila nai.
+TKT201527,OUT_FOR_DELIVERY,WISMO,Order status please DHC102331
+TKT201528,IN_TRANSIT,WISMO,"Dhaga team, courier wala phone nahi utha raha :("
+TKT201529,DELIVERED,WISMO,"dhaga team, it's been 11 days since i ordered. where is it? third time messaging"
+TKT201530,IN_TRANSIT,WISMO,"Namaste, when will my order reach? need it for office please check"
+TKT201531,DELIVERED,WISMO,HII ORDER KIDHAR HAI BHAI :(
+TKT201532,DELIVERED,DAMAGED_OR_WRONG_ITEM,"wrong item delivered, ye mera order nahi hai urgent!!"
+TKT201533,SHIPPED,WISMO,"Hi, pls tell me delivery date for dhc101878 plz help"
+TKT201534,OUT_FOR_DELIVERY,WISMO,where is my order order id DHC100384 very bad service
+TKT201535,OUT_FOR_DELIVERY,WISMO,"Dhaga team, order id DHC102225 ka status kya hai?"
+TKT201536,IN_TRANSIT,WISMO,"Excuse me mujhe puja ke liye chahiye tha, kab milega 🙏"
+TKT201537,IN_TRANSIT,CANCEL_ORDER,"Namaste, I ordered by mistake, cancel it (dhc100237)?"
+TKT201538,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, saee torn hai, very bad quality :("
+TKT201539,OUT_FOR_DELIVERY,WISMO,Hii can you check my order DHC100689? no update
+TKT201540,DELIVERED,COD_PAYMENT,Excuse me COD pe UPI se pay kar sakte hai? (DHC101313)
+TKT201541,CONFIRMED,WISMO,"Dhaga team, status check karo please DHC101161 plz help"
+TKT201542,CONFIRMED,WISMO,sir/mam pls tell me delivery date for dhc101956 urgent!!
+TKT201543,OUT_FOR_DELIVERY,WISMO,Order status please DHC100777 plz help
+TKT201544,DELIVERED,DELIVERED_NOT_RECEIVED,"order marked delivered, nobody came to my house third time messaging"
+TKT201545,DELIVERED,RETURN_REFUND,"Namaste, I want to return my palazzo, didn't like the fabric urgent!!"
+TKT201546,DELIVERED,RETURN_REFUND,"Hii shoulders se bahut tight hai, return please"
+TKT201547,DELIVERED,WISMO,Excuse me status check karo please third time messaging
+TKT201548,OUT_FOR_DELIVERY,WISMO,order abhi tak nahi aaya :(
+TKT201549,OUT_FOR_DELIVERY,WISMO,"Namaste, order kidhar hai bhai (orer id DHC101816) urgent!!"
+TKT201550,IN_TRANSIT,WISMO,"Dhaga team, pls tell me delivery date for dhc100802"
+TKT201551,DELIVERED,WISMO,Excuse me It's been 6 days since I ordered. Where is it? 🙏
+TKT201552,DELIVERED,OTHER,do you have this saree in XXL? very bad service
+TKT201553,DELIVERED,OTHER,I was charged twice third time messaging
+TKT201554,IN_TRANSIT,WISMO,Sir/Mam pls tell me delivery date for.
+TKT201555,DELIVERED,RETURN_REFUND,refund status for orderid dhc100234 please please check
+TKT201556,OUT_FOR_DELIVERY,WISMO,Hii pls tell me delivery date for dhc100478 third time messaging
+TKT201557,OUT_FOR_DELIVERY,WISMO,"Dhaga team, can you check my order DHC102500? no update :("
+TKT201558,DELIVERED,OTHER,"Hi, new collection kab aayega"
+TKT201559,DELIVERED,DELIVERED_NOT_RECEIVED,I didn't get my top but status says delivered.
+TKT201560,OUT_FOR_DELIVERY,WISMO,Hii Order status please dhc101229
+TKT201561,CONFIRMED,WISMO,Excuse me dhc101161 ka status kya hai third time messaging
+TKT201562,DELIVERED,WISMO,order no DHC102103 a status kya hai?
+TKT201563,OUT_FOR_DELIVERY,WISMO,"Hi, parcel kahan atka hua hai? pls reply"
+TKT201564,DELIVERED,DELIVERED_NOT_RECEIVED,Excuse me I didn't get my dupata but status says delivered pls reply
+TKT201565,IN_TRANSIT,WISMO,Excuse me Mera order kaha hai order no DHC101157 third time messaging
+TKT201566,SHIPPED,WISMO,mera order kaha hai order no dhc101001 urgent!!
+TKT201567,DELIVERED,WISMO,"Dhaga team, courier wala phone nahi utha rahaasap"
+TKT201568,DELIVERED,DELIVERED_NOT_RECEIVED,"Hi, it says delivered yesterday but I got nothing"
+TKT201569,OUT_FOR_DELIVERY,WISMO,"Hi, can you check my order ? no update asap"
+TKT201570,DELIVERED,WISMO,"Hi, tracking link kaam nahi kar raha, order kab aayega pls reply"
+TKT201571,OUT_FOR_DELIVERY,WISMO,"Shipped dikha raha hai 10 din se, aage kuch update nahi (DHC100623)"
+TKT201572,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, packet phata hua tha aur shirt pe daag hai"
+TKT201573,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, wrong size aaya hai, maine XL order kiya tha (order no DHC101592) :("
+TKT201574,OUT_FOR_DELIVERY,WISMO,"hello team, order abhi tak nahi aaya"
+TKT201575,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya third time messaging"
+TKT201576,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, stain on the kurti when it arrived, pls replace (dhc100899) pls reply"
+TKT201577,OUT_FOR_DELIVERY,WISMO,"Shipped dikha raha hai 6 din se, aage kuch update nahi :("
+TKT201578,DELIVERED,WISMO,"Namaste, Order status please order no DHC100937 asap"
+TKT201579,DELIVERED,RETURN_REFUND,Hii refund kab aayega? pickup ho gaya 5 din pehle please check
+TKT201580,CONFIRMED,WISMO,"Hello team, Kabtak delivery hoga urgent!!"
+TKT201581,CONFIRMED,WISMO,Hii Mera order kaha hai order id DHC100043 third time messaging
+TKT201582,CANCELLED,WISMO,hii kab tak delivery hoga
+TKT201583,DELIVERED,RETURN_REFUND,return request kaise daalun app mein?
+TKT201584,DELIVERED,COD_PAYMENT,"dhaga team, online pay kiya tha phir bhi cod maang rahe asap"
+TKT201585,CONFIRMED,WISMO,Sir/Mam kab tak aayega mera kurta set? please check
+TKT201586,DELIVERED,WISMO,hii kab tak delivery hoga 🙏
+TKT201587,DELIVERED,COD_PAYMENT,COD pe UPI se pay kar sakte hai? asap
+TKT201588,DELIVERED,RETURN_REFUND,Sir/Mam refund kab aayega? pickup ho gaya 11 din pehle third time messaging
+TKT201589,IN_TRANSIT,COD_PAYMENT,sir/mam cod charges kyun lag rahe hai very bad service
+TKT201590,DELIVERED,WISMO,Sir/Mam courier wala phone nahi utha raha third time messaging
+TKT201591,DELIVERED,WISMO,"namaste, delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT201592,RTO_INITIATED,WISMO,"order mila nahi abhi tak, kya hua? third time messaging"
+TKT201593,OUT_FOR_DELIVERY,WISMO,status check karo please order no DHC100270.
+TKT201594,CANCELLED,WISMO,order abhi tak nahi aaya urgent!!
+TKT201595,OUT_FOR_DELIVERY,WISMO,"Hello team, courier wala phone nahi utha raha asap"
+TKT201596,DELIVERED,DAMAGED_OR_WRONG_ITEM,I received a damaged dupatta very bad service
+TKT201597,DELIVERED,RETURN_REFUND,Hii paise wapas kab milenge (DHC100134) plz help
+TKT201598,CONFIRMED,WISMO,Sir/Mam when will my order reach? need it for Diwali aap
+TKT201599,DELIVERED,RETURN_REFUND,"Hello team, paise wapas kab milenge very bad service"
+TKT201600,DELIVERED,OTHER,Sir/Mam app crash ho raha hai asap
+TKT201601,IN_TRANSIT,WISMO,hii courier wala phone nahi utha raha?
+TKT201602,DELIVERED,WISMO,where is my order pls reply
+TKT201603,CONFIRMED,WISMO,Excuse me order id DHC100220 ka status kya hai very bad service
+TKT201604,DELIVERED,WISMO,"my lehenga was supposed t come 3 days back, still not here third time messaging"
+TKT201605,SHIPPED,WISMO,"Hi, It's been 7 days since I ordered. Where is it?"
+TKT201606,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hello team, stain on the palazzo when it arrived, pls replace asap"
+TKT201607,DELIVERED,RETURN_REFUND,how can i get a refund? very bad service
+TKT201608,RTO_INITIATED,WISMO,"Dhaga team, Shipped dikha raha hai 8 din se, aage kuch update nahi plz check"
+TKT201609,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me button toote hue the dress mein 🙏
+TKT201610,DELIVERED,WISMO,Sir/Mam status check karo please #DHC101778
+TKT201611,DELIVERED,WISMO,"Hello team, status check karo please 🙏"
+TKT201612,DELIVERED,WISMO,"Hi, pls tell me delivery date for 🙏"
+TKT201613,RTO_INITIATED,WISMO,"Namaste, parcel kahan atka hua hai?."
+TKT201614,DELIVERED,WISMO,Hii can you check my order order no DHC101204? no update plz help
+TKT201615,DELIVERED,DELIVERED_NOT_RECEIVED,"delivered status galat hai, maine kuch receive nahi kiya DHC100408 pls reply"
+TKT201616,DELIVERED,DELIVERED_NOT_RECEIVED,Excuse me I didn't get my frock but status says delivered please check
+TKT201617,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Excuse me received a different product, not what i ordered dhc101789"
+TKT201618,DELIVERED,WISMO,status check karo please order no DHC101686?
+TKT201619,DELIVERED,RETURN_REFUND,"dhaga team, return request kaise daalun app mein plz check"
+TKT201620,DELIVERED,RETURN_REFUND,"Dhaga team, refund kab aayega? pickup ho gaya 9 din pehle urgent!!"
+TKT201621,DELIVERED,WISMO,"Hello team, my saree was supposed to come on Monday, still not here 🙏"
+TKT201622,OUT_FOR_DELIVERY,WISMO,"Namaste, can you check my order ? no update"
+TKT201623,CANCELLED,RETURN_REFUND,"Namaste, pickup boy aaya hi nahi return ke liye (#DHC100971) please check"
+TKT201624,DELIVERED,WISMO,"Hello team, Mera order kaha hai #DHC101610 very bad service"
+TKT201625,CANCELLED,RETURN_REFUND,"Namaste, dupatta fit nahi hua, return karna hai"
+TKT201626,OUT_FOR_DELIVERY,WISMO,"Dhaga team, can you check my order order no DHC100471? no update."
+TKT201627,DELIVERED,RETURN_REFUND,"Hi, refund status for please."
+TKT201628,OUT_FOR_DELIVERY,WISMO,"Namaste, where is my order #DHC102074?"
+TKT201629,DELIVERED,DELIVERED_NOT_RECEIVED,"Hello team, I didn't get my kurta set but status says delivered (order no DHC102196) :("
+TKT201630,OUT_FOR_DELIVERY,WISMO,"Hello team, rder kidhar hai bhai"
+TKT201631,IN_TRANSIT,OTHER,"Hello team, aapka store kahan hai? pls reply"
+TKT201632,CONFIRMED,WISMO,where is my order order id DHC101869
+TKT201633,CONFIRMED,CANCEL_ORDER,"namaste, order cancelkarna hai urgent!!"
+TKT201634,CANCELLED,RETURN_REFUND,Sir/Mam return kaise karu dhc102375 urgent!!
+TKT201635,CONFIRMED,WISMO,"Dhaga team, status check karo please dhc101670"
+TKT201636,OUT_FOR_DELIVERY,WISMO,hii where is my order #dhc10093 pls reply
+TKT201637,RTO_INITIATED,WISMO,Hii status check karo please #DHC101376
+TKT201638,IN_TRANSIT,WISMO,"Dhaga team, where is my order order id DHC100826 urgent!!"
+TKT201639,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me button toote hue the saree mein plz help
+TKT201640,DELIVERED,WISMO,Hii It's been 2 days since I ordered. Where is it? third time messaging
+TKT201641,DELIVERED,OTHER,Excuse me address change karna hai urgent!!
+TKT201642,IN_TRANSIT,CANCEL_ORDER,"HII GALTI SE 2 BAAR ORDER HO GAYA, EK CANCEL KARO 🙏"
+TKT201643,DELIVERED,DAMAGED_OR_WRONG_ITEM,galat colour bhej diya aapne
+TKT201644,IN_TRANSIT,WISMO,"Dhaga team, status check karo please?"
+TKT201645,IN_TRANSIT,WISMO,"Namaste, tracking not updating since 5 days urgent!!"
+TKT201646,OUT_FOR_DELIVERY,WISMO,"Hello team, Mera order kaha hai order no DHC101315 plz help"
+TKT201647,IN_TRANSIT,WISMO,Hii where is my order #DHC101180
+TKT201648,DELIVERED,RETURN_REFUND,"Dhaga team, pickup boy aaya hi nahi return ke liye (order id DHC101712) asap"
+TKT201649,DELIVERED,WISMO,"hello team, courier wala phone nahi utha raha (order id dhc100723) 🙏"
+TKT201650,OUT_FOR_DELIVERY,WISMO,can you check my order dhc100590? no update.
+TKT201651,RTO_INITIATED,WISMO,Sir/Mam parcel kahan atka hua hai?
+TKT201652,SHIPPED,WISMO,Excuse me It's been 4 days since I ordered. Where is it? (DHC100607)
+TKT201653,IN_TRANSIT,WISMO,"mujhe mehndi ke liye chahiye tha, kab milea."
+TKT201654,DELIVERED,COD_PAYMENT,"delivery boy change nahi de raha, kya karu?"
+TKT201655,CONFIRMED,WISMO,"Hi, out for delivery tha ka, aaj tak nahi aaya"
+TKT201656,CONFIRMED,WISMO,"sir/mam delivery date nikal gayi, abhi tak kuch nahi aaya"
+TKT201657,CONFIRMED,COD_PAYMENT,"Sir/Mam delivery boy change nahi de raha, kya karu"
+TKT201658,CANCELLED,RETURN_REFUND,refund status for order id DHC100081 please pls reply
+TKT201659,DELIVERED,WISMO,"Hello team, can you check my order DHC101954? no update very bad service"
+TKT201660,DELIVERED,WISMO,mera order kaha hai dhc100090 pls reply
+TKT201661,IN_TRANSIT,WISMO,"Hello team, can you check myorder ? no update."
+TKT201662,OUT_FOR_DELIVERY,WISMO,Excuse me Order status please order no DHC101434 :(
+TKT201663,DELIVERED,RETURN_REFUND,Hii return kaise karu?
+TKT201664,DELIVERED,COD_PAYMENT,online pay kiya tha phir bhi cod maang rahe urgent!!
+TKT201665,DELIVERED,OTHER,address change karna hai
+TKT201666,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, delivered dikha raha hai par mujhe mila nahi"
+TKT201667,DELIVERED,WISMO,pls tell me delivery date for order no DHC100011
+TKT201668,RTO_INITIATED,WISMO,"hello team, out for delivery tha kal, aaj tak nahi aaya"
+TKT201669,SHIPPED,WISMO,"Dhaga tem, Mera order kaha hai #DHC101687 very bad service"
+TKT201670,SHIPPED,WISMO,"order mila nahi abhi tak, kya hua? (order id DHC101777)?"
+TKT201671,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, stin on the shirt when it arrived, pls replace plz help"
+TKT201672,RTO_INITIATED,WISMO,"Shipped dikha raha hai 10 din se, aage kuch update nahi very bad service"
+TKT201673,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam received a different product, not what i ordered order no DHC100921 plz help"
+TKT201674,DELIVERED,WISMO,courier wala phone nahi utha raha.
+TKT201675,DELIVERED,DELIVERED_NOT_RECEIVED,delivered dikha raha hai par mujhe mila nahi plz help
+TKT201676,DELIVERED,RETURN_REFUND,"Dhaga team, pickup boy aaya hi nahi returnke liye asap"
+TKT201677,DELIVERED,WISMO,"mujhe office ke liye chahiye tha, kab milega (order no dhc101495) urgent!!"
+TKT201678,RTO_INITIATED,WISMO,"hello team, tracking not updating since 7 days."
+TKT201679,SHIPPED,WISMO,"deliver date nikal gayi, abhi tak kuch nahi aaya (#DHC102290) please check"
+TKT201680,DELIVERED,COD_PAYMENT,COD amount kitna dena hai dhc100134 :(
+TKT201681,OUT_FOR_DELIVERY,WISMO,"Hi, tracking not updating since 2 days please check"
+TKT201682,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Hi, galat colour bhej diya aapne 🙏"
+TKT201683,DELIVERED,DELIVERED_NOT_RECEIVED,"Sir/Mam watchman ne bhi nahi liya, phir delivered kaise dikha raha (dhc101340) asap"
+TKT201684,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, watchman ne bhi nahi liya, phir delivered kaise dikha raha urgent!!"
+TKT201685,IN_TRANSIT,WISMO,"Hi, can you check my order dhc100776? no update"
+TKT201686,SHIPPED,WISMO,"Namaste, courier wala phone nahi utha raha."
+TKT201687,DELIVERED,RETURN_REFUND,"Namaste, How can I get a refund? (DHC101215) very bad service"
+TKT201688,OUT_FOR_DELIVERY,WISMO,"Hello team, Order status plz DHC100656"
+TKT201689,OUT_FOR_DELIVERY,WISMO,"hi, shipped dikha raha hai 12 din se, aage kuch update nahi :("
+TKT201690,DELIVERED,DAMAGED_OR_WRONG_ITEM,button toote hue the palazzo mein very bad service
+TKT201691,CONFIRMED,WISMO,"Hello team, It's been 12 days since I ordered. Where is it? pls reply"
+TKT201692,DELIVERED,WISMO,"DHAGA TEAM, ORDER KIDHAR HAI BHAI (#DHC102113)."
+TKT201693,IN_TRANSIT,WISMO,"Hii my dress was supposed to come yesterday, still not here third time messaging"
+TKT201694,CONFIRMED,WISMO,HII #DHC101271 KA STATUS KYA HAI
+TKT201695,DELIVERED,WISMO,Sir/Mam pls tell me delivery date for order no DHC101661 :(
+TKT201696,DELIVERED,WISMO,Hii It's been 7 days since I ordered. Where is it? third time messaging
+TKT201697,DELIVERED,RETURN_REFUND,return kaise karu DHC101422?
+TKT201698,DELIVERED,RETURN_REFUND,Sir/Mam refund kab aayega? pickup ho gaya 6 din pehle (order id DHC102330)?
+TKT201699,OUT_FOR_DELIVERY,WISMO,can you check my order ? no update.
+TKT201700,CONFIRMED,WISMO,"my lehenga was supposed to come yesterday, still not here :("
+TKT201701,DELIVERED,OTHER,thanks :(
+TKT201702,DELIVERED,WISMO,Sir/Mam when will my order reach? need it for puja asap
+TKT201703,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Namaste, packet phata hua tha aur upatta pe daag hai (dhc102084) :("
+TKT201704,DELIVERED,WISMO,"Dhaga team, Mera order kaha hai dhc101016"
+TKT201705,DELIVERED,DELIVERED_NOT_RECEIVED,App shows delivered but I never received the parcel (order id DHC100056) pls reply
+TKT201706,DELIVERED,WISMO,"hi, can you check my order dhc101473? no update?"
+TKT201707,IN_TRANSIT,WISMO,"mujhe shaadi ke liye chahiye tha, kab milega (dhc100613) pls reply"
+TKT201708,OUT_FOR_DELIVERY,WISMO,"hi, pls tell me delivery date for #dhc101773?"
+TKT201709,SHIPPED,WISMO,excuse me when will my order reach? need it for shaadi (dhc100125)
+TKT201710,CANCELLED,OTHER,"Dhaga team, coupon code aam nahi kar raha asap"
+TKT201711,CONFIRMED,WISMO,Excuse me courier wala phone nahi utha raha.
+TKT201712,DELIVERED,WISMO,Hii status check karo please
+TKT201713,RTO_INITIATED,WISMO,"Sir/Mam tracking link kaam nahi kar raha, order kab aayega plz help"
+TKT201714,DELIVERED,OTHER,"Namaste,hi."
+TKT201715,CANCELLED,WISMO,It's been 5 days since I ordered. Where is it? plz help
+TKT201716,RTO_INITIATED,WISMO,Sir/Mam when will my ordr reach? need it for puja.
+TKT201717,CANCELLED,OTHER,Excuse me app crash ho raha hai third time messaging
+TKT201718,CONFIRMED,WISMO,"Hii tracking link kaam nahi kar raha, order kab aayega urgent!!"
+TKT201719,RTO_INITIATED,WISMO,"shipped dikha raha hai 7 din se, aage kuch update nahi :("
+TKT201720,IN_TRANSIT,WISMO,"namaste, tracking not updating since 8 days very bad service"
+TKT201721,DELIVERED,DELIVERED_NOT_RECEIVED,"hello team, it says delivered yesterday but i got nothing urgent!!"
+TKT201722,DELIVERED,OTHER,app crash ho raha hai
+TKT201723,DELIVERED,RETURN_REFUND,"hi, pickup boy aaya hi nahi return ke liye urgent!!"
+TKT201724,DELIVERED,WISMO,"Dhaga team, order abhi tak nahi aaya pls reply"
+TKT201725,CONFIRMED,WISMO,"Excuse me tracking link kaam nahi kar raha, order kab aayega very bad service"
+TKT201726,DELIVERED,RETURN_REFUND,"top fit nahi hua, return karna hai please check"
+TKT201727,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam packet pata hua tha aur shirt pe daag hai 🙏
+TKT201728,CONFIRMED,WISMO,"Dhaga team, Mera order kaha hai order id DHC101820"
+TKT201729,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam packet phata hua tha aur top pe daag hai (#DHC100770)
+TKT201730,CONFIRMED,WISMO,"Dhaga team, my kurta set was supposed to come by Friday, still not here."
+TKT201731,DELIVERED,DAMAGED_OR_WRONG_ITEM,sir/mam galat colour bhej diya aapne
+TKT201732,CONFIRMED,WISMO,It's been 5 days since I ordered Where is it?
+TKT201733,SHIPPED,OTHER,"Dhaga team, ok ok"
+TKT201734,OUT_FOR_DELIVERY,WISMO,tracking not updating since 2 days third time messaging
+TKT201735,CONFIRMED,WISMO,"Hi, couier wala phone nahi utha raha"
+TKT201736,SHIPPED,WISMO,"my frock was supposed to come by Friday, still not here (#DHC101249) please check"
+TKT201737,OUT_FOR_DELIVERY,WISMO,"Dhaga team, courier wala phone nahi utha raha plz help"
+TKT201738,DELIVERED,RETURN_REFUND,"not happy with the top, need refund"
+TKT201739,DELIVERED,OTHER,coupon code kaam nahi kar raha?
+TKT201740,DELIVERED,COD_PAYMENT,Sir/Mam COD charges kyun lag rahe hai (dhc100315) urgent!!
+TKT201741,OUT_FOR_DELIVERY,CANCEL_ORDER,"Namaste, mujhe ye order nahi chahiye, cancel kardo (order no DHC101953) :("
+TKT201742,RTO_INITIATED,WISMO,"mujhe college fest ke liye chahiye tha, kab milega ver bad service"
+TKT201743,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, App shows delivered but I never received the parcel asap"
+TKT201744,DELIVERED,RETURN_REFUND,"hello team, nt happy with the dress, need refund plz help"
+TKT201745,IN_TRANSIT,WISMO,parcel kaan atka hua hai?
+TKT201746,CANCELLED,OTHER,SIR/MAM NEW COLLECTION KAB AAYEGA VERY BAD SERVICE
+TKT201747,IN_TRANSIT,WISMO,Hii Mera order kaha hai #DHC102161 urgent!!
+TKT201748,DELIVERED,OTHER,"Hi, invoie chahiye GST wala?"
+TKT201749,OUT_FOR_DELIVERY,WISMO,order id DHC102393 ka status kya hai very bad service
+TKT201750,DELIVERED,RETURN_REFUND,"Hi, pickup boy aaya hi nahi return ke liye"
+TKT201751,DELIVERED,WISMO,"H, order mila nahi abhi tak, kya hua?"
+TKT201752,IN_TRANSIT,WISMO,excuse me kab tak aayega mera kurta set?.
+TKT201753,OUT_FOR_DELIVERY,WISMO,Sir/Mam dhc102074 ka status kya hai please check
+TKT201754,CANCELLED,RETURN_REFUND,pickup boy aaya hi nahi return ke liye :(
+TKT201755,DELIVERED,OTHER,THANKS
+TKT201756,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam wrong size aaya hai, maine XL order kiya tha (order no DHC101347)."
+TKT201757,OUT_FOR_DELIVERY,WISMO,"out for delivery tha kal, aa tak nahi aaya?"
+TKT201758,DELIVERED,OTHER,do you have this dupatta in XXL? urgent!!
+TKT201759,CONFIRMED,WISMO,Sir/Mam It's been 8 days since I ordered. Where is it? :(
+TKT201760,DELIVERED,DAMAGED_OR_WRONG_ITEM,"stain on the dress when it arrived, pls replace pls reply"
+TKT201761,DELIVERED,DAMAGED_OR_WRONG_ITEM,Excuse me galat colour bhej diya aapne (DHC102093) plz help
+TKT201762,OUT_FOR_DELIVERY,WISMO,DC101487 ka status kya hai please check
+TKT201763,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam colour completely different, mustard ki jagah yellow aaya?"
+TKT201764,SHIPPED,WISMO,"DHAGA TEAM, STATUS CHECK KARO PLEASE #DHC101120 🙏"
+TKT201765,DELIVERED,RETURN_REFUND,"frock fit nahi hua, return karna hai :("
+TKT201766,DELIVERED,OTHER,"Dhaga team, thanks urgent!!"
+TKT201767,RTO_INITIATED,WISMO,when will my order reach? need it for office (order no DHC101900)
+TKT201768,OUT_FOR_DELIVERY,WISMO,"SIR/MAM MY PALAZZO WAS SUPPOSED TO COME YESTERDAY, STILL NOT HERE VERY BAD SERVICE"
+TKT201769,DELIVERED,DAMAGED_OR_WRONG_ITEM,"Sir/Mam colour completely different, mustard ki jagah yellow aaya third time messaging"
+TKT201770,OUT_FOR_DELIVERY,WISMO,"hi, order status please asap"
+TKT201771,DELIVERED,WISMO,Order staus please dhc101934?
+TKT201772,DELIVERED,RETURN_REFUND,"Namaste, return request kaise daalun app mein urgent!!"
+TKT201773,SHIPPED,WISMO,"Namaste, elivery date nikal gayi, abhi tak kuch nahi aaya (order no DHC100844)"
+TKT201774,IN_TRANSIT,WISMO,ordr abhi tak nahi aaya urgent!!
+TKT201775,CANCELLED,OTHER,size chart sahi hai ya??
+TKT201776,OUT_FOR_DELIVERY,WISMO,Excuse me status check karo please order id DHC101523 🙏
+TKT201777,DELIVERED,RETURN_REFUND,"Hii lehenga fit nahi hua, return karna hai plz help"
+TKT201778,DELIVERED,OTHER,I was charged twice vry bad service
+TKT201779,DELIVERED,DAMAGED_OR_WRONG_ITEM,Sir/Mam packet phata hua tha aur lehenga pe daag hai (dhc100595).
+TKT201780,DELIVERED,DELIVERED_NOT_RECEIVED,"Dhaga team, order #DHC100668 marked delivered, nobody came to my house third time messaging"
+TKT201781,IN_TRANSIT,WISMO,"Excuse me mujhe puja ke liye chahiye tha, kab milega very bad service"
+TKT201782,DELIVERED,WISMO,"delivery date nikal gayi, abhi tak kuch nahi aaya (order no DHC101930) asap"
+TKT201783,DELIVERED,WISMO,"Hello team, parcel kahan atka hua hai? urgent!!"
+TKT201784,IN_TRANSIT,WISMO,"Dhaga team, Mera order kaha hai #DHC100476."
+TKT201785,CANCELLED,RETURN_REFUND,Excuse me paise wapas kab milenge?
+TKT201786,DELIVERED,RETURN_REFUND,"Namaste, not happy with the dupatta, need refund pls reply"
+TKT201787,DELIVERED,DELIVERED_NOT_RECEIVED,"Namaste, watchman ne bhi nahi liya, phir delivered kaise dikha raha"
+TKT201788,CONFIRMED,WISMO,"Hello tem, Kab tak delivery hoga third time messaging"
+TKT201789,DELIVERED,OTHER,Sir/Mam do you have this lehenga in XXL? third time messaging
+TKT201790,DELIVERED,RETURN_REFUND,"dhaga team, shoulders se bahut tight hai, return please?"
+TKT201791,DELIVERED,DAMAGED_OR_WRONG_ITEM,packet phata hua tha aur frock pe daag hai :(
+TKT201792,DELIVERED,RETURN_REFUND,"Sir/Mam shoulders se bahut tight hai, return please"
+TKT201793,DELIVERED,WISMO,Sir/Mam courier wala phone nahi utha raha 🙏
+TKT201794,DELIVERED,COD_PAYMENT,"Hi, I need elp with COD"
+TKT201795,OUT_FOR_DELIVERY,WISMO,"NAMASTE, SHIPPED DIKHA RAHA HAI 8 DIN SE, AAGE KUCH UPDATE NAHI."
+TKT201796,IN_TRANSIT,WISMO,TRACKING NOT UPDATING SINCE 5 DAYS
+TKT201797,OUT_FOR_DELIVERY,WISMO,Hii Order status please DHC100612.
+TKT201798,DELIVERED,OTHER,"Hi, do you have this top in XXL? third time messaging"
+TKT201799,CANCELLED,OTHER,new collection kab aayeg urgent!!
+TKT201800,CONFIRMED,WISMO,Sir/Mam Mera order kaha hai DHC101205 🙏

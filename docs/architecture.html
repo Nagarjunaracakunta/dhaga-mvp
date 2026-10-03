@@ -1,0 +1,250 @@
+<title>Dhaga Workbench Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one wide architecture figure at the top, then short reference sections (request paths, tables, failures) in a reading column. */
+:root {
+  --bg: #f5f6fa;
+  --panel: #ffffff;
+  --ink: #171c2e;
+  --muted: #5d6479;
+  --line: #d8dbe6;
+  --edge: #6b7189;
+  --accent: #6d5ef0;
+  --accent-soft: rgba(109, 94, 240, 0.12);
+  --code-bg: #eceef5;
+  --f-ui: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1120; --panel: #151a2c; --ink: #e6e8f2; --muted: #9aa1b8; --line: #2a3048; --edge: #8a91ab;
+    --accent: #9a8cfa; --accent-soft: rgba(154, 140, 250, 0.16); --code-bg: #1d2338; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1120; --panel: #151a2c; --ink: #e6e8f2; --muted: #9aa1b8; --line: #2a3048; --edge: #8a91ab;
+  --accent: #9a8cfa; --accent-soft: rgba(154, 140, 250, 0.16); --code-bg: #1d2338; color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 15.5px; line-height: 1.6; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 28px; }
+.col { max-width: 760px; display: grid; gap: 14px; min-width: 0; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+h1 { font-size: 2.1rem; margin: 4px 0 0; font-weight: 800; letter-spacing: -0.02em; text-wrap: balance; }
+h2 { font-size: 1.25rem; margin: 18px 0 0; font-weight: 700; text-wrap: balance; }
+p { margin: 0; }
+.lede { font-size: 1.08rem; color: var(--muted); max-width: 68ch; }
+code { font-family: var(--f-mono); font-size: .85em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+
+figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 12px; }
+.scroll { overflow-x: auto; }
+figure svg { display: block; width: 100%; min-width: 860px; height: auto; color: var(--ink); font-family: var(--f-ui); }
+figcaption { color: var(--muted); font-size: 14px; max-width: 80ch; }
+svg .box { fill: none; stroke: var(--edge); stroke-width: 1.25; }
+svg .container { fill: none; stroke: var(--edge); stroke-width: 1.25; stroke-dasharray: 6 5; }
+svg .key { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+svg .wire { fill: none; stroke: var(--edge); stroke-width: 1.25; }
+svg .head { fill: var(--edge); }
+svg .t { fill: var(--ink); font-size: 13px; }
+svg .name { fill: var(--ink); font-size: 14px; font-weight: 700; }
+svg .q { fill: var(--muted); font-size: 12px; }
+svg .lbl { fill: var(--muted); font-size: 11px; }
+svg .ai { fill: var(--accent); font-weight: 600; }
+
+ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.two > div { min-width: 0; display: grid; gap: 8px; align-content: start; }
+.two h3 { margin: 0; font-size: 1rem; }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 0 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.tag.code { background: var(--code-bg); color: var(--muted); }
+
+.table { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 9px 13px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; }
+tr:last-child td { border-bottom: 0; }
+td.mono { font-family: var(--f-mono); font-size: 13px; white-space: nowrap; }
+</style>
+
+<div class="wrap">
+  <header class="col">
+    <p class="eyebrow">Dhaga &amp; Co. MVP</p>
+    <h1>Dhaga Workbench Architecture</h1>
+    <p class="lede">One web app, one backend and one database. The browser only ever talks to the backend. The backend is the only part that holds the keys to the database and to Claude.</p>
+  </header>
+
+  <figure>
+    <div class="scroll">
+      <svg viewBox="0 44 1120 544" role="img" aria-label="The browser talks only to FastAPI on Hugging Face; only the server holds the keys to Supabase and Claude">
+        <defs>
+          <marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" class="head"/>
+          </marker>
+        </defs>
+
+        <!-- Browser -->
+        <rect class="box" x="24" y="96" width="220" height="236" rx="10"/>
+        <text class="name" x="40" y="122">Browser</text>
+        <text class="q" x="40" y="142">React app (Vite)</text>
+        <text class="t" x="40" y="174">Overview</text>
+        <text class="t" x="40" y="196">CX Inbox</text>
+        <text class="t" x="40" y="218">CX Metrics</text>
+        <text class="t" x="40" y="240">Returns</text>
+        <text class="t" x="40" y="262">Data Quality</text>
+        <text class="q" x="40" y="294">Agents and category team</text>
+        <text class="q" x="40" y="312">use it here</text>
+
+        <!-- GitHub -->
+        <rect class="box" x="24" y="456" width="220" height="80" rx="10"/>
+        <text class="name" x="40" y="482">GitHub repo</text>
+        <text class="q" x="40" y="502">feature branch</text>
+        <text class="q" x="40" y="520">Docker builds React + API</text>
+
+        <!-- Hugging Face container -->
+        <rect class="container" x="300" y="64" width="520" height="500" rx="12"/>
+        <text class="q" x="316" y="86">Hugging Face Space · one Docker container</text>
+
+        <rect class="box" x="320" y="104" width="480" height="56" rx="8"/>
+        <text class="name" x="336" y="128">FastAPI app</text>
+        <text class="q" x="336" y="148">serves the React files at / and the API at /api/*</text>
+
+        <rect class="box" x="320" y="184" width="232" height="220" rx="8"/>
+        <text class="name" x="336" y="208">CX module</text>
+        <text class="t" x="336" y="234"><tspan class="ai">Haiku</tspan> reads the intent</text>
+        <text class="t" x="336" y="256">Code: order facts</text>
+        <text class="t" x="336" y="278">Code: escalation rules</text>
+        <text class="t" x="336" y="300"><tspan class="ai">Opus</tspan> drafts the reply</text>
+        <text class="t" x="336" y="322">Code: fact check</text>
+        <text class="t" x="336" y="344"><tspan class="ai">Haiku</tspan> reviews it</text>
+        <text class="t" x="336" y="366">Agent approves</text>
+        <text class="q" x="336" y="390">LangChain RunnableSequence</text>
+
+        <rect class="box" x="568" y="184" width="232" height="220" rx="8"/>
+        <text class="name" x="584" y="208">Returns module</text>
+        <text class="t" x="584" y="234">Code: load + clean</text>
+        <text class="t" x="584" y="256">Code: rates + flags</text>
+        <text class="t" x="584" y="278"><tspan class="ai">Haiku</tspan> .batch(), 8 at once</text>
+        <text class="t" x="584" y="300">Unsure → review queue</text>
+        <text class="t" x="584" y="322">Person accepts or corrects</text>
+        <text class="q" x="584" y="390">LangChain .batch()</text>
+
+        <rect class="key" x="320" y="428" width="480" height="64" rx="8"/>
+        <text class="name" x="336" y="452">Shared layer · the only part with keys</text>
+        <text class="t" x="336" y="474">settings · Supabase client · LangChain client · errors</text>
+        <text class="q" x="316" y="540">Keys are Space secrets: never sent to the browser</text>
+
+        <!-- Right column: services -->
+        <rect class="box" x="920" y="96" width="176" height="208" rx="10"/>
+        <text class="name" x="936" y="120">Supabase Postgres</text>
+        <text class="t" x="936" y="146">customers · products</text>
+        <text class="t" x="936" y="166">orders · order_items</text>
+        <text class="t" x="936" y="186">support_tickets</text>
+        <text class="t" x="936" y="206">returns</text>
+        <text class="t" x="936" y="226">ai_interactions</text>
+        <text class="t" x="936" y="246">knowledge_documents</text>
+        <text class="q" x="936" y="280">Row Level Security on</text>
+
+        <rect class="box" x="920" y="328" width="176" height="80" rx="10"/>
+        <text class="name" x="936" y="352">Supabase Storage</text>
+        <text class="t" x="936" y="374">bucket: Dhaga</text>
+        <text class="q" x="936" y="394">policy PDFs</text>
+
+        <rect class="box" x="920" y="432" width="176" height="100" rx="10"/>
+        <text class="name" x="936" y="456">OpenRouter</text>
+        <text class="t" x="936" y="480">Haiku: classify, check</text>
+        <text class="t" x="936" y="500">Opus: write replies</text>
+        <text class="q" x="936" y="520">Claude models</text>
+
+        <!-- Wires -->
+        <path class="wire" d="M244 124H318" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="282" y="116" text-anchor="middle">/api/* JSON</text>
+        <path class="wire" d="M320 148H246" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="282" y="166" text-anchor="middle">app files</text>
+
+        <path class="wire" d="M436 160V182" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="444" y="176">/api/cx</text>
+        <path class="wire" d="M684 160V182" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="692" y="176">/api/returns</text>
+        <path class="wire" d="M436 404V426" marker-end="url(#arch-arrow)"/>
+        <path class="wire" d="M684 404V426" marker-end="url(#arch-arrow)"/>
+
+        <path class="wire" d="M800 444H828V200H918" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="874" y="192" text-anchor="middle">read / write</text>
+        <path class="wire" d="M800 460H840V364H918" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="880" y="356" text-anchor="middle">PDFs at start</text>
+        <path class="wire" d="M800 476H918" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="886" y="468" text-anchor="middle">LLM calls</text>
+
+        <path class="wire" d="M244 496H298" marker-end="url(#arch-arrow)"/>
+        <text class="lbl" x="272" y="488" text-anchor="middle">git push</text>
+      </svg>
+    </div>
+    <figcaption>The browser loads the app and calls <code>/api/*</code> on FastAPI. The two modules never call each other. Both go through the shared layer, the only place that holds the Supabase and OpenRouter keys. Purple marks the steps where Claude is called; everything else is plain code or a person. LangChain runs every Claude call, the CX steps (a RunnableSequence with a RunnableBranch for routing) and the parallel returns run (.batch()).</figcaption>
+  </figure>
+
+  <section class="col">
+    <h2>How a request travels</h2>
+    <div class="two">
+      <div>
+        <h3>An agent clicks "Analyse" on a ticket</h3>
+        <ol>
+          <li>Browser sends <code>POST /api/cx/tickets/TKT…/analyze</code></li>
+          <li>Ticket, customer and order are read from Postgres <span class="tag code">code</span></li>
+          <li>Haiku works out what the customer wants <span class="tag">AI</span></li>
+          <li>Code works out the facts and applies the rules <span class="tag code">code</span></li>
+          <li>Opus writes the reply from the facts and the policy <span class="tag">AI</span></li>
+          <li>Code checks every date and amount; Haiku reviews the reply <span class="tag">AI</span></li>
+          <li>The run is saved to <code>ai_interactions</code>; the browser shows the draft</li>
+          <li>The agent approves; the ticket status updates in Postgres</li>
+        </ol>
+      </div>
+      <div>
+        <h3>The category team clicks "Classify with AI"</h3>
+        <ol>
+          <li>Browser sends <code>POST /api/returns/classify</code></li>
+          <li>Returns are read from Postgres and cleaned <span class="tag code">code</span></li>
+          <li>Haiku reads each "Other" comment, 8 at a time <span class="tag">AI</span></li>
+          <li>Reasons are saved on the <code>returns</code> rows</li>
+          <li>Unsure ones appear in the review queue</li>
+          <li>A person accepts or corrects; that answer always wins</li>
+          <li>Charts and flagged products refresh with the new reasons <span class="tag code">code</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="col">
+    <h2>What each module reads and writes</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>Table</th><th>CX module</th><th>Returns module</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">customers, products</td><td>reads</td><td>reads</td></tr>
+          <tr><td class="mono">orders, order_items</td><td>reads</td><td>reads</td></tr>
+          <tr><td class="mono">support_tickets</td><td>reads; writes the status</td><td>–</td></tr>
+          <tr><td class="mono">returns</td><td>–</td><td>reads; writes AI and final reasons</td></tr>
+          <tr><td class="mono">ai_interactions</td><td>writes every Copilot run and the agent's decision</td><td>writes one row per classify run</td></tr>
+          <tr><td class="mono">knowledge_documents</td><td>reads the policy list</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="col">
+    <h2>When something fails</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>If this fails</th><th>What the user sees</th></tr></thead>
+        <tbody>
+          <tr><td>OpenRouter is down or out of credit</td><td>CX switches to standard template replies, with a "Fallback mode" banner. Returns classify shows an error and changes nothing.</td></tr>
+          <tr><td>Claude returns something invalid</td><td>The ticket goes to a person with the reason shown on screen</td></tr>
+          <tr><td>Supabase is unreachable</td><td>The status bar turns red; screens show "Couldn't load this" with a Retry button</td></tr>
+          <tr><td>A table is missing</td><td>A "Setup needed" warning names the SQL file to run</td></tr>
+          <tr><td>No keys at all (a fresh clone)</td><td>The app runs on built-in demo data with template replies</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

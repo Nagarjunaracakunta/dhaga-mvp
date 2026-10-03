@@ -14,7 +14,9 @@ def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_
     if orders.empty or returns.empty:
         return []
     baseline = len(returns) / len(orders)
-    names = orders.drop_duplicates("product_id").set_index("product_id")["product_name"]
+    first = orders.drop_duplicates("product_id").set_index("product_id")
+    names = first["product_name"]
+    skus = first["sku"] if "sku" in first.columns else first["product_name"].map(lambda _: None)
     prod_rate = (returns.groupby("product_id").size() / orders.groupby("product_id").size()).fillna(0)
     out = []
     for dim, cols in DIMENSIONS.items():
@@ -32,12 +34,19 @@ def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_
                 mask &= returns[col] == c[col]
             sub = returns[mask]
             breakdown = sub["primary_reason"].value_counts()
-            comments = sub.loc[sub["needs_llm"], "return_comment"].head(config.MAX_SAMPLE_COMMENTS).tolist()
+            other = sub[sub["classification_source"].isin(["pending_llm", "ai", "ai_review", "human"])]
+            comments = other["return_comment"].head(config.MAX_SAMPLE_COMMENTS).tolist()
+            samples = [{"return_id": x.return_id, "comment": x.return_comment, "reason": x.primary_reason,
+                        "detail": x.sub_reason if isinstance(x.sub_reason, str) else None,
+                        "body_area": x.body_area if isinstance(x.body_area, str) else None,
+                        "source": x.classification_source}
+                       for x in other.head(8).itertuples()]
             out.append({
                 "insight_id": f"{dim}:" + "|".join(str(c[col]) for col in cols),
                 "dimension": dim,
                 "product_id": c["product_id"],
                 "product_name": names.get(c["product_id"]),
+                "sku": skus.get(c["product_id"]),
                 "segment": {col: c[col] for col in cols if col != "product_id"},
                 "orders": int(c["orders"]),
                 "returns": int(c["returns"]),
@@ -47,5 +56,6 @@ def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_
                 "reason_breakdown": {k: int(v) for k, v in breakdown.items()},
                 "unclassified_share": round(float((sub["classification_source"] == "pending_llm").mean()), 4),
                 "sample_comments": comments,
+                "sample_returns": samples,
             })
     return sorted(out, key=lambda x: x["lift"], reverse=True)

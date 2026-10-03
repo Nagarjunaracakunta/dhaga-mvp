@@ -1,0 +1,514 @@
+<title>CX Copilot API</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: API reference. Sticky endpoint index on the left; one column of endpoint sections; JSON examples scroll inside their own frames. */
+:root {
+  --paper: #f6f7f9;
+  --ink: #1b2233;
+  --muted: #5a6478;
+  --rule: #d9dde6;
+  --panel: #ffffff;
+  --indigo: #2f3f8f;
+  --indigo-soft: #e6e9f6;
+  --madder: #a83a4a;
+  --madder-soft: #f6e4e6;
+  --ok: #2e7a52;
+  --ok-soft: #e2f1e8;
+  --amber: #8a5a00;
+  --amber-soft: #f7ecd6;
+  --code-bg: #eef0f5;
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+    --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+    --ok: #7ccfa1; --ok-soft: #1c3328; --amber: #e8b75c; --amber-soft: #352a16; --code-bg: #1f2431; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+  --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+  --ok: #7ccfa1; --ok-soft: #1c3328; --amber: #e8b75c; --amber-soft: #352a16; --code-bg: #1f2431; color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 52px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 28px 64px; } nav.toc { position: static !important; max-height: none !important; } }
+
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-family: var(--f-display); font-size: 14px; max-height: calc(100vh - 48px); overflow-y: auto; }
+nav.toc .part { margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; color: var(--muted); font-weight: 600; }
+nav.toc .part:first-child { margin-top: 0; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+nav.toc a { color: var(--ink); text-decoration: none; display: flex; gap: 8px; align-items: baseline; }
+nav.toc a code { background: none; padding: 0; font-size: 12.5px; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--indigo); }
+nav.toc a:hover code { text-decoration: underline; }
+
+main { min-width: 0; }
+main > * { max-width: 74ch; }
+main > .scroll, main > pre, main > pre.mermaid, main > .ep { max-width: none; }
+
+header.top { display: grid; gap: 10px; padding-bottom: 26px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+.eyebrow { font-family: var(--f-display); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--indigo); font-weight: 600; margin: 0; }
+h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; }
+h1 { font-size: 2.3rem; margin: 0; font-weight: 700; }
+h2 { font-size: 1.5rem; margin: 52px 0 12px; font-weight: 600; scroll-margin-top: 24px; }
+h3 { font-size: 1.1rem; margin: 26px 0 8px; font-weight: 600; }
+h4 { font-family: var(--f-display); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 8px; font-weight: 600; }
+.lede { font-size: 1.12rem; color: var(--muted); margin: 0; }
+.meta { font-family: var(--f-display); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+p { margin: 0 0 14px; }
+ul, ol { padding-left: 1.25em; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+a { color: var(--indigo); }
+code { font-family: var(--f-mono); font-size: .84em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre { font-family: var(--f-mono); font-size: 13px; line-height: 1.55; background: var(--code-bg); padding: 14px 16px; border-radius: 6px; overflow-x: auto; margin: 0 0 14px; }
+pre code { background: none; padding: 0; font-size: inherit; overflow-wrap: normal; }
+.c { color: var(--muted); }
+
+.scroll { overflow-x: auto; margin: 0 0 16px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--f-display); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--paper); }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: nowrap; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.verb { display: inline-block; font-family: var(--f-mono); font-size: 12px; font-weight: 500; padding: 2px 7px; border-radius: 4px; min-width: 42px; text-align: center; }
+.verb.get { background: var(--ok-soft); color: var(--ok); }
+.verb.post { background: var(--indigo-soft); color: var(--indigo); }
+.pill { display: inline-block; font-family: var(--f-display); font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.bad { background: var(--madder-soft); color: var(--madder); }
+.pill.warn { background: var(--amber-soft); color: var(--amber); }
+.pill.neutral { background: var(--indigo-soft); color: var(--indigo); }
+
+.ep { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 22px 8px; margin: 0 0 22px; min-width: 0; scroll-margin-top: 24px; }
+.ep > .sig { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 0 0 8px; }
+.ep > .sig code { font-size: 15px; background: none; padding: 0; font-weight: 500; }
+.ep > p.what { margin: 0 0 6px; }
+.ep pre { background: var(--code-bg); }
+.ep .scroll { background: var(--panel); }
+
+.note { border-left: 3px solid var(--indigo); background: var(--indigo-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 0 0 16px; }
+.note.warn { border-left-color: var(--amber); background: var(--amber-soft); }
+.note p:last-child { margin-bottom: 0; }
+pre.mermaid { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; overflow-x: auto; margin: 0 0 16px; }
+
+a:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Contents">
+    <p class="part">Basics</p>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#flow">Typical flow</a></li>
+      <li><a href="#modes">Data and AI modes</a></li>
+    </ol>
+    <p class="part">Endpoints</p>
+    <ol>
+      <li><a href="#health"><span class="verb get">GET</span><code>/api/health</code></a></li>
+      <li><a href="#list"><span class="verb get">GET</span><code>/tickets</code></a></li>
+      <li><a href="#detail"><span class="verb get">GET</span><code>/tickets/{ref}</code></a></li>
+      <li><a href="#analyze"><span class="verb post">POST</span><code>…/analyze</code></a></li>
+      <li><a href="#decision"><span class="verb post">POST</span><code>…/decision</code></a></li>
+      <li><a href="#analyze-text"><span class="verb post">POST</span><code>/analyze</code></a></li>
+      <li><a href="#order"><span class="verb get">GET</span><code>/orders/{number}</code></a></li>
+      <li><a href="#metrics"><span class="verb get">GET</span><code>/metrics</code></a></li>
+    </ol>
+    <p class="part">Reference</p>
+    <ol>
+      <li><a href="#result">CopilotResult fields</a></li>
+      <li><a href="#facts">OrderFacts fields</a></li>
+      <li><a href="#values">Allowed values</a></li>
+      <li><a href="#ui">Showing results in the UI</a></li>
+      <li><a href="#errors">Errors</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="top">
+      <p class="eyebrow">Dhaga Workbench · API reference</p>
+      <h1>CX Copilot API</h1>
+      <p class="lede">Endpoints for the support inbox: list tickets, run Copilot on a ticket, and record the agent's decision.</p>
+      <div class="meta"><span>Base path <code>/api/cx</code></span><span>JSON in and out</span><span>Version 1 · 3 October 2026</span></div>
+    </header>
+
+    <h2 id="overview">Overview</h2>
+    <ul>
+      <li><strong>Base URL (local):</strong> <code>http://127.0.0.1:8000</code>. Start the server with <code>uvicorn backend.main:app --reload</code>.</li>
+      <li><strong>Interactive docs:</strong> <code>/docs</code> (Swagger) on the running server, generated from the same code as this page.</li>
+      <li><strong>Authentication:</strong> none in the MVP. Don't expose the server publicly without adding it.</li>
+      <li><strong>Ticket references:</strong> any <code>{ticket_ref}</code> accepts the ticket UUID or its number, such as <code>TKT200001</code>.</li>
+      <li><strong>Dates:</strong> ISO 8601. Dates are <code>2026-10-04</code>; timestamps are <code>2026-10-03T09:48:00</code>.</li>
+      <li><strong>Money:</strong> rupees as numbers, such as <code>1436.0</code>. Format them in the UI.</li>
+    </ul>
+    <p>All examples on this page are real responses from the demo dataset with no API key set, so they come from the template fallback. With a key, <code>draft</code> is written by Claude and <code>fallback_mode</code> is <code>false</code>; every field keeps the same shape.</p>
+
+    <h2 id="flow">Typical flow</h2>
+<pre class="mermaid">
+sequenceDiagram
+  participant UI as Inbox screen
+  participant API as /api/cx
+  UI->>API: GET /tickets?status=OPEN
+  API-->>UI: ticket list
+  UI->>API: GET /tickets/TKT200001
+  API-->>UI: ticket + order + facts
+  UI->>API: POST /tickets/TKT200001/analyze
+  API-->>UI: CopilotResult (draft or reason)
+  Note over UI: Agent approves, edits or escalates
+  UI->>API: POST /tickets/TKT200001/decision
+  API-->>UI: new ticket status
+</pre>
+    <h3>Ticket status</h3>
+<pre class="mermaid">
+stateDiagram-v2
+  [*] --> OPEN
+  OPEN --> DRAFTED: analyze returns DRAFTED or NEEDS_INFO
+  OPEN --> OPEN: analyze returns NEEDS_HUMAN
+  DRAFTED --> DRAFTED: analyze again
+  OPEN --> RESOLVED: decision APPROVED / EDITED
+  DRAFTED --> RESOLVED: decision APPROVED / EDITED
+  OPEN --> ESCALATED: decision REJECTED / ESCALATED
+  DRAFTED --> ESCALATED: decision REJECTED / ESCALATED
+  RESOLVED --> [*]
+  ESCALATED --> [*]
+</pre>
+    <p>Resolved and escalated tickets are closed. Analysing them again returns <code>409 TICKET_CLOSED</code>.</p>
+
+    <h2 id="modes">Data and AI modes</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Setting in <code>.env</code></th><th>If set</th><th>If blank</th></tr></thead>
+      <tbody>
+        <tr><td><code>SUPABASE_URL</code> + <code>SUPABASE_SERVICE_KEY</code></td><td>Reads and writes the live Supabase tables</td><td>Uses 10 demo tickets in memory. Changes are lost on restart.</td></tr>
+        <tr><td><code>ANTHROPIC_API_KEY</code></td><td>Claude classifies, drafts and checks (Haiku 4.5 + Opus 5.5)</td><td>Keyword matching and template replies. Results have <code>fallback_mode: true</code>.</td></tr>
+        <tr><td><code>CX_TODAY</code></td><td>Delays are computed as if today were this date</td><td>Real today. In demo mode, 2026-10-03.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note warn"><p><strong>Show fallback mode in the UI.</strong> When <code>fallback_mode</code> is <code>true</code>, show a banner such as "AI unavailable: using standard replies". The API can switch mid-run if Claude becomes unreachable. <code>notes</code> says why.</p></div>
+
+    <!-- ================= ENDPOINTS ================= -->
+    <h2>Endpoints</h2>
+
+    <section class="ep" id="health">
+      <div class="sig"><span class="verb get">GET</span><code>/api/health</code></div>
+      <p class="what">Shows whether the database is reachable, whether Claude is set up, and which policy documents loaded. Call it on app start so the UI can warn early.</p>
+      <h4>Response 200</h4>
+<pre><code>{
+  "status": "ok",                     <span class="c">// "degraded" if the database is unreachable</span>
+  "cx_data_source": "demo",           <span class="c">// "demo" or "supabase"</span>
+  "database_reachable": true,
+  "llm_configured": false,
+  "models": { "fast": "claude-haiku-4-5", "strong": "claude-opus-5-5" },
+  "policies_loaded": ["cancellation", "cod", "delivery", "escalation", "returns"]
+}</code></pre>
+    </section>
+
+    <section class="ep" id="list">
+      <div class="sig"><span class="verb get">GET</span><code>/api/cx/tickets</code></div>
+      <p class="what">The inbox list, sorted by ticket number. Includes the intent and result from the latest Copilot run, if there has been one.</p>
+      <h4>Query parameters</h4>
+      <div class="scroll"><table>
+        <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>status</code></td><td>string</td><td>all</td><td><code>OPEN</code>, <code>DRAFTED</code>, <code>RESOLVED</code> or <code>ESCALATED</code></td></tr>
+          <tr><td><code>channel</code></td><td>string</td><td>all</td><td>Exact match, e.g. <code>App</code>, <code>WhatsApp</code>, <code>Email</code></td></tr>
+          <tr><td><code>intent</code></td><td>string</td><td>all</td><td>Filters on the last Copilot intent. Applied within the current page.</td></tr>
+          <tr><td><code>limit</code></td><td>integer</td><td>50</td><td>1–200</td></tr>
+          <tr><td><code>offset</code></td><td>integer</td><td>0</td><td>For paging</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Response 200</h4>
+<pre><code>[
+  {
+    "ticket_id": "t0000000-0000-4000-8000-000000000001",
+    "ticket_number": "TKT200001",
+    "customer_name": "Priya Sharma",
+    "channel": "App",
+    "message": "Mera order abhi tak nahi aaya. Kab milega?",
+    "status": "OPEN",
+    "created_at": "2026-10-03T09:48:00",
+    "last_intent": null,        <span class="c">// e.g. "WISMO" after an analyze</span>
+    "last_result": null         <span class="c">// e.g. "DRAFTED" after an analyze</span>
+  }
+]</code></pre>
+    </section>
+
+    <section class="ep" id="detail">
+      <div class="sig"><span class="verb get">GET</span><code>/api/cx/tickets/{ticket_ref}</code></div>
+      <p class="what">One ticket with its customer, the linked order and items, the computed order facts, and the latest Copilot result. Use it to draw the ticket screen before or after analysing.</p>
+      <h4>Response 200</h4>
+<pre><code>{
+  "ticket": {
+    "ticket_id": "t0000000-0000-4000-8000-000000000001",
+    "ticket_number": "TKT200001",
+    "customer_id": "c0000000-0000-4000-8000-000000000001",
+    "customer_name": "Priya Sharma",
+    "city": "Chennai",
+    "channel": "App",
+    "message": "Mera order abhi tak nahi aaya. Kab milega?",
+    "status": "OPEN",
+    "created_at": "2026-10-03T09:48:00",
+    "order_id": "o0000000-0000-4000-8000-000000000001"
+  },
+  "order": {
+    "order_id": "o0000000-0000-4000-8000-000000000001",
+    "order_number": "DHC100560",
+    "order_status": "IN_TRANSIT",
+    "courier": "Delhivery",
+    "tracking_number": "DEL100560",
+    "expected_delivery": "2026-10-04",
+    "delivered_at": null,
+    "payment_mode": "COD",
+    "total_amount": 1436.0,
+    "items": [{ "product_name": "Green Embroidered Straight Kurta", "size": "M", "colour": "Green", "quantity": 1, "unit_price": 1436.0, ... }],
+    ...
+  },
+  "facts": { ...OrderFacts... },     <span class="c">// null if the ticket has no linked order</span>
+  "last_result": null                <span class="c">// latest CopilotResult + "interaction_id" + "human_action", or null</span>
+}</code></pre>
+      <p><code>order</code> and <code>facts</code> come only from the order linked on the ticket. Copilot may find a different order, for example one the customer named in the message. The order Copilot used is in the analyze result's <code>facts</code>.</p>
+      <h4>Errors</h4>
+      <p><code>404 TICKET_NOT_FOUND</code></p>
+    </section>
+
+    <section class="ep" id="analyze">
+      <div class="sig"><span class="verb post">POST</span><code>/api/cx/tickets/{ticket_ref}/analyze</code></div>
+      <p class="what">Runs Copilot on the ticket: classify, find the order, apply rules, draft, check. Logs the run and sets the ticket to <code>DRAFTED</code> when a reply is ready. No request body.</p>
+      <p>Takes about 3–6 seconds with Claude and is instant in fallback mode. Show progress while it runs. Calling it again creates a new result; the latest one is what <code>last_result</code> returns.</p>
+      <h4>Response 200: draft ready</h4>
+<pre><code>{
+  "ticket_id": "t0000000-0000-4000-8000-000000000001",
+  "status": "DRAFTED",
+  "classification": { "intent": "WISMO", "confidence": 0.75, "order_number": null, "language": "hinglish" },
+  "facts": { "order_number": "DHC100560", "status": "IN_TRANSIT", "courier": "Delhivery",
+             "expected_delivery": "2026-10-04", "days_late": null, ... },
+  "policy_used": null,              <span class="c">// e.g. "Delivery FAQ v1" when Claude drafted it</span>
+  "draft": "Hi Priya, your order DHC100560 is on its way with Delhivery, expected by 4 October. Tracking number: DEL100560.\n\nTeam Dhaga",
+  "check": { "passed": true, "issues": [] },
+  "human_reason": null,
+  "escalation_tier": null,
+  "priority_note": null,
+  "attempts": 1,
+  "fallback_mode": true,
+  "notes": ["Fallback mode: ANTHROPIC_API_KEY is not set"],
+  "interaction_id": "096f541e-9224-4cb2-b903-cc33a215ff34",   <span class="c">// send this back with the decision</span>
+  "cost_usd": 0.0,
+  "latency_ms": 0
+}</code></pre>
+      <h4>Response 200: needs a person</h4>
+<pre><code>{
+  "ticket_id": "t0000000-0000-4000-8000-000000000003",
+  "status": "NEEDS_HUMAN",
+  "classification": { "intent": "DELIVERED_NOT_RECEIVED", "confidence": 0.75, "order_number": null, "language": "english" },
+  "facts": { "order_number": "DHC100318", "status": "DELIVERED", "delivered_on": "2026-10-01", ... },
+  "draft": null,
+  "check": null,
+  "human_reason": "Possible lost parcel. A person must raise a courier claim before replying.",
+  "escalation_tier": "Tier 2",
+  "attempts": 0,
+  ...
+}</code></pre>
+      <h4>Response 200: needs the order number</h4>
+<pre><code>{
+  "status": "NEEDS_INFO",
+  "facts": null,
+  "draft": "Hi Meera, happy to check this for you. Could you share your order number? It starts with DHC and is in your order confirmation message.\n\nTeam Dhaga",
+  "human_reason": "No order is linked to this ticket and none could be found for this customer.",
+  ...
+}</code></pre>
+      <h4>Errors</h4>
+      <p><code>404 TICKET_NOT_FOUND</code> · <code>409 TICKET_CLOSED</code> · <code>503 DB_ERROR</code></p>
+      <p>Claude being unavailable is <strong>not</strong> an error. The run finishes in fallback mode and returns 200.</p>
+    </section>
+
+    <section class="ep" id="decision">
+      <div class="sig"><span class="verb post">POST</span><code>/api/cx/tickets/{ticket_ref}/decision</code></div>
+      <p class="what">Records what the agent did with a Copilot result and closes the ticket. Nothing is sent to the customer yet; in the MVP this endpoint only saves the decision.</p>
+      <h4>Request body</h4>
+      <div class="scroll"><table>
+        <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>interaction_id</code></td><td>string</td><td>yes</td><td>From the analyze result. It must belong to this ticket.</td></tr>
+          <tr><td><code>action</code></td><td>string</td><td>yes</td><td><code>APPROVED</code>, <code>EDITED</code>, <code>REJECTED</code> or <code>ESCALATED</code></td></tr>
+          <tr><td><code>final_reply</code></td><td>string</td><td>for <code>EDITED</code></td><td>The text the agent will send. Ignored for other actions.</td></tr>
+        </tbody>
+      </table></div>
+<pre><code>POST /api/cx/tickets/TKT200001/decision
+{ "interaction_id": "096f541e-9224-4cb2-b903-cc33a215ff34", "action": "EDITED", "final_reply": "Hi Priya ..." }</code></pre>
+      <h4>Response 200</h4>
+<pre><code>{ "ticket_id": "t0000000-0000-4000-8000-000000000001", "ticket_status": "RESOLVED", "human_action": "EDITED" }</code></pre>
+      <div class="scroll"><table>
+        <thead><tr><th>Action</th><th>Ticket becomes</th><th>Saved reply</th><th>Use when</th></tr></thead>
+        <tbody>
+          <tr><td><code>APPROVED</code></td><td>RESOLVED</td><td>the draft as is</td><td>The draft is right. Needs a draft, otherwise <code>400 NO_DRAFT</code>.</td></tr>
+          <tr><td><code>EDITED</code></td><td>RESOLVED</td><td><code>final_reply</code></td><td>The agent changed the text, or wrote one for a NEEDS_HUMAN ticket</td></tr>
+          <tr><td><code>REJECTED</code></td><td>ESCALATED</td><td>none</td><td>The draft is wrong and the agent won't use it</td></tr>
+          <tr><td><code>ESCALATED</code></td><td>ESCALATED</td><td>none</td><td>Hand to Tier 2, e.g. after a NEEDS_HUMAN result</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Errors</h4>
+      <p><code>404 TICKET_NOT_FOUND</code> · <code>404 INTERACTION_NOT_FOUND</code> · <code>400 INTERACTION_MISMATCH</code> · <code>400 FINAL_REPLY_REQUIRED</code> · <code>400 NO_DRAFT</code> · <code>409 ALREADY_DECIDED</code> · <code>422 INVALID_REQUEST</code></p>
+    </section>
+
+    <section class="ep" id="analyze-text">
+      <div class="sig"><span class="verb post">POST</span><code>/api/cx/analyze</code></div>
+      <p class="what">Runs Copilot on pasted text without a ticket. Useful for a "try it" box in a demo. The run is logged with no ticket, and no ticket status changes.</p>
+      <h4>Request body</h4>
+      <div class="scroll"><table>
+        <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>message</code></td><td>string</td><td>yes</td><td>1–4,000 characters</td></tr>
+          <tr><td><code>order_number</code></td><td>string</td><td>no</td><td>Added to the message so Copilot can find the order</td></tr>
+          <tr><td><code>customer_id</code></td><td>string</td><td>no</td><td>If set, an order number belonging to someone else returns NEEDS_HUMAN</td></tr>
+        </tbody>
+      </table></div>
+<pre><code>POST /api/cx/analyze
+{ "message": "kab aayega mera order?", "order_number": "DHC100488" }</code></pre>
+      <h4>Response 200</h4>
+      <p>A CopilotResult with <code>ticket_id: null</code>. Without a customer, the greeting is "Hi there".</p>
+<pre><code>{
+  "ticket_id": null,
+  "status": "DRAFTED",
+  "classification": { "intent": "WISMO", "confidence": 0.75, "order_number": "DHC100488", "language": "hinglish" },
+  "facts": { "order_number": "DHC100488", "status": "OUT_FOR_DELIVERY", ... },
+  "draft": "Hi there, your order DHC100488 is out for delivery today with Delhivery, expected by 3 October. Tracking number: DEL100488.\n\nTeam Dhaga",
+  ...
+}</code></pre>
+    </section>
+
+    <section class="ep" id="order">
+      <div class="sig"><span class="verb get">GET</span><code>/api/cx/orders/{order_number}</code></div>
+      <p class="what">Looks up an order by its number (any letter case) and returns the order with computed facts. Useful for an agent's search box and for debugging.</p>
+      <h4>Response 200</h4>
+<pre><code>{
+  "order": { "order_number": "DHC100231", "order_status": "IN_TRANSIT", "courier": "Ekart",
+             "expected_delivery": "2026-09-27", "total_amount": 2063.0, "items": [ ... ], ... },
+  "facts": { "order_number": "DHC100231", "days_late": 6, "is_cancellable": false, ... }
+}</code></pre>
+      <h4>Errors</h4>
+      <p><code>404 ORDER_NOT_FOUND</code></p>
+    </section>
+
+    <section class="ep" id="metrics">
+      <div class="sig"><span class="verb get">GET</span><code>/api/cx/metrics</code></div>
+      <p class="what">Numbers for the CX metrics screen, built from the saved Copilot runs and ticket statuses.</p>
+      <h4>Response 200</h4>
+<pre><code>{
+  "tickets_by_status": { "OPEN": 8, "DRAFTED": 1, "RESOLVED": 1, "ESCALATED": 0 },
+  "analysed": 4,                                   <span class="c">// Copilot runs saved</span>
+  "by_intent": { "WISMO": 3, "DELIVERED_NOT_RECEIVED": 1 },
+  "by_result": { "DRAFTED": 2, "NEEDS_HUMAN": 1, "NEEDS_INFO": 1 },
+  "human_actions": { "EDITED": 1 },
+  "acceptance_rate": 0.0,                          <span class="c">// APPROVED ÷ (APPROVED + EDITED + REJECTED); null if none</span>
+  "fallback_runs": 4,
+  "avg_latency_ms": 0,
+  "avg_cost_usd": 0.0,
+  "total_cost_usd": 0.0
+}</code></pre>
+      <p>In Supabase mode, the 1,200 synthetic rows already in <code>ai_interactions</code> count too. They have an intent but no cost.</p>
+    </section>
+
+    <!-- ================= REFERENCE ================= -->
+    <h2 id="result">CopilotResult fields</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><code>ticket_id</code></td><td>string | null</td><td>Ticket UUID; null for <code>/analyze</code> on pasted text</td></tr>
+        <tr><td><code>status</code></td><td>string</td><td><code>DRAFTED</code>, <code>NEEDS_HUMAN</code> or <code>NEEDS_INFO</code>. See <a href="#ui">Showing results</a>.</td></tr>
+        <tr><td><code>classification.intent</code></td><td>string</td><td>What the customer wants. See <a href="#values">Allowed values</a>.</td></tr>
+        <tr><td><code>classification.confidence</code></td><td>number 0–1</td><td>Below 0.70, the ticket goes to a person</td></tr>
+        <tr><td><code>classification.order_number</code></td><td>string | null</td><td>Order number the customer wrote, if any</td></tr>
+        <tr><td><code>classification.language</code></td><td>string</td><td><code>english</code>, <code>hinglish</code>, <code>hindi</code> or <code>other</code></td></tr>
+        <tr><td><code>facts</code></td><td>OrderFacts | null</td><td>The order Copilot used; null if none was found or it belongs to someone else</td></tr>
+        <tr><td><code>policy_used</code></td><td>string | null</td><td>Policy document given to Claude. Null in fallback mode.</td></tr>
+        <tr><td><code>draft</code></td><td>string | null</td><td>Suggested reply, with line breaks as <code>\n</code>. Can be present even when <code>status</code> is NEEDS_HUMAN after two failed checks.</td></tr>
+        <tr><td><code>check</code></td><td>object | null</td><td><code>{passed, issues[]}</code> from the last check. Show the issues to the agent.</td></tr>
+        <tr><td><code>human_reason</code></td><td>string | null</td><td>Plain-language reason a person must act. Show it on the failure card.</td></tr>
+        <tr><td><code>escalation_tier</code></td><td>string | null</td><td><code>Tier 2</code> for courier claims, damaged or wrong items, and return-to-origin cases</td></tr>
+        <tr><td><code>priority_note</code></td><td>string | null</td><td>Set when an order is more than 5 days late</td></tr>
+        <tr><td><code>attempts</code></td><td>integer</td><td>Drafts written: 0, 1, or 2 if the first failed its check</td></tr>
+        <tr><td><code>fallback_mode</code></td><td>boolean</td><td>True when templates were used instead of Claude</td></tr>
+        <tr><td><code>notes</code></td><td>string[]</td><td>Diagnostics, such as why fallback started or an order number that wasn't found</td></tr>
+        <tr><td><code>interaction_id</code></td><td>string</td><td>ID of the saved run. Needed for <code>/decision</code>.</td></tr>
+        <tr><td><code>cost_usd</code></td><td>number</td><td>Claude cost for this run</td></tr>
+        <tr><td><code>latency_ms</code></td><td>integer</td><td>Total run time</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="facts">OrderFacts fields</h2>
+    <p>Computed by code from the order row. The model reads these and never calculates them.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><code>order_number</code></td><td>string</td><td>e.g. <code>DHC100560</code></td></tr>
+        <tr><td><code>status</code></td><td>string</td><td>Order status. See <a href="#values">Allowed values</a>.</td></tr>
+        <tr><td><code>courier</code>, <code>tracking_number</code></td><td>string | null</td><td>Null before dispatch</td></tr>
+        <tr><td><code>order_date</code>, <code>expected_delivery</code>, <code>delivered_on</code></td><td>date | null</td><td><code>YYYY-MM-DD</code></td></tr>
+        <tr><td><code>days_late</code></td><td>integer | null</td><td>Days past the expected date; null if delivered, cancelled or not late</td></tr>
+        <tr><td><code>days_since_delivery</code></td><td>integer | null</td><td>Only for delivered orders</td></tr>
+        <tr><td><code>is_delivered</code></td><td>boolean</td><td>Status is DELIVERED</td></tr>
+        <tr><td><code>is_cancellable</code></td><td>boolean</td><td>Status is CONFIRMED, i.e. not yet dispatched</td></tr>
+        <tr><td><code>within_return_window</code></td><td>boolean | null</td><td>Delivered within the last 7 days; null if not delivered</td></tr>
+        <tr><td><code>payment_mode</code></td><td>string | null</td><td><code>COD</code> or <code>PREPAID</code></td></tr>
+        <tr><td><code>total_amount</code></td><td>number | null</td><td>Rupees</td></tr>
+        <tr><td><code>items</code></td><td>string[]</td><td>Ready to display, e.g. <code>"Floral Midi Dress (M, Pink)"</code></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="values">Allowed values</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Field</th><th>Values</th></tr></thead>
+      <tbody>
+        <tr><td>Intent</td><td><code>WISMO</code> (where is my order) · <code>DELIVERED_NOT_RECEIVED</code> · <code>DAMAGED_OR_WRONG_ITEM</code> · <code>CANCEL_ORDER</code> · <code>RETURN_REFUND</code> · <code>COD_PAYMENT</code> · <code>OTHER</code></td></tr>
+        <tr><td>Result status</td><td><code>DRAFTED</code> · <code>NEEDS_HUMAN</code> · <code>NEEDS_INFO</code></td></tr>
+        <tr><td>Ticket status</td><td><code>OPEN</code> · <code>DRAFTED</code> · <code>RESOLVED</code> · <code>ESCALATED</code></td></tr>
+        <tr><td>Decision action</td><td><code>APPROVED</code> · <code>EDITED</code> · <code>REJECTED</code> · <code>ESCALATED</code></td></tr>
+        <tr><td>Order status</td><td><code>CONFIRMED</code> · <code>SHIPPED</code> · <code>IN_TRANSIT</code> · <code>OUT_FOR_DELIVERY</code> · <code>DELIVERED</code> · <code>RTO_INITIATED</code> · <code>CANCELLED</code></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="ui">Showing results in the UI</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Result</th><th>Show</th><th>Buttons</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill ok">DRAFTED</span></td><td>Draft, check result, <code>priority_note</code> if set</td><td>Approve (<code>APPROVED</code>) · Edit (<code>EDITED</code>) · Reject (<code>REJECTED</code>)</td></tr>
+        <tr><td><span class="pill warn">NEEDS_INFO</span></td><td><code>human_reason</code> and the "ask for order number" draft</td><td>Send as is (<code>APPROVED</code>) · Edit (<code>EDITED</code>)</td></tr>
+        <tr><td><span class="pill bad">NEEDS_HUMAN</span></td><td>Failure card with <code>human_reason</code> and <code>escalation_tier</code>. If <code>draft</code> is present, show it with <code>check.issues</code>.</td><td>Assign to tier (<code>ESCALATED</code>) · Reply manually (<code>EDITED</code> with the agent's text)</td></tr>
+        <tr><td><span class="pill neutral">fallback_mode</span></td><td>Banner "AI unavailable: using standard replies"</td><td>Same as the status above</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="errors">Errors</h2>
+    <p>Every error has the same shape:</p>
+<pre><code>{ "error": { "code": "TICKET_NOT_FOUND", "message": "No ticket TKT999999" } }</code></pre>
+    <p>Validation errors (422) add <code>details</code>, one entry per bad field:</p>
+<pre><code>{ "error": { "code": "INVALID_REQUEST",
+             "message": "interaction_id: Field required; action: Input should be 'APPROVED', 'EDITED', 'REJECTED' or 'ESCALATED'",
+             "details": [ { "field": "interaction_id", "problem": "Field required" },
+                          { "field": "action", "problem": "Input should be 'APPROVED', 'EDITED', 'REJECTED' or 'ESCALATED'" } ] } }</code></pre>
+    <div class="scroll"><table>
+      <thead><tr><th>HTTP</th><th>Code</th><th>When</th><th>What the UI should do</th></tr></thead>
+      <tbody>
+        <tr><td class="num">400</td><td><code>INTERACTION_MISMATCH</code></td><td>The interaction belongs to another ticket</td><td>Reload the ticket</td></tr>
+        <tr><td class="num">400</td><td><code>FINAL_REPLY_REQUIRED</code></td><td><code>EDITED</code> without text</td><td>Keep the editor open</td></tr>
+        <tr><td class="num">400</td><td><code>NO_DRAFT</code></td><td><code>APPROVED</code> on a result with no draft</td><td>Offer Edit or Escalate instead</td></tr>
+        <tr><td class="num">404</td><td><code>TICKET_NOT_FOUND</code></td><td>Unknown ticket ID or number</td><td>Back to the inbox</td></tr>
+        <tr><td class="num">404</td><td><code>INTERACTION_NOT_FOUND</code></td><td>Unknown <code>interaction_id</code>. In demo mode, results are lost on restart.</td><td>Analyse again</td></tr>
+        <tr><td class="num">404</td><td><code>ORDER_NOT_FOUND</code></td><td>Unknown order number</td><td>"No order found"</td></tr>
+        <tr><td class="num">409</td><td><code>ALREADY_DECIDED</code></td><td>The result already has a decision</td><td>Refresh the ticket</td></tr>
+        <tr><td class="num">409</td><td><code>TICKET_CLOSED</code></td><td>Analyse on a resolved or escalated ticket</td><td>Hide the Analyse button for closed tickets</td></tr>
+        <tr><td class="num">422</td><td><code>INVALID_REQUEST</code></td><td>Bad query or body</td><td>Show <code>details</code> next to the fields</td></tr>
+        <tr><td class="num">503</td><td><code>DB_ERROR</code></td><td>Supabase query failed</td><td>"Try again" button</td></tr>
+        <tr><td class="num">503</td><td><code>DB_NOT_CONFIGURED</code></td><td><code>CX_DATA_SOURCE=supabase</code> without keys</td><td>Fix <code>.env</code></td></tr>
+      </tbody>
+    </table></div>
+  </main>
+</div>

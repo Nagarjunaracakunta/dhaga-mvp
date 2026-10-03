@@ -1,0 +1,554 @@
+<title>Dhaga Workbench Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: internal tool. Fixed left sidebar + content; CX uses a list/detail split that stacks on phones. Indigo for actions, madder for problems, green for done. */
+:root {
+  --bg: #f3f4f7;
+  --surface: #ffffff;
+  --surface-2: #f8f9fb;
+  --ink: #1b2233;
+  --muted: #5d6679;
+  --line: #dde1e9;
+  --indigo: #2f3f8f;
+  --indigo-ink: #ffffff;
+  --indigo-soft: #e7eaf7;
+  --madder: #a83a4a;
+  --madder-soft: #f7e5e8;
+  --ok: #2b7650;
+  --ok-soft: #e1f1e7;
+  --amber: #875800;
+  --amber-soft: #f8eed8;
+  --bar: #2f3f8f;
+  --bar-bg: #e7eaf7;
+  --side: #1b2233;
+  --side-ink: #c9cfdc;
+  --side-active: #ffffff;
+  --f-ui: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f121a; --surface: #171b25; --surface-2: #1c2130; --ink: #e4e7ef; --muted: #9aa2b5; --line: #2a3142;
+    --indigo: #9aa9f2; --indigo-ink: #11152a; --indigo-soft: #232a46; --madder: #ee95a2; --madder-soft: #3a2228;
+    --ok: #7fd0a3; --ok-soft: #1b3226; --amber: #e9ba62; --amber-soft: #352a15; --bar: #9aa9f2; --bar-bg: #262d45;
+    --side: #0a0d13; --side-ink: #9aa2b5; --side-active: #ffffff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f121a; --surface: #171b25; --surface-2: #1c2130; --ink: #e4e7ef; --muted: #9aa2b5; --line: #2a3142;
+  --indigo: #9aa9f2; --indigo-ink: #11152a; --indigo-soft: #232a46; --madder: #ee95a2; --madder-soft: #3a2228;
+  --ok: #7fd0a3; --ok-soft: #1b3226; --amber: #e9ba62; --amber-soft: #352a15; --bar: #9aa9f2; --bar-bg: #262d45;
+  --side: #0a0d13; --side-ink: #9aa2b5; --side-active: #ffffff; color-scheme: dark;
+}
+
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 15px; line-height: 1.5; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+.mono { font-family: var(--f-mono); font-size: .88em; }
+.muted { color: var(--muted); }
+
+.app { display: grid; grid-template-columns: 228px minmax(0, 1fr); min-height: 100%; }
+aside.side { background: var(--side); color: var(--side-ink); padding: 20px 14px; display: flex; flex-direction: column; gap: 22px; position: sticky; top: 0; height: 100vh; }
+.brand { display: grid; gap: 2px; padding: 0 8px; }
+.brand b { color: var(--side-active); font-size: 17px; letter-spacing: .01em; }
+.brand span { font-size: 12px; }
+.navgroup { display: grid; gap: 2px; }
+.navgroup p { margin: 0 8px 6px; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+.navbtn { background: none; border: 0; text-align: left; color: var(--side-ink); padding: 7px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.navbtn:hover { color: var(--side-active); background: rgba(255,255,255,.06); }
+.navbtn[aria-current="page"] { color: var(--side-active); background: rgba(255,255,255,.1); }
+.navbtn .count { font-size: 12px; background: rgba(255,255,255,.12); padding: 0 7px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.side .user { margin-top: auto; padding: 12px 8px 0; border-top: 1px solid rgba(255,255,255,.1); display: grid; gap: 6px; font-size: 13px; }
+.side .user b { color: var(--side-active); font-weight: 600; }
+.side .user button { background: none; border: 1px solid rgba(255,255,255,.18); color: var(--side-ink); border-radius: 6px; padding: 5px 10px; justify-self: start; }
+
+.main { min-width: 0; display: flex; flex-direction: column; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 28px; border-bottom: 1px solid var(--line); background: var(--surface); flex-wrap: wrap; }
+.topbar h1 { font-size: 20px; margin: 0; font-weight: 600; }
+.topbar .crumb { font-size: 13px; color: var(--muted); }
+.mockchip { font-size: 12px; font-weight: 600; color: var(--amber); background: var(--amber-soft); padding: 3px 10px; border-radius: 999px; }
+.content { padding: 24px 28px 48px; display: grid; gap: 20px; align-content: start; }
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  aside.side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px 16px; }
+  .navgroup { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  .navgroup p { display: none; }
+  .side .user { margin: 0; border: 0; padding: 0; display: flex; align-items: center; gap: 8px; }
+  .side .user span { display: none; }
+  .topbar, .content { padding-inline: 16px; }
+}
+
+/* generic pieces */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
+.panel > header { padding: 14px 18px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.panel > header h2 { font-size: 15px; margin: 0; font-weight: 600; }
+.panel .pad { padding: 16px 18px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.tile { background: var(--surface); padding: 14px 16px; display: grid; gap: 2px; }
+.tile b { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tile span { font-size: 13px; color: var(--muted); }
+.pill { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.p-indigo { background: var(--indigo-soft); color: var(--indigo); }
+.p-madder { background: var(--madder-soft); color: var(--madder); }
+.p-ok { background: var(--ok-soft); color: var(--ok); }
+.p-amber { background: var(--amber-soft); color: var(--amber); }
+.p-grey { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.btn { border: 1px solid var(--line); background: var(--surface); padding: 7px 14px; border-radius: 6px; font-weight: 500; }
+.btn:hover { border-color: var(--indigo); }
+.btn.primary { background: var(--indigo); color: var(--indigo-ink); border-color: var(--indigo); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.danger { color: var(--madder); }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; background: var(--surface-2); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.clickable { cursor: pointer; }
+tr.clickable:hover td { background: var(--surface-2); }
+
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: 150px minmax(0, 1fr) 52px; gap: 10px; align-items: center; font-size: 13.5px; }
+.bar .track { height: 10px; background: var(--bar-bg); border-radius: 3px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--bar); border-radius: 3px; }
+.bar .fill.alt { background: var(--muted); opacity: .55; }
+.bar .v { text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .bar { grid-template-columns: 110px minmax(0, 1fr) 44px; } }
+
+/* login */
+.login { min-height: 100%; display: grid; place-items: center; padding: 24px 16px; background: var(--bg); }
+.login form { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; width: min(380px, 100%); display: grid; gap: 14px; }
+.login h1 { margin: 0; font-size: 22px; }
+.login label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.login input { border: 1px solid var(--line); border-radius: 6px; padding: 9px 10px; background: var(--surface); }
+.linkbtn { background: none; border: 0; color: var(--indigo); padding: 0; text-decoration: underline; }
+
+/* home */
+.ws { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.ws .panel { display: grid; grid-template-rows: auto 1fr auto; }
+.ws .owner { font-size: 12.5px; color: var(--muted); }
+.ws h2 { margin: 2px 0 0; font-size: 18px; }
+.ws .problem { margin: 0; color: var(--muted); }
+.ws .mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.ws .mini div { display: grid; }
+.ws .mini b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.ws .mini span { font-size: 12.5px; color: var(--muted); }
+.ws footer { padding: 14px 18px; border-top: 1px solid var(--line); }
+
+/* cx */
+.split { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 1080px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 11px; font-size: 13px; }
+.chip[aria-pressed="true"] { background: var(--indigo); color: var(--indigo-ink); border-color: var(--indigo); }
+.tlist { list-style: none; margin: 0; padding: 0; }
+.tlist li button { width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 4px; }
+.tlist li:last-child button { border-bottom: 0; }
+.tlist li button:hover { background: var(--surface-2); }
+.tlist li button[aria-current="true"] { background: var(--indigo-soft); }
+.tlist .top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+.tlist .msg { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tlist .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.detail { display: grid; gap: 16px; min-width: 0; }
+.bubble { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 16px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px 18px; }
+.facts div { display: grid; gap: 1px; min-width: 0; }
+.facts dt { font-size: 12px; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+dl { margin: 0; }
+.steps { display: grid; gap: 8px; }
+.step { display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--muted); }
+.step .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line); flex: none; }
+.step.done { color: var(--ink); }
+.step.done .dot { background: var(--ok); border-color: var(--ok); }
+.step.now { color: var(--ink); }
+.step.now .dot { border-color: var(--indigo); animation: pulse 1s infinite; }
+@keyframes pulse { 50% { background: var(--indigo); } }
+@media (prefers-reduced-motion: reduce) { .step.now .dot { animation: none; background: var(--indigo); } }
+.copilot-head { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.draft { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--surface); white-space: pre-wrap; font-size: 15px; }
+textarea.draft { width: 100%; min-height: 150px; resize: vertical; }
+.checks { display: grid; gap: 4px; font-size: 13.5px; }
+.checks div { display: flex; gap: 8px; }
+.failure { border: 1px solid var(--madder); background: var(--madder-soft); border-radius: 8px; padding: 14px 16px; display: grid; gap: 8px; }
+.failure h3 { margin: 0; font-size: 15px; color: var(--madder); }
+.failure p { margin: 0; }
+.info { border: 1px solid var(--amber); background: var(--amber-soft); border-radius: 8px; padding: 12px 14px; font-size: 14px; }
+.done-banner { border: 1px solid var(--ok); background: var(--ok-soft); color: var(--ok); border-radius: 8px; padding: 10px 14px; font-weight: 600; }
+.meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+
+/* returns */
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; align-items: start; }
+@media (max-width: 420px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.seg { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; }
+.seg:last-child { border-bottom: 0; }
+.seg:hover { background: var(--surface-2); }
+.seg .name { font-weight: 600; }
+.seg .lift { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.seg .sub { font-size: 13px; color: var(--muted); }
+.compare { display: grid; gap: 10px; }
+.cmt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); align-items: center; }
+.cmt:last-child { border-bottom: 0; }
+.cmt q { font-size: 15px; }
+.cmt .ai { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; }
+
+.toast { position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-weight: 500; box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+</style>
+
+<div id="root"></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+/* ---------- Example data (mockup only) ---------- */
+const TICKETS = [
+  { id: "TKT200001", customer: "Priya Sharma", city: "Chennai", channel: "App", age: "12 min",
+    message: "Mera order abhi tak nahi aaya. Kab milega?", status: "DRAFTED", analysed: true,
+    order: { number: "DHC100560", status: "IN_TRANSIT", courier: "Delhivery", tracking: "DEL100560", expected: "4 Oct 2026", late: "On time", payment: "COD · ₹1,436", items: "Green Embroidered Straight Kurta (M)" },
+    result: { kind: "DRAFTED", intent: "WISMO", conf: 0.95, lang: "Hinglish", policy: "Delivery FAQ v1",
+      draft: "Hi Priya, aapka order DHC100560 Delhivery ke saath raste mein hai aur 4 October tak deliver hone ki ummeed hai. Aap tracking number DEL100560 se live status dekh sakti hain. Delivery ke time ₹1,436 cash ya UPI se pay kar sakti hain.\n\nKoi aur madad chahiye toh batayein.\nTeam Dhaga",
+      checks: [["ok", "Dates and order number match the order"], ["ok", "Answers the question asked"], ["ok", "Follows Delivery FAQ"]], cost: "$0.024", ms: "4.1 s" } },
+  { id: "TKT200014", customer: "Rahul Verma", city: "Pune", channel: "WhatsApp", age: "40 min",
+    message: "Order DHC100231 5 din se late hai, tracking update nahi ho raha. Kya ho raha hai?", status: "OPEN",
+    order: { number: "DHC100231", status: "IN_TRANSIT", courier: "Ekart", tracking: "EKA100231", expected: "27 Sep 2026", late: "6 days late", payment: "PREPAID · ₹2,063", items: "Linen Kurta Set (L)" },
+    result: { kind: "DRAFTED", intent: "WISMO", conf: 0.97, lang: "Hinglish", policy: "Delivery FAQ v1", priority: "Delayed 6 days. Consider raising with Ekart.",
+      draft: "Hi Rahul, delay ke liye maafi chahte hain. Aapka order DHC100231 Ekart ke paas hai aur 27 September ki expected date se 6 din late chal raha hai. Humne courier ke saath escalation raise kar diya hai aur 24 ghante mein aapko update denge.\n\nTeam Dhaga",
+      checks: [["ok", "Dates and order number match the order"], ["warn", "Mentions an escalation: confirm it was raised before sending"], ["ok", "Polite and apologises for the delay"]], cost: "$0.027", ms: "4.6 s" } },
+  { id: "TKT200027", customer: "Sneha Iyer", city: "Bengaluru", channel: "Email", age: "1 h",
+    message: "The app shows my order as delivered but I never received the parcel.", status: "OPEN",
+    order: { number: "DHC100318", status: "DELIVERED", courier: "Shiprocket", tracking: "SHR100318", expected: "1 Oct 2026", late: "Delivered 1 Oct", payment: "PREPAID · ₹1,799", items: "Palazzo Pants (S)" },
+    result: { kind: "NEEDS_HUMAN", intent: "DELIVERED_NOT_RECEIVED", conf: 0.96, lang: "English", tier: "Tier 2",
+      reason: "Possible lost parcel. Policy says a person must raise a courier claim before replying, so no draft was written." } },
+  { id: "TKT200033", customer: "Ananya Sharma", city: "Bengaluru", channel: "App", age: "1 h",
+    message: "Cancel kar do please, ab nahi chahiye.", status: "OPEN",
+    order: { number: "DHC100902", status: "CONFIRMED", courier: "Not assigned", tracking: "Not yet", expected: "9 Oct 2026", late: "Not dispatched", payment: "PREPAID · ₹1,573", items: "Yellow Printed A-Line Kurta (S)" },
+    result: { kind: "DRAFTED", intent: "CANCEL_ORDER", conf: 0.93, lang: "Hinglish", policy: "Cancellation Policy v1",
+      draft: "Hi Ananya, aapka order DHC100902 abhi dispatch nahi hua hai, isliye ise cancel kiya ja sakta hai. Confirm karte hi cancel ho jayega aur ₹1,573 ka refund aapke original payment method mein 5–7 working days mein aa jayega.\n\nTeam Dhaga",
+      checks: [["ok", "Cancellable: code checked the status is CONFIRMED"], ["ok", "Refund amount matches the order"], ["ok", "Follows Cancellation Policy"]], cost: "$0.022", ms: "3.8 s" } },
+  { id: "TKT200041", customer: "Imran Khan", city: "Hyderabad", channel: "WhatsApp", age: "2 h",
+    message: "ok ok", status: "OPEN",
+    order: { number: "DHC100415", status: "SHIPPED", courier: "Delhivery", tracking: "DEL100415", expected: "6 Oct 2026", late: "On time", payment: "COD · ₹1,250", items: "Embroidered Dupatta (Free size)" },
+    result: { kind: "NEEDS_HUMAN", intent: "OTHER", conf: 0.31, lang: "Unclear",
+      reason: "Not sure what the customer is asking (confidence 31%). Read the WhatsApp thread before replying." } },
+  { id: "TKT200052", customer: "Kavya Nair", city: "Kochi", channel: "App", age: "3 h",
+    message: "How can I get a refund? Dress shoulders se bahut tight hai.", status: "OPEN",
+    order: { number: "DHC100377", status: "DELIVERED", courier: "Delhivery", tracking: "DEL100377", expected: "30 Sep 2026", late: "Delivered 3 days ago", payment: "PREPAID · ₹2,199", items: "Floral Midi Dress (M)" },
+    result: { kind: "DRAFTED", intent: "RETURN_REFUND", conf: 0.92, lang: "Hinglish", policy: "Returns Policy v1", link: "product_size:SKU4421|M",
+      draft: "Hi Kavya, sorry ki dress theek se fit nahi hui. Aapka order DHC100377 3 din pehle deliver hua tha, isliye yeh 7-day return window mein hai. App mein Orders → Return par jaake reason \"Size too small\" chunein. Pickup ke baad inspection hoga aur ₹2,199 ka refund original payment method mein jayega.\n\nTeam Dhaga",
+      checks: [["ok", "Within return window: code worked out 3 of 7 days"], ["ok", "Amount and order number match"], ["ok", "Follows Returns Policy"]], cost: "$0.025", ms: "4.3 s" } },
+  { id: "TKT200060", customer: "Meera Joshi", city: "Jaipur", channel: "Email", age: "4 h",
+    message: "Order status please.", status: "OPEN", order: null,
+    result: { kind: "NEEDS_INFO", intent: "WISMO", conf: 0.94, lang: "English",
+      reason: "No order is linked to this ticket and the customer has no open orders.",
+      draft: "Hi Meera, happy to check this for you. Could you share your order number? It starts with DHC and is in your order confirmation email.\n\nTeam Dhaga" } },
+  { id: "TKT200071", customer: "Arjun Mehta", city: "Delhi", channel: "WhatsApp", age: "5 h",
+    message: "Kal delivery hai, COD pe UPI se pay kar sakte hai?", status: "OPEN",
+    order: { number: "DHC100488", status: "OUT_FOR_DELIVERY", courier: "Delhivery", tracking: "DEL100488", expected: "3 Oct 2026", late: "Arriving today", payment: "COD · ₹1,890", items: "Cotton Straight Kurta (L)" },
+    result: { kind: "DRAFTED", intent: "COD_PAYMENT", conf: 0.9, lang: "Hinglish", policy: "COD & RTO Policy v1",
+      draft: "Hi Arjun, aapka order DHC100488 aaj delivery ke liye nikal chuka hai. ₹1,890 aap cash ya delivery executive ke UPI QR se pay kar sakte hain.\n\nTeam Dhaga",
+      checks: [["ok", "Amount and order number match"], ["ok", "Follows COD & RTO Policy"], ["ok", "Answers the question asked"]], cost: "$0.021", ms: "3.6 s" } },
+];
+
+const RETURNS = {
+  summary: { orders: 3600, returns: 448, rate: 12.44, other: 42, pending: 172, rejected: 10 },
+  reasons: [["Unclassified (Other + comment)", 172], ["Quality", 79], ["Fit", 55], ["Colour", 50], ["Changed mind", 41], ["Damage", 20], ["No reason given", 18], ["Wrong item", 13]],
+  insights: [
+    { id: "product_size:SKU4421|L", product: "Floral Midi Dress", seg: "Size L", ret: 48, ord: 115, rate: 41.7, lift: 3.35, prod: 19.3, uncl: 42,
+      mix: [["Unclassified", 20], ["Fit", 13], ["Quality", 5], ["Changed mind", 3], ["Other", 7]],
+      comments: [["L size shoulders pe bahut tight hai", "FIT · TOO_TIGHT · SHOULDERS", 0.96], ["Shoulders too snug even in L", "FIT · TOO_TIGHT · SHOULDERS", 0.95], ["shoulder fitting is very tight, cannot lift arms", "FIT · TOO_TIGHT · SHOULDERS", 0.94], ["kandhe pe fit nahi aa raha, tight hai", "FIT · TOO_TIGHT · SHOULDERS", 0.91], ["length bahut kam hai", "FIT · TOO_SHORT · LENGTH", 0.88]] },
+    { id: "product_size:SKU4421|M", product: "Floral Midi Dress", seg: "Size M", ret: 33, ord: 102, rate: 32.4, lift: 2.6, prod: 19.3, uncl: 61,
+      mix: [["Unclassified", 20], ["Fit", 6], ["Changed mind", 2], ["Quality", 2], ["Other", 3]],
+      comments: [["M size shoulders pe bahut tight hai", "FIT · TOO_TIGHT · SHOULDERS", 0.96], ["chest pe bahut tight fitting", "FIT · TOO_TIGHT · BUST", 0.9], ["kurta ki length chhoti hai", "FIT · TOO_SHORT · LENGTH", 0.87], ["kamar pe tight, button band nahi hua", "FIT · TOO_TIGHT · WAIST", 0.9], ["see photo", "UNCLEAR", 0.34]] },
+    { id: "product_colour:SKU4450|Mustard", product: "Chikankari Top", seg: "Colour Mustard", ret: 44, ord: 136, rate: 32.4, lift: 2.6, prod: 17.7, uncl: 27,
+      mix: [["Colour", 23], ["Unclassified", 12], ["Fit", 4], ["Quality", 2], ["Other", 3]],
+      comments: [["rang bilkul alag hai, photo se match nahi", "COLOUR · LISTING_DIFFERENCE", 0.95], ["colour looks different from the listing", "COLOUR · LISTING_DIFFERENCE", 0.97], ["kamar pe dhila hai", "FIT · TOO_LOOSE · WAIST", 0.88], ["too short for me, 5'7", "FIT · TOO_SHORT · LENGTH", 0.85]] },
+    { id: "product_size:SKU4450|S", product: "Chikankari Top", seg: "Size S", ret: 27, ord: 104, rate: 26.0, lift: 2.09, prod: 17.7, uncl: 48, note: "Mostly colour complaints. Probably the Mustard problem showing up through one size, not a separate fit issue.",
+      mix: [["Unclassified", 13], ["Colour", 10], ["Changed mind", 2], ["Other", 2]],
+      comments: [["rang bilkul alag hai, photo se match nahi", "COLOUR · LISTING_DIFFERENCE", 0.95], ["bust area tight hai", "FIT · TOO_TIGHT · BUST", 0.9], ["waist loose hai, bahut dhila", "FIT · TOO_LOOSE · WAIST", 0.91], ["ok ok", "UNCLEAR", 0.22]] },
+    { id: "product:SKU4435", product: "Anarkali Suit", seg: "Whole product", ret: 80, ord: 349, rate: 22.9, lift: 1.84, prod: 22.9, uncl: 32,
+      mix: [["Quality", 32], ["Unclassified", 26], ["Changed mind", 8], ["Fit", 6], ["Other", 8]],
+      comments: [["fabric thin hai, transparent dikh raha", "QUALITY · FABRIC", 0.95], ["kurta ki length chhoti hai", "FIT · TOO_SHORT · LENGTH", 0.86], ["return karna hai", "UNCLEAR", 0.3], ["meh", "UNCLEAR", 0.2]] },
+    { id: "product:SKU4421", product: "Floral Midi Dress", seg: "Whole product", ret: 105, ord: 544, rate: 19.3, lift: 1.55, prod: 19.3, uncl: 50, note: "Driven by sizes M and L. Open those segments first.",
+      mix: [["Unclassified", 53], ["Fit", 20], ["Quality", 11], ["Changed mind", 7], ["Other", 14]],
+      comments: [["M size shoulders pe bahut tight hai", "FIT · TOO_TIGHT · SHOULDERS", 0.96], ["too long, trails on floor", "FIT · TOO_LONG · LENGTH", 0.9], ["length bahut kam hai", "FIT · TOO_SHORT · LENGTH", 0.88]] },
+  ],
+  products: [["Anarkali Suit", "Suits", 349, 80, 22.92], ["Floral Midi Dress", "Dresses", 544, 105, 19.30], ["Chikankari Top", "Tops", 417, 74, 17.75], ["Linen Kurta Set", "Kurta Sets", 460, 44, 9.57], ["Palazzo Pants", "Bottoms", 538, 48, 8.92], ["Cotton Straight Kurta", "Kurtas", 685, 58, 8.47], ["Embroidered Dupatta", "Accessories", 269, 20, 7.43], ["Denim Jacket", "Outerwear", 338, 19, 5.62]],
+  rejected: [["orders", "duplicate_order_id", 1], ["returns", "duplicate_return_id", 1], ["returns", "invalid_return_date", 2], ["returns", "missing_product_id", 1], ["returns", "order_not_found", 1], ["returns", "product_mismatch_with_order", 1], ["returns", "unknown_product_id", 1], ["returns", "unknown_return_reason", 1], ["returns", "unknown_size", 1]],
+};
+
+/* ---------- State ---------- */
+const state = { view: "cx", loggedIn: true, ticketId: "TKT200001", filter: "all", running: null, step: 0, editing: false, segment: null, classified: {}, reviewed: {} };
+const INTENT_LABEL = { WISMO: "Where is my order", DELIVERED_NOT_RECEIVED: "Delivered, not received", CANCEL_ORDER: "Cancel order", RETURN_REFUND: "Return / refund", COD_PAYMENT: "COD payment", OTHER: "Unclear" };
+const STEP_NAMES = ["Reading the message", "Finding the order", "Checking rules and policy", "Writing the reply", "Checking the reply"];
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (n) => n.toLocaleString("en-IN");
+
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), 2600);
+}
+function statusPill(s) {
+  const map = { OPEN: ["Open", "p-grey"], DRAFTED: ["Draft ready", "p-indigo"], RESOLVED: ["Resolved", "p-ok"], ESCALATED: ["Escalated", "p-madder"], NEEDS_HUMAN: ["Needs a person", "p-madder"], NEEDS_INFO: ["Needs info", "p-amber"] };
+  const [label, cls] = map[s] || [s, "p-grey"];
+  return `<span class="pill ${cls}">${label}</span>`;
+}
+function bars(rows, opts = {}) {
+  const max = opts.max || Math.max(...rows.map((r) => r[1]));
+  return `<div class="bars">${rows.map(([k, v]) => `<div class="bar"><span>${esc(k)}</span><div class="track"><div class="fill${opts.alt && opts.alt(k) ? " alt" : ""}" style="width:${(v / max) * 100}%"></div></div><span class="v">${opts.suffix ? v + opts.suffix : fmt(v)}</span></div>`).join("")}</div>`;
+}
+
+/* ---------- Views ---------- */
+function navBtn(view, label, count) {
+  const current = state.view === view || (view === "returns" && state.view === "segment");
+  return `<button class="navbtn" data-nav="${view}" ${current ? 'aria-current="page"' : ""}><span>${label}</span>${count != null ? `<span class="count">${count}</span>` : ""}</button>`;
+}
+function shell(title, crumb, body) {
+  const open = TICKETS.filter((t) => t.status === "OPEN" || t.status === "DRAFTED").length;
+  return `<div class="app">
+    <aside class="side">
+      <div class="brand"><b>Dhaga Workbench</b><span>Internal · MVP</span></div>
+      <div class="navgroup"><p>Workspace</p>${navBtn("home", "Home")}</div>
+      <div class="navgroup"><p>CX Copilot</p>${navBtn("cx", "Inbox", open)}${navBtn("cxmetrics", "Metrics")}</div>
+      <div class="navgroup"><p>Returns Insights</p>${navBtn("returns", "Overview")}${navBtn("rejected", "Data quality")}</div>
+      <div class="user"><span>Signed in as</span><b>Demo user</b><button data-act="logout">Sign out</button></div>
+    </aside>
+    <div class="main">
+      <div class="topbar"><div><div class="crumb">${crumb}</div><h1>${title}</h1></div><span class="mockchip">Mockup · example data</span></div>
+      <div class="content">${body}</div>
+    </div></div>`;
+}
+
+function viewLogin() {
+  return `<div class="login"><form id="loginform">
+    <div><div class="muted" style="font-size:13px">Dhaga &amp; Co.</div><h1>Dhaga Workbench</h1></div>
+    <label for="email">Work email<input id="email" type="email" value="demo@dhaga.co" autocomplete="username"></label>
+    <label for="pw">Password<input id="pw" type="password" value="demo-password" autocomplete="current-password"></label>
+    <button class="btn primary" type="submit">Sign in</button>
+    <button class="linkbtn" type="button" data-act="demo">Use demo workspace</button>
+    <span class="mockchip" style="justify-self:start">Mockup: any details work</span>
+  </form></div>`;
+}
+
+function viewHome() {
+  const s = RETURNS.summary;
+  const drafted = TICKETS.filter((t) => t.status === "DRAFTED").length;
+  const resolved = TICKETS.filter((t) => t.status === "RESOLVED").length;
+  return shell("Good morning", "Home", `
+    <div class="ws">
+      <section class="panel">
+        <div class="pad" style="display:grid;gap:10px">
+          <div class="owner">For the CX team · owner: Head of CX</div>
+          <h2>CX Copilot</h2>
+          <p class="problem">58% of tickets ask "where is my order". Copilot reads the ticket, finds the order and drafts a reply for you to approve.</p>
+          <div class="mini"><div><b>${TICKETS.length}</b><span>tickets in inbox</span></div><div><b>${drafted}</b><span>drafts ready</span></div><div><b>${resolved}</b><span>resolved today</span></div></div>
+        </div>
+        <footer><button class="btn primary" data-nav="cx">Open inbox</button></footer>
+      </section>
+      <section class="panel">
+        <div class="pad" style="display:grid;gap:10px">
+          <div class="owner">For category managers · owner: Category Head</div>
+          <h2>Returns Insights</h2>
+          <p class="problem">Return rates by product, size and colour, with the segments that stand out and what customers wrote about them.</p>
+          <div class="mini"><div><b>${s.rate}%</b><span>return rate</span></div><div><b>${RETURNS.insights.length}</b><span>flagged segments</span></div><div><b>${s.pending}</b><span>"Other" to classify</span></div></div>
+        </div>
+        <footer><button class="btn primary" data-nav="returns">Open returns</button></footer>
+      </section>
+    </div>
+    <section class="panel"><header><h2>Where the two workspaces meet</h2></header><div class="pad"><p style="margin:0">A CX ticket about a return links straight to that product's returns segment. Try ticket <button class="linkbtn" data-open-ticket="TKT200052">TKT200052</button>: Kavya's Floral Midi Dress (M) is one of the flagged segments.</p></div></section>`);
+}
+
+function filteredTickets() {
+  const f = state.filter;
+  return TICKETS.filter((t) => f === "all" ? true : f === "action" ? (t.status === "OPEN" || t.status === "DRAFTED") : f === "escalated" ? t.status === "ESCALATED" : f === "resolved" ? t.status === "RESOLVED" : true);
+}
+function viewCX() {
+  const list = filteredTickets();
+  if (!list.find((t) => t.id === state.ticketId) && list.length) state.ticketId = list[0].id;
+  const t = TICKETS.find((x) => x.id === state.ticketId);
+  const chips = [["all", "All"], ["action", "Needs action"], ["resolved", "Resolved"], ["escalated", "Escalated"]].map(([k, l]) => `<button class="chip" data-filter="${k}" aria-pressed="${state.filter === k}">${l}</button>`).join("");
+  const items = list.length ? list.map((x) => `<li><button data-ticket="${x.id}" aria-current="${x.id === state.ticketId}">
+      <span class="top"><span class="mono">${x.id}</span><span class="muted">${x.channel} · ${x.age}</span></span>
+      <span class="msg">${esc(x.message)}</span>
+      <span class="tags">${statusPill(x.status)}${x.analysed ? `<span class="pill p-grey">${INTENT_LABEL[x.result.intent]}</span>` : ""}</span>
+    </button></li>`).join("") : `<li class="pad muted" style="padding:18px">No tickets in this view.</li>`;
+  return shell("Inbox", "CX Copilot", `<div class="split">
+    <section class="panel"><div class="filters" role="group" aria-label="Filter tickets">${chips}</div><ul class="tlist">${items}</ul></section>
+    <div class="detail">${t && list.length ? ticketDetail(t) : ""}</div>
+  </div>`);
+}
+function ticketDetail(t) {
+  const o = t.order;
+  const facts = o ? `<dl class="facts">
+      <div><dt>Order</dt><dd class="mono">${o.number}</dd></div>
+      <div><dt>Status</dt><dd>${o.status.replaceAll("_", " ")}</dd></div>
+      <div><dt>Courier</dt><dd>${o.courier}</dd></div>
+      <div><dt>Tracking</dt><dd class="mono">${o.tracking}</dd></div>
+      <div><dt>Expected</dt><dd>${o.expected}</dd></div>
+      <div><dt>Delivery</dt><dd>${o.late}</dd></div>
+      <div><dt>Payment</dt><dd>${o.payment}</dd></div>
+      <div><dt>Items</dt><dd>${o.items}</dd></div>
+    </dl>` : `<p class="muted" style="margin:0">No order linked to this ticket.</p>`;
+  return `
+    <section class="panel">
+      <header><div><h2>${esc(t.customer)} <span class="muted" style="font-weight:400">· ${t.city}</span></h2><div class="meta"><span class="mono">${t.id}</span><span>${t.channel}</span><span>${t.age} ago</span></div></div>${statusPill(t.status)}</header>
+      <div class="pad" style="display:grid;gap:14px"><div class="bubble">${esc(t.message)}</div>${facts}<div class="meta"><span>Facts come from Supabase. They are computed by code, not by the model.</span></div></div>
+    </section>
+    <section class="panel"><header><h2>Copilot</h2>${t.analysed ? `<span class="meta"><span>Haiku 4.5 + Opus 5.5</span>${t.result.cost ? `<span>${t.result.cost}</span><span>${t.result.ms}</span>` : ""}</span>` : ""}</header>
+      <div class="pad" style="display:grid;gap:14px">${copilotBody(t)}</div></section>`;
+}
+function copilotBody(t) {
+  if (state.running === t.id) {
+    return `<div class="steps" aria-live="polite">${STEP_NAMES.map((n, i) => `<div class="step ${i < state.step ? "done" : i === state.step ? "now" : ""}"><span class="dot"></span>${n}</div>`).join("")}</div>`;
+  }
+  if (!t.analysed) {
+    return `<p style="margin:0" class="muted">Copilot will classify the message, check the order and policy, and draft a reply for you to review. Nothing is sent without your approval.</p><div><button class="btn primary" data-act="analyse">Analyse with Copilot</button></div>`;
+  }
+  const r = t.result;
+  const head = `<div class="copilot-head"><span class="pill p-indigo">${INTENT_LABEL[r.intent]}</span><span class="pill p-grey">Confidence ${Math.round(r.conf * 100)}%</span><span class="pill p-grey">${r.lang}</span>${r.policy ? `<span class="pill p-grey">Policy: ${r.policy}</span>` : ""}</div>`;
+  if (t.status === "RESOLVED") return head + `<div class="done-banner">Reply ${t.edited ? "edited and " : ""}approved. Ticket resolved.</div><div class="draft">${esc(t.finalReply || r.draft)}</div>`;
+  if (t.status === "ESCALATED") return head + `<div class="failure"><h3>Escalated to ${r.tier || "Tier 2"}</h3><p>${esc(r.reason || "Draft rejected by the agent.")}</p></div>`;
+  if (r.kind === "NEEDS_HUMAN") {
+    return head + `<div class="failure" role="alert"><h3>Copilot can't answer this one</h3><p>${esc(r.reason)}</p><div class="row"><button class="btn primary" data-act="escalate">Assign to ${r.tier || "a person"}</button><button class="btn" data-act="manual">Reply manually</button></div></div>`;
+  }
+  const info = r.kind === "NEEDS_INFO" ? `<div class="info"><b>Needs info:</b> ${esc(r.reason)} Copilot used the standard "ask for order number" template.</div>` : "";
+  const prio = r.priority ? `<div class="info"><b>Priority:</b> ${esc(r.priority)}</div>` : "";
+  const link = r.link ? `<div class="info">This product is a flagged returns segment. <button class="linkbtn" data-segment="${r.link}">See Floral Midi Dress · Size M in Returns</button></div>` : "";
+  const checks = r.checks ? `<div class="checks">${r.checks.map(([k, m]) => `<div>${k === "ok" ? '<span class="pill p-ok">Pass</span>' : '<span class="pill p-amber">Check</span>'}<span>${esc(m)}</span></div>`).join("")}</div>` : "";
+  const draft = state.editing ? `<label for="draftedit" class="muted" style="font-size:13px">Edit the reply</label><textarea id="draftedit" class="draft">${esc(t.finalReply || r.draft)}</textarea>` : `<div class="draft">${esc(t.finalReply || r.draft)}</div>`;
+  const actions = state.editing
+    ? `<div class="row"><button class="btn primary" data-act="saveedit">Save and approve</button><button class="btn" data-act="canceledit">Cancel</button></div>`
+    : `<div class="row"><button class="btn primary" data-act="approve">Approve and send</button><button class="btn" data-act="edit">Edit</button><button class="btn danger" data-act="reject">Reject</button></div>`;
+  return head + info + prio + link + draft + checks + actions;
+}
+
+function viewMetrics() {
+  const intents = {}; TICKETS.forEach((t) => { if (t.analysed) intents[INTENT_LABEL[t.result.intent]] = (intents[INTENT_LABEL[t.result.intent]] || 0) + 1; });
+  const rows = Object.entries(intents).sort((a, b) => b[1] - a[1]);
+  const analysed = TICKETS.filter((t) => t.analysed).length;
+  const decided = TICKETS.filter((t) => t.status === "RESOLVED" || t.status === "ESCALATED");
+  return shell("Metrics", "CX Copilot", `
+    <div class="tiles">
+      <div class="tile"><b>${TICKETS.length}</b><span>tickets</span></div>
+      <div class="tile"><b>${analysed}</b><span>analysed by Copilot</span></div>
+      <div class="tile"><b>${TICKETS.filter((t) => t.status === "RESOLVED").length}</b><span>resolved</span></div>
+      <div class="tile"><b>${TICKETS.filter((t) => t.status === "ESCALATED").length}</b><span>escalated</span></div>
+      <div class="tile"><b>$0.024</b><span>average cost per ticket</span></div>
+    </div>
+    <div class="grid2">
+      <section class="panel"><header><h2>Analysed tickets by intent</h2></header><div class="pad">${rows.length ? bars(rows) : '<p class="muted" style="margin:0">Analyse a ticket in the inbox to see it here.</p>'}</div></section>
+      <section class="panel"><header><h2>Decisions this session</h2></header>${decided.length ? `<div class="tablewrap"><table><thead><tr><th>Ticket</th><th>Intent</th><th>Decision</th></tr></thead><tbody>${decided.map((t) => `<tr><td class="mono">${t.id}</td><td>${INTENT_LABEL[t.result.intent]}</td><td>${statusPill(t.status)}${t.edited ? ' <span class="pill p-grey">edited</span>' : ""}</td></tr>`).join("")}</tbody></table></div>` : '<div class="pad"><p class="muted" style="margin:0">No decisions yet. Approve, edit or reject a draft in the inbox.</p></div>'}</section>
+    </div>
+    <p class="muted" style="margin:0;font-size:13px">In the real app these numbers come from <span class="mono">GET /api/cx/metrics</span>, built from <span class="mono">ai_interactions</span>.</p>`);
+}
+
+function viewReturns() {
+  const s = RETURNS.summary;
+  return shell("Overview", "Returns Insights", `
+    <div class="tiles">
+      <div class="tile"><b>${fmt(s.orders)}</b><span>orders</span></div>
+      <div class="tile"><b>${fmt(s.returns)}</b><span>returns</span></div>
+      <div class="tile"><b>${s.rate}%</b><span>return rate</span></div>
+      <div class="tile"><b>${s.other}%</b><span>returns marked "Other"</span></div>
+      <div class="tile"><b>${s.pending}</b><span>comments waiting for AI</span></div>
+    </div>
+    <div class="grid2">
+      <section class="panel"><header><h2>Flagged segments</h2><span class="muted" style="font-size:13px">Lift = rate ÷ shop average</span></header>
+        <div>${RETURNS.insights.map((i) => `<button class="seg" data-segment="${i.id}"><span class="name">${i.product} · ${i.seg}</span><span class="lift">${i.lift}×</span><span class="sub">${i.ret} of ${i.ord} returned · ${i.rate}%</span><span class="sub" style="text-align:right">${i.uncl}% unclassified</span></button>`).join("")}</div>
+      </section>
+      <section class="panel"><header><h2>Why products come back</h2><span class="muted" style="font-size:13px">${fmt(s.returns)} returns</span></header><div class="pad">${bars(RETURNS.reasons, { alt: (k) => k.startsWith("Unclassified") || k.startsWith("No reason") })}<p class="muted" style="margin:12px 0 0;font-size:13px">Grey bars have no usable reason yet. Classifying "Other" comments (stage 2) turns most of the top bar into real reasons.</p></div></section>
+    </div>
+    <section class="panel"><header><h2>Return rate by product</h2></header><div class="tablewrap"><table><thead><tr><th>Product</th><th>Category</th><th class="num">Orders</th><th class="num">Returns</th><th class="num">Rate</th></tr></thead>
+      <tbody>${RETURNS.products.map(([n, c, o, r, rate]) => `<tr><td>${n}</td><td>${c}</td><td class="num">${fmt(o)}</td><td class="num">${r}</td><td class="num">${rate.toFixed(1)}%</td></tr>`).join("")}</tbody></table></div></section>
+    <p class="muted" style="margin:0;font-size:13px">Numbers are from today's Returns pipeline run on the demo CSVs. They will change when Returns reads from Supabase.</p>`);
+}
+
+function viewSegment() {
+  const i = RETURNS.insights.find((x) => x.id === state.segment) || RETURNS.insights[0];
+  const base = RETURNS.summary.rate;
+  const classified = state.classified[i.id];
+  const comments = i.comments.map(([text, cat, conf], idx) => {
+    const key = i.id + "#" + idx; const rev = state.reviewed[key];
+    const ai = classified ? `<div class="ai">${cat === "UNCLEAR" ? '<span class="pill p-amber">Unclear</span>' : `<span class="pill p-indigo">${cat}</span>`}<span class="muted">confidence ${Math.round(conf * 100)}%</span>${rev ? `<span class="pill p-ok">${rev}</span>` : conf < 0.7 ? '<span class="pill p-madder">Needs review</span>' : ""}${rev ? "" : `<button class="btn" data-review="${key}" data-val="Accepted">Accept</button><button class="btn" data-review="${key}" data-val="Corrected">Correct</button>`}</div>` : "";
+    return `<div class="cmt"><q>${esc(text)}</q><span class="pill p-grey">Other</span>${ai}</div>`;
+  }).join("");
+  return shell(`${i.product} · ${i.seg}`, `Returns Insights › <button class="linkbtn" data-nav="returns">Overview</button>`, `
+    <div class="tiles">
+      <div class="tile"><b>${i.rate}%</b><span>return rate (${i.ret} of ${i.ord})</span></div>
+      <div class="tile"><b>${i.lift}×</b><span>vs shop average ${base}%</span></div>
+      <div class="tile"><b>${i.uncl}%</b><span>still unclassified</span></div>
+    </div>
+    ${i.note ? `<div class="info">${esc(i.note)}</div>` : ""}
+    <div class="grid2">
+      <section class="panel"><header><h2>Return rate compared</h2></header><div class="pad compare">${bars([[i.seg, i.rate], ["Whole product", i.prod], ["Shop average", base]], { max: Math.max(i.rate, i.prod, base) * 1.1, suffix: "%", alt: (k) => k !== i.seg })}</div></section>
+      <section class="panel"><header><h2>Known reasons</h2><span class="muted" style="font-size:13px">${i.ret} returns</span></header><div class="pad">${bars(i.mix, { alt: (k) => k === "Unclassified" })}</div></section>
+    </div>
+    <section class="panel"><header><h2>What customers wrote</h2>${classified ? '<span class="pill p-ok">Classified by Haiku 4.5 · preview</span>' : `<button class="btn primary" data-act="classify">Classify with AI</button>`}</header>${comments}</section>`);
+}
+
+function viewRejected() {
+  return shell("Data quality", "Returns Insights", `
+    <div class="info">${RETURNS.summary.rejected} rows were rejected during cleaning. Each has exactly one reason: the first check it failed. Nothing is dropped silently.</div>
+    <section class="panel"><div class="tablewrap"><table><thead><tr><th>Source</th><th>Reason</th><th class="num">Rows</th></tr></thead>
+      <tbody>${RETURNS.rejected.map(([s, r, n]) => `<tr><td>${s}</td><td class="mono">${r}</td><td class="num">${n}</td></tr>`).join("")}</tbody></table></div></section>`);
+}
+
+/* ---------- Render + events ---------- */
+function render() {
+  const root = $("#root");
+  if (!state.loggedIn) { root.innerHTML = viewLogin(); return; }
+  const v = { home: viewHome, cx: viewCX, cxmetrics: viewMetrics, returns: viewReturns, segment: viewSegment, rejected: viewRejected }[state.view] || viewCX;
+  root.innerHTML = v();
+}
+function current() { return TICKETS.find((t) => t.id === state.ticketId); }
+function runAnalysis(t) {
+  state.running = t.id; state.step = 0; render();
+  const tick = () => {
+    state.step++;
+    if (state.step >= STEP_NAMES.length) {
+      state.running = null; t.analysed = true;
+      if (t.result.kind === "DRAFTED" || t.result.kind === "NEEDS_INFO") t.status = "DRAFTED";
+      render(); return;
+    }
+    if (state.running === t.id) render();
+    setTimeout(tick, 420);
+  };
+  setTimeout(tick, 420);
+}
+
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("button"); if (!el) return;
+  if (el.dataset.nav) { state.view = el.dataset.nav; state.editing = false; render(); window.scrollTo(0, 0); return; }
+  if (el.dataset.ticket) { state.ticketId = el.dataset.ticket; state.editing = false; render(); return; }
+  if (el.dataset.openTicket) { state.view = "cx"; state.filter = "all"; state.ticketId = el.dataset.openTicket; render(); return; }
+  if (el.dataset.filter) { state.filter = el.dataset.filter; render(); return; }
+  if (el.dataset.segment) { state.view = "segment"; state.segment = el.dataset.segment; render(); window.scrollTo(0, 0); return; }
+  if (el.dataset.review) { state.reviewed[el.dataset.review] = el.dataset.val; render(); toast(el.dataset.val === "Accepted" ? "Classification accepted" : "Marked for correction"); return; }
+  const t = current();
+  switch (el.dataset.act) {
+    case "logout": state.loggedIn = false; render(); break;
+    case "demo": state.loggedIn = true; state.view = "home"; render(); break;
+    case "analyse": runAnalysis(t); break;
+    case "approve": t.status = "RESOLVED"; render(); toast(`Reply approved for ${t.id}`); break;
+    case "edit": state.editing = true; render(); $("#draftedit")?.focus(); break;
+    case "canceledit": state.editing = false; render(); break;
+    case "saveedit": t.finalReply = $("#draftedit").value; t.edited = true; t.status = "RESOLVED"; state.editing = false; render(); toast(`Edited reply approved for ${t.id}`); break;
+    case "reject": t.status = "ESCALATED"; t.result.reason = "Draft rejected by the agent. Ticket moved to the manual queue."; render(); toast(`${t.id} moved to manual queue`); break;
+    case "escalate": t.status = "ESCALATED"; render(); toast(`${t.id} assigned to ${t.result.tier || "a person"}`); break;
+    case "manual": state.editing = true; t.result = { ...t.result, kind: "DRAFTED", draft: "", checks: null }; render(); $("#draftedit")?.focus(); break;
+    case "classify": state.classified[state.segment || RETURNS.insights[0].id] = true; render(); toast("Comments classified (preview)"); break;
+  }
+});
+document.addEventListener("submit", (e) => {
+  if (e.target.id === "loginform") { e.preventDefault(); state.loggedIn = true; state.view = "home"; render(); }
+});
+render();
+</script>

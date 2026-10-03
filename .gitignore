@@ -5,3 +5,7 @@ venv/
 .env
 .DS_Store
 .idea/
+frontend/node_modules/
+frontend/dist/
+
+evals/results/
