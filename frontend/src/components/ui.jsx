@@ -50,6 +50,7 @@ export function StatusPill({ status }) {
 export const INTENT_TEXT = {
   WISMO: "Where is my order",
   DELIVERED_NOT_RECEIVED: "Delivered, not received",
+  DAMAGED_OR_WRONG_ITEM: "Damaged / wrong item",
   CANCEL_ORDER: "Cancel order",
   RETURN_REFUND: "Return / refund",
   COD_PAYMENT: "COD payment",

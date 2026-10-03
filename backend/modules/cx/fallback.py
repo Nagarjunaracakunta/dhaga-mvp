@@ -12,6 +12,8 @@ ORDER_NO = re.compile(r"\bDHC\d+\b", re.I)
 # Checked in order; first match wins
 KEYWORDS = [
     ("DELIVERED_NOT_RECEIVED", [r"delivered.*(not|never|nahi|nhi).*(receiv|got|mila)", r"(not|never|nahi|nhi).*(receiv|mila).*delivered"]),
+    ("DAMAGED_OR_WRONG_ITEM", [r"damag", r"torn", r"phat", r"defect", r"stain", r"wrong (item|product|size|colou?r)",
+                               r"galat", r"different product", r"not what i ordered"]),
     ("CANCEL_ORDER", [r"cancel"]),
     ("RETURN_REFUND", [r"refund", r"return", r"wapas", r"exchange"]),
     ("COD_PAYMENT", [r"\bcod\b", r"cash", r"\bupi\b", r"\bpay\b", r"payment"]),

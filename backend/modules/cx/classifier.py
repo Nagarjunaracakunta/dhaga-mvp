@@ -6,7 +6,7 @@ from backend.shared.settings import Settings
 
 from .schemas import TicketClassification
 
-PROMPT_VERSION = "classify_v1"
+PROMPT_VERSION = "classify_v2"
 SYSTEM = (Path(__file__).parent / "prompts" / f"{PROMPT_VERSION}.md").read_text()
 
 

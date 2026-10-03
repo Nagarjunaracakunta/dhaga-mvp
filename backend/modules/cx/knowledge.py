@@ -6,6 +6,7 @@ from .repository import CXRepository, Policy
 INTENT_POLICY = {
     "WISMO": "delivery",
     "DELIVERED_NOT_RECEIVED": "escalation",
+    "DAMAGED_OR_WRONG_ITEM": "escalation",
     "CANCEL_ORDER": "cancellation",
     "RETURN_REFUND": "returns",
     "COD_PAYMENT": "cod",

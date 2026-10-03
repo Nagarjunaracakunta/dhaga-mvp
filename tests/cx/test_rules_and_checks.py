@@ -67,6 +67,11 @@ def test_rto_and_not_received_escalate_to_tier_2(repo):
     assert d.action == "NEEDS_HUMAN" and d.escalation_tier == "Tier 2"
 
 
+def test_damaged_or_wrong_item_escalates_to_tier_2(repo):
+    d = decide(cls(intent="DAMAGED_OR_WRONG_ITEM"), facts_for(repo, "DHC100377"))
+    assert d.action == "NEEDS_HUMAN" and d.escalation_tier == "Tier 2"
+
+
 def test_badly_late_order_is_drafted_with_priority(repo):
     d = decide(cls(), facts_for(repo, "DHC100231"))
     assert d.action == "DRAFT" and "6 days" in d.priority_note
@@ -98,6 +103,8 @@ def test_keyword_classifier_handles_hinglish():
     assert fallback.classify_by_keywords("Mera order abhi tak nahi aaya. Kab milega?").intent == "WISMO"
     assert fallback.classify_by_keywords("Cancel kar do please").intent == "CANCEL_ORDER"
     assert fallback.classify_by_keywords("shows delivered but I never received it").intent == "DELIVERED_NOT_RECEIVED"
+    assert fallback.classify_by_keywords("I received a damaged product.").intent == "DAMAGED_OR_WRONG_ITEM"
+    assert fallback.classify_by_keywords("galat colour bhej diya").intent == "DAMAGED_OR_WRONG_ITEM"
     c = fallback.classify_by_keywords("ok ok")
     assert c.intent == "OTHER" and c.confidence < 0.7
 

@@ -4,7 +4,8 @@ from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
-Intent = Literal["WISMO", "DELIVERED_NOT_RECEIVED", "CANCEL_ORDER", "RETURN_REFUND", "COD_PAYMENT", "OTHER"]
+Intent = Literal["WISMO", "DELIVERED_NOT_RECEIVED", "DAMAGED_OR_WRONG_ITEM", "CANCEL_ORDER", "RETURN_REFUND",
+                 "COD_PAYMENT", "OTHER"]
 TicketStatus = Literal["OPEN", "DRAFTED", "RESOLVED", "ESCALATED"]
 ResultStatus = Literal["DRAFTED", "NEEDS_HUMAN", "NEEDS_INFO"]
 HumanAction = Literal["APPROVED", "EDITED", "REJECTED", "ESCALATED"]

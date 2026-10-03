@@ -432,7 +432,7 @@ stateDiagram-v2
         <tr><td><code>draft</code></td><td>string | null</td><td>Suggested reply, with line breaks as <code>\n</code>. Can be present even when <code>status</code> is NEEDS_HUMAN after two failed checks.</td></tr>
         <tr><td><code>check</code></td><td>object | null</td><td><code>{passed, issues[]}</code> from the last check. Show the issues to the agent.</td></tr>
         <tr><td><code>human_reason</code></td><td>string | null</td><td>Plain-language reason a person must act. Show it on the failure card.</td></tr>
-        <tr><td><code>escalation_tier</code></td><td>string | null</td><td><code>Tier 2</code> for courier claims and return-to-origin cases</td></tr>
+        <tr><td><code>escalation_tier</code></td><td>string | null</td><td><code>Tier 2</code> for courier claims, damaged or wrong items, and return-to-origin cases</td></tr>
         <tr><td><code>priority_note</code></td><td>string | null</td><td>Set when an order is more than 5 days late</td></tr>
         <tr><td><code>attempts</code></td><td>integer</td><td>Drafts written: 0, 1, or 2 if the first failed its check</td></tr>
         <tr><td><code>fallback_mode</code></td><td>boolean</td><td>True when templates were used instead of Claude</td></tr>
@@ -467,7 +467,7 @@ stateDiagram-v2
     <div class="scroll"><table>
       <thead><tr><th>Field</th><th>Values</th></tr></thead>
       <tbody>
-        <tr><td>Intent</td><td><code>WISMO</code> (where is my order) · <code>DELIVERED_NOT_RECEIVED</code> · <code>CANCEL_ORDER</code> · <code>RETURN_REFUND</code> · <code>COD_PAYMENT</code> · <code>OTHER</code></td></tr>
+        <tr><td>Intent</td><td><code>WISMO</code> (where is my order) · <code>DELIVERED_NOT_RECEIVED</code> · <code>DAMAGED_OR_WRONG_ITEM</code> · <code>CANCEL_ORDER</code> · <code>RETURN_REFUND</code> · <code>COD_PAYMENT</code> · <code>OTHER</code></td></tr>
         <tr><td>Result status</td><td><code>DRAFTED</code> · <code>NEEDS_HUMAN</code> · <code>NEEDS_INFO</code></td></tr>
         <tr><td>Ticket status</td><td><code>OPEN</code> · <code>DRAFTED</code> · <code>RESOLVED</code> · <code>ESCALATED</code></td></tr>
         <tr><td>Decision action</td><td><code>APPROVED</code> · <code>EDITED</code> · <code>REJECTED</code> · <code>ESCALATED</code></td></tr>

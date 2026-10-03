@@ -23,6 +23,9 @@ def decide(classification: TicketClassification, facts: Optional[OrderFacts], or
     if facts.status == "RTO_INITIATED":
         return RuleDecision(action="NEEDS_HUMAN", escalation_tier=TIER_2,
                             reason="Order is returning to origin. Follow the COD & RTO SOP before replying.")
+    if intent == "DAMAGED_OR_WRONG_ITEM":
+        return RuleDecision(action="NEEDS_HUMAN", escalation_tier=TIER_2,
+                            reason="Damaged or wrong item. Tier 2 must check the customer's photos and arrange a replacement or return.")
     if intent == "DELIVERED_NOT_RECEIVED":
         return RuleDecision(action="NEEDS_HUMAN", escalation_tier=TIER_2,
                             reason="Possible lost parcel. A person must raise a courier claim before replying.")
