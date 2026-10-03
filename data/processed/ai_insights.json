@@ -1,0 +1,498 @@
+[
+  {
+    "insight": {
+      "insight_id": "product_size:SKU4421|L",
+      "dimension": "product_size",
+      "product_id": "SKU4421",
+      "product_name": "Floral Midi Dress",
+      "segment": {
+        "size": "L"
+      },
+      "orders": 115,
+      "returns": 48,
+      "return_rate": 0.4174,
+      "baseline_rate": 0.1247,
+      "lift": 3.35,
+      "reason_breakdown": {
+        "FIT": 32,
+        "QUALITY": 5,
+        "CHANGED_MIND": 3,
+        "UNSPECIFIED": 2,
+        "DAMAGE": 2,
+        "WRONG_ITEM": 2,
+        "COLOUR": 1,
+        "UNCLEAR": 1
+      },
+      "reason_detail_breakdown": {
+        "FIT/TOO_TIGHT": 28,
+        "QUALITY/UNSPECIFIED": 5,
+        "FIT/TOO_SHORT": 3,
+        "CHANGED_MIND/UNSPECIFIED": 3,
+        "UNSPECIFIED/NO_COMMENT": 2,
+        "DAMAGE/UNSPECIFIED": 2,
+        "WRONG_ITEM/UNSPECIFIED": 2,
+        "COLOUR/LISTING_DIFFERENCE": 1,
+        "UNCLEAR/UNCLEAR": 1,
+        "FIT/TOO_LONG": 1
+      },
+      "body_area_breakdown": {
+        "SHOULDERS": 15,
+        "LENGTH": 4
+      },
+      "unclassified_share": 0.0,
+      "sample_comments": [
+        "kandhe pe fit nahi aa raha, tight hai",
+        "L size shoulders pe bahut tight hai",
+        "length bahut kam hai",
+        "Shoulders too snug even in L",
+        "shoulder fitting is very tight, cannot lift arms"
+      ]
+    },
+    "insight_id": "product_size:SKU4421|L",
+    "evidence": {
+      "product": "Floral Midi Dress",
+      "segment": {
+        "size": "L"
+      },
+      "orders": 115,
+      "returns": 48,
+      "return_rate_pct": 41.7,
+      "overall_return_rate_pct": 12.5,
+      "lift_vs_overall": 3.35,
+      "top_reasons": [
+        {
+          "reason": "FIT/TOO_TIGHT",
+          "count": 28,
+          "share_of_returns_pct": 58.3
+        },
+        {
+          "reason": "QUALITY/UNSPECIFIED",
+          "count": 5,
+          "share_of_returns_pct": 10.4
+        },
+        {
+          "reason": "FIT/TOO_SHORT",
+          "count": 3,
+          "share_of_returns_pct": 6.2
+        }
+      ],
+      "body_areas": [
+        {
+          "area": "SHOULDERS",
+          "count": 15
+        },
+        {
+          "area": "LENGTH",
+          "count": 4
+        }
+      ],
+      "unclassified_share_pct": 0.0
+    },
+    "status": "passed_checks",
+    "attempts": 1,
+    "open_issues": [],
+    "recommendation": {
+      "headline": "Investigate Floral Midi Dress (size L)",
+      "explanation": "48 of 115 orders (41.7%) were returned, versus 12.5% overall. The most common reason is fit / too_tight: 28 returns (58.3%).",
+      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+    }
+  },
+  {
+    "insight": {
+      "insight_id": "product_size:SKU4421|M",
+      "dimension": "product_size",
+      "product_id": "SKU4421",
+      "product_name": "Floral Midi Dress",
+      "segment": {
+        "size": "M"
+      },
+      "orders": 102,
+      "returns": 33,
+      "return_rate": 0.3235,
+      "baseline_rate": 0.1247,
+      "lift": 2.59,
+      "reason_breakdown": {
+        "FIT": 23,
+        "QUALITY": 3,
+        "CHANGED_MIND": 2,
+        "UNCLEAR": 2,
+        "UNSPECIFIED": 2,
+        "WRONG_ITEM": 1
+      },
+      "reason_detail_breakdown": {
+        "FIT/TOO_TIGHT": 21,
+        "CHANGED_MIND/UNSPECIFIED": 2,
+        "QUALITY/UNSPECIFIED": 2,
+        "FIT/TOO_SHORT": 2,
+        "UNCLEAR/UNCLEAR": 2,
+        "UNSPECIFIED/NO_COMMENT": 2,
+        "QUALITY/FABRIC": 1,
+        "WRONG_ITEM/UNSPECIFIED": 1
+      },
+      "body_area_breakdown": {
+        "SHOULDERS": 11,
+        "WAIST": 3,
+        "LENGTH": 2,
+        "BUST": 1
+      },
+      "unclassified_share": 0.0,
+      "sample_comments": [
+        "M size shoulders pe bahut tight hai",
+        "chest pe bahut tight fitting",
+        "kurta ki length chhoti hai",
+        "kamar pe tight, button band nahi hua",
+        "kamar pe tight, button band nahi hua"
+      ]
+    },
+    "insight_id": "product_size:SKU4421|M",
+    "evidence": {
+      "product": "Floral Midi Dress",
+      "segment": {
+        "size": "M"
+      },
+      "orders": 102,
+      "returns": 33,
+      "return_rate_pct": 32.4,
+      "overall_return_rate_pct": 12.5,
+      "lift_vs_overall": 2.59,
+      "top_reasons": [
+        {
+          "reason": "FIT/TOO_TIGHT",
+          "count": 21,
+          "share_of_returns_pct": 63.6
+        },
+        {
+          "reason": "CHANGED_MIND/UNSPECIFIED",
+          "count": 2,
+          "share_of_returns_pct": 6.1
+        },
+        {
+          "reason": "QUALITY/UNSPECIFIED",
+          "count": 2,
+          "share_of_returns_pct": 6.1
+        }
+      ],
+      "body_areas": [
+        {
+          "area": "SHOULDERS",
+          "count": 11
+        },
+        {
+          "area": "WAIST",
+          "count": 3
+        },
+        {
+          "area": "LENGTH",
+          "count": 2
+        }
+      ],
+      "unclassified_share_pct": 0.0
+    },
+    "status": "passed_checks",
+    "attempts": 1,
+    "open_issues": [],
+    "recommendation": {
+      "headline": "Investigate Floral Midi Dress (size M)",
+      "explanation": "33 of 102 orders (32.4%) were returned, versus 12.5% overall. The most common reason is fit / too_tight: 21 returns (63.6%).",
+      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+    }
+  },
+  {
+    "insight": {
+      "insight_id": "product_colour:SKU4450|Mustard",
+      "dimension": "product_colour",
+      "product_id": "SKU4450",
+      "product_name": "Chikankari Top",
+      "segment": {
+        "colour": "Mustard"
+      },
+      "orders": 136,
+      "returns": 44,
+      "return_rate": 0.3235,
+      "baseline_rate": 0.1247,
+      "lift": 2.59,
+      "reason_breakdown": {
+        "COLOUR": 30,
+        "FIT": 8,
+        "QUALITY": 2,
+        "WRONG_ITEM": 2,
+        "CHANGED_MIND": 1,
+        "UNCLEAR": 1
+      },
+      "reason_detail_breakdown": {
+        "COLOUR/LISTING_DIFFERENCE": 30,
+        "FIT/TOO_LOOSE": 3,
+        "FIT/TOO_TIGHT": 3,
+        "QUALITY/UNSPECIFIED": 2,
+        "WRONG_ITEM/UNSPECIFIED": 2,
+        "FIT/TOO_SHORT": 1,
+        "FIT/TOO_LONG": 1,
+        "CHANGED_MIND/UNSPECIFIED": 1,
+        "UNCLEAR/UNCLEAR": 1
+      },
+      "body_area_breakdown": {
+        "LENGTH": 2,
+        "WAIST": 1,
+        "BUST": 1
+      },
+      "unclassified_share": 0.0,
+      "sample_comments": [
+        "rang bilkul alag hai, photo se match nahi",
+        "colour looks different from the listing",
+        "rang bilkul alag hai, photo se match nahi",
+        "rang bilkul alag hai, photo se match nahi",
+        "rang bilkul alag hai, photo se match nahi"
+      ]
+    },
+    "insight_id": "product_colour:SKU4450|Mustard",
+    "evidence": {
+      "product": "Chikankari Top",
+      "segment": {
+        "colour": "Mustard"
+      },
+      "orders": 136,
+      "returns": 44,
+      "return_rate_pct": 32.4,
+      "overall_return_rate_pct": 12.5,
+      "lift_vs_overall": 2.59,
+      "top_reasons": [
+        {
+          "reason": "COLOUR/LISTING_DIFFERENCE",
+          "count": 30,
+          "share_of_returns_pct": 68.2
+        },
+        {
+          "reason": "FIT/TOO_LOOSE",
+          "count": 3,
+          "share_of_returns_pct": 6.8
+        },
+        {
+          "reason": "FIT/TOO_TIGHT",
+          "count": 3,
+          "share_of_returns_pct": 6.8
+        }
+      ],
+      "body_areas": [
+        {
+          "area": "LENGTH",
+          "count": 2
+        },
+        {
+          "area": "WAIST",
+          "count": 1
+        },
+        {
+          "area": "BUST",
+          "count": 1
+        }
+      ],
+      "unclassified_share_pct": 0.0
+    },
+    "status": "passed_checks",
+    "attempts": 1,
+    "open_issues": [],
+    "recommendation": {
+      "headline": "Investigate Chikankari Top (colour Mustard)",
+      "explanation": "44 of 136 orders (32.4%) were returned, versus 12.5% overall. The most common reason is colour / listing_difference: 30 returns (68.2%).",
+      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+    }
+  },
+  {
+    "insight": {
+      "insight_id": "product_size:SKU4450|S",
+      "dimension": "product_size",
+      "product_id": "SKU4450",
+      "product_name": "Chikankari Top",
+      "segment": {
+        "size": "S"
+      },
+      "orders": 104,
+      "returns": 27,
+      "return_rate": 0.2596,
+      "baseline_rate": 0.1247,
+      "lift": 2.08,
+      "reason_breakdown": {
+        "COLOUR": 16,
+        "FIT": 6,
+        "UNCLEAR": 2,
+        "CHANGED_MIND": 2,
+        "UNSPECIFIED": 1
+      },
+      "reason_detail_breakdown": {
+        "COLOUR/LISTING_DIFFERENCE": 16,
+        "FIT/TOO_TIGHT": 3,
+        "UNCLEAR/UNCLEAR": 2,
+        "FIT/TOO_LOOSE": 2,
+        "CHANGED_MIND/UNSPECIFIED": 2,
+        "FIT/TOO_SHORT": 1,
+        "UNSPECIFIED/NO_COMMENT": 1
+      },
+      "body_area_breakdown": {
+        "WAIST": 3,
+        "LENGTH": 1,
+        "BUST": 1
+      },
+      "unclassified_share": 0.0,
+      "sample_comments": [
+        "rang bilkul alag hai, photo se match nahi",
+        "rang bilkul alag hai, photo se match nahi",
+        "rang bilkul alag hai, photo se match nahi",
+        "colour looks different from the listing",
+        "colour looks different from the listing"
+      ]
+    },
+    "insight_id": "product_size:SKU4450|S",
+    "evidence": {
+      "product": "Chikankari Top",
+      "segment": {
+        "size": "S"
+      },
+      "orders": 104,
+      "returns": 27,
+      "return_rate_pct": 26.0,
+      "overall_return_rate_pct": 12.5,
+      "lift_vs_overall": 2.08,
+      "top_reasons": [
+        {
+          "reason": "COLOUR/LISTING_DIFFERENCE",
+          "count": 16,
+          "share_of_returns_pct": 59.3
+        },
+        {
+          "reason": "FIT/TOO_TIGHT",
+          "count": 3,
+          "share_of_returns_pct": 11.1
+        },
+        {
+          "reason": "FIT/TOO_LOOSE",
+          "count": 2,
+          "share_of_returns_pct": 7.4
+        }
+      ],
+      "body_areas": [
+        {
+          "area": "WAIST",
+          "count": 3
+        },
+        {
+          "area": "LENGTH",
+          "count": 1
+        },
+        {
+          "area": "BUST",
+          "count": 1
+        }
+      ],
+      "unclassified_share_pct": 0.0
+    },
+    "status": "passed_checks",
+    "attempts": 1,
+    "open_issues": [],
+    "recommendation": {
+      "headline": "Investigate Chikankari Top (size S)",
+      "explanation": "27 of 104 orders (26.0%) were returned, versus 12.5% overall. The most common reason is colour / listing_difference: 16 returns (59.3%).",
+      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+    }
+  },
+  {
+    "insight": {
+      "insight_id": "product:SKU4435",
+      "dimension": "product",
+      "product_id": "SKU4435",
+      "product_name": "Anarkali Suit",
+      "segment": {},
+      "orders": 349,
+      "returns": 80,
+      "return_rate": 0.2292,
+      "baseline_rate": 0.1247,
+      "lift": 1.84,
+      "reason_breakdown": {
+        "QUALITY": 39,
+        "FIT": 19,
+        "CHANGED_MIND": 8,
+        "UNCLEAR": 6,
+        "DAMAGE": 3,
+        "UNSPECIFIED": 2,
+        "COLOUR": 2,
+        "WRONG_ITEM": 1
+      },
+      "reason_detail_breakdown": {
+        "QUALITY/UNSPECIFIED": 32,
+        "FIT/TOO_TIGHT": 11,
+        "CHANGED_MIND/UNSPECIFIED": 8,
+        "UNCLEAR/UNCLEAR": 6,
+        "QUALITY/FABRIC": 5,
+        "FIT/TOO_SHORT": 5,
+        "FIT/TOO_LOOSE": 3,
+        "DAMAGE/UNSPECIFIED": 3,
+        "QUALITY/STITCHING": 2,
+        "UNSPECIFIED/NO_COMMENT": 2,
+        "COLOUR/LISTING_DIFFERENCE": 2,
+        "WRONG_ITEM/UNSPECIFIED": 1
+      },
+      "body_area_breakdown": {
+        "WAIST": 7,
+        "LENGTH": 5,
+        "BUST": 1
+      },
+      "unclassified_share": 0.0,
+      "sample_comments": [
+        "fabric thin hai, transparent dikh raha",
+        "fabric thin hai, transparent dikh raha",
+        "stitching is poor",
+        "quality bilkul achhi nahi lagi, fabric cheap hai",
+        "stitching is poor"
+      ]
+    },
+    "insight_id": "product:SKU4435",
+    "evidence": {
+      "product": "Anarkali Suit",
+      "segment": {},
+      "orders": 349,
+      "returns": 80,
+      "return_rate_pct": 22.9,
+      "overall_return_rate_pct": 12.5,
+      "lift_vs_overall": 1.84,
+      "top_reasons": [
+        {
+          "reason": "QUALITY/UNSPECIFIED",
+          "count": 32,
+          "share_of_returns_pct": 40.0
+        },
+        {
+          "reason": "FIT/TOO_TIGHT",
+          "count": 11,
+          "share_of_returns_pct": 13.8
+        },
+        {
+          "reason": "CHANGED_MIND/UNSPECIFIED",
+          "count": 8,
+          "share_of_returns_pct": 10.0
+        }
+      ],
+      "body_areas": [
+        {
+          "area": "WAIST",
+          "count": 7
+        },
+        {
+          "area": "LENGTH",
+          "count": 5
+        },
+        {
+          "area": "BUST",
+          "count": 1
+        }
+      ],
+      "unclassified_share_pct": 0.0
+    },
+    "status": "passed_checks",
+    "attempts": 1,
+    "open_issues": [],
+    "recommendation": {
+      "headline": "Investigate Anarkali Suit",
+      "explanation": "80 of 349 orders (22.9%) were returned, versus 12.5% overall. The most common reason is quality / unspecified: 32 returns (40.0%).",
+      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+    }
+  }
+]

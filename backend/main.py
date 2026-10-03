@@ -1,10 +1,10 @@
 """Thin FastAPI layer over the pipeline. Run: uvicorn backend.main:app --reload"""
 import json
+from typing import Optional
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from . import aggregation
+from . import aggregation, config
 from .pipeline import run_pipeline
-from typing import Optional
 
 app = FastAPI(title="Dhaga Returns Insights (no-AI baseline)")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -51,11 +51,7 @@ def candidate_insights():
 
 
 @app.get("/api/returns")
-def returns(
-    needs_llm: Optional[bool] = None,
-    product_id: Optional[str] = None,
-    limit: int = 100
-):
+def returns(needs_llm: Optional[bool] = None, product_id: Optional[str] = None, limit: int = 100):
     df = _result().returns
     if needs_llm is not None:
         df = df[df["needs_llm"] == needs_llm]
@@ -67,3 +63,19 @@ def returns(
 @app.get("/api/rejected")
 def rejected():
     return _records(_result().rejected)
+
+
+# ---- AI stage outputs (written by `python -m ai.run`) ----
+def _load_json(name):
+    path = config.PROCESSED_DIR / name
+    return json.loads(path.read_text()) if path.exists() else {"error": f"{name} not found - run `python -m ai.run` first"}
+
+
+@app.get("/api/ai/insights")
+def ai_insights():
+    return _load_json("ai_insights.json")
+
+
+@app.get("/api/ai/report")
+def ai_report():
+    return _load_json("ai_run_report.json")

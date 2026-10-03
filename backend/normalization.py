@@ -31,20 +31,19 @@ def _reject_rows(df, id_col, source, mask, reason):
 
 def normalize_orders(orders: pd.DataFrame):
     df = orders.copy()
-    df["size"] = df["size"].map(normalize_size)
+    # Unknown/blank sizes (kidswear "4-5Y", vendor-specific charts) are kept as UNKNOWN and counted, not dropped:
+    # size is irrelevant for most analysis, so losing the whole record would hide real returns.
+    df["size"] = df["size"].map(normalize_size).fillna("UNKNOWN")
     df["colour"] = df["colour"].map(normalize_colour).fillna("UNKNOWN")
-    bad = df["size"].isna()
-    return df[~bad].copy(), _reject_rows(df, "order_id", "orders", bad, "unknown_size")
+    return df, pd.DataFrame(columns=REJECT_COLUMNS)
 
 
 def normalize_returns(returns: pd.DataFrame):
     """Adds primary_reason / sub_reason / body_area / classification_source / needs_llm."""
     df = returns.copy()
-    df["size"] = df["size"].map(normalize_size)
+    df["size"] = df["size"].map(normalize_size).fillna("UNKNOWN")
     df["colour"] = df["colour"].map(normalize_colour).fillna("UNKNOWN")
-    bad_size = df["size"].isna()
-    rejected = _reject_rows(df, "return_id", "returns", bad_size, "unknown_size")
-    df = df[~bad_size].copy()
+    rejected = pd.DataFrame(columns=REJECT_COLUMNS)
 
     mapped = df["return_reason"].map(map_dropdown_reason)
     is_other = df["return_reason"].map(norm_text) == config.OTHER_REASON

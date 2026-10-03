@@ -7,5 +7,4 @@ returns,R0030,invalid_return_date
 returns,R0081,unknown_product_id
 returns,R0042,order_not_found
 returns,R0999,product_mismatch_with_order
-returns,R0054,unknown_size
 returns,R0068,unknown_return_reason

@@ -1,7 +1,5 @@
-__pycache__/
-*.pyc
 .venv/
-venv/
+__pycache__/
+.pytest_cache/
 .env
-.DS_Store
-.idea/
+data/processed/llm_cache.sqlite

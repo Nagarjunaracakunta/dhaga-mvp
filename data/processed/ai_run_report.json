@@ -1,0 +1,262 @@
+{
+  "models": {
+    "fast": "mock:mock",
+    "strong": "mock:mock",
+    "fallback": null
+  },
+  "classification": {
+    "rows": 172,
+    "unique_comments": 38,
+    "rule_junk": 1,
+    "cache_hits": 0,
+    "escalated": 7,
+    "classified_by_llm": 37
+  },
+  "applied": {
+    "applied": 146,
+    "low_confidence": 26,
+    "failed": 0,
+    "still_pending": 0
+  },
+  "cost": {
+    "calls": 13,
+    "estimated_usd": 0.0,
+    "budget_usd": 0.5,
+    "budget_calls": 500,
+    "by_model": {
+      "mock:mock": {
+        "calls": 13,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "usd": 0.0
+      }
+    },
+    "unpriced_models": []
+  },
+  "recommendations": {
+    "generated": 5,
+    "passed_checks": 5,
+    "needs_manual_review": 0
+  },
+  "pipeline": {
+    "total_orders": 3600,
+    "total_returns": 449,
+    "return_rate": 0.1247,
+    "dropdown_classified": 258,
+    "other_with_comment": 172,
+    "other_without_comment": 19,
+    "other_share": 0.4254,
+    "raw_orders": 3601,
+    "raw_returns": 457,
+    "rejected_records": 9,
+    "returns_unknown_size": 1,
+    "returns_unknown_colour": 0
+  },
+  "by_product": [
+    {
+      "product_id": "SKU4435",
+      "product_name": "Anarkali Suit",
+      "orders": 349,
+      "returns": 80,
+      "return_rate": 0.2292
+    },
+    {
+      "product_id": "SKU4421",
+      "product_name": "Floral Midi Dress",
+      "orders": 544,
+      "returns": 105,
+      "return_rate": 0.193
+    },
+    {
+      "product_id": "SKU4450",
+      "product_name": "Chikankari Top",
+      "orders": 417,
+      "returns": 74,
+      "return_rate": 0.1775
+    },
+    {
+      "product_id": "SKU4422",
+      "product_name": "Linen Kurta Set",
+      "orders": 460,
+      "returns": 44,
+      "return_rate": 0.0957
+    },
+    {
+      "product_id": "SKU4440",
+      "product_name": "Palazzo Pants",
+      "orders": 538,
+      "returns": 48,
+      "return_rate": 0.0892
+    },
+    {
+      "product_id": "SKU4430",
+      "product_name": "Cotton Straight Kurta",
+      "orders": 685,
+      "returns": 58,
+      "return_rate": 0.0847
+    },
+    {
+      "product_id": "SKU4445",
+      "product_name": "Embroidered Dupatta",
+      "orders": 269,
+      "returns": 21,
+      "return_rate": 0.0781
+    },
+    {
+      "product_id": "SKU4455",
+      "product_name": "Denim Jacket",
+      "orders": 338,
+      "returns": 19,
+      "return_rate": 0.0562
+    }
+  ],
+  "by_size": [
+    {
+      "size": "L",
+      "orders": 737,
+      "returns": 117,
+      "return_rate": 0.1588
+    },
+    {
+      "size": "M",
+      "orders": 796,
+      "returns": 108,
+      "return_rate": 0.1357
+    },
+    {
+      "size": "S",
+      "orders": 764,
+      "returns": 101,
+      "return_rate": 0.1322
+    },
+    {
+      "size": "XL",
+      "orders": 805,
+      "returns": 93,
+      "return_rate": 0.1155
+    },
+    {
+      "size": "FREE",
+      "orders": 269,
+      "returns": 20,
+      "return_rate": 0.0743
+    },
+    {
+      "size": "XXL",
+      "orders": 122,
+      "returns": 6,
+      "return_rate": 0.0492
+    },
+    {
+      "size": "XS",
+      "orders": 107,
+      "returns": 3,
+      "return_rate": 0.028
+    },
+    {
+      "size": "UNKNOWN",
+      "orders": 0,
+      "returns": 1,
+      "return_rate": NaN
+    }
+  ],
+  "rejected_by_reason": [
+    {
+      "source": "orders",
+      "reason": "duplicate_order_id",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "duplicate_return_id",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "invalid_return_date",
+      "count": 2
+    },
+    {
+      "source": "returns",
+      "reason": "missing_product_id",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "order_not_found",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "product_mismatch_with_order",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "unknown_product_id",
+      "count": 1
+    },
+    {
+      "source": "returns",
+      "reason": "unknown_return_reason",
+      "count": 1
+    }
+  ],
+  "rejected_sample": [
+    {
+      "source": "orders",
+      "record_id": "ORD89004",
+      "reason": "duplicate_order_id"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0006",
+      "reason": "missing_product_id"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0011",
+      "reason": "duplicate_return_id"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0018",
+      "reason": "invalid_return_date"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0030",
+      "reason": "invalid_return_date"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0081",
+      "reason": "unknown_product_id"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0042",
+      "reason": "order_not_found"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0999",
+      "reason": "product_mismatch_with_order"
+    },
+    {
+      "source": "returns",
+      "record_id": "R0068",
+      "reason": "unknown_return_reason"
+    }
+  ],
+  "classifier_eval": {
+    "rows_evaluated": 172,
+    "primary_accuracy_all": 1.0,
+    "primary+sub_accuracy_all": 1.0,
+    "trusted_share": 0.849,
+    "primary_accuracy_trusted": 1.0,
+    "body_area_accuracy_on_fit": 1.0,
+    "top_mismatches": {}
+  },
+  "run_id": "a2be869c33a8"
+}

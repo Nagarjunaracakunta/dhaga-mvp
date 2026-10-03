@@ -13,7 +13,7 @@ RETURN_COLUMNS = [
 ]
 # Fields that must be non-blank for a record to be usable at all
 REQUIRED_RETURN_FIELDS = ["return_id", "order_id", "product_id", "return_reason", "return_date"]
-REQUIRED_ORDER_FIELDS = ["order_id", "product_id", "size", "order_date"]
+REQUIRED_ORDER_FIELDS = ["order_id", "product_id", "order_date"]
 
 DATE_FORMAT = "%Y-%m-%d"
 
