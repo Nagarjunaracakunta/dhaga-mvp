@@ -51,7 +51,7 @@ Run `db/cx_tables.sql` once in the Supabase SQL editor. It creates `ai_interacti
 | Missing | What happens |
 |---|---|
 | `SUPABASE_URL` / `SUPABASE_SECRET_KEY` | CX uses the demo dataset in `data/cx_demo/` (10 tickets covering every rule) |
-| `ANTHROPIC_API_KEY` | Copilot runs in fallback mode: keyword intent + template replies, marked `fallback_mode: true` |
+| `ANTHROPIC_API_KEY` and `OPENROUTER_API_KEY` | Copilot runs in fallback mode: keyword intent + template replies, marked `fallback_mode: true` |
 
 `GET /api/health` shows which mode is active.
 

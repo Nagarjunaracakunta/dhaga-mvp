@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     supabase_service_key: str = Field("", validation_alias=AliasChoices("SUPABASE_SECRET_KEY", "SUPABASE_SERVICE_KEY",
                                                                         "supabase_service_key"))
     anthropic_api_key: str = ""
+    openrouter_api_key: str = ""          # used when anthropic_api_key is blank
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
     knowledge_bucket: str = "knowledge"
 
     # ---- Data source for CX: "supabase", "demo", or "auto" (supabase if configured) ----
@@ -50,8 +52,16 @@ class Settings(BaseSettings):
         return bool(self.supabase_url and self.supabase_service_key)
 
     @property
+    def llm_provider(self) -> Optional[str]:
+        if self.anthropic_api_key:
+            return "anthropic"
+        if self.openrouter_api_key:
+            return "openrouter"
+        return None
+
+    @property
     def llm_configured(self) -> bool:
-        return bool(self.anthropic_api_key)
+        return self.llm_provider is not None
 
     @property
     def cx_mode(self) -> str:

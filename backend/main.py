@@ -41,6 +41,7 @@ def health():
         "cx_data_source": s.cx_mode,
         "database_reachable": db_ok,
         "llm_configured": s.llm_configured,
+        "llm_provider": s.llm_provider,
         "models": {"fast": s.model_fast, "strong": s.model_strong},
         "policies_loaded": policies,
     }

@@ -32,7 +32,7 @@ export default function StatusBar({ health, error, onRefresh }) {
       <span className="item">
         <Cpu size={14} /> AI:
         {health.llm_configured
-          ? <b className="ok">Claude ready ({health.models.fast} + {health.models.strong})</b>
+          ? <b className="ok">Claude ready{health.llm_provider === "openrouter" ? " via OpenRouter" : ""} ({health.models.fast} + {health.models.strong})</b>
           : <b className="warn">Fallback mode · no API key (template replies)</b>}
       </span>
       <span className="item">
