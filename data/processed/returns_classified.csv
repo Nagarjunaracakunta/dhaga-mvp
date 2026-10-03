@@ -1,0 +1,450 @@
+return_id,order_id,customer_id,product_id,size,colour,return_reason,return_comment,return_date,primary_reason,sub_reason,body_area,classification_source,needs_llm,product_name,category,confidence,llm_primary,llm_sub
+R0001,ORD89002,C1065,SKU4445,FREE,Green,Other,"material feels cheap, not worth the price",2026-08-27,QUALITY,FABRIC,,llm,False,Embroidered Dupatta,Accessories,0.85,QUALITY,FABRIC
+R0002,ORD89012,C2683,SKU4422,L,White,Size too large,,2026-08-12,FIT,TOO_LOOSE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0003,ORD89022,C1490,SKU4435,S,Green,Other,return karna hai,2026-08-14,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Anarkali Suit,Suits,0.5,UNCLEAR,UNCLEAR
+R0004,ORD89035,C2712,SKU4435,S,Pink,Other,"fabric thin hai, transparent dikh raha",2026-09-11,QUALITY,FABRIC,,llm,False,Anarkali Suit,Suits,0.9,QUALITY,FABRIC
+R0005,ORD89038,C1117,SKU4421,XL,Pink,Changed my mind,,2026-08-15,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0007,ORD89051,C1229,SKU4435,XL,Pink,Changed my mind,,2026-07-07,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0008,ORD89054,C1844,SKU4455,M,Blue,Other,length bahut kam hai,2026-08-01,FIT,TOO_SHORT,LENGTH,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_SHORT
+R0009,ORD89082,C2424,SKU4421,L,Blue,Quality not as expected,,2026-09-22,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0010,ORD89084,C2483,SKU4421,M,Yellow,Other,M size shoulders pe bahut tight hai,2026-08-25,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0011,ORD89087,C1963,SKU4422,XL,Green,Other,nahi chahiye,2026-07-17,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Linen Kurta Set,Kurta Sets,0.5,UNCLEAR,UNCLEAR
+R0012,ORD89102,C2552,SKU4421,L,Blue,Size too small,"kandhe pe fit nahi aa raha, tight hai",2026-09-23,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0013,ORD89112,C2405,SKU4430,S,Mustard,Quality not as expected,,2026-10-01,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0014,ORD89138,C2769,SKU4430,XXL,Mustard,Changed my mind,,2026-07-25,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0015,ORD89145,C1316,SKU4421,S,Blue,Size too large,,2026-10-03,FIT,TOO_LOOSE,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0016,ORD89149,C2630,SKU4430,S,Red,Quality not as expected,,2026-08-20,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0017,ORD89161,C1359,SKU4421,M,Blue,Changed my mind,,2026-09-02,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0019,ORD89179,C1543,SKU4422,L,White,Quality not as expected,,2026-08-03,QUALITY,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0020,ORD89189,C2662,SKU4421,L,Pink,Size too small,,2026-09-01,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0021,ORD89204,C1245,SKU4445,FREE,Pink,Other,kamar pe dhila hai,2026-08-14,FIT,TOO_LOOSE,WAIST,llm,False,Embroidered Dupatta,Accessories,0.85,FIT,TOO_LOOSE
+R0022,ORD89206,C1829,SKU4430,XL,Black,Changed my mind,,2026-07-21,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0023,ORD89215,C1116,SKU4421,L,Blue,Size too small,,2026-07-20,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0024,ORD89218,C1353,SKU4450,S,Peach,Other,ok ok,2026-09-30,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Chikankari Top,Tops,0.5,UNCLEAR,UNCLEAR
+R0025,ORD89219,C1685,SKU4445,FREE,Green,Colour different from photo,,2026-09-26,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0026,ORD89224,C1317,SKU4445,FREE,Red,Size too small,,2026-07-30,FIT,TOO_TIGHT,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0027,ORD89240,C1936,SKU4421,L,Yellow,Quality not as expected,,2026-09-21,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0028,ORD89244,C2614,SKU4455,L,Blue,Other,"rang bilkul alag hai, photo se match nahi",2026-08-28,COLOUR,LISTING_DIFFERENCE,,llm,False,Denim Jacket,Outerwear,0.9,COLOUR,LISTING_DIFFERENCE
+R0029,ORD89246,C1412,SKU4421,L,Pink,Other,,2026-08-14,UNSPECIFIED,NO_COMMENT,,no_comment,False,Floral Midi Dress,Dresses,1.0,,
+R0031,ORD89256,C2562,SKU4430,L,Black,Other,length bahut kam hai,2026-09-04,FIT,TOO_SHORT,LENGTH,llm,False,Cotton Straight Kurta,Kurtas,0.85,FIT,TOO_SHORT
+R0032,ORD89272,C1315,SKU4435,M,Pink,Changed my mind,,2026-09-26,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0033,ORD89280,C1856,SKU4421,M,Blue,Other,chest pe bahut tight fitting,2026-09-28,FIT,TOO_TIGHT,BUST,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_TIGHT
+R0034,ORD89282,C1722,SKU4435,M,Maroon,Quality not as expected,,2026-09-17,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0035,ORD89289,C2055,SKU4435,XL,Maroon,Other,kurta ki length chhoti hai,2026-09-26,FIT,TOO_SHORT,LENGTH,llm,False,Anarkali Suit,Suits,0.9,FIT,TOO_SHORT
+R0036,ORD89297,C2062,SKU4435,S,Pink,Quality not as expected,,2026-07-29,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0037,ORD89302,C1594,SKU4430,XL,Black,Size too small,,2026-07-30,FIT,TOO_TIGHT,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0038,ORD89307,C2322,SKU4440,L,White,Colour different from photo,,2026-08-11,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0039,ORD89311,C1558,SKU4435,M,Pink,Quality not as expected,,2026-09-10,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0040,ORD89314,C1508,SKU4421,S,Blue,Quality not as expected,,2026-08-17,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0041,ORD89320,C1229,SKU4435,L,Maroon,Quality not as expected,,2026-09-24,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0043,ORD89331,C1492,SKU4421,L,Yellow,Other,L size shoulders pe bahut tight hai,2026-07-09,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0044,ORD89332,C1592,SKU4435,S,Maroon,Quality not as expected,,2026-09-16,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0045,ORD89356,C1999,SKU4421,XL,Blue,Other,"too long, trails on floor",2026-10-02,FIT,TOO_LONG,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_LONG
+R0046,ORD89360,C2555,SKU4422,S,Blue,Other,length zyada lambi hai,2026-10-07,FIT,TOO_LONG,LENGTH,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_LONG
+R0047,ORD89387,C2154,SKU4450,XL,Mustard,Other,kamar pe dhila hai,2026-07-29,FIT,TOO_LOOSE,WAIST,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_LOOSE
+R0048,ORD89399,C1614,SKU4430,XL,Black,Other,waist bahut tight hai,2026-07-17,FIT,TOO_TIGHT,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.9,FIT,TOO_TIGHT
+R0049,ORD89400,C2289,SKU4435,XL,Maroon,Other,"fabric thin hai, transparent dikh raha",2026-09-04,QUALITY,FABRIC,,llm,False,Anarkali Suit,Suits,0.9,QUALITY,FABRIC
+R0050,ORD89412,C2000,SKU4435,XL,Green,Changed my mind,,2026-08-31,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0051,ORD89425,C2535,SKU4450,S,Mustard,Other,"too short for me, 5'7",2026-09-17,FIT,TOO_SHORT,LENGTH,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_SHORT
+R0052,ORD89427,C2696,SKU4450,XL,Mustard,Other,"rang bilkul alag hai, photo se match nahi",2026-08-16,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE
+R0053,ORD89430,C1338,SKU4422,L,Blue,Damaged product,,2026-09-25,DAMAGE,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0054,ORD89445,C1138,SKU4445,UNKNOWN,Red,Other,,2026-09-25,UNSPECIFIED,NO_COMMENT,,no_comment,False,Embroidered Dupatta,Accessories,1.0,,
+R0055,ORD89447,C1634,SKU4435,M,Green,Other,meh,2026-07-24,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Anarkali Suit,Suits,0.5,UNCLEAR,UNCLEAR
+R0056,ORD89457,C1005,SKU4450,S,White,Other,"waist loose hai, bahut dhila",2026-09-15,FIT,TOO_LOOSE,WAIST,llm,False,Chikankari Top,Tops,0.9,FIT,TOO_LOOSE
+R0057,ORD89461,C2773,SKU4421,L,Pink,Other,length bahut kam hai,2026-09-10,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_SHORT
+R0058,ORD89463,C1839,SKU4445,FREE,Red,Colour different from photo,"rang bilkul alag hai, photo se match nahi",2026-07-15,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0059,ORD89481,C1944,SKU4421,M,Pink,Quality not as expected,,2026-07-12,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0060,ORD89482,C1304,SKU4455,L,Black,Other,kamar pe dhila hai,2026-09-01,FIT,TOO_LOOSE,WAIST,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_LOOSE
+R0061,ORD89485,C1368,SKU4435,L,Green,Size too small,,2026-08-10,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0062,ORD89491,C2232,SKU4435,S,Maroon,Size too small,,2026-08-07,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0063,ORD89497,C2492,SKU4430,L,Red,Quality not as expected,,2026-08-07,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0064,ORD89500,C1543,SKU4421,M,Blue,Other,kurta ki length chhoti hai,2026-07-12,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_SHORT
+R0065,ORD89503,C1214,SKU4421,XS,Blue,Other,length bahut kam hai,2026-08-13,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_SHORT
+R0066,ORD89506,C1609,SKU4435,L,Pink,Quality not as expected,,2026-08-13,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0067,ORD89510,C1912,SKU4430,XL,Black,Size too large,,2026-07-28,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0069,ORD89517,C2788,SKU4430,L,Mustard,Quality not as expected,,2026-09-12,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0070,ORD89528,C1059,SKU4435,M,Pink,Other,"waist loose hai, bahut dhila",2026-09-21,FIT,TOO_LOOSE,WAIST,llm,False,Anarkali Suit,Suits,0.9,FIT,TOO_LOOSE
+R0071,ORD89531,C1583,SKU4422,L,Blue,Changed my mind,,2026-07-25,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0072,ORD89538,C1986,SKU4440,L,White,Colour different from photo,,2026-07-20,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0073,ORD89544,C2340,SKU4422,M,Blue,Damaged product,,2026-08-22,DAMAGE,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0074,ORD89549,C2595,SKU4455,M,Black,Other,not good,2026-08-08,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Denim Jacket,Outerwear,0.5,UNCLEAR,UNCLEAR
+R0075,ORD89551,C1785,SKU4440,XL,White,Damaged product,,2026-09-03,DAMAGE,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0076,ORD89565,C1604,SKU4450,M,Mustard,Colour different from photo,,2026-09-04,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0077,ORD89578,C1643,SKU4430,S,Black,Quality not as expected,,2026-09-30,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0078,ORD89580,C2255,SKU4430,XL,Red,Size too small,,2026-09-18,FIT,TOO_TIGHT,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0079,ORD89584,C1844,SKU4445,FREE,Red,Changed my mind,,2026-09-03,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0080,ORD89594,C2507,SKU4421,L,Pink,Changed my mind,,2026-09-11,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0082,ORD89621,C1790,SKU4421,M,Blue,Other,"kamar pe tight, button band nahi hua",2026-07-28,FIT,TOO_TIGHT,WAIST,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_TIGHT
+R0083,ORD89638,C2745,SKU4422,S,White,Other,nahi chahiye,2026-09-17,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Linen Kurta Set,Kurta Sets,0.5,UNCLEAR,UNCLEAR
+R0084,ORD89642,C1345,SKU4440,L,White,Size too large,,2026-09-03,FIT,TOO_LOOSE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0085,ORD89643,C2129,SKU4435,L,Green,Other,"kamar pe tight, button band nahi hua",2026-09-05,FIT,TOO_TIGHT,WAIST,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_TIGHT
+R0086,ORD89650,C1734,SKU4440,M,Blue,Other,kamar pe dhila hai,2026-09-09,FIT,TOO_LOOSE,WAIST,llm,False,Palazzo Pants,Bottoms,0.85,FIT,TOO_LOOSE
+R0087,ORD89655,C2237,SKU4450,L,Mustard,Quality not as expected,,2026-09-08,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0088,ORD89665,C1222,SKU4421,L,Blue,Size too small,,2026-07-29,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0089,ORD89682,C2247,SKU4421,S,Blue,Other,see photo,2026-07-24,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0090,ORD89684,C2380,SKU4422,M,Blue,Other,,2026-08-03,UNSPECIFIED,NO_COMMENT,,no_comment,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0091,ORD89691,C1528,SKU4435,S,Green,Other,.,2026-07-26,UNCLEAR,UNCLEAR,,rule,False,Anarkali Suit,Suits,1.0,UNCLEAR,UNCLEAR
+R0092,ORD89725,C2265,SKU4435,S,Maroon,Changed my mind,,2026-08-08,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0093,ORD89741,C2489,SKU4430,M,Mustard,Other,"waist pe fit nahi hua, too tight",2026-09-03,FIT,TOO_TIGHT,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.9,FIT,TOO_TIGHT
+R0094,ORD89752,C1122,SKU4421,XL,Blue,Damaged product,,2026-09-30,DAMAGE,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0095,ORD89784,C1781,SKU4440,L,Black,Wrong item received,,2026-09-27,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0096,ORD89785,C1783,SKU4422,S,Blue,Other,"too short for me, 5'7",2026-09-28,FIT,TOO_SHORT,LENGTH,llm,False,Linen Kurta Set,Kurta Sets,0.85,FIT,TOO_SHORT
+R0097,ORD89792,C1713,SKU4421,L,Blue,Size too small,,2026-08-26,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0098,ORD89806,C2662,SKU4440,M,Blue,Other,,2026-08-14,UNSPECIFIED,NO_COMMENT,,no_comment,False,Palazzo Pants,Bottoms,1.0,,
+R0099,ORD89813,C2567,SKU4421,M,Pink,Other,see photo,2026-07-09,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0100,ORD89815,C1735,SKU4422,M,White,Size too small,,2026-07-09,FIT,TOO_TIGHT,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0101,ORD89819,C2589,SKU4430,M,Black,Other,length zyada lambi hai,2026-08-24,FIT,TOO_LONG,LENGTH,llm,False,Cotton Straight Kurta,Kurtas,0.9,FIT,TOO_LONG
+R0102,ORD89821,C1100,SKU4421,L,Yellow,Size too small,,2026-09-22,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0103,ORD89828,C1779,SKU4435,M,Green,Quality not as expected,,2026-09-24,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0104,ORD89830,C1415,SKU4430,M,Red,Other,waist bahut tight hai,2026-07-27,FIT,TOO_TIGHT,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.9,FIT,TOO_TIGHT
+R0105,ORD89831,C2229,SKU4430,XL,Red,Size too large,,2026-09-23,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0106,ORD89845,C1847,SKU4421,S,Yellow,Changed my mind,,2026-08-27,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0107,ORD89846,C2570,SKU4430,XXL,Mustard,Other,length bahut kam hai,2026-08-24,FIT,TOO_SHORT,LENGTH,llm,False,Cotton Straight Kurta,Kurtas,0.85,FIT,TOO_SHORT
+R0108,ORD89848,C2520,SKU4440,L,White,Quality not as expected,,2026-09-06,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0109,ORD89874,C1061,SKU4440,L,White,Quality not as expected,,2026-09-05,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0110,ORD89875,C2330,SKU4430,S,Black,Quality not as expected,,2026-09-19,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0111,ORD89901,C2369,SKU4421,L,Yellow,Changed my mind,,2026-09-26,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0112,ORD89904,C1533,SKU4440,L,Blue,Other,,2026-09-22,UNSPECIFIED,NO_COMMENT,,no_comment,False,Palazzo Pants,Bottoms,1.0,,
+R0113,ORD89905,C2261,SKU4421,M,Blue,Other,"kamar pe tight, button band nahi hua",2026-07-22,FIT,TOO_TIGHT,WAIST,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_TIGHT
+R0114,ORD89924,C2598,SKU4440,L,White,Other,"too long, trails on floor",2026-07-27,FIT,TOO_LONG,LENGTH,llm,False,Palazzo Pants,Bottoms,0.9,FIT,TOO_LONG
+R0115,ORD89941,C1694,SKU4450,XL,White,Other,"kamar pe tight, button band nahi hua",2026-07-16,FIT,TOO_TIGHT,WAIST,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_TIGHT
+R0116,ORD89946,C1451,SKU4421,L,Yellow,Other,Shoulders too snug even in L,2026-09-28,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_TIGHT
+R0117,ORD89950,C1997,SKU4450,XL,White,Other,see photo,2026-07-13,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Chikankari Top,Tops,0.5,UNCLEAR,UNCLEAR
+R0118,ORD89955,C2350,SKU4450,M,Mustard,Other,colour looks different from the listing,2026-09-22,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.85,COLOUR,LISTING_DIFFERENCE
+R0119,ORD89956,C1890,SKU4421,M,Blue,Changed my mind,,2026-08-01,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0120,ORD89957,C1237,SKU4422,S,Green,Quality not as expected,,2026-09-10,QUALITY,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0121,ORD89958,C1451,SKU4421,L,Pink,Other,"shoulder fitting is very tight, cannot lift arms",2026-08-28,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0122,ORD89968,C1492,SKU4450,S,Mustard,Colour different from photo,,2026-09-06,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0123,ORD89972,C2087,SKU4450,S,Mustard,Colour different from photo,,2026-08-20,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0124,ORD89981,C1178,SKU4455,S,Blue,Size too large,,2026-09-02,FIT,TOO_LOOSE,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0125,ORD89991,C1902,SKU4421,M,Yellow,Other,"kandhe pe fit nahi aa raha, tight hai",2026-07-22,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0126,ORD90002,C1024,SKU4450,L,Mustard,Colour different from photo,,2026-08-31,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0127,ORD90004,C2224,SKU4450,XL,White,Quality not as expected,,2026-09-23,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0128,ORD90005,C1848,SKU4421,L,Yellow,Other,,2026-08-15,UNSPECIFIED,NO_COMMENT,,no_comment,False,Floral Midi Dress,Dresses,1.0,,
+R0129,ORD90009,C1501,SKU4430,XL,Mustard,Quality not as expected,,2026-09-28,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0130,ORD90019,C1156,SKU4450,S,Mustard,Other,"rang bilkul alag hai, photo se match nahi",2026-09-09,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE
+R0131,ORD90046,C2700,SKU4421,XS,Yellow,Other,meh,2026-07-22,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0132,ORD90050,C1067,SKU4450,XL,Mustard,Wrong item received,,2026-07-19,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0133,ORD90052,C2749,SKU4435,XL,Green,Quality not as expected,,2026-09-13,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0134,ORD90059,C1799,SKU4421,M,Blue,Other,"shoulder fitting is very tight, cannot lift arms",2026-09-25,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0135,ORD90087,C2240,SKU4430,L,Red,Changed my mind,,2026-10-04,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0136,ORD90093,C2036,SKU4430,S,Red,Damaged product,,2026-08-06,DAMAGE,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0137,ORD90103,C1240,SKU4422,L,White,Wrong item received,,2026-09-17,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0138,ORD90105,C1856,SKU4450,M,Mustard,Size too small,,2026-08-04,FIT,TOO_TIGHT,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0139,ORD90110,C1780,SKU4421,M,Yellow,Other,,2026-09-29,UNSPECIFIED,NO_COMMENT,,no_comment,False,Floral Midi Dress,Dresses,1.0,,
+R0140,ORD90112,C1641,SKU4435,M,Green,Quality not as expected,,2026-07-30,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0141,ORD90115,C1375,SKU4421,S,Pink,Damaged product,,2026-08-10,DAMAGE,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0142,ORD90121,C1059,SKU4455,S,Black,Colour different from photo,,2026-07-28,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0143,ORD90137,C2199,SKU4440,L,White,Size too small,,2026-08-09,FIT,TOO_TIGHT,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0144,ORD90140,C1036,SKU4440,S,White,Other,kamar pe dhila hai,2026-09-19,FIT,TOO_LOOSE,WAIST,llm,False,Palazzo Pants,Bottoms,0.85,FIT,TOO_LOOSE
+R0145,ORD90142,C2759,SKU4422,S,Blue,Other,chhati ke paas tight lag raha hai,2026-07-30,FIT,TOO_TIGHT,BUST,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_TIGHT
+R0146,ORD90148,C2081,SKU4440,XL,Black,Quality not as expected,,2026-07-21,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0147,ORD90172,C2693,SKU4450,L,Mustard,Colour different from photo,,2026-07-14,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0148,ORD90178,C2499,SKU4430,XL,Mustard,Colour different from photo,colour website pe mustard tha but actual black jaisa hai,2026-07-25,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0149,ORD90192,C1995,SKU4430,L,Black,Wrong item received,,2026-08-21,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0150,ORD90201,C2551,SKU4421,XL,Yellow,Other,"waist loose hai, bahut dhila",2026-09-18,FIT,TOO_LOOSE,WAIST,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_LOOSE
+R0151,ORD90215,C1085,SKU4450,XL,Peach,Changed my mind,,2026-09-03,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0152,ORD90217,C2153,SKU4435,S,Maroon,Other,stitching is poor,2026-09-18,QUALITY,STITCHING,,llm,False,Anarkali Suit,Suits,0.95,QUALITY,STITCHING
+R0153,ORD90228,C1743,SKU4430,M,Red,Damaged product,,2026-09-11,DAMAGE,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0154,ORD90229,C2011,SKU4421,M,Yellow,Size too small,,2026-09-07,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0155,ORD90234,C2554,SKU4435,XL,Green,Size too small,,2026-09-17,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0156,ORD90243,C2387,SKU4430,XL,Red,Changed my mind,,2026-07-27,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0157,ORD90278,C2127,SKU4430,M,Black,Size too large,,2026-08-11,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0158,ORD90282,C1242,SKU4421,M,Pink,Other,"kandhe pe fit nahi aa raha, tight hai",2026-07-26,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0159,ORD90294,C1800,SKU4440,XL,White,Quality not as expected,,2026-08-07,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0160,ORD90295,C1407,SKU4422,XL,White,Size too large,,2026-07-27,FIT,TOO_LOOSE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0161,ORD90301,C2179,SKU4440,XL,White,Colour different from photo,,2026-09-03,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0162,ORD90310,C1139,SKU4421,L,Blue,Damaged product,,2026-09-03,DAMAGE,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0163,ORD90315,C1909,SKU4440,S,White,Wrong item received,,2026-08-13,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0164,ORD90324,C2228,SKU4450,M,Mustard,Other,length zyada lambi hai,2026-07-17,FIT,TOO_LONG,LENGTH,llm,False,Chikankari Top,Tops,0.9,FIT,TOO_LONG
+R0165,ORD90331,C2537,SKU4435,XL,Pink,Other,"too short for me, 5'7",2026-08-12,FIT,TOO_SHORT,LENGTH,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_SHORT
+R0166,ORD90346,C2204,SKU4430,XL,Black,Other,ok ok,2026-10-06,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Cotton Straight Kurta,Kurtas,0.5,UNCLEAR,UNCLEAR
+R0167,ORD90357,C1198,SKU4430,M,Black,Quality not as expected,,2026-07-06,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0168,ORD90376,C2631,SKU4445,FREE,Red,Other,,2026-09-06,UNSPECIFIED,NO_COMMENT,,no_comment,False,Embroidered Dupatta,Accessories,1.0,,
+R0169,ORD90378,C2465,SKU4440,S,Black,Other,"too short for me, 5'7",2026-09-07,FIT,TOO_SHORT,LENGTH,llm,False,Palazzo Pants,Bottoms,0.85,FIT,TOO_SHORT
+R0170,ORD90403,C1501,SKU4430,M,Mustard,Quality not as expected,,2026-09-03,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0171,ORD90418,C1485,SKU4422,S,Blue,Changed my mind,,2026-07-14,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0172,ORD90425,C2311,SKU4435,XL,Maroon,Wrong item received,,2026-08-18,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0173,ORD90435,C2757,SKU4435,M,Green,Quality not as expected,,2026-09-25,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0174,ORD90437,C2496,SKU4450,S,Mustard,Colour different from photo,,2026-09-18,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0175,ORD90438,C2535,SKU4421,L,Yellow,Colour different from photo,,2026-09-20,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0176,ORD90440,C1776,SKU4435,S,Green,Other,length bahut kam hai,2026-09-08,FIT,TOO_SHORT,LENGTH,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_SHORT
+R0177,ORD90450,C1064,SKU4421,L,Blue,Other,"kandhe pe fit nahi aa raha, tight hai",2026-08-27,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0178,ORD90454,C2510,SKU4421,M,Blue,Other,Shoulders too snug even in M,2026-09-20,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0179,ORD90463,C1966,SKU4421,M,Pink,Quality not as expected,,2026-08-09,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0180,ORD90467,C1202,SKU4421,S,Pink,Other,"too short for me, 5'7",2026-09-10,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_SHORT
+R0181,ORD90479,C1237,SKU4440,M,Black,Colour different from photo,,2026-09-19,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0182,ORD90490,C1042,SKU4450,S,Mustard,Colour different from photo,,2026-08-24,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0183,ORD90493,C1980,SKU4450,M,Mustard,Colour different from photo,,2026-08-19,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0184,ORD90494,C1459,SKU4421,L,Pink,Other,"shoulder fitting is very tight, cannot lift arms",2026-07-05,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0185,ORD90501,C2668,SKU4430,XL,Black,Other,nahi chahiye,2026-09-09,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Cotton Straight Kurta,Kurtas,0.5,UNCLEAR,UNCLEAR
+R0186,ORD90504,C2682,SKU4435,XL,Pink,Quality not as expected,,2026-09-10,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0187,ORD90508,C2695,SKU4435,XL,Maroon,Other,chhati ke paas tight lag raha hai,2026-08-09,FIT,TOO_TIGHT,BUST,llm,False,Anarkali Suit,Suits,0.9,FIT,TOO_TIGHT
+R0188,ORD90517,C2267,SKU4455,M,Blue,Changed my mind,,2026-08-29,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0189,ORD90519,C1213,SKU4440,M,White,Changed my mind,"bought for wedding, event cancelled",2026-07-26,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0190,ORD90521,C2156,SKU4421,M,Pink,Other,kapda bahut rough hai,2026-09-20,QUALITY,FABRIC,,llm,False,Floral Midi Dress,Dresses,0.9,QUALITY,FABRIC
+R0191,ORD90532,C1931,SKU4450,S,Mustard,Other,bust area tight hai,2026-07-20,FIT,TOO_TIGHT,BUST,llm,False,Chikankari Top,Tops,0.95,FIT,TOO_TIGHT
+R0192,ORD90543,C1930,SKU4435,XL,Maroon,Other,"quality bilkul achhi nahi lagi, fabric cheap hai",2026-08-20,QUALITY,FABRIC,,llm,False,Anarkali Suit,Suits,0.9,QUALITY,FABRIC
+R0193,ORD90551,C1406,SKU4440,S,Blue,Colour different from photo,,2026-09-25,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0194,ORD90578,C1783,SKU4421,XL,Pink,Other,meh,2026-09-19,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0195,ORD90593,C1354,SKU4435,XL,Maroon,Damaged product,,2026-08-09,DAMAGE,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0196,ORD90602,C2232,SKU4450,S,Mustard,Colour different from photo,,2026-08-19,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0197,ORD90603,C1403,SKU4445,FREE,Pink,Other,"waist pe fit nahi hua, too tight",2026-08-01,FIT,TOO_TIGHT,WAIST,llm,False,Embroidered Dupatta,Accessories,0.9,FIT,TOO_TIGHT
+R0198,ORD90611,C1463,SKU4421,M,Yellow,Size too small,,2026-09-01,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0199,ORD90612,C1623,SKU4450,S,White,Colour different from photo,,2026-07-11,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0200,ORD90620,C2342,SKU4435,L,Green,Changed my mind,,2026-09-09,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0201,ORD90623,C1546,SKU4421,XS,Blue,Quality not as expected,,2026-08-02,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0202,ORD90625,C1397,SKU4421,L,Yellow,Other,Shoulders too snug even in L,2026-08-30,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_TIGHT
+R0203,ORD90635,C1967,SKU4435,S,Green,Quality not as expected,,2026-08-05,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0204,ORD90637,C1939,SKU4435,XL,Green,Quality not as expected,,2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0205,ORD90648,C1252,SKU4430,M,Black,Quality not as expected,kapda bahut rough hai,2026-09-25,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0206,ORD90657,C2144,SKU4435,XL,Green,Other,,2026-07-16,UNSPECIFIED,NO_COMMENT,,no_comment,False,Anarkali Suit,Suits,1.0,,
+R0207,ORD90659,C1173,SKU4421,XL,Blue,Colour different from photo,,2026-07-10,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0208,ORD90663,C1137,SKU4455,XL,Blue,Other,chest pe bahut tight fitting,2026-07-18,FIT,TOO_TIGHT,BUST,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_TIGHT
+R0209,ORD90670,C1303,SKU4450,XL,Mustard,Colour different from photo,"rang bilkul alag hai, photo se match nahi",2026-09-05,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0210,ORD90678,C1092,SKU4430,XXL,Black,Size too large,,2026-07-24,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0211,ORD90689,C2747,SKU4435,L,Pink,Quality not as expected,,2026-09-14,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0212,ORD90694,C1061,SKU4450,XL,Mustard,Colour different from photo,,2026-10-06,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0213,ORD90699,C1113,SKU4430,L,Red,Size too large,,2026-07-18,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0214,ORD90702,C2205,SKU4455,M,Blue,Damaged product,,2026-07-15,DAMAGE,UNSPECIFIED,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0215,ORD90703,C1578,SKU4421,S,Blue,Colour different from photo,,2026-07-28,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0216,ORD90713,C1090,SKU4435,XL,Green,Quality not as expected,,2026-09-07,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0217,ORD90721,C2350,SKU4421,M,Blue,Wrong item received,received a different product,2026-08-14,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0218,ORD90726,C2340,SKU4422,S,White,Changed my mind,,2026-07-29,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0219,ORD90732,C2273,SKU4450,L,Mustard,Colour different from photo,,2026-08-15,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0220,ORD90739,C1741,SKU4421,S,Blue,Other,waist bahut tight hai,2026-08-27,FIT,TOO_TIGHT,WAIST,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_TIGHT
+R0221,ORD90741,C1241,SKU4422,L,Green,Other,.,2026-08-14,UNCLEAR,UNCLEAR,,rule,False,Linen Kurta Set,Kurta Sets,1.0,UNCLEAR,UNCLEAR
+R0222,ORD90762,C1538,SKU4450,XL,Mustard,Colour different from photo,,2026-09-08,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0223,ORD90787,C2731,SKU4422,M,White,Other,waist bahut tight hai,2026-07-20,FIT,TOO_TIGHT,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_TIGHT
+R0224,ORD90789,C2765,SKU4440,M,Blue,Damaged product,,2026-08-16,DAMAGE,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0225,ORD90791,C2522,SKU4430,L,Black,Other,too loose at the waist,2026-09-13,FIT,TOO_LOOSE,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.95,FIT,TOO_LOOSE
+R0226,ORD90802,C2432,SKU4445,FREE,Red,Other,waist bahut tight hai,2026-09-02,FIT,TOO_TIGHT,WAIST,llm,False,Embroidered Dupatta,Accessories,0.9,FIT,TOO_TIGHT
+R0227,ORD90808,C1367,SKU4450,S,Mustard,Colour different from photo,,2026-09-02,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0228,ORD90810,C2287,SKU4430,XXL,Red,Size too large,,2026-08-21,FIT,TOO_LOOSE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0229,ORD90832,C1643,SKU4421,L,Yellow,Size too small,,2026-07-16,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0230,ORD90833,C2057,SKU4450,M,Peach,Quality not as expected,,2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0231,ORD90837,C1180,SKU4435,S,Pink,Other,stitching is poor,2026-09-04,QUALITY,STITCHING,,llm,False,Anarkali Suit,Suits,0.95,QUALITY,STITCHING
+R0232,ORD90839,C1635,SKU4440,M,Blue,Other,"waist loose hai, bahut dhila",2026-07-24,FIT,TOO_LOOSE,WAIST,llm,False,Palazzo Pants,Bottoms,0.9,FIT,TOO_LOOSE
+R0233,ORD90853,C1614,SKU4440,XL,Blue,Size too large,,2026-08-30,FIT,TOO_LOOSE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0234,ORD90864,C1055,SKU4421,L,Yellow,Wrong item received,,2026-09-26,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0235,ORD90870,C1653,SKU4421,L,Pink,Other,Shoulders too snug even in L,2026-07-28,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_TIGHT
+R0236,ORD90875,C1576,SKU4450,XL,White,Other,kapda bahut rough hai,2026-09-13,QUALITY,FABRIC,,llm,False,Chikankari Top,Tops,0.9,QUALITY,FABRIC
+R0237,ORD90882,C2485,SKU4422,S,Green,Damaged product,,2026-09-18,DAMAGE,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0238,ORD90887,C1558,SKU4440,M,Blue,Wrong item received,,2026-08-19,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0239,ORD90894,C1170,SKU4421,L,Yellow,Other,"too short for me, 5'7",2026-08-26,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_SHORT
+R0240,ORD90896,C2100,SKU4435,XL,Maroon,Changed my mind,,2026-08-25,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0241,ORD90906,C1758,SKU4440,XL,Blue,Wrong item received,,2026-07-20,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0242,ORD90935,C2070,SKU4450,S,Mustard,Colour different from photo,,2026-09-16,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0243,ORD90937,C1620,SKU4422,S,White,Quality not as expected,,2026-09-11,QUALITY,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0244,ORD90938,C1404,SKU4435,XL,Maroon,Colour different from photo,colour looks different from the listing,2026-09-12,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0245,ORD90961,C1966,SKU4435,XL,Green,Other,length bahut kam hai,2026-07-25,FIT,TOO_SHORT,LENGTH,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_SHORT
+R0246,ORD90969,C2504,SKU4430,L,Mustard,Other,stitching is poor,2026-07-22,QUALITY,STITCHING,,llm,False,Cotton Straight Kurta,Kurtas,0.95,QUALITY,STITCHING
+R0247,ORD90990,C2156,SKU4430,M,Red,Other,chhati ke paas tight lag raha hai,2026-07-31,FIT,TOO_TIGHT,BUST,llm,False,Cotton Straight Kurta,Kurtas,0.9,FIT,TOO_TIGHT
+R0248,ORD90994,C1679,SKU4422,L,White,Damaged product,,2026-07-18,DAMAGE,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0249,ORD91005,C2294,SKU4422,S,Blue,Other,"waist loose hai, bahut dhila",2026-08-29,FIT,TOO_LOOSE,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_LOOSE
+R0250,ORD91014,C2589,SKU4450,M,White,Other,"too short for me, 5'7",2026-08-04,FIT,TOO_SHORT,LENGTH,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_SHORT
+R0251,ORD91033,C2040,SKU4450,L,Mustard,Size too large,"size bada hai, baggy lag raha",2026-09-29,FIT,TOO_LOOSE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0252,ORD91069,C2166,SKU4421,M,Pink,Other,waist bahut tight hai,2026-08-16,FIT,TOO_TIGHT,WAIST,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_TIGHT
+R0253,ORD91082,C1627,SKU4435,S,Green,Quality not as expected,,2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0254,ORD91094,C1772,SKU4422,XL,Green,Other,chest pe bahut tight fitting,2026-09-09,FIT,TOO_TIGHT,BUST,llm,False,Linen Kurta Set,Kurta Sets,0.85,FIT,TOO_TIGHT
+R0255,ORD91102,C1594,SKU4421,L,Pink,Size too small,,2026-07-24,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0256,ORD91122,C2402,SKU4422,L,White,Size too small,,2026-07-21,FIT,TOO_TIGHT,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0257,ORD91125,C1790,SKU4421,L,Yellow,Quality not as expected,,2026-10-01,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0258,ORD91126,C1737,SKU4435,M,Green,Other,,2026-09-10,UNSPECIFIED,NO_COMMENT,,no_comment,False,Anarkali Suit,Suits,1.0,,
+R0259,ORD91134,C1844,SKU4435,XL,Green,Quality not as expected,,2026-10-02,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0260,ORD91138,C2611,SKU4440,S,Blue,Changed my mind,,2026-07-21,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0261,ORD91139,C2721,SKU4422,M,White,Other,length bahut kam hai,2026-08-14,FIT,TOO_SHORT,LENGTH,llm,False,Linen Kurta Set,Kurta Sets,0.85,FIT,TOO_SHORT
+R0262,ORD91150,C1341,SKU4435,S,Green,Quality not as expected,,2026-08-18,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0263,ORD91152,C1795,SKU4430,M,Black,Colour different from photo,,2026-08-26,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0264,ORD91153,C1546,SKU4445,FREE,Pink,Colour different from photo,,2026-08-21,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0265,ORD91155,C2480,SKU4450,S,White,Changed my mind,,2026-07-12,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0266,ORD91158,C1430,SKU4455,S,Black,Other,length bahut kam hai,2026-08-06,FIT,TOO_SHORT,LENGTH,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_SHORT
+R0267,ORD91159,C2039,SKU4445,FREE,Pink,Other,"waist loose hai, bahut dhila",2026-07-29,FIT,TOO_LOOSE,WAIST,llm,False,Embroidered Dupatta,Accessories,0.9,FIT,TOO_LOOSE
+R0268,ORD91162,C2086,SKU4422,L,Blue,Colour different from photo,,2026-08-14,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0269,ORD91167,C1349,SKU4430,M,Red,Quality not as expected,,2026-09-24,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0270,ORD91171,C1690,SKU4421,L,Pink,Other,"shoulders me bahut tight, hath utha nahi sakti",2026-08-18,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0271,ORD91172,C2363,SKU4435,XL,Maroon,Other,"waist pe fit nahi hua, too tight",2026-09-16,FIT,TOO_TIGHT,WAIST,llm,False,Anarkali Suit,Suits,0.9,FIT,TOO_TIGHT
+R0272,ORD91181,C1658,SKU4450,XL,White,Colour different from photo,,2026-09-24,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0273,ORD91188,C1295,SKU4450,L,Mustard,Colour different from photo,,2026-08-01,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0274,ORD91192,C1755,SKU4421,M,Yellow,Other,kurta ki length chhoti hai,2026-09-15,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_SHORT
+R0275,ORD91194,C2017,SKU4450,S,Peach,Other,,2026-07-25,UNSPECIFIED,NO_COMMENT,,no_comment,False,Chikankari Top,Tops,1.0,,
+R0276,ORD91196,C2422,SKU4421,L,Yellow,Changed my mind,,2026-08-26,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0277,ORD91201,C2207,SKU4440,S,Black,Quality not as expected,,2026-08-04,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0278,ORD91213,C2755,SKU4450,S,Peach,Other,waist bahut tight hai,2026-07-16,FIT,TOO_TIGHT,WAIST,llm,False,Chikankari Top,Tops,0.9,FIT,TOO_TIGHT
+R0279,ORD91217,C1230,SKU4450,XL,White,Changed my mind,,2026-07-12,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0280,ORD91219,C1844,SKU4421,L,Blue,Size too small,,2026-09-04,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0281,ORD91231,C2178,SKU4450,S,Peach,Other,"rang bilkul alag hai, photo se match nahi",2026-07-29,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE
+R0282,ORD91241,C2215,SKU4440,XL,Blue,Other,"kamar pe tight, button band nahi hua",2026-09-28,FIT,TOO_TIGHT,WAIST,llm,False,Palazzo Pants,Bottoms,0.85,FIT,TOO_TIGHT
+R0283,ORD91249,C2483,SKU4435,XL,Pink,Colour different from photo,,2026-09-30,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0284,ORD91258,C1331,SKU4455,M,Blue,Size too large,,2026-07-09,FIT,TOO_LOOSE,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0285,ORD91271,C1854,SKU4445,FREE,Green,Changed my mind,,2026-07-14,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0286,ORD91291,C1419,SKU4422,S,Blue,Other,,2026-08-30,UNSPECIFIED,NO_COMMENT,,no_comment,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0287,ORD91301,C1701,SKU4450,XL,Mustard,Colour different from photo,,2026-09-18,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0288,ORD91306,C1868,SKU4421,L,Yellow,Other,"kandhe pe fit nahi aa raha, tight hai",2026-09-08,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0289,ORD91307,C1746,SKU4440,M,Black,Damaged product,,2026-08-25,DAMAGE,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0290,ORD91309,C2066,SKU4422,XL,Green,Colour different from photo,,2026-07-31,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0291,ORD91314,C1342,SKU4450,S,Mustard,Other,"rang bilkul alag hai, photo se match nahi",2026-08-01,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE
+R0292,ORD91322,C2536,SKU4430,L,Black,Other,photo mein colour alag dikha,2026-08-01,COLOUR,LISTING_DIFFERENCE,,llm,False,Cotton Straight Kurta,Kurtas,0.9,COLOUR,LISTING_DIFFERENCE
+R0293,ORD91336,C1451,SKU4421,L,Blue,Size too small,,2026-08-29,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0294,ORD91337,C1135,SKU4435,L,Maroon,Quality not as expected,,2026-07-14,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0295,ORD91352,C2747,SKU4422,L,Blue,Changed my mind,don't need it anymore,2026-09-02,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0296,ORD91358,C1283,SKU4440,S,Blue,Size too large,,2026-08-13,FIT,TOO_LOOSE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0297,ORD91367,C1135,SKU4430,XL,Red,Changed my mind,,2026-08-29,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0298,ORD91372,C1855,SKU4435,L,Maroon,Quality not as expected,,2026-08-08,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0299,ORD91397,C1719,SKU4435,M,Green,Changed my mind,,2026-10-02,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0300,ORD91400,C1385,SKU4422,S,White,Other,,2026-09-04,UNSPECIFIED,NO_COMMENT,,no_comment,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0301,ORD91403,C2660,SKU4445,FREE,Red,Other,kurta ki length chhoti hai,2026-09-25,FIT,TOO_SHORT,LENGTH,llm,False,Embroidered Dupatta,Accessories,0.9,FIT,TOO_SHORT
+R0302,ORD91419,C1487,SKU4450,M,Mustard,Colour different from photo,,2026-09-21,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0303,ORD91424,C2497,SKU4422,M,Blue,Other,nahi chahiye,2026-07-20,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Linen Kurta Set,Kurta Sets,0.5,UNCLEAR,UNCLEAR
+R0304,ORD91441,C2082,SKU4450,M,Peach,Other,length bahut kam hai,2026-09-09,FIT,TOO_SHORT,LENGTH,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_SHORT
+R0305,ORD91449,C1198,SKU4422,M,White,Other,stitching is poor,2026-08-23,QUALITY,STITCHING,,llm,False,Linen Kurta Set,Kurta Sets,0.95,QUALITY,STITCHING
+R0306,ORD91458,C1275,SKU4421,L,Pink,Damaged product,,2026-10-02,DAMAGE,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0307,ORD91460,C1222,SKU4421,S,Yellow,Other,"kamar pe tight, button band nahi hua",2026-09-03,FIT,TOO_TIGHT,WAIST,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_TIGHT
+R0308,ORD91463,C2241,SKU4450,L,Mustard,Wrong item received,received a different product,2026-08-07,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0309,ORD91468,C2131,SKU4435,S,Maroon,Other,waist bahut tight hai,2026-09-13,FIT,TOO_TIGHT,WAIST,llm,False,Anarkali Suit,Suits,0.9,FIT,TOO_TIGHT
+R0310,ORD91470,C2119,SKU4440,S,White,Quality not as expected,,2026-10-05,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0311,ORD91475,C1326,SKU4440,L,White,Colour different from photo,,2026-08-08,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0312,ORD91476,C2614,SKU4422,L,Blue,Other,"kamar pe tight, button band nahi hua",2026-09-27,FIT,TOO_TIGHT,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.85,FIT,TOO_TIGHT
+R0313,ORD91478,C1251,SKU4435,XL,Green,Quality not as expected,,2026-09-16,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0314,ORD91484,C2501,SKU4450,S,Mustard,Size too large,,2026-09-30,FIT,TOO_LOOSE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0315,ORD91487,C1324,SKU4440,L,White,Wrong item received,,2026-08-23,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0316,ORD91499,C2652,SKU4450,S,Mustard,Other,colour looks different from the listing,2026-08-04,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.85,COLOUR,LISTING_DIFFERENCE
+R0317,ORD91508,C2392,SKU4421,L,Pink,Other,"kandhe pe fit nahi aa raha, tight hai",2026-10-01,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0318,ORD91548,C2290,SKU4430,XL,Black,Other,"kamar pe tight, button band nahi hua",2026-08-30,FIT,TOO_TIGHT,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.85,FIT,TOO_TIGHT
+R0319,ORD91555,C2080,SKU4450,S,White,Other,waist bahut tight hai,2026-08-31,FIT,TOO_TIGHT,WAIST,llm,False,Chikankari Top,Tops,0.9,FIT,TOO_TIGHT
+R0320,ORD91556,C2284,SKU4435,XL,Pink,Other,too loose at the waist,2026-08-27,FIT,TOO_LOOSE,WAIST,llm,False,Anarkali Suit,Suits,0.95,FIT,TOO_LOOSE
+R0321,ORD91569,C2213,SKU4450,L,Mustard,Changed my mind,,2026-08-06,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0322,ORD91578,C1693,SKU4435,L,Green,Other,pasand nahi aaya,2026-07-14,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Anarkali Suit,Suits,0.5,UNCLEAR,UNCLEAR
+R0323,ORD91580,C2565,SKU4435,M,Maroon,Size too small,,2026-08-25,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0324,ORD91590,C2289,SKU4430,XXL,Mustard,Other,,2026-09-17,UNSPECIFIED,NO_COMMENT,,no_comment,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0325,ORD91596,C2181,SKU4450,M,Mustard,Size too small,,2026-09-20,FIT,TOO_TIGHT,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0326,ORD91600,C1514,SKU4435,L,Green,Quality not as expected,,2026-08-09,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0327,ORD91607,C1749,SKU4455,S,Black,Quality not as expected,,2026-09-01,QUALITY,UNSPECIFIED,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0328,ORD91611,C1807,SKU4450,S,Mustard,Colour different from photo,,2026-08-01,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0329,ORD91626,C1080,SKU4455,S,Blue,Other,length bahut kam hai,2026-07-05,FIT,TOO_SHORT,LENGTH,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_SHORT
+R0330,ORD91652,C1448,SKU4421,L,Yellow,Other,"kandhe pe fit nahi aa raha, tight hai",2026-09-17,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0331,ORD91663,C1413,SKU4422,XL,White,Other,kamar pe dhila hai,2026-07-11,FIT,TOO_LOOSE,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.85,FIT,TOO_LOOSE
+R0332,ORD91666,C2686,SKU4435,M,Maroon,Quality not as expected,,2026-09-22,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0333,ORD91678,C1263,SKU4455,M,Black,Size too large,,2026-09-01,FIT,TOO_LOOSE,,dropdown,False,Denim Jacket,Outerwear,1.0,,
+R0334,ORD91692,C1761,SKU4421,L,Yellow,Other,nahi chahiye,2026-08-23,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0335,ORD91697,C1917,SKU4435,S,Pink,Changed my mind,,2026-08-22,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0336,ORD91698,C1504,SKU4435,XL,Green,Other,"too short for me, 5'7",2026-07-23,FIT,TOO_SHORT,LENGTH,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_SHORT
+R0337,ORD91722,C1841,SKU4450,M,White,Other,"rang bilkul alag hai, photo se match nahi",2026-07-23,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE
+R0338,ORD91729,C2106,SKU4435,S,Maroon,Other,"fabric thin hai, transparent dikh raha",2026-08-12,QUALITY,FABRIC,,llm,False,Anarkali Suit,Suits,0.9,QUALITY,FABRIC
+R0339,ORD91736,C1725,SKU4450,M,Mustard,Quality not as expected,,2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0340,ORD91741,C1256,SKU4440,L,Blue,Other,see photo,2026-09-20,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Palazzo Pants,Bottoms,0.5,UNCLEAR,UNCLEAR
+R0341,ORD91744,C2699,SKU4421,M,Pink,Other,ok ok,2026-08-03,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0342,ORD91746,C2046,SKU4421,M,Blue,Other,"kandhe pe fit nahi aa raha, tight hai",2026-09-22,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0343,ORD91747,C2787,SKU4421,M,Yellow,Other,Shoulders too snug even in M,2026-07-19,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0344,ORD91749,C2493,SKU4445,FREE,Green,Changed my mind,,2026-09-19,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0345,ORD91754,C2204,SKU4450,S,Mustard,Colour different from photo,,2026-08-16,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0346,ORD91760,C1015,SKU4430,S,Black,Colour different from photo,,2026-09-10,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0347,ORD91791,C2678,SKU4450,XL,Peach,Damaged product,,2026-08-06,DAMAGE,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0348,ORD91806,C1476,SKU4430,M,Black,Damaged product,,2026-08-23,DAMAGE,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0349,ORD91814,C1249,SKU4440,XL,Blue,Size too large,,2026-08-30,FIT,TOO_LOOSE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0350,ORD91819,C1373,SKU4445,FREE,Pink,Size too large,,2026-08-24,FIT,TOO_LOOSE,,dropdown,False,Embroidered Dupatta,Accessories,1.0,,
+R0351,ORD91825,C2556,SKU4435,S,Green,Quality not as expected,,2026-09-25,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0352,ORD91835,C2446,SKU4421,L,Blue,Quality not as expected,,2026-08-20,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0353,ORD91841,C1258,SKU4450,L,Mustard,Other,colour looks different from the listing,2026-09-17,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.85,COLOUR,LISTING_DIFFERENCE
+R0354,ORD91842,C1839,SKU4421,L,Pink,Other,"kandhe pe fit nahi aa raha, tight hai",2026-08-24,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0355,ORD91846,C1134,SKU4450,L,White,Quality not as expected,,2026-09-03,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0356,ORD91861,C2085,SKU4450,L,White,Other,pasand nahi aaya,2026-09-06,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Chikankari Top,Tops,0.5,UNCLEAR,UNCLEAR
+R0357,ORD91879,C1578,SKU4422,L,White,Other,waist bahut tight hai,2026-09-09,FIT,TOO_TIGHT,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_TIGHT
+R0358,ORD91888,C1144,SKU4430,S,Black,Quality not as expected,"quality bilkul achhi nahi lagi, fabric cheap hai",2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0359,ORD91896,C2285,SKU4435,M,Pink,Damaged product,,2026-07-12,DAMAGE,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0360,ORD91902,C2762,SKU4450,XL,Mustard,Colour different from photo,,2026-09-17,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0361,ORD91913,C2451,SKU4421,XL,Yellow,Other,"too short for me, 5'7",2026-07-18,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.85,FIT,TOO_SHORT
+R0362,ORD91918,C1516,SKU4455,M,Blue,Other,ok ok,2026-07-16,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Denim Jacket,Outerwear,0.5,UNCLEAR,UNCLEAR
+R0363,ORD91927,C2334,SKU4435,M,Maroon,Quality not as expected,,2026-07-15,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0364,ORD91930,C2162,SKU4440,XL,Black,Other,not good,2026-07-28,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Palazzo Pants,Bottoms,0.5,UNCLEAR,UNCLEAR
+R0365,ORD91932,C1313,SKU4421,S,Yellow,Other,"too long, trails on floor",2026-08-29,FIT,TOO_LONG,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_LONG
+R0366,ORD91953,C2040,SKU4421,M,Yellow,Size too small,,2026-08-19,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0367,ORD91955,C1243,SKU4421,M,Yellow,Size too small,,2026-09-20,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0368,ORD91969,C1128,SKU4430,M,Black,Other,,2026-09-20,UNSPECIFIED,NO_COMMENT,,no_comment,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0369,ORD91993,C2343,SKU4450,L,White,Changed my mind,,2026-08-30,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0370,ORD92010,C1473,SKU4421,L,Blue,Wrong item received,,2026-09-14,WRONG_ITEM,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0371,ORD92018,C1810,SKU4421,L,Yellow,Size too small,,2026-09-02,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0372,ORD92020,C1832,SKU4421,M,Pink,Other,"shoulders me bahut tight, hath utha nahi sakti",2026-07-15,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0373,ORD92038,C1669,SKU4421,L,Pink,Other,kurta ki length chhoti hai,2026-09-05,FIT,TOO_SHORT,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_SHORT
+R0374,ORD92039,C1020,SKU4450,M,White,Quality not as expected,,2026-08-04,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0375,ORD92041,C2770,SKU4421,L,Blue,Other,"too long, trails on floor",2026-09-04,FIT,TOO_LONG,LENGTH,llm,False,Floral Midi Dress,Dresses,0.9,FIT,TOO_LONG
+R0376,ORD92058,C2797,SKU4430,S,Red,Other,kamar pe dhila hai,2026-08-06,FIT,TOO_LOOSE,WAIST,llm,False,Cotton Straight Kurta,Kurtas,0.85,FIT,TOO_LOOSE
+R0377,ORD92060,C2532,SKU4440,L,White,Other,,2026-08-12,UNSPECIFIED,NO_COMMENT,,no_comment,False,Palazzo Pants,Bottoms,1.0,,
+R0378,ORD92064,C1599,SKU4422,M,Blue,Quality not as expected,,2026-07-31,QUALITY,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0379,ORD92068,C2288,SKU4435,XL,Maroon,Other,meh,2026-09-13,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Anarkali Suit,Suits,0.5,UNCLEAR,UNCLEAR
+R0380,ORD92071,C1266,SKU4430,S,Red,Other,bust area tight hai,2026-07-28,FIT,TOO_TIGHT,BUST,llm,False,Cotton Straight Kurta,Kurtas,0.95,FIT,TOO_TIGHT
+R0381,ORD92072,C2751,SKU4455,S,Blue,Other,overall bahut loose hai,2026-09-09,FIT,TOO_LOOSE,,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_LOOSE
+R0382,ORD92074,C1353,SKU4450,S,Mustard,Other,.,2026-07-17,UNCLEAR,UNCLEAR,,rule,False,Chikankari Top,Tops,1.0,UNCLEAR,UNCLEAR
+R0383,ORD92080,C1951,SKU4440,L,Black,Changed my mind,,2026-08-08,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0384,ORD92091,C1772,SKU4445,FREE,Red,Other,"rang bilkul alag hai, photo se match nahi",2026-08-31,COLOUR,LISTING_DIFFERENCE,,llm,False,Embroidered Dupatta,Accessories,0.9,COLOUR,LISTING_DIFFERENCE
+R0385,ORD92098,C2536,SKU4435,XL,Green,Size too small,,2026-08-15,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0386,ORD92109,C2446,SKU4430,S,Mustard,Other,meh,2026-07-26,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Cotton Straight Kurta,Kurtas,0.5,UNCLEAR,UNCLEAR
+R0387,ORD92132,C1418,SKU4450,M,Mustard,Colour different from photo,,2026-09-09,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0388,ORD92136,C2151,SKU4440,XL,White,Quality not as expected,,2026-07-10,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0389,ORD92150,C1026,SKU4422,M,Green,Colour different from photo,,2026-09-01,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0390,ORD92166,C1640,SKU4421,S,Yellow,Other,meh,2026-08-10,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Floral Midi Dress,Dresses,0.5,UNCLEAR,UNCLEAR
+R0391,ORD92173,C2259,SKU4455,L,Black,Other,length bahut kam hai,2026-08-27,FIT,TOO_SHORT,LENGTH,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_SHORT
+R0392,ORD92179,C2085,SKU4435,M,Maroon,Quality not as expected,,2026-07-26,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0393,ORD92203,C1169,SKU4435,XL,Pink,Quality not as expected,,2026-07-18,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0394,ORD92209,C2533,SKU4445,FREE,Green,Other,"too short for me, 5'7",2026-09-10,FIT,TOO_SHORT,LENGTH,llm,False,Embroidered Dupatta,Accessories,0.85,FIT,TOO_SHORT
+R0395,ORD92211,C1715,SKU4435,M,Pink,Other,"kamar pe tight, button band nahi hua",2026-08-13,FIT,TOO_TIGHT,WAIST,llm,False,Anarkali Suit,Suits,0.85,FIT,TOO_TIGHT
+R0396,ORD92228,C2119,SKU4455,S,Blue,Other,"waist loose hai, bahut dhila",2026-09-14,FIT,TOO_LOOSE,WAIST,llm,False,Denim Jacket,Outerwear,0.9,FIT,TOO_LOOSE
+R0397,ORD92253,C1833,SKU4435,XL,Green,Quality not as expected,,2026-09-26,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0398,ORD92256,C1972,SKU4430,XL,Red,Quality not as expected,,2026-07-15,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0399,ORD92258,C2194,SKU4440,M,White,Quality not as expected,,2026-09-23,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0400,ORD92262,C2015,SKU4435,S,Pink,Quality not as expected,,2026-08-29,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0401,ORD92267,C2203,SKU4421,M,Pink,Size too small,,2026-08-07,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0402,ORD92268,C2263,SKU4450,XL,White,Quality not as expected,,2026-08-22,QUALITY,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0403,ORD92279,C1089,SKU4440,S,White,Damaged product,,2026-08-21,DAMAGE,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0404,ORD92281,C2032,SKU4435,L,Green,Quality not as expected,,2026-07-11,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0405,ORD92294,C1912,SKU4422,S,White,Changed my mind,,2026-08-06,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0406,ORD92299,C1195,SKU4430,XL,Red,Changed my mind,,2026-07-11,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0407,ORD92304,C1035,SKU4422,M,Green,Colour different from photo,,2026-09-08,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0408,ORD92308,C1110,SKU4421,L,Blue,Other,L size shoulders pe bahut tight hai,2026-07-09,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0409,ORD92309,C1874,SKU4422,M,Blue,Size too small,,2026-10-04,FIT,TOO_TIGHT,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0410,ORD92310,C2485,SKU4430,L,Black,Colour different from photo,,2026-08-25,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0411,ORD92327,C2676,SKU4440,L,White,Colour different from photo,,2026-09-24,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0412,ORD92335,C1868,SKU4421,XL,Yellow,Other,"material feels cheap, not worth the price",2026-09-09,QUALITY,FABRIC,,llm,False,Floral Midi Dress,Dresses,0.85,QUALITY,FABRIC
+R0413,ORD92347,C1958,SKU4435,S,Pink,Other,"quality bilkul achhi nahi lagi, fabric cheap hai",2026-08-05,QUALITY,FABRIC,,llm,False,Anarkali Suit,Suits,0.9,QUALITY,FABRIC
+R0414,ORD92359,C1795,SKU4445,FREE,Pink,Other,"kamar pe tight, button band nahi hua",2026-07-25,FIT,TOO_TIGHT,WAIST,llm,False,Embroidered Dupatta,Accessories,0.85,FIT,TOO_TIGHT
+R0415,ORD92370,C2577,SKU4430,S,Red,Quality not as expected,,2026-09-12,QUALITY,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0416,ORD92384,C2399,SKU4421,L,Yellow,Other,"shoulder fitting is very tight, cannot lift arms",2026-08-27,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0417,ORD92385,C1256,SKU4435,M,Green,Damaged product,,2026-09-19,DAMAGE,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0418,ORD92386,C1361,SKU4450,XL,Peach,Other,length bahut kam hai,2026-08-13,FIT,TOO_SHORT,LENGTH,llm,False,Chikankari Top,Tops,0.85,FIT,TOO_SHORT
+R0419,ORD92390,C2741,SKU4430,L,Red,Size too small,,2026-09-08,FIT,TOO_TIGHT,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0420,ORD92391,C1369,SKU4450,XL,Peach,Other,nahi chahiye,2026-08-04,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Chikankari Top,Tops,0.5,UNCLEAR,UNCLEAR
+R0421,ORD92399,C2778,SKU4421,L,Yellow,Other,L size shoulders pe bahut tight hai,2026-07-19,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0422,ORD92400,C1067,SKU4421,M,Yellow,Other,"shoulder fitting is very tight, cannot lift arms",2026-07-08,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0423,ORD92407,C2335,SKU4421,L,Pink,Quality not as expected,,2026-08-27,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0424,ORD92410,C2480,SKU4440,L,Black,Quality not as expected,,2026-08-30,QUALITY,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0425,ORD92412,C2580,SKU4450,S,White,Changed my mind,,2026-08-04,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0426,ORD92414,C1354,SKU4430,M,Red,Other,"too short for me, 5'7",2026-07-31,FIT,TOO_SHORT,LENGTH,llm,False,Cotton Straight Kurta,Kurtas,0.85,FIT,TOO_SHORT
+R0427,ORD92417,C2277,SKU4435,L,Pink,Other,too loose at the waist,2026-08-11,FIT,TOO_LOOSE,WAIST,llm,False,Anarkali Suit,Suits,0.95,FIT,TOO_LOOSE
+R0428,ORD92418,C2321,SKU4435,L,Pink,Quality not as expected,,2026-09-19,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0429,ORD92420,C1405,SKU4421,S,Blue,Quality not as expected,,2026-08-28,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0430,ORD92422,C1914,SKU4421,S,Pink,Quality not as expected,,2026-08-28,QUALITY,UNSPECIFIED,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0431,ORD92426,C1553,SKU4445,FREE,Pink,Other,chest pe bahut tight fitting,2026-07-24,FIT,TOO_TIGHT,BUST,llm,False,Embroidered Dupatta,Accessories,0.85,FIT,TOO_TIGHT
+R0432,ORD92436,C2362,SKU4421,M,Blue,Other,"shoulders me bahut tight, hath utha nahi sakti",2026-09-22,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0433,ORD92444,C2323,SKU4430,XXL,Black,Other,,2026-08-05,UNSPECIFIED,NO_COMMENT,,no_comment,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0434,ORD92448,C1080,SKU4422,XL,Green,Other,"waist pe fit nahi hua, too tight",2026-09-26,FIT,TOO_TIGHT,WAIST,llm,False,Linen Kurta Set,Kurta Sets,0.9,FIT,TOO_TIGHT
+R0435,ORD92450,C2083,SKU4450,S,Mustard,Other,colour looks different from the listing,2026-07-06,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.85,COLOUR,LISTING_DIFFERENCE
+R0436,ORD92451,C1576,SKU4435,XL,Maroon,Other,meh,2026-08-29,UNCLEAR,UNCLEAR,,llm_low_confidence,False,Anarkali Suit,Suits,0.5,UNCLEAR,UNCLEAR
+R0437,ORD92452,C2755,SKU4421,L,Yellow,Size too small,,2026-08-02,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0438,ORD92472,C1936,SKU4435,L,Green,Size too small,,2026-08-06,FIT,TOO_TIGHT,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0439,ORD92475,C2169,SKU4421,M,Yellow,Other,,2026-10-01,UNSPECIFIED,NO_COMMENT,,no_comment,False,Floral Midi Dress,Dresses,1.0,,
+R0440,ORD92501,C1388,SKU4421,M,Yellow,Size too small,,2026-09-10,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0441,ORD92508,C1974,SKU4422,XL,White,Other,bust area tight hai,2026-07-26,FIT,TOO_TIGHT,BUST,llm,False,Linen Kurta Set,Kurta Sets,0.95,FIT,TOO_TIGHT
+R0442,ORD92514,C2105,SKU4440,S,Black,Colour different from photo,,2026-09-02,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0443,ORD92516,C1934,SKU4450,M,Peach,Size too large,,2026-07-31,FIT,TOO_LOOSE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0444,ORD92518,C1365,SKU4440,XL,Black,Changed my mind,,2026-07-19,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Palazzo Pants,Bottoms,1.0,,
+R0445,ORD92524,C2543,SKU4422,XL,Green,Quality not as expected,,2026-09-17,QUALITY,UNSPECIFIED,,dropdown,False,Linen Kurta Set,Kurta Sets,1.0,,
+R0446,ORD92539,C1824,SKU4445,FREE,Red,Other,"kamar pe tight, button band nahi hua",2026-07-29,FIT,TOO_TIGHT,WAIST,llm,False,Embroidered Dupatta,Accessories,0.85,FIT,TOO_TIGHT
+R0447,ORD92541,C1144,SKU4421,M,Yellow,Other,Shoulders too snug even in M,2026-09-22,FIT,TOO_TIGHT,SHOULDERS,llm,False,Floral Midi Dress,Dresses,0.95,FIT,TOO_TIGHT
+R0448,ORD92559,C1941,SKU4440,XL,Black,Other,,2026-08-08,UNSPECIFIED,NO_COMMENT,,no_comment,False,Palazzo Pants,Bottoms,1.0,,
+R0449,ORD92562,C1658,SKU4455,S,Black,Other,"kamar pe tight, button band nahi hua",2026-09-04,FIT,TOO_TIGHT,WAIST,llm,False,Denim Jacket,Outerwear,0.85,FIT,TOO_TIGHT
+R0450,ORD92577,C1270,SKU4450,M,Mustard,Colour different from photo,,2026-08-26,COLOUR,LISTING_DIFFERENCE,,dropdown,False,Chikankari Top,Tops,1.0,,
+R0451,ORD92579,C1344,SKU4440,XL,Black,Other,chhati ke paas tight lag raha hai,2026-09-21,FIT,TOO_TIGHT,BUST,llm,False,Palazzo Pants,Bottoms,0.9,FIT,TOO_TIGHT
+R0452,ORD92581,C1702,SKU4435,L,Pink,Quality not as expected,,2026-07-20,QUALITY,UNSPECIFIED,,dropdown,False,Anarkali Suit,Suits,1.0,,
+R0453,ORD92590,C1616,SKU4421,L,Pink,Size too small,Shoulders too snug even in L,2026-09-10,FIT,TOO_TIGHT,,dropdown,False,Floral Midi Dress,Dresses,1.0,,
+R0454,ORD92591,C1759,SKU4430,M,Black,Changed my mind,,2026-07-05,CHANGED_MIND,UNSPECIFIED,,dropdown,False,Cotton Straight Kurta,Kurtas,1.0,,
+R0455,ORD92592,C1337,SKU4450,S,Peach,Other,"rang bilkul alag hai, photo se match nahi",2026-07-26,COLOUR,LISTING_DIFFERENCE,,llm,False,Chikankari Top,Tops,0.9,COLOUR,LISTING_DIFFERENCE

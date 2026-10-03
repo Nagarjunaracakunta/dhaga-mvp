@@ -34,6 +34,8 @@ def run_pipeline(data_dir=config.DATA_DIR) -> PipelineResult:
     summary["raw_orders"] = len(orders_raw)
     summary["raw_returns"] = len(returns_raw)
     summary["rejected_records"] = len(rejected)
+    summary["returns_unknown_size"] = int((returns["size"] == "UNKNOWN").sum())
+    summary["returns_unknown_colour"] = int((returns["colour"] == "UNKNOWN").sum())
     found = insights.find_candidate_insights(orders, returns)
     return PipelineResult(products, orders, returns, rejected, summary, found)
 

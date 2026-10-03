@@ -9,6 +9,17 @@ DIMENSIONS = {
 }
 
 
+_NOT_A_REASON = {"UNSPECIFIED", "UNCLASSIFIED", "UNCLEAR"}
+
+
+def _sample_comments(sub: pd.DataFrame, breakdown: pd.Series) -> list:
+    """Up to N real comments, preferring those behind the segment's dominant (classified) reason."""
+    commented = sub[sub["return_comment"] != ""]
+    top = next((k for k in breakdown.index if k not in _NOT_A_REASON), None)
+    commented = commented.assign(_p=(commented["primary_reason"] == top)).sort_values("_p", ascending=False, kind="stable")
+    return commented["return_comment"].head(config.MAX_SAMPLE_COMMENTS).tolist()
+
+
 def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_INSIGHT,
                             lift_threshold=config.LIFT_THRESHOLD) -> list:
     if orders.empty or returns.empty:
@@ -32,7 +43,9 @@ def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_
                 mask &= returns[col] == c[col]
             sub = returns[mask]
             breakdown = sub["primary_reason"].value_counts()
-            comments = sub.loc[sub["needs_llm"], "return_comment"].head(config.MAX_SAMPLE_COMMENTS).tolist()
+            detail = (sub["primary_reason"] + "/" + sub["sub_reason"].fillna("-")).value_counts()
+            areas = sub["body_area"].dropna().value_counts()
+            comments = _sample_comments(sub, breakdown)
             out.append({
                 "insight_id": f"{dim}:" + "|".join(str(c[col]) for col in cols),
                 "dimension": dim,
@@ -45,6 +58,8 @@ def find_candidate_insights(orders, returns, min_returns=config.MIN_RETURNS_FOR_
                 "baseline_rate": round(baseline, 4),
                 "lift": round(float(c["lift"]), 2),
                 "reason_breakdown": {k: int(v) for k, v in breakdown.items()},
+                "reason_detail_breakdown": {k: int(v) for k, v in detail.items()},
+                "body_area_breakdown": {k: int(v) for k, v in areas.items()},
                 "unclassified_share": round(float((sub["classification_source"] == "pending_llm").mean()), 4),
                 "sample_comments": comments,
             })

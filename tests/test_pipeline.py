@@ -58,6 +58,7 @@ def test_return_rate_math():
 def test_end_to_end_surfaces_planted_patterns():
     res = run_pipeline()
     assert res.summary["rejected_records"] >= 9
+    assert res.summary["returns_unknown_size"] >= 1   # kept and flagged, not dropped
     ids = [i["insight_id"] for i in res.candidate_insights]
     assert "product_size:SKU4421|L" in ids
     assert "product_colour:SKU4450|Mustard" in ids
