@@ -1,0 +1,217 @@
+return_id,order_item_id,customer_id,customer_comment
+01e0063f-90e6-4f29-83d3-fec781f6bd97,122b3d16-ad7d-4831-b366-611a88748d08,1d782131-19f6-4aba-ba9b-5447014248be,The length is not as shown.
+03399c2a-d590-4693-b34d-208a31a65c61,68a2c2c2-c806-41fe-9033-9e94205c2ef7,83afc8c5-9733-43ca-b5d7-859ac21f3c26,The length is not as shown.
+0417d715-e101-4e22-927a-a9d246737274,c923b7be-ae76-43d2-81a2-9f4586bb97f3,5536f204-1d00-4f8d-a886-abeddfd4d79e,Colour is different from the app.
+050889ce-fcbe-4743-b809-b0ede1f42954,fc75bc7a-8d3b-43cf-920c-d560176a5087,48e42730-a7da-43fa-9c29-4d72e8bc2ad3,Fabric feels different from expected.
+05a2e690-9f95-4d28-9a69-44a9bf2cdb93,c69edf5f-ac3b-40cd-95e7-aafe276e2ca1,fbf4ea1c-a8ce-4727-b1ce-b01a7b8522de,Material is thinner than expected.
+05cc04ef-0f71-41a6-b520-fbad950b6e57,a12021c4-22d6-4eca-a587-5363510d07d0,b7ec15b0-be4b-4210-aa1a-5e0433d6ec61,Size is too tight around shoulders.
+063ee5d7-5960-41fc-b602-4f6b935c4d4f,146850a4-11fe-48ed-bf4d-3f3afce92433,c5fc645a-bd2e-461e-ac7a-7b5716022215,The length is not as shown.
+0706170e-005b-4fb6-8a62-6f0fc885c2f2,5b06d2c4-a491-4812-8ba7-996fef1970ce,961160ee-612a-475d-81f0-11808bff5129,The length is not as shown.
+075a7526-f488-4cec-b3a3-45ea4786b6ed,22d63116-e9d4-4128-8f3e-acb508839d97,0fe75ce9-0d1f-493f-b051-5c7cd440faf6,Fabric feels different from expected.
+09069f9c-1057-4ef1-a10c-e0be063a0eb2,80ba6b22-2b78-4813-8eb3-2f7bc4531138,ff3374a0-c771-428f-a89c-5a4a4c68c47d,Fitting is not comfortable.
+0a00c001-7944-4df8-b6b6-fd7ab3135f95,78d0aef2-e492-4ef2-b767-8e9e46a52aa3,f8e12f38-5ed8-4568-8b5a-13b4599d13eb,Fabric feels different from expected.
+0b6501ad-285f-4742-8060-8f3fb4773eef,9e951c08-8c40-4b11-85e6-7625d82d9d8f,c3fe5adc-17e2-4c46-8c16-cf1ccfa56b56,Material is thinner than expected.
+0ba022d5-ee00-4b94-b256-ed67243079ab,d818b980-2340-40d5-beae-4e0660f7f7ce,1d782131-19f6-4aba-ba9b-5447014248be,Material is thinner than expected.
+0be0e3ac-de0c-4406-b7fc-2ed00accc345,00b519aa-f570-4176-956c-268a5184368e,32dc568d-c100-4b43-b44a-43f275617a1d,Fitting is not comfortable.
+0ce4a4fb-b591-46f5-9d44-c5ab5ff0eb3a,beb58033-1c1a-4a65-9e69-c2fdf95bb297,6bf27347-3f0a-44d3-98b6-5b2a1f461e5c,The length is not as shown.
+0e5dd9cb-ff2d-4811-9353-53696392a288,1db229c8-d1e0-4b27-b6e6-52ce15caadb5,9ee2484b-2a7a-4bf4-b114-1dd8c451bbff,Size is too tight around shoulders.
+17865ad6-1ca7-46a1-b111-442feccf738c,64ba804f-7f0c-4cf5-a469-6f10b03a64cc,3ab476bd-a964-44bf-8297-2161011d0a8a,Material is thinner than expected.
+18489e49-a334-46fc-b0c5-1f2efd424af1,9dd61533-3bec-4046-b8c0-b61c20f48d0f,28c27d33-f69f-4ef9-8db9-64c208f8153e,Fabric feels different from expected.
+18e149dc-efe1-44de-af85-ef6ade80d1d7,dae0c488-2ec8-4ea6-aa0a-2914df2ec173,2d0d1970-5ab5-42c3-896c-3c4b8f0cd405,The length is not as shown.
+190cd5c3-47de-4763-9e2f-71ac72620911,12ed8851-c3b4-453a-b70a-9a5cc3e6c383,9789cb78-980c-4ac6-becc-b84d40f1029f,Size is too tight around shoulders.
+1a335cea-9cdd-4d18-beef-0eb1af03f821,c7e82cd9-39c1-4c2b-bc8b-8544c3940d81,e54cf258-dc32-42e7-8ac1-fbceb167c62d,The length is not as shown.
+1a6375c1-bf13-424f-84bd-e6cb821a5aa7,18e7aeaa-19df-49a9-87d5-8377150e82c4,ed694e1a-f6cb-4a5e-81fc-01d96376afb0,Fitting is not comfortable.
+1aa08574-bfaf-4ce4-8ca9-cd14a6eb1f40,f71fa4ad-d08c-441d-b524-ead955ffe4e9,fbf4ea1c-a8ce-4727-b1ce-b01a7b8522de,Fabric feels different from expected.
+1d24e32c-37c4-4853-994f-34e03e4d0476,9d1469a5-60d5-4990-abd2-d2312fbb6adf,b6f77ebb-b473-4798-8c6d-6c6f136d766c,The length is not as shown.
+1edbdc13-fa92-4daa-b89e-2ac6b11249b8,f7e58451-e5fc-4801-9207-25104ac747c7,00db7739-dfd2-4359-b2a9-afd42c972301,Colour is different from the app.
+1ee3e3a3-46bd-4720-bb12-49e6ac21dd91,750f7b53-8c7e-4dd6-97c6-2f31821abbb5,951a607d-d26f-455e-950f-5a56dfc8903d,Fabric feels different from expected.
+20c724da-1cfc-4192-9de5-3792e4f50ec7,2a86fa9f-8410-4ffc-a78a-837c02935b37,3b015ff6-c759-4aba-8926-5ea6e62e5891,Fabric feels different from expected.
+20fd3c79-dabc-48a7-9d87-2beb85a5c211,face7529-6eca-479f-80e2-25a77b64c73d,1a8adc79-e0f3-4eb7-8bd7-98fe82388f52,Fabric feels different from expected.
+224391bd-b8f7-444c-b693-b1dfe9c3b0e9,2fb70c3e-bfad-4f75-b345-65cd7a2380f3,8bf91138-2128-4538-9a5c-a2c1566ce9cd,Fitting is not comfortable.
+228e3146-c7e0-4882-b9c7-61aecdf24a2b,53bf1f11-3ec7-44e1-b79c-b5de2b32cfe2,febb8d4a-d012-4db3-8e17-5303220c3271,Material is thinner than expected.
+22ca7b6b-695e-41d6-a477-6d7e94df2d3f,044b4007-48a3-4346-a554-4ef9979802d8,c59ea0ad-0de3-4f57-9eb2-e5851366e6d5,Material is thinner than expected.
+23f3a9bb-b4ea-4a17-ab40-c695eef1fd22,2e9515a6-35d1-4000-a72b-8c1caf9b2835,ff4d3287-6514-477b-88ac-f35a583b85c1,Colour is different from the app.
+24994227-45f4-44ba-83df-0f9e168b665a,c6722c63-9df9-409a-a4f6-fd0653a93f6e,8aefe57a-28ad-4953-b989-2b02cb900858,Material is thinner than expected.
+26224f6b-9a99-4595-ac1e-7dda95a775cd,76d53aba-ddc6-4a77-8449-b303f78fe28a,b8f40c5c-7f7e-46fd-a5ea-ada1c789b2cc,Size is too tight around shoulders.
+26f088a0-2608-4634-842f-b76ab360def0,c9eda8df-8920-49c3-848d-26f2037dd334,b84a6e14-23b9-4c2c-9dd2-68cdea6b16bf,Size is too tight around shoulders.
+28570a47-2efe-4efd-8955-4f1659134ee2,4b3980f9-94fb-4f84-8db1-afaeef1c121d,ff30e4b9-61be-48eb-b210-8a23b638f172,Fabric feels different from expected.
+2953935b-08c8-4c80-bb61-a932f66bbb24,4ada81ed-3386-41ef-8232-1ea21d8f0abe,6bf27347-3f0a-44d3-98b6-5b2a1f461e5c,Material is thinner than expected.
+29ed0723-5122-4aee-8bb9-e8f062ae0b1b,f764e0d3-4459-48bf-b733-6d258f05ed61,f7de4c33-1d43-4b92-882d-d06e1ad2cedc,Size is too tight around shoulders.
+2a4ec7b9-8442-4293-9c0a-551f1677f3e4,983f5767-6ea8-48c5-bd24-3f5d85638efd,8aefe57a-28ad-4953-b989-2b02cb900858,Fabric feels different from expected.
+2a9f4f9c-9616-47f4-a165-431358819b5f,ece516ef-ab1e-4e6a-adae-3ad641cf15db,c71cc6af-dea4-4d03-86ef-4095576fbae5,Fitting is not comfortable.
+2b230db8-7f26-480d-b78f-17becab94a20,6b7f521c-65f6-4171-842e-5ee454c9b2d2,6a8e63a5-ae4a-4eac-ad0c-782fb1a4f3d1,Material is thinner than expected.
+2c5a7628-bb29-4512-be6b-00a627a2b00b,f5a2571f-4423-4a90-9752-3fe8332bd33c,74bded15-7349-42c9-9c37-5a2206db7e2d,Fitting is not comfortable.
+2d1462e9-4d02-45ad-b4dd-93b47f81b8db,4acd5452-e6d4-49b5-aac2-708d963fe9b4,4df21937-b665-41fe-9ed7-da0678eb497c,The length is not as shown.
+2d54ae61-5183-4093-9233-f94b975800b5,897247b4-cb35-4adb-825d-c48667d12933,ebbce086-53f5-424d-94ac-0f7aeda0a3c8,Material is thinner than expected.
+2fdaa1aa-ab2e-416c-82ac-42dd3274cc03,c2c2a8e9-a1ac-4f9b-a715-fddbcfb3a399,73a61f02-387b-4650-8652-54d643ea6408,Colour is different from the app.
+2fe1abff-7356-49ac-837a-504c25643a36,2f5a7d0c-1c81-49a9-8340-3b4139f6b5fd,8231cbe1-fa23-4de0-a6f7-534f30361a04,Fitting is not comfortable.
+300cc42d-3925-4f90-9ab7-61fee8dfd4ee,53996f71-acdf-43e7-be4d-8a86de227c56,169775af-0b86-474f-950b-ff70863e6e59,Colour is different from the app.
+31b92370-d009-4085-aab1-ad5ef66014d4,661b99ed-4923-42ed-977a-980096984593,38a82e87-5cc0-4302-9390-367efd340cc4,Size is too tight around shoulders.
+337a8983-5037-4d6d-8983-09b9dc037a18,ace8e96e-0e85-44bc-9fe2-f5f4be86a546,01ea1658-84de-47b3-a894-cb00dfdedc02,Material is thinner than expected.
+33f0cc5d-c076-427e-9b6d-eacbb85d80b6,92f4471e-fc7d-4b23-981a-5974e043d522,d14c6d38-5ad1-4130-a26a-1fd1cc43c6e1,The length is not as shown.
+33f8b0b4-f9c6-485a-b87e-63465e6685eb,d04c7bc2-c779-4280-9eb0-36d1ebf57457,4c3dc069-acb8-4d50-b95e-3a4e23bcce7c,Colour is different from the app.
+342a3855-f43e-4cf8-bac0-f8f0487af0b0,43639cf5-d005-497e-be56-0390c903b105,2350ab34-6e8a-4be1-8482-5e3482306d55,Colour is different from the app.
+376d6969-96c4-403f-bf76-417d41bac355,6de223a1-b060-43c1-a37e-45748fe49a6a,74492a3a-472e-4c86-9489-1e75768e1abc,Fabric feels different from expected.
+39096a41-4029-40b5-886d-e44c4843f99b,7296bd7e-1dcd-44ba-bbc8-fcc289390942,f114a366-5e93-4f70-8de2-f80133abbfc5,Fitting is not comfortable.
+39d86861-91e2-4d7f-ad77-7137dc36e46f,7c8d2af3-e5df-4106-afb2-2d661eb88497,b6f77ebb-b473-4798-8c6d-6c6f136d766c,Size is too tight around shoulders.
+3a0b93cf-7ba8-44c5-b1ab-314c0e4f338b,9d846ae9-1eee-4d9c-8b45-43c1531a9a35,118b9216-3c88-4f8a-bad8-8e706bc68887,The length is not as shown.
+3b0021c2-c7cc-40a3-b11a-9a906bfcfe9c,af591e6e-e174-42c2-b749-f03b99d23790,be06861f-a167-4be2-82ca-19cf799adab5,Size is too tight around shoulders.
+3d64daa5-e1cd-406b-ba25-9a5f8f0604ff,a3a01c90-179e-47dc-94cb-d8919ad48ffc,20f640ac-231d-403c-bca8-cb3e2b5f1215,Size is too tight around shoulders.
+420a1105-19dc-40c4-a3ac-e6e1f741ebc8,db312f9e-cc51-4e02-bb13-076ae6a47634,935dd6f7-e0ed-43ba-94fd-636deef6a659,Material is thinner than expected.
+440ce92f-9faf-46eb-9eb5-2d5d935ad370,5b4dfded-bcf6-45b6-a88b-7f2945d070ca,e69cc4fd-7452-4c6b-9503-f6c0602b77e8,The length is not as shown.
+442a7796-1cd7-42df-adc6-8cd673d28403,2784c8f9-c675-413b-83bd-07fc85e8f20e,36bfd50e-336c-4f5c-9f17-17dfe15b06a0,The length is not as shown.
+458c269e-144c-49aa-884d-af2a8fe91dcb,f3662fa2-aef4-4468-a1b6-f77868d0b2e4,0a0db274-e01f-48b6-bfbe-a6a25f118c57,Size is too tight around shoulders.
+47b4e6cb-441c-4456-8b64-a09d6a784a19,16451082-2e2f-403a-bd14-ca70106678ee,383a5539-8665-40c7-924a-69bcf921a792,Size is too tight around shoulders.
+4a81a214-0c25-4c66-b8e6-1e1aede35af0,8e952555-3649-4911-a630-c5343c8b30c1,ad6215d6-6b7e-4445-a2f6-004786d03bb1,Fitting is not comfortable.
+4bcb4c82-c18c-4188-8f6f-fd7dd732c01b,881bdb19-55ba-4876-87ac-8f53c46bf4ee,18d8d1f6-c55f-41f3-8f04-55db06fc05c1,Fitting is not comfortable.
+4c6e2c52-ea72-4695-bfaa-800f2e5eaecf,4c592734-fe35-4ecf-8d65-e2f724fa124e,383a5539-8665-40c7-924a-69bcf921a792,Fitting is not comfortable.
+4ca01cbb-9456-4de4-8480-a187ff78d0da,ba3e399a-9477-447a-a7fe-b8076812437e,09affca6-104c-45ad-b9a7-4fc96d53e132,Fitting is not comfortable.
+4edfc91e-58b6-4202-9bcf-3046013b645e,6021d1df-c899-4cca-9df1-a5c5709e1553,e5ebcb60-57bb-439e-9705-ac987a3ce47c,Material is thinner than expected.
+4f3c2a18-a0a5-4489-9b60-c1fad22b4b07,e800271c-0257-44f7-815e-8e27bdb7d8d1,7d25be42-769f-4c9c-8b9c-43ccca3c7ea9,Fitting is not comfortable.
+5002e309-cdb7-4d6b-81d5-6fa17b5adc19,b9a6266f-5353-4b28-ba9e-d4b2807993f7,9ee2484b-2a7a-4bf4-b114-1dd8c451bbff,Fabric feels different from expected.
+51c29cab-840a-4554-bd81-75935284311e,b2278a3b-a5f5-481f-8da0-2f2f8d62b931,04d5a4a0-66d0-496e-baf4-fc51ef8f25e3,Colour is different from the app.
+5229207a-4073-4ff1-ac9a-e4d2baa4ab46,299785c2-d355-4133-b816-47cc87969281,0076ac19-334d-49d8-97cd-7a4ffcd8aa27,Fitting is not comfortable.
+539c7fc2-cb7e-4f86-a060-edbff05d99aa,41d314ab-5427-4985-a1fc-a37b895031bc,5baee654-e874-41fe-81f5-5c729e55d318,Colour is different from the app.
+55758de3-c2a1-4ab3-9e8f-81a19b2afed9,67cd1d8a-1f2e-43e2-ae53-0776fe7c47cd,3719e0ba-b4b4-4110-abe5-ff82e59ac31a,Material is thinner than expected.
+55ec0c22-862d-406a-af05-febd49256a8a,0e1cd48d-d57f-43c1-b055-bac4e2f8cafd,2d0d1970-5ab5-42c3-896c-3c4b8f0cd405,Size is too tight around shoulders.
+567e8dca-716f-48f5-a184-d675b4163a76,be1ba935-cc9e-4eef-93cb-7d4c9a43a4eb,14c343f0-63aa-4467-b7c2-9e053a7aef2b,Size is too tight around shoulders.
+57111a2f-1218-4db3-a070-4e9f3d8154a6,68e3d252-dd99-4bff-8a21-95542d92d4e3,ac681191-491c-4159-97a0-1402dc030f0a,Fabric feels different from expected.
+57267088-81cd-43ea-9463-33b05585ed00,bbcf23ed-bd12-442c-b71f-2cb058fd0753,4df21937-b665-41fe-9ed7-da0678eb497c,Fitting is not comfortable.
+57b67fa3-7e9c-42bc-b795-40ca7a94bacd,b1ce9c3c-224f-48ff-95f9-33930da24ee6,526636b6-b220-4f1f-af88-24a8f2d75ff2,The length is not as shown.
+59c6ac05-2324-47f6-b38b-2aba0e5cd86b,c6ce83c9-440f-40d6-bbcf-3ba82ba4ac4c,6d3b36b8-afd4-4bd2-9498-6d67cd2220c0,Material is thinner than expected.
+5a51c8da-ba1c-40e5-b38c-8884760d09ac,2e7c6198-abd7-4a05-8bcb-fa3f16983024,623e6f65-c9a8-4a48-9b5c-396f040cb954,Colour is different from the app.
+623f0ec4-9780-4805-9346-772edbff5de7,e1a98f93-bdcd-4f83-b1a1-1049d918f9f0,38a82e87-5cc0-4302-9390-367efd340cc4,Fitting is not comfortable.
+645db6c5-a91b-451a-ad58-98cf811072cb,75b9c4f6-5251-4918-ba52-054e6b1f0a3c,c59ea0ad-0de3-4f57-9eb2-e5851366e6d5,The length is not as shown.
+64871308-95af-404b-a884-ac3976329025,0bda5dae-77bf-4d45-93c4-ee46213bb2c8,fefc5a71-55fc-4872-9ab2-704187448e03,Fitting is not comfortable.
+64ebacb3-3eba-4644-96ee-241d4d4e3790,98b61279-61a7-4d80-9446-a26520da4446,4a915cea-0a55-4972-a3f1-5460b416c9d5,Fitting is not comfortable.
+6518b0dd-8703-4dc5-aae7-cadf22823756,0738ad0e-46a4-4c6d-9a13-f5235d797869,28f93336-9c33-4ad1-bed4-afd1b4c8fe3c,Size is too tight around shoulders.
+65f0ffed-55cc-48b2-be9f-5dd5e835ffa1,fc7ca8a8-3463-47ba-9a3a-fccb1ee1770e,4c3dc069-acb8-4d50-b95e-3a4e23bcce7c,The length is not as shown.
+66791649-48fb-4eaf-a917-520fb377c93b,1877a431-9a2d-43f8-920c-93507219c1d4,25225055-8a20-440b-a316-c8f3bcae617c,Material is thinner than expected.
+66e6eca1-a9ed-46b7-96de-f62359a6cf4d,1862ed28-5e2d-48f4-8e0b-a4b5c0c9f41b,2a8470a7-573f-4847-abe8-276cca6c75e1,Colour is different from the app.
+686d6d88-78e4-4102-8362-421703d7cbe3,5738f051-080c-4df4-b3d0-e0b3ae903387,613b685d-0389-4c39-8af4-6c1cf19f5908,Fabric feels different from expected.
+69c24bd3-d2c2-4385-b584-22ca7e49c064,71c74434-1dfa-4a57-b28d-27f3ef5e00fc,fcca7081-60aa-4f3c-87fa-24a895416aa3,Material is thinner than expected.
+69d90293-e37c-45fa-bac4-3c9246b56750,72e767a3-d9de-4c30-ab50-4b0e919dedf4,e60c2b1c-6462-4f19-ab83-ca784f177ae8,Fitting is not comfortable.
+6b622271-b1be-46c9-8f6b-4196ce93c5c4,904a5c7e-ae62-47d5-9efa-6c6ff9ccaafc,0af8a02d-4111-4d79-b5b5-9a1b1f8dbcd0,Fitting is not comfortable.
+6b79e166-30dd-4505-95c9-561e83190761,a0bfad4c-806b-4dca-b6e6-e90c4cbf37e3,118b9216-3c88-4f8a-bad8-8e706bc68887,Size is too tight around shoulders.
+6c40e195-009e-4260-bfcd-1261c3e6ace2,6614eb94-0456-468c-8849-5ec9d6d3eae3,3719e0ba-b4b4-4110-abe5-ff82e59ac31a,Fitting is not comfortable.
+6d605e84-9415-4e4a-a1b6-ef8e8beee357,18936170-38f1-4975-b21b-ea4988512292,19db1740-6660-4697-bf3d-84b4c9503cb7,Material is thinner than expected.
+6dc943df-1b54-4515-a380-fba257cb5fa4,6d5827fd-9128-4845-9704-9b52a6173566,83afc8c5-9733-43ca-b5d7-859ac21f3c26,Size is too tight around shoulders.
+70903d1b-026c-42de-b1ef-74ea7267264d,7ed29d1b-092f-48e4-b5fb-d6f6be064f95,2350ab34-6e8a-4be1-8482-5e3482306d55,Material is thinner than expected.
+70d23e7d-7d82-41d8-a17e-52ea92b937cd,9c307036-52e0-4983-ab7f-0c100ba5e555,01ea1658-84de-47b3-a894-cb00dfdedc02,Colour is different from the app.
+70ecd56d-5436-464c-9bdc-40b840ad5a16,6fd432b3-1e62-4722-828f-64558f090cc3,a72209d7-2769-4aae-9c6b-06acc2c0ac40,Material is thinner than expected.
+74ca4adb-6ecf-4804-9f67-6430657ec382,328ea70e-a7e2-4f34-8cf1-15fd6a653adf,d3475073-5c63-4b76-aa97-02be7923893b,Fabric feels different from expected.
+75d38892-62eb-4ad3-84fd-beb4a5b3aaf0,8b9b89c2-21b5-48b6-b8ab-1d610aada3c4,cc9093c4-a070-4d45-8a48-f779daa718ce,Size is too tight around shoulders.
+77468d34-430e-48f6-ad13-c1ec8d53b856,58c47d97-c957-4368-82bc-0f3e2dbf057d,2db39315-d706-4f13-a6a3-7b53a16062cf,Colour is different from the app.
+77921e1a-9bf9-491f-8114-a2c0c8eef1af,8b31f2b5-b737-4075-8ed0-f2712bd7cb7b,09cfd03e-4b4e-4118-9ead-5a700f39e494,Material is thinner than expected.
+7a44e67f-1fcf-4a91-86ac-eb5e2de9f292,23e1bd05-15db-4b1d-ad3e-4de6c0c70b77,2db39315-d706-4f13-a6a3-7b53a16062cf,Colour is different from the app.
+7a74890f-0e53-499a-a890-ae7939e6be08,1f19b36b-59cc-4637-863a-08f8697e6491,00db7739-dfd2-4359-b2a9-afd42c972301,The length is not as shown.
+7c1a3f84-3ede-4d3b-bfd9-adb106a6458d,1a17b612-0f2f-41e3-9e64-59bd017018db,1b6f64d2-071c-4927-ba1b-158d7087be9b,Fitting is not comfortable.
+7c1de26c-4ff4-4520-9f95-c3ddce96311b,ae7745c3-58a8-4782-861b-913458574c0a,f114a366-5e93-4f70-8de2-f80133abbfc5,Material is thinner than expected.
+7d56332a-c6be-4e39-9e68-5e2f4cc41684,b06113a0-12a8-48f4-8fe9-5c2fb97307c8,e0b8ec2b-6e18-4114-9e0d-748542b921e5,Colour is different from the app.
+7d8cfd22-ffa9-42e4-ac91-2cc6d4bfca66,38e9b74d-8aef-49cf-8143-0b3ed2d98779,be06861f-a167-4be2-82ca-19cf799adab5,The length is not as shown.
+7e4b1fd5-6416-4461-b5b4-a632ab4cf442,513adbfe-aab6-443c-8b49-79a10d94761c,2249cf1a-93b7-407a-a29e-c49c5dd0ee37,Fabric feels different from expected.
+7e769b9d-05d8-4da5-811f-bb477627710c,ff444044-9617-4013-a9bc-54b8590d7323,34a18e25-29f6-4058-a7bb-4ab6892c76b5,Material is thinner than expected.
+7eacecfb-f38f-45ae-a3c6-80224decb66e,dc687225-3611-4fc1-b1a2-19ca18d10541,ac681191-491c-4159-97a0-1402dc030f0a,Material is thinner than expected.
+7f059379-dd41-4bef-b9c9-b6663c4deb93,939cf5c8-0cb1-4432-a2f3-8d60981f82ad,6ac61d5a-d454-4573-ad67-d77545a9dc84,The length is not as shown.
+7f432416-b737-4082-b967-b751e0c4297d,f717931c-20b1-46a0-9a49-f43655e0d140,2fe751e2-fdac-4414-af9e-5f74132ebd74,Fitting is not comfortable.
+7fa9a6d3-3dce-4434-bbd2-a46685e3df4e,d4714e3e-c954-4eaf-98ae-da26cd1bc629,905ce61e-8b47-458e-9d17-8c4f641f3f00,Fabric feels different from expected.
+7fcde257-812c-4869-ac05-4b9ac788d3c2,1f21fe0a-d296-4479-94d8-f97ac59070d5,d69cc743-3596-4123-8527-19bab359cc0c,Size is too tight around shoulders.
+8209c4f9-e4ac-4327-a581-673b6fbd9260,00f2ae96-fe1c-492e-b1d6-5e25777d1483,55b41484-85e9-4a59-b727-c4a436517e05,Colour is different from the app.
+848a5cdc-9c61-4db7-b738-305bbbf0e2c2,0ec7134c-ccbd-4808-9326-ca5168c551b8,217d9940-8704-4c39-a226-0dbfe071efe8,Material is thinner than expected.
+857b4de1-37f1-4a15-b88b-dc5b50870505,bb61eae4-b7c1-4b22-9514-8d8b19cc9bab,69384015-b80c-4a11-8bd3-8453c731e456,The length is not as shown.
+87a0fbfd-8f6a-402f-9030-cb0af42eeed2,23ad7881-cb46-40ee-921e-cac51c6234c9,c7d242f7-c01c-4041-bb00-07d7aa53ed3b,The length is not as shown.
+88142404-728f-4dd6-bcab-69ac05b0481f,4a7c2609-9ee1-4381-bef8-4fa92aae1912,67ddde47-d857-49e4-9d42-5dea272759a6,The length is not as shown.
+8a2cbaeb-cf0c-4493-a15e-bd2915c3fb15,142e4f65-4036-4540-9f51-2da9d874d649,b053e7c1-460f-42ad-a9ca-cafe4f48d1a2,Material is thinner than expected.
+8d4fe544-6db3-4d04-b267-ca099f5220e5,4bf12467-4eaa-4c7e-ad35-1e0ad3c9e5f3,e049b71e-f690-4fe9-a7aa-6b96483029a0,Colour is different from the app.
+8d656413-1ef0-49ad-a893-c7f54175ffc4,0b584050-e5fc-438f-8800-ec8638295f1c,8cebb29a-b20c-4e38-ac6f-bdc5774cda5e,Fabric feels different from expected.
+8dc84e20-71ae-4f4e-999b-51ac8c214de3,d2945f80-1d12-4f19-a3e4-3ef98f794940,5dbd2cfd-4158-47c5-92ce-3dcdf09d9bbd,The length is not as shown.
+8dcc8a2d-b212-4585-bae9-3c2549a27939,b669c267-b4ad-4628-9c41-64beea3bd10d,cfab8b21-5288-442b-80d0-cbac5f80dce7,Material is thinner than expected.
+91fdf810-3964-40ba-85b9-73e767fc76f4,38556d88-42d6-4f99-ab9e-d66f4454f8b8,7f1843e2-08d7-4d09-bd69-fa0814d6b19a,The length is not as shown.
+92d3fa5b-db90-4a33-8de4-df237d125e2c,db306e10-6aa8-47d4-83f5-e198a4767c5b,27735239-2bae-4399-b1b9-668a8cc7db6a,The length is not as shown.
+941b411d-bdd4-4ff7-b09a-9217863d7db1,6201e6ca-8ef2-4ff1-ae62-f0dec6bd8886,758a49b1-3a47-4967-8ee7-a96df300b201,Material is thinner than expected.
+9660371f-ab7f-4138-9acf-02e59f80c6ed,85d9b5af-c6a0-4db0-907b-03dc59d5b6fb,bf73a9ae-7768-4756-a6b5-777b552de627,Size is too tight around shoulders.
+96e74dda-5b90-4115-ae34-003c99bbd2d4,ef3bf9db-2254-499a-800f-f6c62869cf2e,02bcdfd4-beab-41c2-9c9f-12212fe6e4e5,Colour is different from the app.
+98a9b0b1-2bec-43f3-a81e-ec50df9b0c2a,8e6888fc-37c2-4155-aad8-b26b351e8ae3,fe5cc162-6cda-4239-a833-23a012eb79b2,Size is too tight around shoulders.
+9d862b32-f636-4626-bd45-5dd8ecd4c1af,b1cd1c01-7804-453c-9d0e-dfbbc05e6a7c,30ed97a6-a1ab-400c-b93d-ff160f4efe2c,Colour is different from the app.
+9f9c6fc9-e72b-4864-ad1a-41d3259f07bb,2c3cd4ce-f29d-41a2-a32e-63e1725f07e1,f114a366-5e93-4f70-8de2-f80133abbfc5,Material is thinner than expected.
+9fc14629-1cff-46fb-9b7c-10528dcd1697,194e2b0c-bfd6-4bef-8e0e-4ec2b5bddbeb,47dbd6fe-12f6-4e93-922f-03671af13a95,Fabric feels different from expected.
+a042da44-f46d-424e-9cec-1c0bb00de3cf,ddf387c1-ff71-44ec-9337-5efc6cca3e6d,0d1a79fb-a56f-4f33-9415-26f135009bcb,Colour is different from the app.
+a1d9bed4-6516-401e-aa85-a3f62db695a4,f4493295-895f-404e-8391-42558cc0a52c,73a61f02-387b-4650-8652-54d643ea6408,Colour is different from the app.
+a3ee8438-4f7e-4b10-b0b8-ebe2d1375d3b,c6466f6e-7019-4781-9440-b21c91100fd2,62fe9d53-526e-4c99-bcf4-b7027587ef9d,Material is thinner than expected.
+a44d3674-dfcf-42d8-afae-99c3a973ca70,b6fc4276-1c1b-449b-af2d-53d5a0b8896c,ff30e4b9-61be-48eb-b210-8a23b638f172,Fitting is not comfortable.
+a5bb1b9e-4425-493f-9168-d853849882fb,eb1316af-3457-444f-aa93-84c4d9a0a350,c0bcb36c-a0a9-483c-836d-55a7a78f5c97,Fitting is not comfortable.
+a79e6145-7403-48c6-afdc-11c3622852ae,7b849ade-7c9b-49a8-88c2-d4210fcbaffc,2fe751e2-fdac-4414-af9e-5f74132ebd74,Colour is different from the app.
+a7ce56e7-f80b-41f2-bb9c-25f71834f8a5,f8082e31-8aef-48fa-92f3-2a0d94203358,2e5adf01-9d94-4166-b2d4-ad63d2cbc0cc,Fabric feels different from expected.
+a8e2868f-d644-4490-9505-bdf78f122f33,81f4421f-c978-4f71-bde7-39fa3028207f,e69cc4fd-7452-4c6b-9503-f6c0602b77e8,The length is not as shown.
+a9744503-6a4f-4c41-84d9-ef45091ab92c,744fe0b5-1fac-4abe-8822-5810b91c2f6c,74492a3a-472e-4c86-9489-1e75768e1abc,The length is not as shown.
+aa243646-b726-4490-9cac-8ce3e73dc10c,e3ce629c-b033-43e5-b4fa-68b38ce64851,814b0390-119d-41ed-a287-03863a6cbe60,Fabric feels different from expected.
+abd1906c-6e9c-4d9a-8242-4c06be6ff1e0,20a4e865-349e-414e-863e-dd473cb3b277,2c0f9fa3-2d9d-4ae1-a42e-588a201cf162,Colour is different from the app.
+ac4dfa7a-0244-47fd-8970-9043bbb51360,868fb35e-1910-4578-aedc-c4523af6e21d,2784803c-e912-4028-864a-8045f3316dea,Fitting is not comfortable.
+ad204fe3-27e7-425f-9c47-0aebcb2f24d0,1788baca-3ab2-479d-8db6-cc8948fcb5fd,c59ea0ad-0de3-4f57-9eb2-e5851366e6d5,The length is not as shown.
+ad454f17-25e6-4099-b527-e33059ee809a,580dafdc-abd7-4c45-a69c-786f9cf0a42e,f7f17cc0-4785-45ae-b265-0de95ebd14d6,The length is not as shown.
+adf69a55-a49c-49bd-8c09-756d6aef600e,22b93dea-579d-4725-8345-f8e4b1b42909,b7ec15b0-be4b-4210-aa1a-5e0433d6ec61,Fabric feels different from expected.
+b13544a5-3da9-4d74-a152-a0122fd67a54,f1a22548-51a8-49ca-8da8-b1eafced9f2a,f3bb85ca-4ab2-48c9-91f9-105f0af091d4,Size is too tight around shoulders.
+b2f2bf0f-3375-448b-ab63-6b74eb9eaa69,d451d9c2-b192-44ba-ae87-5a53c0147d06,8cebb29a-b20c-4e38-ac6f-bdc5774cda5e,The length is not as shown.
+b4715504-2f28-4fec-ba37-d3a09d8a1fd6,5b94fd77-1ace-46bc-8aa0-86c6f8d1c49d,0a0db274-e01f-48b6-bfbe-a6a25f118c57,The length is not as shown.
+b7055ce1-8348-49cd-99be-f5eb5b10b4e8,d10f2a68-485c-46bb-977b-33f18be5f71f,71aff004-d317-4b23-b550-c428d093aad5,Fitting is not comfortable.
+b99cb156-2f77-4bfb-b218-a718fd7af5ab,987ca8c5-11b8-4b79-bda1-375980a4d502,b8f40c5c-7f7e-46fd-a5ea-ada1c789b2cc,Material is thinner than expected.
+b9b12cbd-3c0b-46d1-a304-3194db3ef587,b8ed77a9-0702-45b4-90e0-101512d3cc0c,e1ba59fe-5a96-4824-b01b-ef3afa8f1e77,Fitting is not comfortable.
+ba0ccb70-2f8d-4911-9eed-1c933d327f4b,268b2369-331f-4cfc-829d-bf3d47027785,5af8e254-eb2c-4985-bace-7857a2dc0dea,Size is too tight around shoulders.
+bb8a9f5d-b4a6-4843-aedc-3f727b68b9e3,58addf26-a118-465f-bee8-93e6136c8a23,758a49b1-3a47-4967-8ee7-a96df300b201,Size is too tight around shoulders.
+bbff6e75-50bb-42ae-ac7c-fc92ac9db4b5,259de891-5bf0-4313-b84b-dacc67f08e20,47dbd6fe-12f6-4e93-922f-03671af13a95,Size is too tight around shoulders.
+bc39ee69-db4f-47ed-a575-d565bfff476a,34d5d313-f4b0-4b1d-b47d-4ddb535fbff4,d1f42e64-3aba-4fd9-8700-44933b4b2c57,Size is too tight around shoulders.
+bd39144e-fca3-4613-870a-21569050dca1,d5c3c4cd-abfc-4f74-b304-e520947063e3,abcfade5-04ea-41f9-bb9d-b5f744eeceaa,Material is thinner than expected.
+be022e27-b95a-40a8-aef4-9f56952aee27,81531313-8efd-4418-870d-c15aefe5a719,38b3e28c-96ee-462f-aef3-2bffa6f5b4d8,Size is too tight around shoulders.
+bea1f354-57d4-4006-ab2c-5faedfa6d2a2,8ec5be15-ea92-4209-b9e9-8459541c6fc5,44f00708-8823-4b2d-ab8b-b042e92273b4,Fitting is not comfortable.
+bf0fc8b6-7a44-4dbc-8c30-2d15f3506975,efb471a4-40a5-4080-9435-4ef862faf95d,8d9ad203-40b2-4fc6-90ba-292a77bce85c,Fabric feels different from expected.
+bf8df061-5a6c-4fb7-9ffd-16cdf222bf12,26b4c181-3171-4428-83d3-40c3f20a366d,0d1a79fb-a56f-4f33-9415-26f135009bcb,Size is too tight around shoulders.
+c167e52a-8083-4a77-bd4c-c40683c40a4d,9a2b3183-ed8b-4d6f-aa2b-da1fc89e03a1,750275d4-ec0a-4dc5-82a0-9186511e08ab,Colour is different from the app.
+c259bc12-7e45-483d-bb0f-67cd19e6f521,95f000cb-9825-4a3b-9420-0b04f5f69efa,01ea1658-84de-47b3-a894-cb00dfdedc02,Fabric feels different from expected.
+c2d6589c-0d1a-4f24-bf5f-bb0677b24692,f2f26d84-cba2-43e0-b56f-4115a10017ef,f8ea70af-896e-46c1-bd56-6d2bf25d9190,Fitting is not comfortable.
+c4b30787-affa-4914-b26f-209bc29bdb58,866d13ff-0963-408c-9c16-e4a6a664a189,94107857-ae7a-4b09-a823-12243908364e,Fitting is not comfortable.
+c63070e7-d85a-4fbb-82c2-17365c146588,407609c5-ca4b-4bff-a78b-779bcff58bcd,1d782131-19f6-4aba-ba9b-5447014248be,Size is too tight around shoulders.
+c8e85229-68a8-4f0d-9c33-a6053b466ac1,756cdfe3-aed8-442e-853b-710207c3deeb,5370eea3-8821-4f59-8d00-6feddfe1de4f,Fitting is not comfortable.
+ca6bc698-9e8a-4d63-841e-a71d8f976556,df19a4b1-a39a-4f66-95ad-63351a442bbb,169775af-0b86-474f-950b-ff70863e6e59,Fabric feels different from expected.
+cb17977d-5a58-49e3-a038-0b2547fea49c,b1d34c71-8ba6-4ca9-a65c-b22a3335fb58,38b3e28c-96ee-462f-aef3-2bffa6f5b4d8,Size is too tight around shoulders.
+cbe5347a-120e-41f1-9119-88873c16a8d3,aed983e1-1a7b-4571-89d3-780597a27561,b8f40c5c-7f7e-46fd-a5ea-ada1c789b2cc,Fitting is not comfortable.
+cc22277d-d1f8-4a7f-9cd2-d71d95246188,0d20c383-7ecd-44ff-bebc-994ac7b03292,e54cf258-dc32-42e7-8ac1-fbceb167c62d,Fabric feels different from expected.
+ccc02fc7-9e07-4e34-bebe-f8c85793a236,0c7a37e3-2ad1-4661-9515-668232c04cdf,2c94b6fc-4156-4dd4-817e-da783d282c7e,Colour is different from the app.
+d0074511-4d2f-471d-9ce0-b17f35dbea06,4a0cdfb4-ab63-46c5-b721-5b0db737600a,6d3b36b8-afd4-4bd2-9498-6d67cd2220c0,Fitting is not comfortable.
+d16b6538-1021-43bb-8862-e4247fa5049c,0ae3214f-7fdc-4c54-b85e-5fd80227410f,62fe9d53-526e-4c99-bcf4-b7027587ef9d,Fitting is not comfortable.
+d273444c-c562-4ed6-a853-a36cdb477d4d,f629b995-18f2-45e5-8a3f-3d7c6f100555,7dcb49ee-c449-4814-9f51-95cc84aaac3e,Fitting is not comfortable.
+d2f420f3-392c-40d2-a55c-bb7a630d6554,38580a8b-de18-421c-b1b3-d2698ee07b12,c7d242f7-c01c-4041-bb00-07d7aa53ed3b,Colour is different from the app.
+d3cf118d-878f-4ef6-ae4a-d4dc85663e33,0f674e34-8444-4ffd-a27e-d583d05586fd,e60c2b1c-6462-4f19-ab83-ca784f177ae8,Colour is different from the app.
+d41a6a53-48ed-40ca-a4aa-294b9e7d5316,ce854377-49cd-4b9d-97df-34eb52ba70d9,f7f17cc0-4785-45ae-b265-0de95ebd14d6,Size is too tight around shoulders.
+d4a3d0b9-9bb4-4cb3-9780-edae769963ed,b6269f46-eb37-4fe6-aac5-da699f2323b6,09affca6-104c-45ad-b9a7-4fc96d53e132,Size is too tight around shoulders.
+d6d6e469-3872-4f23-9af1-09e6ddd26676,ca70be9b-333a-4798-b7d2-f571290c5ca8,25225055-8a20-440b-a316-c8f3bcae617c,Size is too tight around shoulders.
+d8f655ef-2477-41a8-9aee-5687928a03b4,35eb86b4-5a0b-47ef-821d-b766247d7e61,5baee654-e874-41fe-81f5-5c729e55d318,Colour is different from the app.
+d90148a9-2e3f-4f88-9469-f2b9143ad59c,f35e863c-1e5f-42eb-a7ba-2f6905f0727a,62fe9d53-526e-4c99-bcf4-b7027587ef9d,Size is too tight around shoulders.
+db9456a8-aaae-41a3-b784-7c6d37fe4b10,bafb2f37-cc74-4496-9295-390d227b02e6,84ae12a1-0ade-43fb-a1fa-042335a42a9a,Fabric feels different from expected.
+dd800d11-f8cc-4645-bcdd-9b112844548e,268a3c52-1bb1-4d26-bcad-cc17ba8c7fc1,f317822f-e22d-4afe-be88-df11c9ec97ed,Material is thinner than expected.
+de17bcd9-a103-4a3e-a858-dd8dadf19084,8030ae92-12c3-4f03-9942-2a0d52943c96,8e705aec-3ec8-4a25-b6de-482970fccf69,Size is too tight around shoulders.
+de7a217d-ab7f-420c-b6a6-f1dcb5f0312b,d3744180-d9e1-407d-917c-83e0753fb82c,e0b8ec2b-6e18-4114-9e0d-748542b921e5,Material is thinner than expected.
+dfac9674-c584-46b0-a11f-2c21c79570f6,eaa9b46d-eaae-40cd-aa96-e4e7893046e7,04d5a4a0-66d0-496e-baf4-fc51ef8f25e3,Colour is different from the app.
+e138cd59-5d92-4ee7-965b-372957bf193c,c0347d51-fd0d-4574-b54e-b8321bb5988c,c82a2721-29cf-478a-b4de-b913074b101a,Fabric feels different from expected.
+e15829d2-c973-4338-a389-0a1da68f1a20,b12f4cd8-f58c-4ea4-b696-d0526a6d81cb,217d9940-8704-4c39-a226-0dbfe071efe8,Size is too tight around shoulders.
+e296774c-7244-4a9f-875d-691a1451e5c1,f8ac5075-7cb1-4f9e-a7cb-13546d70a3ac,0a0db274-e01f-48b6-bfbe-a6a25f118c57,Colour is different from the app.
+e2abac43-a183-4055-9034-7c567cc9b877,5dad62de-0a6f-4299-ab58-405fc933af6c,20f640ac-231d-403c-bca8-cb3e2b5f1215,Material is thinner than expected.
+e4bb0e9b-09d3-49c7-8540-bbb39c534bc6,22eb9f6a-c2ec-4b2f-9735-82b2fefb54ee,606b458a-ce40-48e0-99a3-97ad10236edb,Fitting is not comfortable.
+e4bcfd5a-4073-43b7-ad70-d15222c09566,e836cfe7-8dca-498c-8cf2-e46d59269150,a02315a4-1ac1-40ba-9c86-316ec2e5c351,Material is thinner than expected.
+e67cf85c-cab1-4884-b06a-136478277a35,f6c41edd-1f3b-4e7b-bd26-e5befb027da8,217d9940-8704-4c39-a226-0dbfe071efe8,Size is too tight around shoulders.
+e8f1c84e-aec3-4432-a8ac-1731b0538e98,63f569da-cfd6-44a9-8d9a-e78f05b91dc3,50bc60fa-67c4-4aac-80db-f456852607f5,Material is thinner than expected.
+e97ce2a4-6443-4504-b3dc-4dafd4bf7865,b5663db4-02cb-43c1-9c35-92c298329188,5f1e342a-ec06-4881-ab51-9ee00ea4811f,Colour is different from the app.
+ee73c872-6db3-4189-a0f2-77437c8b11cc,96490670-ca50-49fc-8d83-1348af3844a5,6b8f8cbc-25ef-43dd-83c3-bac4a3e5af11,Colour is different from the app.
+ef7af699-518f-49ab-b3f6-08b7603a20d3,e0dc6c89-b261-4e9a-abef-58857910c872,c82a2721-29cf-478a-b4de-b913074b101a,Fabric feels different from expected.
+f095ad7e-83b6-49e8-906d-d9f4296244c9,b9a3378c-8897-41f3-b384-f927e27a06de,69384015-b80c-4a11-8bd3-8453c731e456,Fabric feels different from expected.
+f4b1ff9d-37f8-467b-ba29-f8e3aa78f292,33a0a711-dafc-4761-9a4f-199e81c01047,57cee28b-788f-4c74-984b-2d200d68f020,Fitting is not comfortable.
+f5118f3c-9081-4376-92a9-1f7e55be1ad6,fd44d91b-da5a-4086-832c-8ef8115bd277,945242e5-2b89-4163-845d-abdb116483b4,Material is thinner than expected.
+f5ed4f21-8fc1-42a2-ac5f-4ac8e5d6cc4e,834e0fa2-2a70-4d43-87b5-19503c05fe02,953e3c6e-1345-400f-b4f4-aaceaf82afb2,The length is not as shown.
+f644c73d-af24-4fef-8f82-feb92afaa72d,df58524f-d3df-4f68-abe8-74b02974a481,916375bf-783c-4a5e-9612-ce392ec08af3,Fitting is not comfortable.
+f68a4038-6b65-4eb5-81a4-5544369c6ab4,b558c1ba-c311-41a5-b983-8205eb7619c5,14c343f0-63aa-4467-b7c2-9e053a7aef2b,Colour is different from the app.
+f7aaac9a-be18-4f3b-b052-0cc2aa0a52d7,9f7781a1-c496-4ad0-a84c-97e0f6f1a515,602714ae-e4cc-4aea-887b-72e9157effff,Colour is different from the app.
+f805f1db-6cf0-43a9-9e19-adccaf3f19d3,122300be-105f-4cfd-9c62-745fc5d57e44,d14c6d38-5ad1-4130-a26a-1fd1cc43c6e1,Fabric feels different from expected.
+f8ca18f6-a946-403a-8629-0c9cda0dcc51,d55c77eb-d2c8-4592-b73d-57cf0e2c2446,74bded15-7349-42c9-9c37-5a2206db7e2d,Material is thinner than expected.
+fa6f9a29-f981-42ee-90da-092cbd2a8abf,6a32f009-cf46-438a-9d0d-7432cc7e6014,1d782131-19f6-4aba-ba9b-5447014248be,Colour is different from the app.
+fcdeeebb-bc35-44ba-ac18-a3a8e4108fdb,00c79da0-66be-4f64-80d6-58a6f0ae2bbc,e1092e63-e61e-4781-b6ac-463ff1e7e00f,Material is thinner than expected.
+fdbfb530-5f42-4eaf-bdad-bcc9d99f7931,95baa985-5540-492d-ba04-39a04b1db0e8,bdaf660c-c1cf-4e36-90d9-ee53b706a1b1,The length is not as shown.
+fde6ab17-b162-4f38-8f7b-a7c1d086a9c9,e9bbdb44-506c-4ef6-96c3-f0327b694b68,bd3af58d-d731-4f8b-8517-91ed48c5b1eb,Material is thinner than expected.

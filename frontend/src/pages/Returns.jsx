@@ -1,14 +1,21 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Bar, BarChart, CartesianGrid, Cell, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { ArrowDownUp, Bot, Layers, MessageSquareText, Package, PackageX, RotateCcw, Scale, TriangleAlert } from "lucide-react";
+import { ArrowDownUp, Bot, Check, Layers, LoaderCircle, MessageSquareText, Package, PackageX, RotateCcw, Scale, Sparkles, TriangleAlert, UserRound } from "lucide-react";
 import { api } from "../api.js";
 import { label, num, pct, useApi } from "../useApi.js";
-import { ChartTip, CloseButton, ErrorBox, HBars, Overlay, Panel, Skeleton, Stat } from "../components/ui.jsx";
+import { ChartTip, CloseButton, Empty, ErrorBox, HBars, Overlay, Panel, Skeleton, Stat } from "../components/ui.jsx";
+import { useToast } from "../components/Toast.jsx";
 
 const DIMENSIONS = [["size", "Size"], ["colour", "Colour"], ["category", "Category"], ["product_id", "Product"]];
 
+const CATEGORIES = ["FIT", "COLOUR", "QUALITY", "DAMAGE", "WRONG_ITEM", "CHANGED_MIND", "UNCLEAR"];
+const reasonText = (k) => ({ UNCLASSIFIED: "Unclassified (Other)", UNSPECIFIED: "No reason given", WRONG_ITEM: "Wrong item",
+  CHANGED_MIND: "Changed mind" }[k] ?? label(k));
+const detailText = (sub) => (sub ? sub.split(":").map(label).join(" · ") : "");
+
 export default function Returns() {
+  const toast = useToast();
   const [params, setParams] = useSearchParams();
   const segmentId = params.get("segment");
   const [by, setBy] = useState("size");
@@ -18,37 +25,45 @@ export default function Returns() {
   const reasons = useApi(() => api.returnsReasons(), []);
   const breakdown = useApi(() => api.returnsBreakdown(by), [by]);
   const products = useApi(() => api.returnsProducts(), []);
+  const queue = useApi(() => api.returnsReviewQueue(), []);
+  const refreshAll = () => [summary, insights, reasons, breakdown, products, queue].forEach((x) => x.reload());
 
   const s = summary.data;
   const baseline = s?.return_rate ?? 0;
   const segment = insights.data?.find((i) => i.insight_id === segmentId);
+  const minReturns = s?.data_source === "supabase" ? 8 : 15;
 
   const reasonRows = useMemo(() => {
     const totals = {};
     (reasons.data ?? []).forEach((r) => { totals[r.primary_reason] = (totals[r.primary_reason] ?? 0) + r.count; });
     return Object.entries(totals).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({
-      label: k === "UNCLASSIFIED" ? "Unclassified (Other)" : k === "UNSPECIFIED" ? "No reason given" : label(k),
-      value: v, tone: k === "UNCLASSIFIED" || k === "UNSPECIFIED" ? "muted" : "",
+      label: reasonText(k), value: v, tone: ["UNCLASSIFIED", "UNSPECIFIED", "UNCLEAR"].includes(k) ? "muted" : "",
     }));
   }, [reasons.data]);
 
   const chartRows = useMemo(() => {
-    const names = Object.fromEntries((products.data ?? []).map((p) => [p.product_id, p.product_name]));
+    const names = Object.fromEntries((products.data ?? []).map((p) => [p.product_id, p.sku ?? p.product_name]));
     return (breakdown.data ?? []).map((r) => ({ ...r, name: by === "product_id" ? names[r.product_id] ?? r.product_id : r[by] }));
   }, [breakdown.data, products.data, by]);
+
+  const explained = s ? s.ai_classified + s.human_reviewed : 0;
 
   return (
     <div className="grid">
       <div className="grid stats">
         <Stat label="Return rate" value={pct(s?.return_rate)} sub={s ? `${num(s.total_returns)} returns · ${num(s.total_orders)} orders` : ""} icon={RotateCcw} tone="red" loading={summary.loading} />
-        <Stat label='Marked "Other"' value={pct(s?.other_share, 0)} sub="Dropdown gives no real reason" icon={MessageSquareText} tone="amber" loading={summary.loading} />
-        <Stat label="Waiting for AI" value={num(s?.other_with_comment)} sub={`${num(s?.other_without_comment)} more have no comment at all`} icon={Bot} tone="pink" loading={summary.loading} />
-        <Stat label="Flagged segments" value={num(insights.data?.length)} sub="≥1.5× the shop average, ≥15 returns" icon={TriangleAlert} tone="violet" loading={insights.loading} />
+        <Stat label='Marked "Other"' value={pct(s?.other_share, 0)} sub="The dropdown gives no real reason" icon={MessageSquareText} tone="amber" loading={summary.loading} />
+        <Stat label='"Other" explained' value={s ? `${num(explained)} / ${num(s.other_with_comment)}` : "–"} sub={s ? `${num(s.other_pending)} still waiting for AI` : ""} icon={Bot} tone="green" loading={summary.loading} />
+        <Stat label="Needs a person" value={num(s?.needs_review)} sub={s ? `${num(s.human_reviewed)} already reviewed` : ""} icon={UserRound} tone="pink" loading={summary.loading} />
+        <Stat label="Flagged segments" value={num(insights.data?.length)} sub={`≥1.5× the shop average, ≥${minReturns} returns`} icon={TriangleAlert} tone="violet" loading={insights.loading} />
       </div>
+
+      <ClassifyPanel s={s} queue={queue} onChanged={refreshAll} toast={toast} />
 
       <Panel icon={TriangleAlert} title="Flagged segments" subtitle="Click a card to see the reason mix and what customers wrote">
         {insights.loading ? <Skeleton rows={2} height={90} />
           : insights.error ? <ErrorBox error={insights.error} onRetry={insights.reload} />
+          : insights.data.length === 0 ? <Empty title="Nothing flagged">No product, size or colour is returned unusually often.</Empty>
           : (
             <div className="grid three">
               {insights.data.map((i) => (
@@ -58,14 +73,14 @@ export default function Returns() {
                     <span className="lift">{i.lift}×</span>
                   </div>
                   <div className="row muted" style={{ fontSize: 12.5 }}>
-                    <span>{Object.entries(i.segment).map(([k, v]) => `${label(k)} ${v}`).join(", ") || "Whole product"}</span>
+                    <span>{Object.entries(i.segment).map(([k, v]) => `${label(k)} ${v}`).join(", ") || "Whole product"}{i.sku ? ` · ${i.sku}` : ""}</span>
                     <span>{i.returns}/{i.orders} returned</span>
                   </div>
                   <HBars rows={[{ label: "This segment", value: i.return_rate, tone: "pink" }, { label: "Shop average", value: i.baseline_rate, tone: "muted" }]}
                     max={Math.max(i.return_rate, i.baseline_rate) * 1.1} format={(v) => pct(v)} />
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {topReason(i) && <span className="pill violet">Mostly {reasonText(topReason(i)).toLowerCase()}</span>}
                     <span className="pill grey">{pct(i.unclassified_share, 0)} unclassified</span>
-                    <span className="pill violet">{label(i.dimension)}</span>
                   </div>
                 </button>
               ))}
@@ -87,7 +102,7 @@ export default function Returns() {
                 <ResponsiveContainer>
                   <BarChart data={chartRows} margin={{ top: 10, right: 10, bottom: by === "product_id" || by === "category" ? 50 : 10 }}>
                     <CartesianGrid vertical={false} />
-                    <XAxis dataKey="name" interval={0} angle={by === "product_id" || by === "category" ? -30 : 0} textAnchor={by === "product_id" || by === "category" ? "end" : "middle"} height={by === "product_id" || by === "category" ? 60 : 30} />
+                    <XAxis dataKey="name" interval={by === "product_id" ? "preserveStartEnd" : 0} angle={by === "product_id" || by === "category" ? -30 : 0} textAnchor={by === "product_id" || by === "category" ? "end" : "middle"} height={by === "product_id" || by === "category" ? 60 : 30} />
                     <YAxis tickFormatter={(v) => `${Math.round(v * 100)}%`} width={42} />
                     <Tooltip cursor={{ fill: "rgba(255,255,255,.04)" }} content={<ChartTip render={(p) => <><b>{p.name}</b>{pct(p.return_rate)} returned · {num(p.returns)} of {num(p.orders)}</>} />} />
                     <ReferenceLine y={baseline} stroke="#f5b84a" strokeDasharray="5 4" />
@@ -100,20 +115,110 @@ export default function Returns() {
             )}
         </Panel>
 
-        <Panel icon={Layers} title="Why products come back" subtitle="Grey bars have no usable reason yet">
+        <Panel icon={Layers} title="Why products come back" subtitle="Grey bars have no usable reason">
           {reasons.loading ? <Skeleton rows={6} />
             : reasons.error ? <ErrorBox error={reasons.error} onRetry={reasons.reload} />
             : <HBars rows={reasonRows} />}
           <p className="muted" style={{ margin: "14px 0 0", fontSize: 12.5 }}>
-            Stage 2 will have Claude read the "Other" comments and move most of the top bar into real reasons.
+            {s?.other_pending ? `${num(s.other_pending)} "Other" comments are still unclassified. Classify them above to turn the top bar into real reasons.`
+              : `Every "Other" comment now has a reason, from AI or a person. Fit, colour and quality are what listing fixes can prevent.`}
           </p>
         </Panel>
       </div>
 
       <ProductTable products={products} />
 
-      {segment && <SegmentDrawer segment={segment} onClose={() => setParams({})} />}
+      {segment && <SegmentDrawer segment={segment} onClose={() => setParams({})} onChanged={refreshAll} toast={toast} />}
     </div>
+  );
+}
+
+function topReason(i) {
+  const known = Object.entries(i.reason_breakdown).filter(([k]) => !["UNCLASSIFIED", "UNSPECIFIED", "UNCLEAR"].includes(k));
+  return known.sort((a, b) => b[1] - a[1])[0]?.[0];
+}
+
+function ReviewControls({ returnId, aiCategory, onChanged, toast }) {
+  const [busy, setBusy] = useState(false);
+  const [pick, setPick] = useState(aiCategory ?? "FIT");
+  async function send(category) {
+    setBusy(true);
+    try {
+      const r = await api.returnsReview(returnId, category);
+      toast(r.action === "accepted" ? "Reason accepted" : `Corrected to ${reasonText(category)}`);
+      onChanged();
+    } catch (e) {
+      toast(e.message, "bad");
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+      {aiCategory && <button className="btn sm good" disabled={busy} onClick={() => send(aiCategory)}><Check size={13} /> Accept</button>}
+      <select className="select" style={{ padding: "4px 8px", fontSize: 12 }} value={pick} onChange={(e) => setPick(e.target.value)} aria-label="Correct reason">
+        {CATEGORIES.map((c) => <option key={c} value={c}>{reasonText(c)}</option>)}
+      </select>
+      <button className="btn sm" disabled={busy || pick === aiCategory} onClick={() => send(pick)}>Correct</button>
+    </div>
+  );
+}
+
+function ClassifyPanel({ s, queue, onChanged, toast }) {
+  const [running, setRunning] = useState(false);
+  const [error, setError] = useState(null);
+  const pending = s?.other_pending ?? 0;
+
+  async function run() {
+    setRunning(true);
+    setError(null);
+    try {
+      const r = await api.returnsClassify({ limit: 300 });
+      toast(r.classified ? `${r.classified} comments classified for $${r.cost_usd.toFixed(3)} · ${r.needs_review} need a person` : r.message);
+      onChanged();
+    } catch (e) {
+      setError(e);
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  return (
+    <Panel icon={Bot} title='Explain the "Other" returns'
+      subtitle="Claude Haiku reads each comment (many at once) and picks a real reason. Unsure or vague ones go to a person."
+      actions={<button className="btn hot" disabled={!s || running || pending === 0} onClick={run}>
+        <Sparkles size={15} /> {running ? "Classifying…" : pending ? `Classify ${num(pending)} comments with AI` : "All comments classified"}
+      </button>}>
+      <div style={{ display: "grid", gap: 14 }}>
+        {running && (
+          <div className="callout violet"><LoaderCircle size={18} style={{ animation: "spin .8s linear infinite" }} />
+            <p><b>Reading {num(pending)} comments in parallel</b>This takes about a minute and costs about ${(pending * 0.00105).toFixed(2)}.</p></div>
+        )}
+        {error && <ErrorBox error={error} onRetry={run} />}
+        <div className="muted" style={{ fontSize: 12.5, fontWeight: 600 }}>Waiting for a person ({num(queue.data?.length ?? 0)})</div>
+        {queue.loading ? <Skeleton rows={3} height={40} />
+          : queue.error ? <ErrorBox error={queue.error} onRetry={queue.reload} />
+          : queue.data.length === 0 ? <p className="muted" style={{ margin: 0 }}>Nothing to review. Low-confidence or vague AI reasons appear here.</p>
+          : (
+            <div className="table-wrap">
+              <table className="t">
+                <thead><tr><th>Customer wrote</th><th>Product</th><th>AI reason</th><th className="num">Confidence</th><th>Your call</th></tr></thead>
+                <tbody>
+                  {queue.data.slice(0, 12).map((q) => (
+                    <tr key={q.return_id}>
+                      <td>“{q.return_comment}”</td>
+                      <td className="muted">{q.product_name} · {q.size}</td>
+                      <td><span className="pill amber">{reasonText(q.ai_category)}</span> <span className="muted" style={{ fontSize: 12 }}>{detailText(q.ai_subcategory)}</span></td>
+                      <td className="num">{pct(q.ai_confidence, 0)}</td>
+                      <td><ReviewControls returnId={q.return_id} aiCategory={q.ai_category} onChanged={onChanged} toast={toast} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+      </div>
+    </Panel>
   );
 }
 
@@ -146,7 +251,7 @@ function ProductTable({ products }) {
               <tbody>
                 {rows.map((p) => (
                   <tr key={p.product_id}>
-                    <td><b>{p.product_name}</b> <span className="dim mono">{p.product_id}</span></td>
+                    <td><b>{p.product_name}</b> <span className="dim mono">{p.sku ?? p.product_id}</span></td>
                     <td className="muted">{p.category}</td>
                     <td className="num">{num(p.orders)}</td>
                     <td className="num">{num(p.returns)}</td>
@@ -162,37 +267,50 @@ function ProductTable({ products }) {
   );
 }
 
-function SegmentDrawer({ segment: i, onClose }) {
+const SOURCE_PILL = { ai: ["AI", "violet"], ai_review: ["AI · check", "amber"], human: ["Reviewed", "green"], pending_llm: ["Not classified", "grey"] };
+
+function SegmentDrawer({ segment: i, onClose, onChanged, toast }) {
   const mix = Object.entries(i.reason_breakdown).map(([k, v]) => ({
-    label: k === "UNCLASSIFIED" ? "Unclassified" : label(k), value: v, tone: k === "UNCLASSIFIED" ? "muted" : "",
+    label: reasonText(k), value: v, tone: ["UNCLASSIFIED", "UNCLEAR"].includes(k) ? "muted" : "",
   }));
   const seg = Object.entries(i.segment).map(([k, v]) => `${label(k)} ${v}`).join(", ") || "Whole product";
+  const samples = i.sample_returns ?? i.sample_comments.map((c) => ({ comment: c, source: "pending_llm" }));
   return (
     <Overlay onClose={onClose} labelledBy="seg-title">
       <div className="dhead">
         <div>
           <span className="pill pink">{i.lift}× the shop average</span>
           <h2 id="seg-title" style={{ marginTop: 8 }}>{i.product_name} · {seg}</h2>
-          <p className="muted" style={{ margin: "4px 0 0" }}>{i.returns} of {i.orders} orders returned ({pct(i.return_rate)}) against a shop average of {pct(i.baseline_rate)}.</p>
+          <p className="muted" style={{ margin: "4px 0 0" }}>{i.sku ? `${i.sku} · ` : ""}{i.returns} of {i.orders} orders returned ({pct(i.return_rate)}) against a shop average of {pct(i.baseline_rate)}.</p>
         </div>
         <CloseButton onClick={onClose} />
       </div>
-      <Panel icon={Layers} title="Known reasons">
+      <Panel icon={Layers} title="Why these come back" subtitle="Dropdown reasons plus AI-read and reviewed comments">
         <HBars rows={mix} />
       </Panel>
-      <Panel icon={MessageSquareText} title="What customers wrote" subtitle='Sample "Other" comments for this segment'>
-        <div style={{ display: "grid", gap: 8 }}>
-          {i.sample_comments.length
-            ? i.sample_comments.map((c, n) => <div className="quote" key={n}>“{c}”</div>)
-            : <span className="muted">No comments for this segment.</span>}
+      <Panel icon={MessageSquareText} title="What customers wrote" subtitle='"Other" comments and the reason given to each'>
+        <div style={{ display: "grid", gap: 10 }}>
+          {samples.length ? samples.map((x, n) => {
+            const [txt, tone] = SOURCE_PILL[x.source] ?? ["", "grey"];
+            return (
+              <div className="quote" key={x.return_id ?? n} style={{ display: "grid", gap: 8 }}>
+                <span>“{x.comment}”</span>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+                  {x.source !== "pending_llm" && <span className="pill violet">{reasonText(x.reason)}</span>}
+                  {(x.detail || x.body_area) && <span className="muted" style={{ fontSize: 12 }}>{[x.detail, x.body_area].filter(Boolean).map(label).join(" · ")}</span>}
+                  <span className={`pill ${tone}`}>{txt}</span>
+                </div>
+                {x.return_id && x.source !== "pending_llm" && x.source !== "human" &&
+                  <ReviewControls returnId={x.return_id} aiCategory={x.reason} onChanged={onChanged} toast={toast} />}
+              </div>
+            );
+          }) : <span className="muted">No comments for this segment.</span>}
         </div>
       </Panel>
-      <div className="callout violet">
-        <PackageX size={18} />
-        <p><b>{pct(i.unclassified_share, 0)} of these returns have no real reason yet</b>
-          AI classification of "Other" comments arrives in stage 2. It will turn comments like these into categories such as Fit → Too tight → Shoulders.</p>
-      </div>
-      <button className="btn" disabled title="Coming in stage 2"><Bot size={15} /> Classify comments with AI</button>
+      {i.unclassified_share > 0 && (
+        <div className="callout amber"><PackageX size={18} />
+          <p><b>{pct(i.unclassified_share, 0)} of these returns still have no real reason</b>Use "Classify with AI" on the Returns page to read them.</p></div>
+      )}
     </Overlay>
   );
 }

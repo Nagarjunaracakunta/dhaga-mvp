@@ -24,7 +24,7 @@ Both arrive in free text, often Hinglish (§02, §06). Repeat purchase has been 
 | | Measure | Their data | Proposed target, to agree with the owner |
 |---|---|---|---|
 | Support | First response on "where is my order" tickets | Freshdesk created vs first-reply times | Under 1 hour during a 2-week pilot, with no lost-parcel, damage or RTO ticket answered without a person |
-| Returns | Share of returns with a usable reason | Returns table | Down from 44% unexplained to under 10% for pilot categories (needs the comment classifier, our next build step) |
+| Returns | Share of returns with a usable reason | Returns table | Down from 44% unexplained to under 10% for pilot categories |
 | Returns | Return rate of a flagged product, size or colour after its listing is fixed | Orders + returns | Lower than unchanged products over 6 weeks |
 
 **6. Ranked shortlist** (H = high, M = medium, L = low)

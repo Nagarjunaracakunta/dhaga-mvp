@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { CircleCheck, Filter, Search, ShieldCheck } from "lucide-react";
+import { CircleCheck, Filter, Search, ShieldCheck, TriangleAlert } from "lucide-react";
 import { api } from "../api.js";
 import { label, num, useApi } from "../useApi.js";
 import { Empty, ErrorBox, HBars, Panel, Skeleton, Stat } from "../components/ui.jsx";
@@ -40,6 +40,13 @@ export default function DataQuality() {
         <Stat label="Raw returns" value={num(s?.raw_returns)} sub={`${num(s?.total_returns)} kept after cleaning`} icon={ShieldCheck} tone="cyan" loading={summary.loading} />
         <Stat label="Rejected rows" value={num(s?.rejected_records)} sub="Each with exactly one reason" icon={Filter} tone="amber" loading={summary.loading} />
       </div>
+
+      {s?.data_warnings?.length > 0 && (
+        <div className="callout amber" role="alert">
+          <TriangleAlert size={18} />
+          <p><b>Kept, but worth knowing</b>{s.data_warnings.join(" · ")}</p>
+        </div>
+      )}
 
       <div className="grid two">
         <Panel icon={Filter} title="Why rows were rejected" subtitle="Click a reason to filter the table">

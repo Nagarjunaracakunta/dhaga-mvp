@@ -35,7 +35,8 @@ def reason_counts(returns: pd.DataFrame, by: list = None) -> pd.DataFrame:
 
 
 def product_table(orders: pd.DataFrame, returns: pd.DataFrame) -> pd.DataFrame:
-    base = by_dimension(orders, returns, ["product_id", "product_name", "category"])
+    cols = ["product_id", "product_name", "category"] + (["sku"] if "sku" in orders.columns and "sku" in returns.columns else [])
+    base = by_dimension(orders, returns, cols)
     pivot = (returns.groupby(["product_id", "primary_reason"]).size()
              .unstack(fill_value=0).add_prefix("n_").reset_index())
     return base.merge(pivot, on="product_id", how="left").fillna(0)

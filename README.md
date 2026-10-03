@@ -13,7 +13,8 @@ short_description: CX Copilot and Returns Insights for Dhaga & Co.
 
 Two modules in one FastAPI app:
 
-- **Returns Insights** (`/api/returns/*`): cleans returns data, computes return rates, flags problem segments. Rules only.
+- **Returns Insights** (`/api/returns/*`): cleans returns data, computes return rates, flags problem segments, and
+  classifies "Other" return comments with Claude (low-confidence ones go to a person to accept or correct).
 - **CX Copilot** (`/api/cx/*`): classifies a support ticket, finds the order, applies rules, drafts a reply from facts + policy, checks it, and waits for an agent to approve.
 
 See `docs/dhaga-mvp-guide.html` for the full plan.
@@ -26,6 +27,8 @@ pytest -q                                   # tests (no keys needed)
 uvicorn backend.main:app --reload           # API docs at http://127.0.0.1:8000/docs
 python -m backend.modules.returns.pipeline  # Returns console report, writes data/processed/
 python scripts/generate_demo_data.py        # regenerate Returns demo CSVs (seeded)
+python evals/intent_eval.py                 # CX intent accuracy (~$0.07)
+python evals/returns_eval.py                # Returns classifier accuracy (free, reads saved results)
 ```
 
 ## Frontend (React + Vite)

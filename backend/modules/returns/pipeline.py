@@ -1,7 +1,11 @@
-"""Orchestrates the no-AI pipeline: ingest -> validate -> normalize -> aggregate -> insights."""
+"""Orchestrates the pipeline: ingest -> validate -> normalize -> apply saved AI reasons -> aggregate -> insights.
+
+Data comes from the demo CSVs (source="csv") or the live Supabase tables (source="supabase").
+"""
 from dataclasses import dataclass
 import pandas as pd
 from . import config, ingestion, validation, normalization, aggregation, insights
+from .classifier import apply_classifications
 
 
 @dataclass
@@ -14,18 +18,28 @@ class PipelineResult:
     candidate_insights: list
 
 
-def run_pipeline(data_dir=config.DATA_DIR) -> PipelineResult:
-    products = ingestion.load_products(data_dir)
-    orders_raw = ingestion.load_orders(data_dir)
-    returns_raw = ingestion.load_returns(data_dir)
+def run_pipeline(data_dir=config.DATA_DIR, source: str = "csv", store=None) -> PipelineResult:
+    if source == "supabase":
+        from . import supabase_loader
+        products, orders_raw, returns_raw = (supabase_loader.load_products(), supabase_loader.load_orders(),
+                                             supabase_loader.load_returns())
+        min_returns = config.MIN_RETURNS_FOR_INSIGHT_SUPABASE
+    else:
+        products = ingestion.load_products(data_dir)
+        orders_raw = ingestion.load_orders(data_dir)
+        returns_raw = ingestion.load_returns(data_dir)
+        min_returns = config.MIN_RETURNS_FOR_INSIGHT
 
     orders, rej_o1 = validation.validate_orders(orders_raw, products)
     orders, rej_o2 = normalization.normalize_orders(orders)
     returns, rej_r1 = validation.validate_returns(returns_raw, orders, products)
     returns, rej_r2 = normalization.normalize_returns(returns)
+    if store is not None:
+        returns = store.overlay(returns)
+    returns = apply_classifications(returns)
 
     # Catalogue is the source of truth for product name / category
-    cat = products[["product_id", "product_name", "category"]]
+    cat = products[[c for c in ["product_id", "product_name", "category", "sku"] if c in products.columns]]
     orders = orders.merge(cat, on="product_id", how="left")
     returns = returns.drop(columns=["product_name", "category"]).merge(cat, on="product_id", how="left")
 
@@ -34,7 +48,22 @@ def run_pipeline(data_dir=config.DATA_DIR) -> PipelineResult:
     summary["raw_orders"] = len(orders_raw)
     summary["raw_returns"] = len(returns_raw)
     summary["rejected_records"] = len(rejected)
-    found = insights.find_candidate_insights(orders, returns)
+    src = returns["classification_source"]
+    summary["other_with_comment"] = int(src.isin(["pending_llm", "ai", "ai_review", "human"]).sum())
+    summary["other_pending"] = int((src == "pending_llm").sum())
+    summary["ai_classified"] = int(src.isin(["ai", "ai_review"]).sum())
+    summary["needs_review"] = int((src == "ai_review").sum())
+    summary["human_reviewed"] = int((src == "human").sum())
+    summary["data_source"] = source
+    warnings = []
+    if "order_status" in orders.columns:  # live data only
+        status = returns["order_id"].map(orders.set_index("order_id")["order_status"])
+        undelivered = int((status != "DELIVERED").sum())
+        if undelivered:
+            warnings.append(f"{undelivered} returns belong to orders that were never delivered "
+                            "(a problem in the synthetic data; kept, not rejected)")
+    summary["data_warnings"] = warnings
+    found = insights.find_candidate_insights(orders, returns, min_returns=min_returns)
     return PipelineResult(products, orders, returns, rejected, summary, found)
 
 

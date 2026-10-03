@@ -25,6 +25,8 @@ class Settings(BaseSettings):
 
     # ---- Data source for CX: "supabase", "demo", or "auto" (supabase if configured) ----
     cx_data_source: str = "auto"
+    # Data source for Returns: "supabase", "csv" (demo files in data/), or "auto" (supabase if configured)
+    returns_data_source: str = "auto"
     # Pretend today is this date when computing delays (useful with synthetic data)
     cx_today: Optional[date] = None
 
@@ -62,6 +64,12 @@ class Settings(BaseSettings):
     @property
     def llm_configured(self) -> bool:
         return self.llm_provider is not None
+
+    @property
+    def returns_mode(self) -> str:
+        if self.returns_data_source == "auto":
+            return "supabase" if self.supabase_configured else "csv"
+        return self.returns_data_source
 
     @property
     def cx_mode(self) -> str:

@@ -49,4 +49,8 @@ export const api = {
   returnsBreakdown: (by) => request("/api/returns/breakdown", { params: { by } }),
   returnsReasons: () => request("/api/returns/reasons"),
   returnsRejected: () => request("/api/returns/rejected"),
+  returnsClassify: (body = {}) => request("/api/returns/classify", { method: "POST", body }),
+  returnsReviewQueue: (params) => request("/api/returns/review-queue", { params }),
+  returnsReview: (returnId, category) =>
+    request(`/api/returns/${encodeURIComponent(returnId)}/review`, { method: "POST", body: { category } }),
 };

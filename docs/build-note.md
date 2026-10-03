@@ -1,4 +1,4 @@
-# Build Note: CX Copilot
+# Build Note: CX Copilot and Returns Insights
 
 **What it does:** an agent opens a support ticket. Copilot works out what the customer wants, looks up their order, applies Dhaga's rules, and drafts a reply that cites only real order facts and the matching policy. The agent approves, edits or rejects it. Nothing reaches a customer without an agent.
 
@@ -67,6 +67,22 @@ A redraft adds about $0.0094 for that ticket. 82% of the cost is the Opus draft.
 
 **Read this carefully.** The tickets come from templates, so they are easier than real customer text. 0 errors in 70 means the true error rate is probably below about 4%, not that it is zero. Before go-live we would score 200 real Freshdesk tickets labelled by Arpita's team. The keyword baseline shows why a model earns its place here: rules alone would auto-draft 99 tickets that needed a person.
 
+## Returns: explaining the "Other" box
+
+Returns runs on the same Supabase data: 563 returns, 216 of them "Other" with a comment.
+
+| # | Step | Code or model | Model / temperature | Why |
+|---|---|---|---|---|
+| 1 | Load returns with their order item, product, size and colour; validate; map dropdown reasons | Code | – | Lookup and rules; 0 rows rejected |
+| 2 | Read each "Other" comment and pick a reason, detail and body area (Fit → too tight → shoulders) | **Model** | Claude Haiku 4.5, **temperature 0** | Hinglish free text. Same reason list as the dropdown, so results add up. |
+| 3 | Confidence below 0.70, or "unclear" → a person decides | Code | – | A fixed, auditable rule |
+| 4 | Accept or correct | **Human** (Neha's team) | – | The final call on anything uncertain |
+| 5 | Return rate per product, size and colour; flag ≥1.5× the shop average with ≥8 returns | Code | – | Arithmetic |
+
+**Parallelization** (step 2): each comment is independent, so 8 run at once. All 216 took 50 seconds instead of about 6 minutes one by one. *Without it*, a classify run is too slow to press in front of a category manager.
+
+**Cost and accuracy** (measured 3 October 2026): $0.226 for 216 comments ≈ **$0.00105 each**. At Dhaga's volume, about 6,550 unexplained returns a week (48,000 × 31% × 44%, calc) × $0.00105 ≈ **$6.90 a week** ≈ ₹590. Scored against the known reason for each generated comment (`python evals/returns_eval.py`): **215 of 216 correct**. The one miss ("funtion cancel ho gaya", a typo) had low confidence and went to a person: **0 wrong answers skipped review**. Body area was right for 105 of 105 fit comments. The same caveat applies as for tickets: generated text is easier than real text.
+
 ## What broke that we did not expect
 
 1. **The deploy was green, but the app was down.** The GitHub Action that syncs to Hugging Face passed every time, yet the Space sat in `CONFIG_ERROR`: the Space reads its settings (SDK, port) from a header in `README.md`, and ours had none. We only found it by checking the Space's status, not the pipeline. *Lesson: check the live URL, not the build log.*
@@ -77,6 +93,8 @@ A redraft adds about $0.0094 for that ticket. 82% of the cost is the Opus draft.
 3. **"Stated temperatures" wasn't possible as written.** Opus 5.5 rejects a temperature setting, and the current Anthropic SDK has dropped the parameter. We state the choice above instead of claiming a temperature we can't set.
 
 4. **The cost measurement found a safety bug.** "I received a damaged product" was classified as a return and got a draft, but Dhaga's escalation SOP sends damage to Tier 2. We added a `DAMAGED_OR_WRONG_ITEM` intent with a Tier 2 rule; it now scores 10/10 in the eval.
+
+5. **The returns data contradicts itself.** 290 of 563 returns belong to orders that were never delivered, the comments had 6 distinct texts, and two products share one name. We keep the returns but show a data-quality warning, regenerated the comments with known reasons, and show SKUs next to names.
 
 **Known gaps:**
 - **Order dates:** many in-transit orders in the synthetic data are months past their expected date, so drafts mention very long delays (set `CX_TODAY` for demos).

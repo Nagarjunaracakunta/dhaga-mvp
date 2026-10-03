@@ -39,6 +39,7 @@ def health():
         "status": "ok" if db_ok and not issues else "degraded",
         "setup_issues": issues,
         "cx_data_source": s.cx_mode,
+        "returns_data_source": s.returns_mode,
         "database_reachable": db_ok,
         "llm_configured": s.llm_configured,
         "llm_provider": s.llm_provider,

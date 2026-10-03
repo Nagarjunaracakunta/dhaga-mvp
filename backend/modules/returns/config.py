@@ -52,11 +52,18 @@ DROPDOWN_REASON_MAP = {
     "damaged product": ("DAMAGE", "UNSPECIFIED"),
     "wrong item received": ("WRONG_ITEM", "UNSPECIFIED"),
     "changed my mind": ("CHANGED_MIND", "UNSPECIFIED"),
+    # Dropdown values as stored in the live Supabase returns table
+    "size/fit": ("FIT", "UNSPECIFIED"),
+    "colour mismatch": ("COLOUR", "LISTING_DIFFERENCE"),
+    "quality": ("QUALITY", "UNSPECIFIED"),
+    "damaged": ("DAMAGE", "UNSPECIFIED"),
+    "wrong item": ("WRONG_ITEM", "UNSPECIFIED"),
 }
 OTHER_REASON = "other"
 
 # ---- Insight thresholds ----
-MIN_RETURNS_FOR_INSIGHT = 15   # don't flag tiny samples
+MIN_RETURNS_FOR_INSIGHT = 15   # don't flag tiny samples (demo CSVs: ~450 returns)
+MIN_RETURNS_FOR_INSIGHT_SUPABASE = 8   # live data is smaller: 563 returns over 100 products
 LIFT_THRESHOLD = 1.5           # cell return rate must be >= 1.5x the overall rate
 PARENT_LIFT_THRESHOLD = 1.4    # a size/colour cell must beat its own product's rate by this much
 MAX_SAMPLE_COMMENTS = 5
