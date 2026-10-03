@@ -1,69 +1,62 @@
-"""Thin FastAPI layer over the pipeline. Run: uvicorn backend.main:app --reload"""
-import json
-from fastapi import FastAPI, Query
+"""Dhaga Workbench API. Run: uvicorn backend.main:app --reload  (docs at /docs)
+
+Modules never import each other; they only use backend.shared. That keeps the later split into
+separate services a matter of moving folders.
+"""
+import logging
+
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from . import aggregation
-from .pipeline import run_pipeline
-from typing import Optional
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title="Dhaga Returns Insights (no-AI baseline)")
+from backend.modules.cx import service as cx_service
+from backend.modules.cx.router import router as cx_router
+from backend.modules.returns.router import router as returns_router
+from backend.shared.errors import AppError, NotFound, install_error_handlers
+from backend.shared.settings import ROOT, get_settings
+
+logging.basicConfig(level=logging.INFO)
+
+app = FastAPI(title="Dhaga Workbench API")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-_cache = {}
+install_error_handlers(app)
+
+app.include_router(returns_router, prefix="/api/returns")
+app.include_router(cx_router, prefix="/api/cx")
 
 
-def _result(refresh: bool = False):
-    if refresh or "res" not in _cache:
-        _cache["res"] = run_pipeline()
-    return _cache["res"]
+@app.get("/api/health", tags=["health"])
+def health():
+    s = get_settings()
+    try:
+        deps = cx_service.get_deps()
+        db_ok, policies = deps.repo.ping(), sorted(deps.kb.policies())
+        issues = deps.repo.setup_issues() if db_ok else []
+    except AppError as e:
+        db_ok, policies, issues = False, [], [e.message]
+    return {
+        "status": "ok" if db_ok and not issues else "degraded",
+        "setup_issues": issues,
+        "cx_data_source": s.cx_mode,
+        "database_reachable": db_ok,
+        "llm_configured": s.llm_configured,
+        "models": {"fast": s.model_fast, "strong": s.model_strong},
+        "policies_loaded": policies,
+    }
 
 
-def _records(df):
-    return json.loads(df.to_json(orient="records", date_format="iso"))
+# ---- Frontend: serve the built React app (frontend/dist) when it exists ----
+FRONTEND_DIST = ROOT / "frontend" / "dist"
 
+if FRONTEND_DIST.exists():
+    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST / "assets"), name="assets")
 
-@app.get("/api/summary")
-def summary(refresh: bool = False):
-    return _result(refresh).summary
-
-
-@app.get("/api/products")
-def products():
-    r = _result()
-    return _records(aggregation.product_table(r.orders, r.returns))
-
-
-@app.get("/api/breakdown")
-def breakdown(by: str = Query("size", pattern="^(size|colour|category|product_id)$")):
-    r = _result()
-    return _records(aggregation.by_dimension(r.orders, r.returns, [by]))
-
-
-@app.get("/api/reasons")
-def reasons(product_id: Optional[str] = None):
-    r = _result()
-    df = r.returns if not product_id else r.returns[r.returns["product_id"] == product_id]
-    return _records(aggregation.reason_counts(df))
-
-
-@app.get("/api/insights")
-def candidate_insights():
-    return _result().candidate_insights
-
-
-@app.get("/api/returns")
-def returns(
-    needs_llm: Optional[bool] = None,
-    product_id: Optional[str] = None,
-    limit: int = 100
-):
-    df = _result().returns
-    if needs_llm is not None:
-        df = df[df["needs_llm"] == needs_llm]
-    if product_id:
-        df = df[df["product_id"] == product_id]
-    return _records(df.head(limit))
-
-
-@app.get("/api/rejected")
-def rejected():
-    return _records(_result().rejected)
+    @app.get("/{path:path}", include_in_schema=False)
+    def frontend(path: str):
+        if path.startswith("api/"):
+            raise NotFound("NOT_FOUND", f"No API route /{path}")
+        file = (FRONTEND_DIST / path).resolve()
+        if path and file.is_file() and FRONTEND_DIST.resolve() in file.parents:
+            return FileResponse(file)
+        return FileResponse(FRONTEND_DIST / "index.html")  # React Router handles the URL

@@ -1,0 +1,903 @@
+<title>Dhaga MVP Development Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: long reference document. Sticky contents rail grouped by part; one reading column; wide tables and code scroll inside their own frames. */
+:root {
+  --paper: #f6f7f9;
+  --ink: #1b2233;
+  --muted: #5a6478;
+  --rule: #d9dde6;
+  --panel: #ffffff;
+  --indigo: #2f3f8f;
+  --indigo-soft: #e6e9f6;
+  --madder: #a83a4a;
+  --madder-soft: #f6e4e6;
+  --ok: #2e7a52;
+  --ok-soft: #e2f1e8;
+  --amber: #8a5a00;
+  --amber-soft: #f7ecd6;
+  --code-bg: #eef0f5;
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+    --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+    --ok: #7ccfa1; --ok-soft: #1c3328; --amber: #e8b75c; --amber-soft: #352a16; --code-bg: #1f2431; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+  --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+  --ok: #7ccfa1; --ok-soft: #1c3328; --amber: #e8b75c; --amber-soft: #352a16; --code-bg: #1f2431; color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 56px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 28px 64px; } nav.toc { position: static !important; max-height: none !important; } }
+
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-family: var(--f-display); font-size: 14px; max-height: calc(100vh - 48px); overflow-y: auto; }
+nav.toc .part { margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; color: var(--muted); font-weight: 600; }
+nav.toc .part:first-child { margin-top: 0; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--indigo); text-decoration: underline; }
+@media (max-width: 900px) { nav.toc ol { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); } }
+
+main { min-width: 0; }
+main > * { max-width: 72ch; }
+main > .scroll, main > .grid-stats, main > pre.mermaid, main > pre.code, main > .phases, main > .cards, main > .formula { max-width: none; }
+
+header.top { display: grid; gap: 10px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+.eyebrow { font-family: var(--f-display); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--indigo); font-weight: 600; margin: 0; }
+h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; }
+h1 { font-size: 2.4rem; margin: 0; font-weight: 700; }
+.partlabel { font-family: var(--f-display); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--madder); font-weight: 600; margin: 72px 0 0; padding-top: 18px; border-top: 2px solid var(--ink); }
+h2 { font-size: 1.6rem; margin: 52px 0 12px; font-weight: 600; scroll-margin-top: 24px; }
+.partlabel + h2 { margin-top: 10px; }
+h3 { font-size: 1.15rem; margin: 30px 0 8px; font-weight: 600; scroll-margin-top: 24px; }
+h4 { font-size: 1rem; margin: 20px 0 6px; font-weight: 600; }
+.lede { font-size: 1.15rem; color: var(--muted); margin: 0; }
+.meta { font-family: var(--f-display); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+p { margin: 0 0 14px; }
+ul, ol { padding-left: 1.25em; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+a { color: var(--indigo); }
+code { font-family: var(--f-mono); font-size: .84em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre.code { font-family: var(--f-mono); font-size: 13.5px; line-height: 1.55; background: var(--code-bg); padding: 16px 18px; border-radius: 6px; overflow-x: auto; margin: 0 0 16px; }
+pre.code code { background: none; padding: 0; font-size: inherit; overflow-wrap: normal; }
+.c { color: var(--muted); }
+
+.scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--f-display); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--paper); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td code { white-space: nowrap; }
+
+.pill { display: inline-block; font-family: var(--f-display); font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.code { background: var(--indigo-soft); color: var(--indigo); }
+.pill.model { background: var(--madder-soft); color: var(--madder); }
+.pill.human { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--amber-soft); color: var(--amber); }
+
+.note { border-left: 3px solid var(--indigo); background: var(--indigo-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 0 0 18px; }
+.note.warn { border-left-color: var(--amber); background: var(--amber-soft); }
+.note p:last-child, .note ul:last-child { margin-bottom: 0; }
+.note strong:first-child { font-family: var(--f-display); }
+
+.formula { font-family: var(--f-mono); font-size: 14px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 18px; margin: 0 0 16px; overflow-x: auto; line-height: 1.8; }
+pre.mermaid { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; overflow-x: auto; margin: 0 0 18px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 0 0 18px; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.card h4 { margin: 0; }
+.card p { margin: 0; font-size: 15px; }
+.card .who { font-family: var(--f-display); font-size: 12.5px; color: var(--muted); }
+
+.phases { display: grid; gap: 14px; margin: 0 0 18px; }
+.phase { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 20px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 4px 16px; }
+.phase .n { font-family: var(--f-display); font-weight: 700; font-size: 1.7rem; color: var(--indigo); line-height: 1; grid-row: span 3; font-variant-numeric: tabular-nums; }
+.phase h3 { margin: 0; scroll-margin-top: 24px; }
+.phase .goal { margin: 0; color: var(--muted); font-size: 15.5px; }
+.phase .body { min-width: 0; font-size: 15.5px; }
+.phase .body ul { margin-bottom: 8px; }
+.phase .done { font-family: var(--f-display); font-size: 14px; background: var(--ok-soft); color: var(--ok); padding: 8px 12px; border-radius: 4px; margin: 4px 0 0; }
+.phase .status { font-family: var(--f-display); font-size: 12px; font-weight: 600; margin-left: 8px; }
+@media (max-width: 560px) { .phase { grid-template-columns: minmax(0, 1fr); } .phase .n { grid-row: auto; } }
+
+.decisions { counter-reset: d; list-style: none; padding: 0; display: grid; gap: 10px; }
+.decisions li { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 16px 12px 52px; position: relative; margin: 0; }
+.decisions li::before { counter-increment: d; content: "D" counter(d); position: absolute; left: 14px; top: 12px; font-family: var(--f-display); font-weight: 700; color: var(--madder); }
+
+a:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Contents">
+    <p class="part">Start here</p>
+    <ol>
+      <li><a href="#how">How to use this guide</a></li>
+      <li><a href="#decisions">Decisions to confirm</a></li>
+    </ol>
+    <p class="part">Part A · Product</p>
+    <ol>
+      <li><a href="#prd">1. Product requirements</a></li>
+      <li><a href="#modules">2. The two modules</a></li>
+      <li><a href="#flow">3. One product flow</a></li>
+    </ol>
+    <p class="part">Part B · System</p>
+    <ol>
+      <li><a href="#architecture">4. Architecture and data flow</a></li>
+      <li><a href="#data">5. Data model in Supabase</a></li>
+    </ol>
+    <p class="part">Part C · Build plan</p>
+    <ol>
+      <li><a href="#phases">6. Phased plan</a></li>
+      <li><a href="#cx">7. CX backend in detail</a></li>
+      <li><a href="#frontend">8. Frontend plan</a></li>
+      <li><a href="#api">9. API and integrations</a></li>
+      <li><a href="#structure">10. Folders, tools, coding rules</a></li>
+      <li><a href="#future">11. Splitting into microservices</a></li>
+    </ol>
+    <p class="part">Reference</p>
+    <ol>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="top">
+      <p class="eyebrow">Dhaga &amp; Co. MVP · Team guide</p>
+      <h1>Dhaga MVP Development Guide</h1>
+      <p class="lede">One plan for the whole MVP: what we are building, how the Returns and CX modules fit together, and the order to build them in.</p>
+      <div class="meta"><span>Version 1 · 3 October 2026</span><span>Status: draft for review</span><span>Next step: build the CX backend</span></div>
+    </header>
+
+    <h2 id="how">How to use this guide</h2>
+    <p>Read Part A once so everyone agrees on what we are building. Use Part B when you need to know where something lives. Work through Part C phase by phase. Each phase ends with a "done when" check. Don't start the next phase until that check passes.</p>
+    <p>Throughout the guide, each step is labelled by who does it:</p>
+    <p><span class="pill code">Code</span> deterministic Python: lookups, arithmetic, rules. &nbsp; <span class="pill model">Model</span> a call to Claude, for language and judgement. &nbsp; <span class="pill human">Human</span> an agent or manager decides.</p>
+    <p>A <a href="https://claude.ai/artifact/Bn54tUwNczkrMFwtjZ2PJK">clickable mockup of the web app</a> goes with this guide. Its screens are described in <a href="#frontend">section 8</a>.</p>
+
+    <h2 id="decisions">Decisions to confirm before coding</h2>
+    <p>The guide assumes the defaults below. Each one is cheap to change now and expensive to change later.</p>
+    <ol class="decisions">
+      <li><strong>Supabase schema.</strong> The guide uses the 10-table, UUID-keyed schema from the shared chat. The chat's last message asked for a corrected <code>CREATE TABLE</code> script and has no reply, so the live database may differ. <em>Default:</em> export the live schema in Phase 0 and fix this guide where it differs.</li>
+      <li><strong>Frontend framework.</strong> The repo currently deploys a Streamlit placeholder. <em>Default:</em> replace it with React + Vite, as the chat recommends, served by FastAPI from one Docker container so the Hugging Face deploy keeps working.</li>
+      <li><strong>LangChain.</strong> The chat planned LangChain for orchestration. Our flow is a fixed sequence of three model calls with code in between, which plain Python handles well. <em>Default:</em> call Claude through the official <code>anthropic</code> SDK with Pydantic schemas. Add LangChain only if the course requires it.</li>
+      <li><strong>Returns data source.</strong> The Returns backend reads local demo CSVs (<code>SKU4421</code> and so on). Supabase holds a different dataset (100 products, 2,500 orders, 563 returns). <em>Default:</em> add a Supabase loader so one database feeds both modules, and keep the CSVs for tests.</li>
+      <li><strong>Models.</strong> <em>Default:</em> Claude Haiku 4.5 (<code>claude-haiku-4-5</code>) to classify and check, and Claude Opus 5.5 (<code>claude-opus-5-5</code>) to write replies. See <a href="#cx-models">7.6</a>.</li>
+    </ol>
+
+    <!-- ===================== PART A ===================== -->
+    <p class="partlabel">Part A · Product</p>
+    <h2 id="prd">1. Product requirements (PRD)</h2>
+
+    <h3>1.1 Product in one sentence</h3>
+    <p><strong>Dhaga Workbench</strong> is an internal web app that helps two Dhaga teams with repetitive work. The CX team gets a draft reply for each support ticket, built from real order data. The category team learns why products are being returned.</p>
+
+    <h3>1.2 The problems, in the client's words</h3>
+    <div class="cards">
+      <div class="card">
+        <p class="who">Arpita · Head of CX</p>
+        <h4>Support is slow and repetitive</h4>
+        <p>"Fifty-eight percent of tickets are some version of where is my order." 34 agents handle about 9,000 tickets a week on Freshdesk and WhatsApp. They copy and paste the same four replies, and the first response takes 9 hours on average.</p>
+      </div>
+      <div class="card">
+        <p class="who">Neha · Category Head</p>
+        <h4>Nobody knows why products come back</h4>
+        <p>"Returns are thirty-one percent overall. When I read the Other box by hand, most of it is about fit, but I can only read a few hundred at a time." 44% of return reasons are recorded as "Other".</p>
+      </div>
+    </div>
+    <p>From those figures: 9,000 × 58% ≈ <strong>5,220 order-status tickets a week</strong>. That is our calculation from the brief, not a number Dhaga gave us.</p>
+
+    <h3>1.3 Users</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>User</th><th>Uses</th><th>Main job in the app</th></tr></thead>
+      <tbody>
+        <tr><td>CX agent</td><td>CX Copilot</td><td>Open a ticket, check the order facts, then approve, edit or reject the draft reply</td></tr>
+        <tr><td>Head of CX</td><td>CX Copilot</td><td>See ticket volume by intent, draft acceptance rate and escalations</td></tr>
+        <tr><td>Category manager</td><td>Returns Insights</td><td>See which products, sizes and colours are returned too often, and why</td></tr>
+      </tbody>
+    </table></div>
+    <p>There is no real authentication in the MVP. A demo login and a workspace switcher stand in for it.</p>
+
+    <h3>1.4 Goals and how we measure them</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Goal</th><th>Measure</th><th>Measured from</th></tr></thead>
+      <tbody>
+        <tr><td>Agents spend less time per routine ticket</td><td>Time from opening a ticket to sending the reply</td><td>Timestamps in <code>ai_interactions</code></td></tr>
+        <tr><td>Drafts are good enough to send</td><td>Share of drafts approved without edits</td><td><code>ai_interactions.human_action</code></td></tr>
+        <tr><td>Intents are classified correctly</td><td>Accuracy on a labelled set of 50 tickets</td><td>Eval script (Phase 7)</td></tr>
+        <tr><td>"Other" returns get a real reason</td><td>Share of "Other" returns classified, and accuracy against ground truth</td><td><code>returns.ai_category</code>, ground-truth file</td></tr>
+        <tr><td>Problem products are found early</td><td>Flagged segments that match the known patterns</td><td>Returns insights and tests</td></tr>
+      </tbody>
+    </table></div>
+    <p>We do <strong>not</strong> promise a specific cut in the 9-hour response time or the 31% return rate. The brief gives us no evidence to support a number.</p>
+
+    <h3>1.5 In scope and out of scope</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>In scope</h4>
+        <ul>
+          <li>CX: ticket inbox, intent classification, order lookup, policy-based draft reply, automatic check, human approval, escalation</li>
+          <li>Returns: data cleaning, return rates, flagged segments, AI classification of "Other" comments</li>
+          <li>One web app with both modules, a demo login and a visible failure state</li>
+          <li>Logging every AI call with cost and time</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Out of scope</h4>
+        <ul>
+          <li>Sending real replies to Freshdesk or WhatsApp</li>
+          <li>Real login and role permissions</li>
+          <li>Reviews, product copy and the analytics assistant</li>
+          <li>Vector search and embeddings: the policy documents are short enough to send whole</li>
+          <li>Production scaling</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>1.6 Functional requirements</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>ID</th><th>Requirement</th><th>Phase</th></tr></thead>
+      <tbody>
+        <tr><td>CX-1</td><td>List support tickets with filters for status, intent and channel</td><td>2</td></tr>
+        <tr><td>CX-2</td><td>Show a ticket with its customer, order, items and shipment facts</td><td>2</td></tr>
+        <tr><td>CX-3</td><td>Classify the ticket's intent and pull out an order number if the customer gave one</td><td>3</td></tr>
+        <tr><td>CX-4</td><td>Find the right order from the ticket link, the extracted number or the customer's latest order</td><td>2</td></tr>
+        <tr><td>CX-5</td><td>Draft a reply using only order facts and the matching policy document</td><td>3</td></tr>
+        <tr><td>CX-6</td><td>Check the draft automatically and regenerate it once if the check fails</td><td>3</td></tr>
+        <tr><td>CX-7</td><td>Let the agent approve, edit or reject the draft, and save the decision</td><td>3</td></tr>
+        <tr><td>CX-8</td><td>Send risky cases (RTO, "delivered but not received", low confidence) to a human, and explain why</td><td>3</td></tr>
+        <tr><td>CX-9</td><td>Show CX metrics: volume by intent, acceptance rate, escalations, cost</td><td>4</td></tr>
+        <tr><td>RT-1</td><td>Clean and validate returns data and list rejected rows with reasons (built)</td><td>Done</td></tr>
+        <tr><td>RT-2</td><td>Show return rates by product, size, colour and category (built)</td><td>Done</td></tr>
+        <tr><td>RT-3</td><td>Flag segments that are returned unusually often (built)</td><td>Done</td></tr>
+        <tr><td>RT-4</td><td>Read returns from Supabase as well as from CSV</td><td>5</td></tr>
+        <tr><td>RT-5</td><td>Classify "Other" comments into reason categories and save the result</td><td>6</td></tr>
+        <tr><td>RT-6</td><td>Let a manager accept or correct a classification</td><td>6</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>1.7 Rules every feature must follow</h3>
+    <p>These come from the course brief.</p>
+    <ul>
+      <li><strong>Code and model line.</strong> Every step is either code or a model call, and we can say why. Models handle language and judgement. Code handles lookup, arithmetic and comparison. A model never decides a delivery date or whether a refund is allowed.</li>
+      <li><strong>Structured output.</strong> Every model call returns JSON that is checked against a schema. We never parse free text.</li>
+      <li><strong>Two models.</strong> A fast, cheap model and a stronger one, with a stated reason for each.</li>
+      <li><strong>Stated settings.</strong> Classification and checking run at temperature 0. Customer-facing writing uses different settings, and we write down what we chose (see <a href="#cx-models">7.6</a>).</li>
+      <li><strong>Visible failure.</strong> When the system can't answer, the screen says so and hands the ticket to a person. It never guesses.</li>
+      <li><strong>Human in the loop.</strong> Nothing reaches a customer without an agent's approval.</li>
+    </ul>
+
+    <h3>1.8 Assumptions and risks</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Assumption or risk</th><th>What would prove it wrong, and what we do</th></tr></thead>
+      <tbody>
+        <tr><td>Most order-status tickets can be answered from order data alone</td><td>Drafts are often rejected for missing facts. Check which facts were missing and add them to the order lookup.</td></tr>
+        <tr><td>The synthetic data behaves like Dhaga's real data</td><td>We can't fully test this. Say so in the presentation and show the data contract.</td></tr>
+        <tr><td>The model invents a date or a promise</td><td>The automatic check compares every date and order number in the draft with the facts. Failures go to a human.</td></tr>
+        <tr><td>The model service is down or rate-limited</td><td>A keyword classifier and template replies take over, and the screen shows that fallback mode is on.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="modules">2. The two modules</h2>
+    <h3>2.1 Returns Insights (backend built, stage 1)</h3>
+    <p>This turns raw return records into return rates and a short list of products, sizes and colours worth investigating. Stage 1 uses rules only. It cleans the data, rejects bad rows with a reason, maps sizes, colours and dropdown reasons to standard values, and flags segments whose return rate is at least 1.5× the shop average. Returns marked "Other" that have a comment are tagged <code>needs_llm</code>.</p>
+    <p>Stage 2 adds a model that reads those comments ("shoulders pe bahut tight hai") and assigns a category such as FIT / TOO_TIGHT / SHOULDERS. The full write-up is in <a href="https://claude.ai/artifact/CgXcRKTRExbwHZbDNLbH4f">the backend guide</a>, also in this repo at <code>docs/backend-guide.html</code>.</p>
+
+    <h3>2.2 CX Copilot (to build)</h3>
+    <p>This helps an agent answer a support ticket in seconds instead of minutes. For each ticket it:</p>
+    <ol>
+      <li>works out what the customer wants <span class="pill model">Model</span></li>
+      <li>finds their order and works out the facts, such as status, courier and how many days late <span class="pill code">Code</span></li>
+      <li>applies business rules such as "RTO orders go to Tier 2" <span class="pill code">Code</span></li>
+      <li>picks the right policy document <span class="pill code">Code</span></li>
+      <li>writes a reply in the customer's language <span class="pill model">Model</span></li>
+      <li>checks the reply against the facts <span class="pill code">Code</span> <span class="pill model">Model</span></li>
+      <li>shows everything to the agent to approve, edit or reject <span class="pill human">Human</span></li>
+    </ol>
+    <p>The key principle from the chat: <strong>data answers "what is true about this order", documents answer "what does Dhaga's policy say", and the model only turns those into a reply.</strong></p>
+
+    <h3>2.3 What the modules share</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Shared piece</th><th>Returns uses it for</th><th>CX uses it for</th></tr></thead>
+      <tbody>
+        <tr><td><code>customers</code>, <code>orders</code>, <code>order_items</code>, <code>products</code></td><td>Counting orders and returns per product, size and colour</td><td>Looking up a customer's order and items</td></tr>
+        <tr><td><code>returns</code></td><td>Main input; stage 2 writes <code>ai_category</code></td><td>Answering "where is my refund?" tickets (later)</td></tr>
+        <tr><td><code>knowledge_documents</code> + Storage</td><td>Returns policy and reason taxonomy for the stage-2 prompt</td><td>Delivery FAQ, cancellation, COD/RTO and escalation policies</td></tr>
+        <tr><td><code>ai_interactions</code></td><td>Logging each classification</td><td>Logging each draft and the agent's decision</td></tr>
+        <tr><td>Claude client, settings, logging</td><td colspan="2">One shared helper in <code>backend/shared/</code> so both modules call models the same way</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="flow">3. One product flow</h2>
+    <p>Both modules live in one app with one navigation. The user moves through it like this:</p>
+<pre class="mermaid">
+flowchart TD
+  L[Demo login] --> H[Home<br/>both workspaces + headline numbers]
+  H --> CX[CX Inbox<br/>open tickets by intent]
+  H --> RT[Returns Overview<br/>rates, reasons, flagged segments]
+  CX --> T[Ticket view<br/>customer + order facts]
+  T --> A[Analyse with Copilot]
+  A --> D{Safe to draft?}
+  D -- yes --> R[Draft reply + check result]
+  D -- no --> F[Failure card<br/>reason + hand to a person]
+  R --> AP[Approve / Edit / Reject]
+  AP --> CX
+  RT --> S[Segment detail<br/>reason mix + sample comments]
+  S --> C[Classify Other comments<br/>stage 2]
+  C --> RV[Accept / Correct]
+  T -. return or refund intent .-> S
+</pre>
+    <p>The dotted link is where the modules meet. A CX ticket about a return links to that product's Returns view, so the category team can see what customers say about it in support. A shared product ID makes this possible without extra plumbing.</p>
+
+    <!-- ===================== PART B ===================== -->
+    <p class="partlabel">Part B · System</p>
+    <h2 id="architecture">4. Architecture and data flow</h2>
+    <h3>4.1 The big picture</h3>
+<pre class="mermaid">
+flowchart LR
+  U[Browser<br/>React app] -->|/api/cx/*<br/>/api/returns/*| API[FastAPI app]
+  subgraph API_box [One backend, two modules]
+    API --> CXM[cx module]
+    API --> RTM[returns module]
+    CXM --> SH[shared: db, llm, config, logging]
+    RTM --> SH
+  end
+  SH --> DB[(Supabase Postgres)]
+  SH --> ST[(Supabase Storage<br/>policy PDFs)]
+  SH --> LLM[Claude API<br/>Haiku 4.5 + Opus 5.5]
+</pre>
+    <ul>
+      <li><strong>One FastAPI app</strong> serves both modules and, in production, the built React files. One process means one deploy.</li>
+      <li><strong>Modules never import each other.</strong> They only import from <code>shared/</code>. That one rule is what makes the later microservice split easy.</li>
+      <li><strong>Only the backend holds secrets.</strong> The browser never sees the Supabase service key or the Claude key.</li>
+    </ul>
+
+    <h3>4.2 CX data flow, step by step</h3>
+<pre class="mermaid">
+sequenceDiagram
+  participant Agent
+  participant UI as React
+  participant CX as cx module
+  participant DB as Supabase
+  participant H as Haiku 4.5
+  participant O as Opus 5.5
+  Agent->>UI: Open ticket, click Analyse
+  UI->>CX: POST /api/cx/tickets/{id}/analyze
+  CX->>DB: load ticket + customer
+  CX->>H: classify intent, extract order no.
+  H-->>CX: {intent, confidence, order_number}
+  CX->>DB: find order + items
+  CX->>CX: compute facts, apply rules, pick policy
+  alt needs a human
+    CX-->>UI: status NEEDS_HUMAN + reason
+  else safe to draft
+    CX->>O: facts + policy + message
+    O-->>CX: {reply, facts_used}
+    CX->>CX: code check: dates, order no., amounts
+    CX->>H: tone + policy check
+    CX->>DB: insert ai_interactions
+    CX-->>UI: draft + facts + check result
+  end
+  Agent->>UI: Approve / Edit / Reject
+  UI->>CX: POST /api/cx/tickets/{id}/decision
+  CX->>DB: update ticket status + human_action
+</pre>
+
+    <h3>4.3 Returns data flow</h3>
+    <p>Stage 1 is already built: ingest → validate → normalize → join catalogue → aggregate → flag segments. Phase 5 only changes where data comes from. A <code>supabase_loader</code> reads two database views (see <a href="#data-views">5.3</a>) and renames columns into the shape the existing pipeline expects. Nothing after ingestion changes. Stage 2 runs on the rows tagged <code>needs_llm</code>, calls Haiku 4.5 once per comment, and writes <code>ai_category</code>, <code>ai_subcategory</code> and <code>ai_confidence</code> back to <code>returns</code>.</p>
+
+    <h2 id="data">5. Data model in Supabase</h2>
+    <h3>5.1 Tables and who uses them</h3>
+    <p>This is the 10-table schema from the shared chat, with UUID keys throughout. R means a module reads the table and W means it writes to it.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Table</th><th>Key columns</th><th>CX</th><th>Returns</th><th class="num">Rows</th></tr></thead>
+      <tbody>
+        <tr><td><code>customers</code></td><td>customer_id, customer_code, name, email, phone, city</td><td>R</td><td>R</td><td class="num">300</td></tr>
+        <tr><td><code>products</code></td><td>product_id, sku, product_name, category, colour, fabric, sizes, price</td><td>R</td><td>R</td><td class="num">100</td></tr>
+        <tr><td><code>orders</code></td><td>order_id, order_number, customer_id, order_status, payment_mode, courier, tracking_number, expected_delivery, delivered_at, total_amount</td><td>R</td><td>R</td><td class="num">2,500</td></tr>
+        <tr><td><code>order_items</code></td><td>order_item_id, order_id, product_id, quantity, unit_price, size, colour</td><td>R</td><td>R</td><td class="num">2,500</td></tr>
+        <tr><td><code>support_tickets</code></td><td>ticket_id, ticket_number, customer_id, order_id, channel, message, status, assigned_to</td><td>R/W</td><td>–</td><td class="num">1,800</td></tr>
+        <tr><td><code>returns</code></td><td>return_id, order_item_id, customer_id, original_reason, customer_comment, ai_category, ai_subcategory, ai_confidence, final_category</td><td>R (later)</td><td>R/W</td><td class="num">563</td></tr>
+        <tr><td><code>reviews</code></td><td>review_id, product_id, customer_id, rating, review_text</td><td>–</td><td>–</td><td class="num">2,200</td></tr>
+        <tr><td><code>knowledge_documents</code></td><td>document_id, document_name, document_type, storage_path, version, active</td><td>R</td><td>R</td><td class="num">5</td></tr>
+        <tr><td><code>ai_interactions</code></td><td>interaction_id, workflow, input_reference_id, model_name, prompt_version, output (JSON), confidence, evaluation_status, human_action, processing_time_ms</td><td>W</td><td>W</td><td class="num">1,200</td></tr>
+        <tr><td><code>analytics_metrics</code></td><td>metric_id, metric_name, sql_definition</td><td>–</td><td>–</td><td class="num">5</td></tr>
+      </tbody>
+    </table></div>
+    <p>Order statuses in the data are <code>CONFIRMED</code>, <code>SHIPPED</code>, <code>IN_TRANSIT</code>, <code>OUT_FOR_DELIVERY</code>, <code>DELIVERED</code>, <code>RTO_INITIATED</code> and <code>CANCELLED</code>. Couriers are Delhivery, Ekart and Shiprocket.</p>
+
+    <h3>5.2 Gaps to fix in Phase 0</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Gap</th><th>Why it matters</th><th>Proposed fix</th></tr></thead>
+      <tbody>
+        <tr><td>No table for the reply that was sent</td><td>We need the draft, the agent's edited version and who decided</td><td>Store <code>draft_reply</code> and <code>final_reply</code> inside <code>ai_interactions.output</code>. Add a <code>ticket_replies</code> table only if reporting needs it.</td></tr>
+        <tr><td><code>ai_interactions</code> has no reference type</td><td><code>input_reference_id</code> could point to a ticket or a return</td><td>Add <code>input_reference_type TEXT</code> (the CSV already has it)</td></tr>
+        <tr><td>Ticket status values are unknown beyond <code>OPEN</code></td><td>The inbox filters and the decision endpoint need fixed values</td><td>Agree on <code>OPEN</code> → <code>DRAFTED</code> → <code>RESOLVED</code> or <code>ESCALATED</code></td></tr>
+        <tr><td><code>returns</code> has no size, colour or date of its own</td><td>The Returns pipeline groups by size and colour</td><td>Join through <code>order_items</code> in a view; use <code>created_at</code> as the return date</td></tr>
+        <tr><td><code>original_reason</code> values differ from the demo CSV ("Damaged" vs "Damaged product")</td><td>Reason mapping would reject valid rows</td><td>List the distinct values and update <code>DROPDOWN_REASON_MAP</code></td></tr>
+        <tr><td>Supabase timestamps (<code>created_at</code>) are empty in the imported CSVs</td><td>Response-time metrics need them</td><td>Backfill with realistic times, or use order dates for the demo</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 id="data-views">5.3 Two database views that keep the code simple</h3>
+    <p>Joins are easier to write once in SQL than in every Python function. Create these in the Supabase SQL editor:</p>
+<pre class="code"><code><span class="c">-- One row per ticket with everything the Copilot needs</span>
+create view v_ticket_context as
+select t.ticket_id, t.ticket_number, t.channel, t.message, t.status, t.created_at,
+       c.customer_id, c.name as customer_name, c.city,
+       o.order_id, o.order_number, o.order_status, o.payment_mode, o.courier,
+       o.tracking_number, o.expected_delivery, o.delivered_at, o.total_amount
+from support_tickets t
+join customers c on c.customer_id = t.customer_id
+left join orders o on o.order_id = t.order_id;
+
+<span class="c">-- Returns in the shape the existing pipeline expects</span>
+create view v_returns_enriched as
+select r.return_id, o.order_id, r.customer_id, p.product_id, p.sku,
+       p.product_name, p.category, oi.size, oi.colour,
+       r.original_reason as return_reason, r.customer_comment as return_comment,
+       r.created_at::date as return_date, r.ai_category, r.final_category
+from returns r
+join order_items oi on oi.order_item_id = r.order_item_id
+join orders o on o.order_id = oi.order_id
+join products p on p.product_id = oi.product_id;</code></pre>
+    <p>One subtle change: Supabase stores one row per <em>order item</em>, so the Returns pipeline will count items sold rather than orders. That is the right base for a return rate. Note it in the build note.</p>
+
+    <!-- ===================== PART C ===================== -->
+    <p class="partlabel">Part C · Build plan</p>
+    <h2 id="phases">6. Phased development plan</h2>
+    <p>Each phase leaves the app working. Phases 2 and 3 are the CX backend, which is the next thing to build.</p>
+    <div class="phases">
+      <div class="phase"><div class="n">0</div><h3 id="p0">Align and confirm <span class="status pill warn">Now</span></h3><p class="goal">Everyone agrees on the plan and the data.</p>
+        <div class="body"><ul>
+          <li>Review this guide and the mockup, and settle decisions D1–D5</li>
+          <li>Export the live Supabase schema and fix any differences in section 5</li>
+          <li>Apply the fixes from 5.2 and create the two views from 5.3</li>
+          <li>Fill in <code>docs/discovery-note.md</code>, which must be dated before the first code commit</li>
+          <li>Add <code>streamlit</code> to requirements, or remove the Streamlit Dockerfile line if D2 = React, so the Space stops failing</li>
+        </ul><p class="done">Done when: the schema is confirmed, the views return rows, and the discovery note is committed.</p></div></div>
+
+      <div class="phase"><div class="n">1</div><h3 id="p1">Restructure the backend into modules</h3><p class="goal">Make room for CX without breaking Returns.</p>
+        <div class="body"><ul>
+          <li>Move the current Returns files into <code>backend/modules/returns/</code> (see <a href="#structure">section 10</a>)</li>
+          <li>Create <code>backend/shared/</code> with <code>settings.py</code>, <code>db.py</code> (Supabase client), <code>llm.py</code> (Claude client) and <code>logging.py</code></li>
+          <li>Create <code>backend/main.py</code>, which only mounts the routers: <code>/api/returns/*</code>, <code>/api/cx/*</code> and <code>/api/health</code></li>
+          <li>Keep the old Returns paths such as <code>/api/summary</code> as aliases until the frontend switches over</li>
+          <li>Add <code>.env</code> handling: <code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code>, <code>ANTHROPIC_API_KEY</code></li>
+        </ul><p class="done">Done when: all 7 existing tests pass, and <code>/api/health</code> reports the database as reachable.</p></div></div>
+
+      <div class="phase"><div class="n">2</div><h3 id="p2">CX backend, no AI yet</h3><p class="goal">Ticket and order data flows end to end.</p>
+        <div class="body"><ul>
+          <li><code>repository.py</code>: list tickets, get ticket context, find an order by number, list a customer's orders, update ticket status</li>
+          <li><code>order_facts.py</code>: turn an order row into plain facts, such as days late and whether it is delivered or cancellable</li>
+          <li><code>rules.py</code>: escalation and eligibility rules</li>
+          <li>Endpoints: <code>GET /api/cx/tickets</code>, <code>GET /api/cx/tickets/{id}</code>, <code>GET /api/cx/orders/{order_number}</code></li>
+          <li>Unit tests for facts and rules using fixed sample orders, without hitting the database</li>
+        </ul><p class="done">Done when: the API returns a ticket with correct order facts for 10 hand-checked tickets.</p></div></div>
+
+      <div class="phase"><div class="n">3</div><h3 id="p3">CX Copilot AI workflow</h3><p class="goal">Ticket → intent → facts → draft → check → human decision.</p>
+        <div class="body"><ul>
+          <li>Pydantic schemas for each model output (<a href="#cx-schemas">7.4</a>)</li>
+          <li><code>classifier.py</code> (Haiku 4.5), <code>drafter.py</code> (Opus 5.5) and <code>checker.py</code> (code checks plus Haiku 4.5)</li>
+          <li><code>knowledge.py</code>: load active policy PDFs from Storage once at startup and map intent → document</li>
+          <li><code>copilot.py</code>: runs the steps in order, regenerates once on a failed check, and logs to <code>ai_interactions</code></li>
+          <li><code>fallback.py</code>: a keyword classifier and template replies for when the model is unavailable</li>
+          <li>Endpoints: <code>POST …/analyze</code>, <code>POST …/decision</code>, <code>POST /api/cx/analyze</code> (pasted text), <code>GET /api/cx/metrics</code></li>
+        </ul><p class="done">Done when: 20 sample tickets give sensible drafts, risky tickets are escalated with a reason, and every run appears in <code>ai_interactions</code>.</p></div></div>
+
+      <div class="phase"><div class="n">4</div><h3 id="p4">Frontend shell + CX screens</h3><p class="goal">An agent can use the Copilot without help.</p>
+        <div class="body"><ul>
+          <li>Set up React + Vite, with the router, layout, sidebar and demo login</li>
+          <li>Home, CX Inbox, Ticket view with the Copilot panel, and CX metrics</li>
+          <li>Shared components: loading steps, failure card, review actions, status pill</li>
+        </ul><p class="done">Done when: someone outside the team can process three tickets, including one that fails, without explanation.</p></div></div>
+
+      <div class="phase"><div class="n">5</div><h3 id="p5">Returns on Supabase + Returns screens</h3><p class="goal">Both modules read from the same database.</p>
+        <div class="body"><ul>
+          <li><code>supabase_loader.py</code> reading <code>v_returns_enriched</code> and an order-items view; choose the source with <code>RETURNS_DATA_SOURCE=csv|supabase</code></li>
+          <li>Update reason maps for the Supabase reason values; re-tune insight thresholds on the new data</li>
+          <li>Screens: Returns Overview, Segment detail, Data quality (rejected rows)</li>
+        </ul><p class="done">Done when: Returns screens show Supabase numbers, and the CSV tests still pass.</p></div></div>
+
+      <div class="phase"><div class="n">6</div><h3 id="p6">Returns stage 2: classify "Other"</h3><p class="goal">The 44% "Other" bucket gets real reasons.</p>
+        <div class="body"><ul>
+          <li>Haiku 4.5 classifier with the returns taxonomy as its allowed list; writes <code>ai_*</code> columns</li>
+          <li>Low-confidence results go to a review queue; a manager can accept or correct, which fills <code>final_category</code></li>
+          <li>Score accuracy against <code>returns_ground_truth.csv</code> on the demo set</li>
+        </ul><p class="done">Done when: accuracy is measured and reported, and flagged segments show classified reasons instead of UNCLASSIFIED.</p></div></div>
+
+      <div class="phase"><div class="n">7</div><h3 id="p7">Evaluate, harden, deploy</h3><p class="goal">The live demo is reliable and the numbers are honest.</p>
+        <div class="body"><ul>
+          <li>Eval set: 50 labelled tickets covering every intent, Hinglish, and missing order numbers; report intent accuracy and how often the check passes</li>
+          <li>Measure real cost per ticket from logged token usage, and fill the cost line in <code>docs/build-note.md</code></li>
+          <li>Rehearse the failure case for the demo, such as a ticket with no order</li>
+          <li>Single Docker image: build React, then serve it from FastAPI; deploy to the Hugging Face Space</li>
+        </ul><p class="done">Done when: the Space URL runs the full flow, and the build note is complete.</p></div></div>
+
+      <div class="phase"><div class="n">8</div><h3 id="p8">Split into microservices <span class="status pill code">Later</span></h3><p class="goal">Returns and CX deploy on their own.</p>
+        <div class="body"><p>See <a href="#future">section 11</a>. Do this only after the MVP is presented.</p></div></div>
+    </div>
+
+    <h2 id="cx">7. CX backend: detailed implementation plan</h2>
+
+    <h3>7.1 Module layout</h3>
+<pre class="code"><code>backend/modules/cx/
+├── router.py          <span class="c"># FastAPI routes only: parse request, call service, return schema</span>
+├── schemas.py         <span class="c"># Pydantic models: API requests/responses + model outputs</span>
+├── repository.py      <span class="c"># All Supabase reads/writes for CX (nothing else touches the DB)</span>
+├── order_facts.py     <span class="c"># Order row -> plain facts (days late, delivered?, cancellable?)</span>
+├── rules.py           <span class="c"># Escalation + eligibility rules (pure functions)</span>
+├── knowledge.py       <span class="c"># Load policy PDFs once, map intent -> policy text</span>
+├── classifier.py      <span class="c"># Model call 1: intent + order number (Haiku 4.5)</span>
+├── drafter.py         <span class="c"># Model call 2: reply text (Opus 5.5)</span>
+├── checker.py         <span class="c"># Code checks + model call 3: tone/policy check (Haiku 4.5)</span>
+├── fallback.py        <span class="c"># Keyword intent + template replies when the model is unavailable</span>
+├── copilot.py         <span class="c"># The workflow: runs the steps above in order</span>
+└── prompts/
+    ├── classify_v1.md
+    ├── draft_v1.md
+    └── check_v1.md</code></pre>
+    <p>Each file does one job and is short enough to read in one sitting. <code>router.py</code> holds no logic. Only <code>repository.py</code> talks to the database. Only the three model files call Claude, and they do it through <code>shared/llm.py</code>.</p>
+
+    <h3>7.2 Intents</h3>
+    <p>This is a small, fixed list. The classifier must return one of these values, and the schema rejects anything else.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Intent</th><th>Example (as customers write)</th><th>Facts needed</th><th>Policy document</th></tr></thead>
+      <tbody>
+        <tr><td><code>WISMO</code></td><td>"Mera order abhi tak nahi aaya. Kab milega?"</td><td>status, courier, tracking, expected date, days late</td><td>Delivery FAQ</td></tr>
+        <tr><td><code>DELIVERED_NOT_RECEIVED</code></td><td>"Shows delivered but I didn't get it"</td><td>delivered_at, courier</td><td>Escalation SOP</td></tr>
+        <tr><td><code>CANCEL_ORDER</code></td><td>"Cancel kar do, nahi chahiye"</td><td>status, so code can say whether it is cancellable</td><td>Cancellation policy</td></tr>
+        <tr><td><code>RETURN_REFUND</code></td><td>"How can I get a refund?"</td><td>delivered_at, days since delivery, return status</td><td>Returns policy</td></tr>
+        <tr><td><code>COD_PAYMENT</code></td><td>"Can I pay by UPI on delivery?"</td><td>payment_mode, status</td><td>COD &amp; RTO policy</td></tr>
+        <tr><td><code>OTHER</code></td><td>"Do you have this in XXL?"</td><td>none</td><td>none: goes to a human</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>7.3 The workflow, step by step</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>#</th><th>Step</th><th>Who</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Load ticket</td><td><span class="pill code">Code</span></td><td>Read <code>v_ticket_context</code> by ticket_id</td></tr>
+        <tr><td class="num">2</td><td>Classify</td><td><span class="pill model">Haiku 4.5</span></td><td>Message → <code>TicketClassification</code>: intent, confidence, order number if mentioned, language</td></tr>
+        <tr><td class="num">3</td><td>Find order</td><td><span class="pill code">Code</span></td><td>Try the ticket's linked order, then the extracted number, then the customer's latest open order. The order must belong to this customer.</td></tr>
+        <tr><td class="num">4</td><td>Compute facts</td><td><span class="pill code">Code</span></td><td><code>days_late = today − expected_delivery</code> when not delivered, plus <code>is_cancellable</code>, <code>days_since_delivery</code> and similar. All arithmetic happens here.</td></tr>
+        <tr><td class="num">5</td><td>Apply rules</td><td><span class="pill code">Code</span></td><td>Decide whether to draft or send to a human (<a href="#cx-rules">7.5</a>)</td></tr>
+        <tr><td class="num">6</td><td>Pick policy</td><td><span class="pill code">Code</span></td><td>Intent → document text, from memory</td></tr>
+        <tr><td class="num">7</td><td>Draft</td><td><span class="pill model">Opus 5.5</span></td><td>Facts + policy + message → <code>DraftReply</code>. The prompt says to use only the given facts and to reply in the customer's language.</td></tr>
+        <tr><td class="num">8</td><td>Check (code)</td><td><span class="pill code">Code</span></td><td>Every date, order number and rupee amount in the reply must appear in the facts. An unknown value fails the check.</td></tr>
+        <tr><td class="num">9</td><td>Check (model)</td><td><span class="pill model">Haiku 4.5</span></td><td>Does the reply answer the question, follow the policy and sound polite? Returns <code>DraftCheck</code>.</td></tr>
+        <tr><td class="num">10</td><td>Retry once</td><td><span class="pill code">Code</span></td><td>If either check fails, redraft once with the issues listed. If it fails again, the result is <code>NEEDS_HUMAN</code>.</td></tr>
+        <tr><td class="num">11</td><td>Log</td><td><span class="pill code">Code</span></td><td>Insert into <code>ai_interactions</code>: models, prompt versions, output, tokens, time. Set the ticket to <code>DRAFTED</code>.</td></tr>
+        <tr><td class="num">12</td><td>Decide</td><td><span class="pill human">Agent</span></td><td>Approve, edit or reject. Save <code>human_action</code> and the final reply. Set the ticket to <code>RESOLVED</code> or <code>ESCALATED</code>.</td></tr>
+      </tbody>
+    </table></div>
+    <p>This uses two of the course's patterns, each for a real reason. <strong>Routing:</strong> different intents need different facts and policies (steps 2–6). <strong>Evaluator–optimizer:</strong> a draft that fails the check is regenerated once (steps 8–10).</p>
+
+    <h3 id="cx-schemas">7.4 Schemas (what each step returns)</h3>
+<pre class="code"><code>class TicketClassification(BaseModel):
+    intent: Literal["WISMO", "DELIVERED_NOT_RECEIVED", "CANCEL_ORDER",
+                    "RETURN_REFUND", "COD_PAYMENT", "OTHER"]
+    confidence: float = Field(ge=0, le=1)
+    order_number: str | None        <span class="c"># e.g. "DHC100560" if the customer wrote it</span>
+    language: Literal["english", "hinglish", "hindi", "other"]
+
+class OrderFacts(BaseModel):         <span class="c"># built by code, never by a model</span>
+    order_number: str
+    status: str
+    courier: str | None
+    tracking_number: str | None
+    expected_delivery: date | None
+    delivered_at: datetime | None
+    days_late: int | None
+    is_cancellable: bool
+    payment_mode: str
+    items: list[str]                 <span class="c"># "Green Embroidered Straight Kurta (M)"</span>
+
+class DraftReply(BaseModel):
+    reply: str
+    facts_used: list[str]            <span class="c"># which facts the reply relies on</span>
+
+class DraftCheck(BaseModel):
+    passed: bool
+    issues: list[str]
+
+class CopilotResult(BaseModel):      <span class="c"># what the API returns to the frontend</span>
+    ticket_id: UUID
+    status: Literal["DRAFTED", "NEEDS_HUMAN", "NEEDS_INFO"]
+    classification: TicketClassification
+    facts: OrderFacts | None
+    policy_used: str | None
+    draft: str | None
+    check: DraftCheck | None
+    human_reason: str | None         <span class="c"># shown on the failure card</span>
+    interaction_id: UUID
+    fallback_mode: bool
+    cost_usd: float
+    latency_ms: int</code></pre>
+
+    <h3 id="cx-rules">7.5 Rules (code, not model)</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Condition</th><th>Result</th><th>Reason shown to the agent</th></tr></thead>
+      <tbody>
+        <tr><td>Classifier confidence &lt; 0.70, or intent is <code>OTHER</code></td><td><code>NEEDS_HUMAN</code></td><td>"Not sure what the customer is asking."</td></tr>
+        <tr><td>No order found for this customer</td><td><code>NEEDS_INFO</code></td><td>Template reply asking for the order number</td></tr>
+        <tr><td>Order number belongs to another customer</td><td><code>NEEDS_HUMAN</code></td><td>"Order does not belong to this customer."</td></tr>
+        <tr><td>Status <code>RTO_INITIATED</code></td><td><code>NEEDS_HUMAN</code> (Tier 2)</td><td>"Order is returning to origin. Follow the COD &amp; RTO SOP."</td></tr>
+        <tr><td><code>DELIVERED_NOT_RECEIVED</code></td><td><code>NEEDS_HUMAN</code> (Tier 2)</td><td>"Possible lost parcel. Raise a courier claim."</td></tr>
+        <tr><td>More than 5 days late (threshold to confirm with the SOP)</td><td>Draft, flagged for priority</td><td>"Delayed 6 days. Consider escalating to the courier."</td></tr>
+        <tr><td><code>CANCEL_ORDER</code></td><td>Draft</td><td>Code sets <code>is_cancellable</code>; the model only explains the outcome</td></tr>
+      </tbody>
+    </table></div>
+    <p>Keep thresholds in <code>shared/settings.py</code>, not inside the code, so they can be tuned without hunting for them.</p>
+
+    <h3 id="cx-models">7.6 Models, settings and cost</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Step</th><th>Model</th><th>Setting</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Classify</td><td>Claude Haiku 4.5<br><code>claude-haiku-4-5</code></td><td>temperature 0</td><td>Short, high-volume and repetitive. It needs to be fast and give the same answer every time.</td></tr>
+        <tr><td>Draft reply</td><td>Claude Opus 5.5<br><code>claude-opus-5-5</code></td><td>effort <code>low</code></td><td>Customer-facing Hinglish writing has to be good. Opus 5.5 doesn't accept a temperature setting, so effort controls how much it thinks, and <code>low</code> keeps replies fast and cheap.</td></tr>
+        <tr><td>Check reply</td><td>Claude Haiku 4.5</td><td>temperature 0</td><td>A yes/no judgement against a short checklist. Code has already checked the facts.</td></tr>
+        <tr><td>Classify returns (stage 2)</td><td>Claude Haiku 4.5</td><td>temperature 0</td><td>Mapping messy text to a fixed taxonomy</td></tr>
+      </tbody>
+    </table></div>
+    <p>Prices: Haiku 4.5 costs $1 per million input tokens and $5 per million output tokens. Opus 5.5 costs $4 and $20. Below is a <strong>rough estimate</strong>, to be replaced by measured numbers in Phase 7:</p>
+    <div class="formula">
+      classify &nbsp;~800 in / 150 out on Haiku &nbsp;&nbsp;≈ $0.0016<br>
+      draft &nbsp;&nbsp;&nbsp;&nbsp;~2,500 in / ~550 out (incl. thinking) on Opus ≈ $0.021<br>
+      check &nbsp;&nbsp;&nbsp;&nbsp;~1,500 in / 150 out on Haiku ≈ $0.0023<br>
+      <strong>per ticket ≈ $0.025</strong> &nbsp;·&nbsp; 5,220 order-status tickets a week ≈ <strong>$130 a week</strong> (estimate)
+    </div>
+    <p>Prompt caching on the policy text can cut the drafting input cost a lot, because the same policy is sent with every ticket of the same intent.</p>
+    <div class="note"><p><strong>SDK.</strong> Call Claude with the official <code>anthropic</code> Python package and its <code>client.messages.parse()</code> helper. It checks the reply against our Pydantic schema, so we never parse text by hand. The SDK already retries rate limits and server errors (2 retries by default). After that, <code>fallback.py</code> takes over.</p></div>
+
+    <h3>7.7 When things go wrong</h3>
+    <ul>
+      <li><strong>Model unavailable or quota used up:</strong> the keyword classifier plus four template replies, one per main intent. These are the "same four replies" agents already use. The result has <code>fallback_mode: true</code>, and the screen shows a banner.</li>
+      <li><strong>Schema check fails:</strong> retry once, then return <code>NEEDS_HUMAN</code> with "AI response could not be validated".</li>
+      <li><strong>Database error:</strong> HTTP 503 with a plain message. The frontend shows a retry button.</li>
+      <li><strong>Every error response</strong> uses one shape: <code>{"error": {"code": "ORDER_NOT_FOUND", "message": "…"}}</code>.</li>
+    </ul>
+
+    <h3>7.8 Tests</h3>
+    <ul>
+      <li><strong>Unit:</strong> <code>order_facts</code> (days late, cancellable), <code>rules</code> (each row of 7.5), the code check in <code>checker</code> (a reply with an invented date fails), and <code>fallback</code> keywords.</li>
+      <li><strong>Workflow:</strong> run <code>copilot.py</code> with a fake repository and a fake model client, so tests are free and repeatable.</li>
+      <li><strong>Eval (Phase 7):</strong> 50 labelled tickets, run against the real model. Report intent accuracy, check pass rate and cost.</li>
+    </ul>
+
+    <h3>7.9 Build order checklist</h3>
+    <ol>
+      <li><code>schemas.py</code>, then <code>repository.py</code> with the two read functions</li>
+      <li><code>order_facts.py</code> + tests</li>
+      <li><code>rules.py</code> + tests</li>
+      <li><code>router.py</code>: the GET endpoints. Check them in <code>/docs</code></li>
+      <li><code>shared/llm.py</code>, then <code>classifier.py</code>. Try 10 real messages</li>
+      <li><code>knowledge.py</code>, then <code>drafter.py</code></li>
+      <li><code>checker.py</code> + tests for the code check</li>
+      <li><code>copilot.py</code> wiring + logging, then the <code>analyze</code> endpoint</li>
+      <li><code>decision</code> endpoint, then <code>fallback.py</code>, then <code>metrics</code></li>
+    </ol>
+
+    <h2 id="frontend">8. Frontend plan</h2>
+    <div class="note"><p><strong>Mockup:</strong> <a href="https://claude.ai/artifact/Bn54tUwNczkrMFwtjZ2PJK">open the clickable Dhaga Workbench mockup</a> (source: <code>docs/dhaga-workbench-mockup.html</code>). It runs on example data with no backend. Try analysing a ticket, approving or editing a draft, the "delivered but not received" failure, and classifying comments in a returns segment.</p></div>
+
+    <h3>8.1 Technology</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Need</th><th>Choice</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Framework</td><td>React 18 + Vite</td><td>Common, fast to start, and works well with AI coding tools</td></tr>
+        <tr><td>Routing</td><td>React Router</td><td>A few clear URLs: <code>/cx</code>, <code>/cx/:ticketId</code>, <code>/returns</code></td></tr>
+        <tr><td>Data fetching</td><td><code>fetch</code> in one <code>api.js</code> file + small hooks</td><td>Nothing extra to learn; every call is in one place</td></tr>
+        <tr><td>Styling</td><td>Plain CSS with variables (tokens)</td><td>No build-time setup; light and dark themes for free</td></tr>
+        <tr><td>Charts</td><td>Recharts</td><td>Simple bar charts for reasons and rates</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.2 Screens</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Screen</th><th>URL</th><th>Shows</th><th>API</th><th>Phase</th></tr></thead>
+      <tbody>
+        <tr><td>Login (demo)</td><td><code>/login</code></td><td>Email, password, "Use demo workspace"</td><td>none</td><td>4</td></tr>
+        <tr><td>Home</td><td><code>/</code></td><td>Two workspace cards with headline numbers</td><td><code>/api/cx/metrics</code>, <code>/api/returns/summary</code></td><td>4</td></tr>
+        <tr><td>CX Inbox</td><td><code>/cx</code></td><td>Ticket list with filters for intent and status</td><td><code>GET /api/cx/tickets</code></td><td>4</td></tr>
+        <tr><td>Ticket + Copilot</td><td><code>/cx/:ticketId</code></td><td>Message, order facts, Analyse, draft, check result, actions, failure card</td><td><code>GET …/{id}</code>, <code>POST …/analyze</code>, <code>POST …/decision</code></td><td>4</td></tr>
+        <tr><td>CX Metrics</td><td><code>/cx/metrics</code></td><td>Volume by intent, acceptance rate, escalations, cost</td><td><code>/api/cx/metrics</code></td><td>4</td></tr>
+        <tr><td>Returns Overview</td><td><code>/returns</code></td><td>Summary numbers, reason mix, flagged segments, product table</td><td><code>/api/returns/summary</code>, <code>/insights</code>, <code>/products</code></td><td>5</td></tr>
+        <tr><td>Segment detail</td><td><code>/returns/insights/:id</code></td><td>Rate vs baseline, reason breakdown, sample comments, classify and review</td><td><code>/api/returns/insights/{id}</code>, <code>/classify</code></td><td>5–6</td></tr>
+        <tr><td>Data quality</td><td><code>/returns/rejected</code></td><td>Rejected rows by reason</td><td><code>/api/returns/rejected</code></td><td>5</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.3 Reusable components</h3>
+    <ul>
+      <li><code>AppLayout</code>: sidebar, workspace name, user menu</li>
+      <li><code>StatusPill</code>: ticket status, order status, intent</li>
+      <li><code>LoadingSteps</code>: "Reading message → Finding order → Writing reply → Checking", shown while the Copilot runs</li>
+      <li><code>FailureCard</code>: the reason, plus "Handle manually" and "Try again"</li>
+      <li><code>ReviewActions</code>: Approve, Edit, Reject, with an inline editor</li>
+      <li><code>StatTile</code>, <code>ReasonBars</code>, <code>DataTable</code></li>
+    </ul>
+    <p>Every screen handles four states: loading, empty, error and normal. Design the empty and error states first. They are what the demo's failure case shows.</p>
+
+    <h3>8.4 Build order</h3>
+    <ol>
+      <li>Layout + router + demo login</li>
+      <li><code>api.js</code> pointing at the backend; the Vite dev proxy forwards <code>/api</code> to port 8000</li>
+      <li>CX Inbox → Ticket view → Copilot panel → review actions → failure card</li>
+      <li>Home with live numbers</li>
+      <li>Returns Overview → Segment detail → Data quality</li>
+      <li>Polish: empty states, keyboard focus, phone width</li>
+    </ol>
+
+    <h2 id="api">9. API requirements and integration points</h2>
+    <h3>9.1 Endpoints</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Method + path</th><th>Purpose</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>GET /api/health</code></td><td>App, database and model status</td><td>Phase 1</td></tr>
+        <tr><td><code>GET /api/cx/tickets?status=&amp;intent=&amp;channel=&amp;limit=&amp;offset=</code></td><td>Inbox list</td><td>Phase 2</td></tr>
+        <tr><td><code>GET /api/cx/tickets/{ticket_id}</code></td><td>Ticket + customer + order facts + last Copilot result</td><td>Phase 2</td></tr>
+        <tr><td><code>GET /api/cx/orders/{order_number}</code></td><td>Order facts (for agents and debugging)</td><td>Phase 2</td></tr>
+        <tr><td><code>POST /api/cx/tickets/{ticket_id}/analyze</code></td><td>Run the Copilot; returns <code>CopilotResult</code></td><td>Phase 3</td></tr>
+        <tr><td><code>POST /api/cx/tickets/{ticket_id}/decision</code></td><td>Body: <code>{interaction_id, action: APPROVED|EDITED|REJECTED, final_reply}</code></td><td>Phase 3</td></tr>
+        <tr><td><code>POST /api/cx/analyze</code></td><td>Body: <code>{message, customer_id?, order_number?}</code>; for pasted demo text</td><td>Phase 3</td></tr>
+        <tr><td><code>GET /api/cx/metrics</code></td><td>Counts by intent and status, acceptance rate, average time and cost</td><td>Phase 3</td></tr>
+        <tr><td><code>GET /api/returns/summary</code></td><td>Headline counts (today: <code>/api/summary</code>)</td><td>Built → move</td></tr>
+        <tr><td><code>GET /api/returns/products</code></td><td>Per-product table (today: <code>/api/products</code>)</td><td>Built → move</td></tr>
+        <tr><td><code>GET /api/returns/breakdown?by=</code></td><td>By size, colour or category</td><td>Built → move</td></tr>
+        <tr><td><code>GET /api/returns/reasons?product_id=</code></td><td>Reason counts</td><td>Built → move</td></tr>
+        <tr><td><code>GET /api/returns/insights</code></td><td>Flagged segments</td><td>Built → move</td></tr>
+        <tr><td><code>GET /api/returns/insights/{insight_id}</code></td><td>One segment with all its returns</td><td>Phase 5</td></tr>
+        <tr><td><code>GET /api/returns/rejected</code></td><td>Rejected rows</td><td>Built → move</td></tr>
+        <tr><td><code>POST /api/returns/classify</code></td><td>Classify pending "Other" comments (batch)</td><td>Phase 6</td></tr>
+        <tr><td><code>POST /api/returns/{return_id}/review</code></td><td>Accept or correct a classification</td><td>Phase 6</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>9.2 Example: analyse a ticket</h3>
+<pre class="code"><code>POST /api/cx/tickets/2b1a5aa7-…/analyze
+
+200 OK
+{
+  "ticket_id": "2b1a5aa7-aa4a-4f8f-a72a-cd6fb52a0b2c",
+  "status": "DRAFTED",
+  "classification": {"intent": "WISMO", "confidence": 0.95,
+                     "order_number": null, "language": "hinglish"},
+  "facts": {"order_number": "DHC100560", "status": "IN_TRANSIT",
+            "courier": "Delhivery", "tracking_number": "DEL100560",
+            "expected_delivery": "2026-10-04", "days_late": null,
+            "is_cancellable": false, "payment_mode": "COD",
+            "items": ["Green Embroidered Straight Kurta (M)"]},
+  "policy_used": "Delivery FAQ v1",
+  "draft": "Hi Priya, aapka order DHC100560 Delhivery ke saath raste mein hai …",
+  "check": {"passed": true, "issues": []},
+  "human_reason": null,
+  "interaction_id": "9c1e…",
+  "fallback_mode": false,
+  "cost_usd": 0.024,
+  "latency_ms": 4100
+}</code></pre>
+
+    <h3>9.3 Integration points</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>System</th><th>How we connect</th><th>Config</th></tr></thead>
+      <tbody>
+        <tr><td>Supabase Postgres</td><td><code>supabase</code> Python client, server side only, through <code>shared/db.py</code></td><td><code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_KEY</code></td></tr>
+        <tr><td>Supabase Storage</td><td>Download active PDFs listed in <code>knowledge_documents</code> once at startup; extract text with <code>pypdf</code></td><td>Bucket name in settings</td></tr>
+        <tr><td>Claude API</td><td><code>anthropic</code> Python SDK through <code>shared/llm.py</code></td><td><code>ANTHROPIC_API_KEY</code>, <code>MODEL_FAST</code>, <code>MODEL_STRONG</code></td></tr>
+        <tr><td>Frontend</td><td>JSON over HTTP at <code>/api/*</code>; the Vite proxy in development, the same origin in production</td><td><code>VITE_API_BASE</code> (optional)</td></tr>
+        <tr><td>Freshdesk / WhatsApp</td><td>Not in the MVP. The decision endpoint is where a "send" call would go later.</td><td>none</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="structure">10. Folder structure, technologies and coding approach</h2>
+    <h3>10.1 Recommended layout</h3>
+<pre class="code"><code>dhaga-mvp/
+├── backend/
+│   ├── main.py                    <span class="c"># creates the app, mounts routers, serves frontend/dist in prod</span>
+│   ├── shared/
+│   │   ├── settings.py            <span class="c"># env vars + thresholds (pydantic-settings)</span>
+│   │   ├── db.py                  <span class="c"># Supabase client</span>
+│   │   ├── llm.py                 <span class="c"># Claude client, parse() wrapper, token + cost logging</span>
+│   │   ├── interactions.py        <span class="c"># write ai_interactions rows</span>
+│   │   └── errors.py              <span class="c"># one error shape for every endpoint</span>
+│   └── modules/
+│       ├── returns/               <span class="c"># today's backend/*.py, moved here</span>
+│       │   ├── router.py  config.py  ingestion.py  supabase_loader.py
+│       │   ├── validation.py  normalization.py  aggregation.py
+│       │   ├── insights.py  pipeline.py  classifier.py (stage 2)
+│       └── cx/                    <span class="c"># see 7.1</span>
+├── frontend/
+│   ├── src/
+│   │   ├── api.js
+│   │   ├── components/            <span class="c"># AppLayout, StatusPill, LoadingSteps, FailureCard …</span>
+│   │   ├── pages/
+│   │   │   ├── cx/                <span class="c"># Inbox, Ticket, Metrics</span>
+│   │   │   └── returns/           <span class="c"># Overview, Segment, DataQuality</span>
+│   │   └── styles/tokens.css
+│   └── vite.config.js
+├── data/                          <span class="c"># demo CSVs for tests</span>
+├── db/
+│   ├── schema.sql                 <span class="c"># exported live schema (Phase 0)</span>
+│   └── views.sql                  <span class="c"># v_ticket_context, v_returns_enriched</span>
+├── docs/                          <span class="c"># this guide, backend guide, discovery + build notes</span>
+├── evals/                         <span class="c"># labelled tickets + scripts (Phase 7)</span>
+├── tests/
+│   ├── returns/
+│   └── cx/
+├── Dockerfile                     <span class="c"># stage 1: build React; stage 2: Python serves API + dist</span>
+├── requirements.txt
+└── .env.example</code></pre>
+
+    <h3>10.2 Technologies</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
+      <tbody>
+        <tr><td>Backend</td><td>Python 3.11, FastAPI, Pydantic v2, pandas (Returns), pypdf</td></tr>
+        <tr><td>Database</td><td>Supabase (Postgres + Storage), <code>supabase</code> Python client</td></tr>
+        <tr><td>AI</td><td><code>anthropic</code> SDK; Claude Haiku 4.5 + Claude Opus 5.5</td></tr>
+        <tr><td>Frontend</td><td>React 18, Vite, React Router, Recharts</td></tr>
+        <tr><td>Testing</td><td>pytest (backend), a small eval script (AI quality)</td></tr>
+        <tr><td>Deploy</td><td>One Docker image on the Hugging Face Space, synced from <code>main</code> by the existing GitHub Action</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>10.3 Coding rules</h3>
+    <ol>
+      <li><strong>Routers are thin.</strong> Parse the request, call one service function, return a schema.</li>
+      <li><strong>One file talks to the database per module</strong> (<code>repository.py</code>). Everything else gets plain data.</li>
+      <li><strong>Modules never import each other.</strong> Shared code goes in <code>shared/</code>.</li>
+      <li><strong>Every model output has a Pydantic schema.</strong> No string parsing.</li>
+      <li><strong>Prompts live in files with a version</strong> (<code>draft_v1.md</code>), and the version is logged with every call.</li>
+      <li><strong>No arithmetic or dates in prompts.</strong> Code computes them and the model only reads them.</li>
+      <li><strong>Settings and thresholds come from <code>settings.py</code></strong>, never hard-coded.</li>
+      <li><strong>Small commits, one phase per branch,</strong> with tests passing before merge.</li>
+      <li><strong>Secrets only in <code>.env</code></strong>. Never commit it and never send it to the browser.</li>
+    </ol>
+
+    <h2 id="future">11. Future plan: separate microservices</h2>
+    <p>Split only when there is a reason: separate teams, different release speeds, or one module needing to scale on its own. The MVP doesn't need it. Because of the rules in section 10, the split is mostly moving folders.</p>
+<pre class="mermaid">
+flowchart LR
+  U[React app] --> G[Gateway<br/>reverse proxy]
+  G -->|/api/returns/*| RS[returns-service<br/>FastAPI]
+  G -->|/api/cx/*| CS[cx-service<br/>FastAPI]
+  RS --> C1[dhaga-common<br/>package]
+  CS --> C1
+  RS --> DB[(Supabase)]
+  CS --> DB
+  CS -. HTTP: return status .-> RS
+</pre>
+    <h3>Steps</h3>
+    <ol>
+      <li><strong>Check boundaries.</strong> Confirm that <code>modules/cx</code> and <code>modules/returns</code> import nothing from each other. A simple test can enforce this.</li>
+      <li><strong>Extract <code>shared/</code></strong> into a small installable package, <code>dhaga-common</code>, that both services depend on.</li>
+      <li><strong>Create two apps.</strong> Each service gets its own <code>main.py</code>, Dockerfile, settings and health check. Each mounts only its own router.</li>
+      <li><strong>Add a gateway.</strong> A reverse proxy such as Caddy or Nginx routes <code>/api/returns/*</code> and <code>/api/cx/*</code>. The frontend keeps the same URLs, so it doesn't change.</li>
+      <li><strong>Split data ownership.</strong> Each service writes only its own tables: CX writes <code>support_tickets</code> status and its <code>ai_interactions</code> rows; Returns writes the <code>returns.ai_*</code> columns. Shared master tables (customers, orders, products) are read-only for both, through views.</li>
+      <li><strong>Talk over HTTP, not the database.</strong> When CX needs a refund status, it calls a Returns endpoint and doesn't read the <code>returns</code> table directly.</li>
+      <li><strong>Deploy separately.</strong> Use separate CI jobs and environment files, and give each service its own logs and cost tracking (filter <code>ai_interactions</code> by <code>workflow</code>).</li>
+    </ol>
+    <div class="note warn"><p><strong>Watch out:</strong> two services sharing one database is fine for this project, but neither service may change a table the other owns. Write the owner of each table into <code>db/schema.sql</code> as a comment.</p></div>
+
+    <h2 id="sources">Sources</h2>
+    <ul>
+      <li>Shared ChatGPT discussion, "Requirement Discovery Model": CX problem framing, Copilot design, stack, personas, screens, the 10-table schema and the synthetic data</li>
+      <li>Reference project <a href="https://github.com/Adi56a/Dhaga---Co-Team8">Adi56a/Dhaga---Co-Team8</a>, a COD return-to-origin (RTO) risk platform. Ideas taken, not code: separate routes, services and AI chains; schema-validated model output; deterministic fallback when the model fails; per-call cost and latency telemetry; a data-validation script; a phase plan with deliverables</li>
+      <li>This repo's Returns backend and <a href="https://claude.ai/artifact/CgXcRKTRExbwHZbDNLbH4f">backend guide</a> (<code>docs/backend-guide.html</code>)</li>
+      <li>Model IDs and prices: Anthropic model table, checked 3 October 2026</li>
+    </ul>
+  </main>
+</div>

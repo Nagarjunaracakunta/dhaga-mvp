@@ -1,7 +1,7 @@
 """Central config: paths, canonical mappings, thresholds. No logic here."""
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = ROOT / "data"
 PROCESSED_DIR = DATA_DIR / "processed"
 

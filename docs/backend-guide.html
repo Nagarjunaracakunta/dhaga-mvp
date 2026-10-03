@@ -1,0 +1,350 @@
+<title>Dhaga Returns Backend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a sticky contents rail on wide screens; reference tables scroll inside their own frames. */
+:root {
+  --paper: #f6f7f9;
+  --ink: #1b2233;
+  --muted: #5a6478;
+  --rule: #d9dde6;
+  --panel: #ffffff;
+  --indigo: #2f3f8f;
+  --indigo-soft: #e6e9f6;
+  --madder: #a83a4a;
+  --madder-soft: #f6e4e6;
+  --ok: #2e7a52;
+  --ok-soft: #e2f1e8;
+  --code-bg: #eef0f5;
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+    --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+    --ok: #7ccfa1; --ok-soft: #1c3328; --code-bg: #1f2431; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151d; --ink: #e3e6ee; --muted: #9aa3b6; --rule: #2a3040; --panel: #191d28;
+  --indigo: #9aa9f2; --indigo-soft: #232a46; --madder: #ec8f9c; --madder-soft: #3a2228;
+  --ok: #7ccfa1; --ok-soft: #1c3328; --code-bg: #1f2431; color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 28px 64px; } nav.toc { position: static !important; } }
+
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-family: var(--f-display); font-size: 14px; }
+nav.toc p { margin: 0 0 10px; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: var(--muted); }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--indigo); text-decoration: underline; }
+@media (max-width: 860px) { nav.toc ol { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+
+main { min-width: 0; }
+main > * { max-width: 70ch; }
+main > .wide, main > .scroll, main > .grid-stats, main > pre.mermaid { max-width: none; }
+
+header.top { display: grid; gap: 10px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+.eyebrow { font-family: var(--f-display); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--indigo); font-weight: 600; margin: 0; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; }
+h1 { font-size: 2.4rem; margin: 0; font-weight: 700; }
+h2 { font-size: 1.55rem; margin: 56px 0 12px; font-weight: 600; scroll-margin-top: 24px; }
+h3 { font-size: 1.12rem; margin: 30px 0 8px; font-weight: 600; }
+.lede { font-size: 1.15rem; color: var(--muted); margin: 0; }
+.meta { font-family: var(--f-display); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+p { margin: 0 0 14px; }
+ul, ol.steps { padding-left: 1.2em; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+a { color: var(--indigo); }
+code { font-family: var(--f-mono); font-size: .84em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre.code { font-family: var(--f-mono); font-size: 14px; line-height: 1.55; background: var(--code-bg); padding: 16px 18px; border-radius: 6px; overflow-x: auto; margin: 0 0 16px; }
+pre.code code { background: none; padding: 0; font-size: inherit; }
+.c { color: var(--muted); }
+
+.scroll { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--f-display); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--paper); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td code { white-space: nowrap; }
+
+.grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin: 0 0 18px; }
+.stat { background: var(--panel); padding: 14px 16px; display: grid; gap: 2px; }
+.stat b { font-family: var(--f-display); font-size: 1.6rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+.stat span { font-family: var(--f-display); font-size: 13px; color: var(--muted); }
+
+.pill { display: inline-block; font-family: var(--f-display); font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--madder-soft); color: var(--madder); }
+.pill.info { background: var(--indigo-soft); color: var(--indigo); }
+
+.note { border-left: 3px solid var(--indigo); background: var(--indigo-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 0 0 18px; }
+.note.warn { border-left-color: var(--madder); background: var(--madder-soft); }
+.note p:last-child { margin-bottom: 0; }
+
+.formula { font-family: var(--f-mono); font-size: 14px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 18px; margin: 0 0 16px; overflow-x: auto; line-height: 1.8; }
+
+pre.mermaid { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; overflow-x: auto; margin: 0 0 18px; }
+
+.gaps { display: grid; gap: 12px; margin: 0 0 18px; padding: 0; list-style: none; }
+.gaps li { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; margin: 0; display: grid; gap: 4px; }
+.gaps li strong { font-family: var(--f-display); }
+.gaps li .where { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+
+a:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#run">Run it locally</a></li>
+      <li><a href="#flow">How data flows</a></li>
+      <li><a href="#modules">Module map</a></li>
+      <li><a href="#inputs">Input data</a></li>
+      <li><a href="#validation">Validation rules</a></li>
+      <li><a href="#normalization">Normalization</a></li>
+      <li><a href="#insights">Insight rules</a></li>
+      <li><a href="#api">API reference</a></li>
+      <li><a href="#results">Current results</a></li>
+      <li><a href="#tests">Tests</a></li>
+      <li><a href="#gaps">Gaps and next steps</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="top">
+      <p class="eyebrow">Dhaga &amp; Co. MVP · Backend guide</p>
+      <h1>Dhaga Returns Backend</h1>
+      <p class="lede">How the returns-insights pipeline turns raw order and return CSVs into return rates and a short list of products, sizes and colours worth investigating.</p>
+      <div class="meta"><span>Stage 1: rules only, no AI</span><span>Python 3.11 · pandas · FastAPI</span><span>Branch <code>feat/base-backed-wismo-mvp</code></span></div>
+    </header>
+
+    <h2 id="overview">Overview</h2>
+    <p>Dhaga sells ethnic wear online. Customers pick a return reason from a dropdown, and many pick <strong>"Other"</strong> and type a comment, often in Hinglish (<em>"shoulders pe bahut tight hai"</em>). The business question is: <strong>which products, sizes or colours are being returned unusually often, and why?</strong></p>
+    <p>The backend answers that in two stages:</p>
+    <ul>
+      <li><strong>Stage 1 (this code):</strong> clean the data, compute return rates, and use fixed rules to flag segments that stand out. Every step is deterministic. No language model is called.</li>
+      <li><strong>Stage 2 (not built yet):</strong> a language model reads the "Other" comments and classifies them. Stage 1 already marks those rows with <code>needs_llm = True</code> and collects sample comments for each flagged segment.</li>
+    </ul>
+    <div class="note"><p>The design rule, from <code>backend/insights.py</code>: <strong>code decides what is notable; a later LLM only explains it.</strong> The model will never decide which products to flag.</p></div>
+
+    <h2 id="run">Run it locally</h2>
+    <p>The project uses a virtual environment in <code>.venv/</code> built on Python 3.11, which matches the Docker image.</p>
+<pre class="code"><code>python3.11 -m venv .venv               <span class="c"># first time only</span>
+source .venv/bin/activate
+pip install -r requirements.txt
+
+python scripts/generate_demo_data.py   <span class="c"># optional: rebuild data/*.csv (seeded, same output every time)</span>
+python -m backend.pipeline             <span class="c"># print the report and write data/processed/*.csv</span>
+pytest -q                              <span class="c"># 7 tests</span>
+uvicorn backend.main:app --reload      <span class="c"># API at http://127.0.0.1:8000, docs at /docs</span></code></pre>
+
+    <h2 id="flow">How data flows</h2>
+    <p>Everything runs through <code>run_pipeline()</code> in <code>backend/pipeline.py</code>. Rows are never silently dropped. Each step returns the rows it kept plus a table of rejected rows with a reason, and those tables are combined at the end.</p>
+<pre class="mermaid">
+flowchart LR
+  A[products.csv<br/>orders.csv<br/>returns.csv] --> B[Ingest<br/>load as text]
+  B --> C[Validate orders]
+  C --> D[Normalize orders<br/>size, colour]
+  D --> E[Validate returns<br/>against clean orders]
+  E --> F[Normalize returns<br/>size, colour, reason]
+  F --> G[Join catalogue<br/>name, category]
+  G --> H[Aggregate<br/>counts and rates]
+  G --> I[Candidate insights<br/>rule-based flags]
+  C -. rejected .-> R[(rejected_records)]
+  D -. rejected .-> R
+  E -. rejected .-> R
+  F -. rejected .-> R
+</pre>
+    <p>Two ordering details matter:</p>
+    <ul>
+      <li>Returns are validated against the <em>cleaned</em> orders. If an order was rejected, its returns are rejected too, as <code>order_not_found</code>.</li>
+      <li>After cleaning, product name and category on returns are replaced with values from <code>products.csv</code>. The catalogue is the single source of truth for those fields.</li>
+    </ul>
+    <p>The result is a <code>PipelineResult</code> holding <code>products</code>, <code>orders</code>, <code>returns</code>, <code>rejected</code>, <code>summary</code> and <code>candidate_insights</code>.</p>
+
+    <h2 id="modules">Module map</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>File</th><th>Responsibility</th><th>Key functions</th></tr></thead>
+      <tbody>
+        <tr><td><code>backend/config.py</code></td><td>Paths, expected columns, lookup maps and thresholds. No logic.</td><td><code>SIZE_MAP</code>, <code>COLOUR_VARIANTS</code>, <code>DROPDOWN_REASON_MAP</code>, thresholds</td></tr>
+        <tr><td><code>backend/ingestion.py</code></td><td>Reads CSVs with every column as text and fails fast if a required column is missing.</td><td><code>load_products</code>, <code>load_orders</code>, <code>load_returns</code></td></tr>
+        <tr><td><code>backend/validation.py</code></td><td>Structural checks: blanks, duplicates, bad dates, broken links between files. Converts dates.</td><td><code>validate_orders</code>, <code>validate_returns</code></td></tr>
+        <tr><td><code>backend/normalization.py</code></td><td>Maps messy size, colour and reason text to standard values. Marks rows that need the LLM.</td><td><code>normalize_orders</code>, <code>normalize_returns</code></td></tr>
+        <tr><td><code>backend/aggregation.py</code></td><td>Counts and return rates. Pure functions over clean DataFrames.</td><td><code>overall_summary</code>, <code>by_dimension</code>, <code>reason_counts</code>, <code>product_table</code></td></tr>
+        <tr><td><code>backend/insights.py</code></td><td>Flags products, sizes and colours whose return rate is unusually high.</td><td><code>find_candidate_insights</code></td></tr>
+        <tr><td><code>backend/pipeline.py</code></td><td>Runs the steps in order, writes cleaned CSVs, prints a console report.</td><td><code>run_pipeline</code>, <code>save_processed</code>, <code>print_report</code></td></tr>
+        <tr><td><code>backend/main.py</code></td><td>Read-only FastAPI layer. Runs the pipeline once and caches the result in memory.</td><td>7 <code>GET</code> endpoints</td></tr>
+        <tr><td><code>scripts/generate_demo_data.py</code></td><td>Builds realistic demo data (seed 42) with three planted problems and a few deliberately broken rows.</td><td>n/a</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="inputs">Input data</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>File</th><th class="num">Rows</th><th>Columns</th></tr></thead>
+      <tbody>
+        <tr><td><code>products.csv</code></td><td class="num">8</td><td>product_id, product_name, category</td></tr>
+        <tr><td><code>orders.csv</code></td><td class="num">3,601</td><td>order_id, customer_id, product_id, size, colour, order_date</td></tr>
+        <tr><td><code>returns.csv</code></td><td class="num">457</td><td>return_id, order_id, customer_id, product_id, product_name, category, size, colour, return_reason, return_comment, return_date</td></tr>
+        <tr><td><code>returns_ground_truth.csv</code></td><td class="num">455</td><td>The true reason for each return. The app never reads it. It exists to score the stage-2 classifier.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Dates must be <code>YYYY-MM-DD</code>. Cleaned output goes to <code>data/processed/</code>: <code>orders_clean.csv</code>, <code>returns_clean.csv</code> and <code>rejected_records.csv</code>.</p>
+
+    <h2 id="validation">Validation rules</h2>
+    <p>Checks run in the order below. A row is rejected for the <strong>first</strong> check it fails, so each rejected row has exactly one reason.</p>
+    <h3>Orders</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Reason code</th><th>Rejected when</th></tr></thead>
+      <tbody>
+        <tr><td><code>missing_&lt;field&gt;</code></td><td>order_id, product_id, size or order_date is blank</td></tr>
+        <tr><td><code>duplicate_order_id</code></td><td>The order_id appeared earlier in the file. The first copy is kept.</td></tr>
+        <tr><td><code>unknown_product_id</code></td><td>The product is not in <code>products.csv</code></td></tr>
+        <tr><td><code>invalid_order_date</code></td><td>The date is not <code>YYYY-MM-DD</code></td></tr>
+        <tr><td><code>unknown_size</code></td><td>The size text is not in the size map (checked during normalization)</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Returns</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Reason code</th><th>Rejected when</th></tr></thead>
+      <tbody>
+        <tr><td><code>missing_&lt;field&gt;</code></td><td>return_id, order_id, product_id, return_reason or return_date is blank</td></tr>
+        <tr><td><code>duplicate_return_id</code></td><td>The return_id appeared earlier in the file</td></tr>
+        <tr><td><code>invalid_return_date</code></td><td>The date is not <code>YYYY-MM-DD</code></td></tr>
+        <tr><td><code>unknown_product_id</code></td><td>The product is not in the catalogue</td></tr>
+        <tr><td><code>order_not_found</code></td><td>The order_id is not among the clean orders</td></tr>
+        <tr><td><code>product_mismatch_with_order</code></td><td>The return's product differs from the product on its order</td></tr>
+        <tr><td><code>unknown_size</code></td><td>The size text is not in the size map</td></tr>
+        <tr><td><code>unknown_return_reason</code></td><td>The reason is neither a known dropdown value nor "Other"</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="normalization">Normalization</h2>
+    <p>All matching ignores case and extra spaces. The maps live in <code>backend/config.py</code>, so supporting a new spelling means adding one entry there.</p>
+    <h3>Size</h3>
+    <p><code>"medium"</code>, <code>" m "</code> and <code>"M"</code> all become <code>M</code>. "Free size", "one size" and "os" become <code>FREE</code>. Anything else is rejected as <code>unknown_size</code>.</p>
+    <h3>Colour</h3>
+    <p>Shades and Hindi names are folded into 10 base colours, for example <code>gulabi</code>, <code>pinkish</code> and <code>baby pink</code> become <code>Pink</code>, and <code>neela</code> and <code>navy</code> become <code>Blue</code>. An unrecognised colour becomes <code>UNKNOWN</code>. It is <em>not</em> rejected, because colour is not required.</p>
+    <h3>Return reason</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Dropdown text</th><th>primary_reason</th><th>sub_reason</th></tr></thead>
+      <tbody>
+        <tr><td>Size too small</td><td>FIT</td><td>TOO_TIGHT</td></tr>
+        <tr><td>Size too large</td><td>FIT</td><td>TOO_LOOSE</td></tr>
+        <tr><td>Quality not as expected</td><td>QUALITY</td><td>UNSPECIFIED</td></tr>
+        <tr><td>Colour different from photo</td><td>COLOUR</td><td>LISTING_DIFFERENCE</td></tr>
+        <tr><td>Damaged product</td><td>DAMAGE</td><td>UNSPECIFIED</td></tr>
+        <tr><td>Wrong item received</td><td>WRONG_ITEM</td><td>UNSPECIFIED</td></tr>
+        <tr><td>Changed my mind</td><td>CHANGED_MIND</td><td>UNSPECIFIED</td></tr>
+      </tbody>
+    </table></div>
+    <p>"Other" is deliberately left out of that map. Each return gets a <code>classification_source</code> that says how its reason was decided:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>classification_source</th><th>When</th><th>primary_reason</th><th>needs_llm</th></tr></thead>
+      <tbody>
+        <tr><td><code>dropdown</code></td><td>A known dropdown value</td><td>From the map above</td><td><span class="pill ok">False</span></td></tr>
+        <tr><td><code>pending_llm</code></td><td>"Other" with a comment</td><td>UNCLASSIFIED</td><td><span class="pill warn">True</span></td></tr>
+        <tr><td><code>no_comment</code></td><td>"Other" with a blank comment</td><td>UNSPECIFIED (sub: NO_COMMENT)</td><td><span class="pill ok">False</span></td></tr>
+      </tbody>
+    </table></div>
+    <p>A <code>body_area</code> column (shoulders, waist and so on) is created but always empty for now. Stage 2 is expected to fill it from the comments.</p>
+
+    <h2 id="insights">Insight rules</h2>
+    <p><code>find_candidate_insights</code> looks at three levels: <strong>whole product</strong>, <strong>product + size</strong> and <strong>product + colour</strong>. For each one it computes:</p>
+    <div class="formula">
+      return_rate = returns ÷ orders<br>
+      baseline&nbsp;&nbsp;&nbsp;&nbsp;= all returns ÷ all orders (12.44% today)<br>
+      lift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= return_rate ÷ baseline
+    </div>
+    <p>A segment is flagged only if it passes every rule that applies to it:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Rule</th><th class="num">Threshold</th><th>Applies to</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Enough returns</td><td class="num">≥ 15</td><td>All</td><td>Avoids flagging tiny samples</td></tr>
+        <tr><td>Lift over shop baseline</td><td class="num">≥ 1.5×</td><td>All</td><td>Must be clearly worse than the shop average</td></tr>
+        <tr><td>Lift over its own product</td><td class="num">≥ 1.4×</td><td>Size and colour only</td><td>Stops a bad product from flagging every one of its sizes</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Worked example: Floral Midi Dress, size L</h3>
+    <div class="formula">
+      48 returns ÷ 115 orders = 41.7%<br>
+      lift = 41.7% ÷ 12.44% = 3.35× &nbsp;&nbsp;(passes 1.5×)<br>
+      product rate = 19.3%; 19.3% × 1.4 = 27.0% &nbsp;&nbsp;(41.7% passes)<br>
+      48 returns &nbsp;&nbsp;(passes 15)
+    </div>
+    <p>Each flagged segment comes back with its counts, rate, lift, a breakdown by <code>primary_reason</code>, the share still <code>UNCLASSIFIED</code>, and up to 5 sample "Other" comments. Results are sorted by lift, highest first. The <code>insight_id</code> takes the form <code>product_size:SKU4421|L</code>.</p>
+
+    <h2 id="api">API reference</h2>
+    <p>Start the API with <code>uvicorn backend.main:app --reload</code>. All endpoints are <code>GET</code> and return JSON. CORS is open to all origins.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Endpoint</th><th>Parameters</th><th>Returns</th></tr></thead>
+      <tbody>
+        <tr><td><code>/api/summary</code></td><td><code>refresh</code> (bool)</td><td>Headline counts and rates. <code>refresh=true</code> reruns the pipeline.</td></tr>
+        <tr><td><code>/api/products</code></td><td>none</td><td>One row per product: orders, returns, rate, and a count per reason (<code>n_FIT</code>, <code>n_QUALITY</code>, …)</td></tr>
+        <tr><td><code>/api/breakdown</code></td><td><code>by</code> = size | colour | category | product_id</td><td>Orders, returns and rate grouped by that field</td></tr>
+        <tr><td><code>/api/reasons</code></td><td><code>product_id</code> (optional)</td><td>Counts per primary and sub reason</td></tr>
+        <tr><td><code>/api/insights</code></td><td>none</td><td>Candidate insights, as described above</td></tr>
+        <tr><td><code>/api/returns</code></td><td><code>needs_llm</code>, <code>product_id</code>, <code>limit</code> (default 100)</td><td>Cleaned return rows</td></tr>
+        <tr><td><code>/api/rejected</code></td><td>none</td><td>Every rejected row with its source and reason</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="results">Current results on the demo data</h2>
+    <p>From <code>python -m backend.pipeline</code>, run on 3 October 2026:</p>
+    <div class="grid-stats">
+      <div class="stat"><b>3,600</b><span>clean orders</span></div>
+      <div class="stat"><b>448</b><span>clean returns</span></div>
+      <div class="stat"><b>12.44%</b><span>return rate</span></div>
+      <div class="stat"><b>172</b><span>"Other" + comment, need LLM</span></div>
+      <div class="stat"><b>10</b><span>rejected rows</span></div>
+    </div>
+    <p>Of the 448 returns, 258 have a dropdown reason, 172 are "Other" with a comment, and 18 are "Other" with nothing written. That makes 42% of returns "Other", which is why stage 2 matters: for those rows the dropdown gives no reason at all.</p>
+    <h3>Candidate insights</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Product</th><th>Segment</th><th class="num">Returns / orders</th><th class="num">Rate</th><th class="num">Lift</th><th class="num">Unclassified</th><th>Planted?</th></tr></thead>
+      <tbody>
+        <tr><td>Floral Midi Dress</td><td>size L</td><td class="num">48 / 115</td><td class="num">41.7%</td><td class="num">3.35×</td><td class="num">42%</td><td><span class="pill ok">Yes: shoulders tight</span></td></tr>
+        <tr><td>Floral Midi Dress</td><td>size M</td><td class="num">33 / 102</td><td class="num">32.4%</td><td class="num">2.60×</td><td class="num">61%</td><td><span class="pill ok">Yes: shoulders tight</span></td></tr>
+        <tr><td>Chikankari Top</td><td>colour Mustard</td><td class="num">44 / 136</td><td class="num">32.4%</td><td class="num">2.60×</td><td class="num">27%</td><td><span class="pill ok">Yes: colour mismatch</span></td></tr>
+        <tr><td>Chikankari Top</td><td>size S</td><td class="num">27 / 104</td><td class="num">26.0%</td><td class="num">2.09×</td><td class="num">48%</td><td><span class="pill info">No, see note</span></td></tr>
+        <tr><td>Anarkali Suit</td><td>whole product</td><td class="num">80 / 349</td><td class="num">22.9%</td><td class="num">1.84×</td><td class="num">32%</td><td><span class="pill ok">Yes: fabric quality</span></td></tr>
+        <tr><td>Floral Midi Dress</td><td>whole product</td><td class="num">105 / 544</td><td class="num">19.3%</td><td class="num">1.55×</td><td class="num">50%</td><td><span class="pill info">Effect of M and L</span></td></tr>
+      </tbody>
+    </table></div>
+    <p>All three problems planted in the demo data are found. The Chikankari Top size S flag was not planted. Its known reasons are mostly COLOUR (10 of 14), so it is probably the Mustard colour problem showing up again through one size, not a separate fit issue. This is the kind of overlap a reviewer, or stage 2, should check before acting on it.</p>
+    <p>For the Floral Midi Dress M and L flags, the dropdown alone points to FIT, but 42% to 61% of those returns are still UNCLASSIFIED. The detail that it is the <em>shoulders</em> only appears in the comments, so stage 2 is needed to confirm it.</p>
+    <h3>Rejected rows</h3>
+    <p>The 10 rejections match the broken rows planted by the generator: 1 duplicate order, and on returns 1 duplicate, 2 bad dates, 1 missing product, 1 unknown product, 1 missing order, 1 product mismatch, 1 unknown size and 1 unknown reason.</p>
+
+    <h2 id="tests">Tests</h2>
+    <p><code>tests/test_pipeline.py</code> has 7 tests, all passing:</p>
+    <ul>
+      <li>Size, colour and dropdown-reason mapping.</li>
+      <li>"Other" with and without a comment gets the right <code>needs_llm</code> and <code>classification_source</code>.</li>
+      <li>Validation catches a bad date and a missing product_id.</li>
+      <li>Return-rate arithmetic on a small example.</li>
+      <li>An end-to-end run finds the Floral Midi Dress L and Chikankari Mustard patterns, rejects at least 9 rows, and leaves no duplicate return IDs.</li>
+    </ul>
+    <p>The end-to-end test does not check the Anarkali Suit quality pattern, even though the pipeline finds it.</p>
+
+    <h2 id="gaps">Gaps and next steps</h2>
+    <ul class="gaps">
+      <li><strong>The deployed app will fail to start.</strong><span>The Dockerfile runs <code>streamlit run app.py</code>, but <code>streamlit</code> is not in <code>requirements.txt</code>. The GitHub Action pushes <code>main</code> to a Hugging Face Space, so this will break there. Fix: add <code>streamlit</code> to <code>requirements.txt</code>.</span><span class="where">Dockerfile, requirements.txt</span></li>
+      <li><strong>The Streamlit app does not use the backend yet.</strong><span><code>app.py</code> is still the day-1 placeholder that only proves deployment works. It should call <code>run_pipeline()</code> or the API and show the summary and insights.</span><span class="where">app.py</span></li>
+      <li><strong>Stage 2 classifier is not built.</strong><span>172 returns are waiting for classification. The plan is to classify each comment into primary reason, sub reason and body area, then score it against <code>returns_ground_truth.csv</code>. <code>.env.example</code> already lists <code>ANTHROPIC_API_KEY</code> and <code>OPENAI_API_KEY</code>.</span><span class="where">backend/normalization.py, data/returns_ground_truth.csv</span></li>
+      <li><strong>The API cache only refreshes through one endpoint.</strong><span>Results are cached in memory for the life of the server. Only <code>/api/summary?refresh=true</code> reruns the pipeline. After changing the CSVs, call that first or restart the server.</span><span class="where">backend/main.py</span></li>
+      <li><strong>Project notes are still templates.</strong><span><code>docs/discovery-note.md</code> and <code>docs/build-note.md</code> are blank. The discovery note says it must be dated before the first code commit.</span><span class="where">docs/</span></li>
+      <li><strong>Small clean-ups.</strong><span><code>src/</code> holds only an empty <code>__init__.py</code>. One validation test accepts two different outcomes, so it would not notice a change in duplicate handling. <code>pandas&gt;=2.0</code> now installs pandas 3.x; the tests pass on it, but pinning a range would keep installs predictable.</span><span class="where">src/, tests/test_pipeline.py, requirements.txt</span></li>
+    </ul>
+  </main>
+</div>

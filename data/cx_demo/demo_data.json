@@ -1,0 +1,59 @@
+{
+  "_note": "Demo data for the CX module when Supabase is not configured. Shapes match the Supabase tables. 'Today' for this data is 2026-10-03.",
+  "customers": [
+    {"customer_id": "c0000000-0000-4000-8000-000000000001", "customer_code": "CUS0001", "name": "Priya Sharma", "city": "Chennai"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000002", "customer_code": "CUS0002", "name": "Rahul Verma", "city": "Pune"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000003", "customer_code": "CUS0003", "name": "Sneha Iyer", "city": "Bengaluru"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000004", "customer_code": "CUS0004", "name": "Ananya Sharma", "city": "Bengaluru"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000005", "customer_code": "CUS0005", "name": "Imran Khan", "city": "Hyderabad"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000006", "customer_code": "CUS0006", "name": "Kavya Nair", "city": "Kochi"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000007", "customer_code": "CUS0007", "name": "Meera Joshi", "city": "Jaipur"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000008", "customer_code": "CUS0008", "name": "Arjun Mehta", "city": "Delhi"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000009", "customer_code": "CUS0009", "name": "Farah Ali", "city": "Lucknow"},
+    {"customer_id": "c0000000-0000-4000-8000-000000000010", "customer_code": "CUS0010", "name": "Vikram Rao", "city": "Mumbai"}
+  ],
+  "products": [
+    {"product_id": "p0000000-0000-4000-8000-000000000001", "sku": "SKU0001", "product_name": "Green Embroidered Straight Kurta"},
+    {"product_id": "p0000000-0000-4000-8000-000000000002", "sku": "SKU0022", "product_name": "Linen Kurta Set"},
+    {"product_id": "p0000000-0000-4000-8000-000000000003", "sku": "SKU0031", "product_name": "Palazzo Pants"},
+    {"product_id": "p0000000-0000-4000-8000-000000000004", "sku": "SKU0002", "product_name": "Yellow Printed A-Line Kurta"},
+    {"product_id": "p0000000-0000-4000-8000-000000000005", "sku": "SKU0045", "product_name": "Embroidered Dupatta"},
+    {"product_id": "p0000000-0000-4000-8000-000000000006", "sku": "SKU4421", "product_name": "Floral Midi Dress"},
+    {"product_id": "p0000000-0000-4000-8000-000000000007", "sku": "SKU0030", "product_name": "Cotton Straight Kurta"},
+    {"product_id": "p0000000-0000-4000-8000-000000000008", "sku": "SKU4450", "product_name": "Chikankari Top"}
+  ],
+  "orders": [
+    {"order_id": "o0000000-0000-4000-8000-000000000001", "order_number": "DHC100560", "customer_id": "c0000000-0000-4000-8000-000000000001", "order_date": "2026-09-29T10:12:00", "payment_mode": "COD", "order_status": "IN_TRANSIT", "courier": "Delhivery", "tracking_number": "DEL100560", "expected_delivery": "2026-10-04", "delivered_at": null, "total_amount": 1436.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000002", "order_number": "DHC100231", "customer_id": "c0000000-0000-4000-8000-000000000002", "order_date": "2026-09-20T18:40:00", "payment_mode": "PREPAID", "order_status": "IN_TRANSIT", "courier": "Ekart", "tracking_number": "EKA100231", "expected_delivery": "2026-09-27", "delivered_at": null, "total_amount": 2063.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000003", "order_number": "DHC100318", "customer_id": "c0000000-0000-4000-8000-000000000003", "order_date": "2026-09-24T09:05:00", "payment_mode": "PREPAID", "order_status": "DELIVERED", "courier": "Shiprocket", "tracking_number": "SHR100318", "expected_delivery": "2026-10-01", "delivered_at": "2026-10-01T14:20:00", "total_amount": 1799.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000004", "order_number": "DHC100902", "customer_id": "c0000000-0000-4000-8000-000000000004", "order_date": "2026-10-02T21:30:00", "payment_mode": "PREPAID", "order_status": "CONFIRMED", "courier": null, "tracking_number": null, "expected_delivery": "2026-10-09", "delivered_at": null, "total_amount": 1573.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000005", "order_number": "DHC100415", "customer_id": "c0000000-0000-4000-8000-000000000005", "order_date": "2026-09-30T13:15:00", "payment_mode": "COD", "order_status": "SHIPPED", "courier": "Delhivery", "tracking_number": "DEL100415", "expected_delivery": "2026-10-06", "delivered_at": null, "total_amount": 1250.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000006", "order_number": "DHC100377", "customer_id": "c0000000-0000-4000-8000-000000000006", "order_date": "2026-09-25T16:50:00", "payment_mode": "PREPAID", "order_status": "DELIVERED", "courier": "Delhivery", "tracking_number": "DEL100377", "expected_delivery": "2026-09-30", "delivered_at": "2026-09-30T11:05:00", "total_amount": 2199.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000007", "order_number": "DHC100488", "customer_id": "c0000000-0000-4000-8000-000000000008", "order_date": "2026-09-28T08:20:00", "payment_mode": "COD", "order_status": "OUT_FOR_DELIVERY", "courier": "Delhivery", "tracking_number": "DEL100488", "expected_delivery": "2026-10-03", "delivered_at": null, "total_amount": 1890.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000008", "order_number": "DHC100611", "customer_id": "c0000000-0000-4000-8000-000000000009", "order_date": "2026-09-18T19:45:00", "payment_mode": "COD", "order_status": "RTO_INITIATED", "courier": "Ekart", "tracking_number": "EKA100611", "expected_delivery": "2026-09-25", "delivered_at": null, "total_amount": 1349.0},
+    {"order_id": "o0000000-0000-4000-8000-000000000009", "order_number": "DHC100702", "customer_id": "c0000000-0000-4000-8000-000000000010", "order_date": "2026-09-27T12:00:00", "payment_mode": "PREPAID", "order_status": "SHIPPED", "courier": "Shiprocket", "tracking_number": "SHR100702", "expected_delivery": "2026-10-05", "delivered_at": null, "total_amount": 2499.0}
+  ],
+  "order_items": [
+    {"order_item_id": "i0000000-0000-4000-8000-000000000001", "order_id": "o0000000-0000-4000-8000-000000000001", "product_id": "p0000000-0000-4000-8000-000000000001", "quantity": 1, "unit_price": 1436.0, "size": "M", "colour": "Green"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000002", "order_id": "o0000000-0000-4000-8000-000000000002", "product_id": "p0000000-0000-4000-8000-000000000002", "quantity": 1, "unit_price": 2063.0, "size": "L", "colour": "White"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000003", "order_id": "o0000000-0000-4000-8000-000000000003", "product_id": "p0000000-0000-4000-8000-000000000003", "quantity": 1, "unit_price": 1799.0, "size": "S", "colour": "Black"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000004", "order_id": "o0000000-0000-4000-8000-000000000004", "product_id": "p0000000-0000-4000-8000-000000000004", "quantity": 1, "unit_price": 1573.0, "size": "S", "colour": "Yellow"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000005", "order_id": "o0000000-0000-4000-8000-000000000005", "product_id": "p0000000-0000-4000-8000-000000000005", "quantity": 1, "unit_price": 1250.0, "size": "FREE", "colour": "Red"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000006", "order_id": "o0000000-0000-4000-8000-000000000006", "product_id": "p0000000-0000-4000-8000-000000000006", "quantity": 1, "unit_price": 2199.0, "size": "M", "colour": "Pink"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000007", "order_id": "o0000000-0000-4000-8000-000000000007", "product_id": "p0000000-0000-4000-8000-000000000007", "quantity": 1, "unit_price": 1890.0, "size": "L", "colour": "Black"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000008", "order_id": "o0000000-0000-4000-8000-000000000008", "product_id": "p0000000-0000-4000-8000-000000000008", "quantity": 1, "unit_price": 1349.0, "size": "M", "colour": "Mustard"},
+    {"order_item_id": "i0000000-0000-4000-8000-000000000009", "order_id": "o0000000-0000-4000-8000-000000000009", "product_id": "p0000000-0000-4000-8000-000000000001", "quantity": 1, "unit_price": 2499.0, "size": "L", "colour": "Green"}
+  ],
+  "support_tickets": [
+    {"ticket_id": "t0000000-0000-4000-8000-000000000001", "ticket_number": "TKT200001", "customer_id": "c0000000-0000-4000-8000-000000000001", "order_id": "o0000000-0000-4000-8000-000000000001", "channel": "App", "message": "Mera order abhi tak nahi aaya. Kab milega?", "status": "OPEN", "created_at": "2026-10-03T09:48:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000002", "ticket_number": "TKT200014", "customer_id": "c0000000-0000-4000-8000-000000000002", "order_id": null, "channel": "WhatsApp", "message": "Order DHC100231 5 din se late hai, tracking update nahi ho raha. Kya ho raha hai?", "status": "OPEN", "created_at": "2026-10-03T09:20:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000003", "ticket_number": "TKT200027", "customer_id": "c0000000-0000-4000-8000-000000000003", "order_id": "o0000000-0000-4000-8000-000000000003", "channel": "Email", "message": "The app shows my order as delivered but I never received the parcel.", "status": "OPEN", "created_at": "2026-10-03T09:02:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000004", "ticket_number": "TKT200033", "customer_id": "c0000000-0000-4000-8000-000000000004", "order_id": "o0000000-0000-4000-8000-000000000004", "channel": "App", "message": "Cancel kar do please, ab nahi chahiye.", "status": "OPEN", "created_at": "2026-10-03T08:55:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000005", "ticket_number": "TKT200041", "customer_id": "c0000000-0000-4000-8000-000000000005", "order_id": "o0000000-0000-4000-8000-000000000005", "channel": "WhatsApp", "message": "ok ok", "status": "OPEN", "created_at": "2026-10-03T08:10:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000006", "ticket_number": "TKT200052", "customer_id": "c0000000-0000-4000-8000-000000000006", "order_id": "o0000000-0000-4000-8000-000000000006", "channel": "App", "message": "How can I get a refund? Dress shoulders se bahut tight hai.", "status": "OPEN", "created_at": "2026-10-03T07:40:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000007", "ticket_number": "TKT200060", "customer_id": "c0000000-0000-4000-8000-000000000007", "order_id": null, "channel": "Email", "message": "Order status please.", "status": "OPEN", "created_at": "2026-10-03T06:30:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000008", "ticket_number": "TKT200071", "customer_id": "c0000000-0000-4000-8000-000000000008", "order_id": "o0000000-0000-4000-8000-000000000007", "channel": "WhatsApp", "message": "Aaj delivery hai, COD pe UPI se pay kar sakte hai?", "status": "OPEN", "created_at": "2026-10-03T06:05:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000009", "ticket_number": "TKT200083", "customer_id": "c0000000-0000-4000-8000-000000000009", "order_id": "o0000000-0000-4000-8000-000000000008", "channel": "App", "message": "Mera parcel wapas kyun ja raha hai? Main ghar pe thi, kisi ne call nahi kiya.", "status": "OPEN", "created_at": "2026-10-03T05:50:00"},
+    {"ticket_id": "t0000000-0000-4000-8000-000000000010", "ticket_number": "TKT200095", "customer_id": "c0000000-0000-4000-8000-000000000010", "order_id": null, "channel": "Email", "message": "Where is order DHC100560? It was supposed to come by now.", "status": "OPEN", "created_at": "2026-10-03T05:15:00"}
+  ]
+}
