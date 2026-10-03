@@ -8,9 +8,8 @@
     "rows": 172,
     "unique_comments": 38,
     "rule_junk": 1,
-    "cache_hits": 0,
-    "escalated": 7,
-    "classified_by_llm": 37
+    "cache_hits": 37,
+    "classified_by_llm": 0
   },
   "applied": {
     "applied": 146,
@@ -19,13 +18,13 @@
     "still_pending": 0
   },
   "cost": {
-    "calls": 13,
+    "calls": 10,
     "estimated_usd": 0.0,
-    "budget_usd": 0.5,
+    "budget_usd": 2.0,
     "budget_calls": 500,
     "by_model": {
       "mock:mock": {
-        "calls": 13,
+        "calls": 10,
         "input_tokens": 0,
         "output_tokens": 0,
         "usd": 0.0
@@ -249,14 +248,5 @@
       "reason": "unknown_return_reason"
     }
   ],
-  "classifier_eval": {
-    "rows_evaluated": 172,
-    "primary_accuracy_all": 1.0,
-    "primary+sub_accuracy_all": 1.0,
-    "trusted_share": 0.849,
-    "primary_accuracy_trusted": 1.0,
-    "body_area_accuracy_on_fit": 1.0,
-    "top_mismatches": {}
-  },
-  "run_id": "a2be869c33a8"
+  "run_id": "1136afc138c5"
 }

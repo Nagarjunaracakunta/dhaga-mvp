@@ -24,6 +24,36 @@ MOCK = ModelSpec("mock", "mock")
 REVIEW_LABELS = {"approved": "Approve", "needs_followup": "Needs follow-up", "dismissed": "Dismiss"}
 STATUS_ICON = {"pending": "🕓", "approved": "✅", "needs_followup": "🔎", "dismissed": "🚫"}
 
+# Severity accent (validated status palette: critical / serious / warning). Colour is always
+# paired with the text label, so meaning never rests on colour alone.
+SEV_CRITICAL, SEV_SERIOUS, SEV_WARNING = "#d03b3b", "#ec835a", "#fab219"
+
+
+def severity(lift: float):
+    """Flagged insights all have lift >= 1.5x; split them into a readable High/Medium/Low."""
+    if lift >= 2.0:
+        return "High", SEV_CRITICAL, "#ffffff"
+    if lift >= 1.6:
+        return "Medium", SEV_SERIOUS, "#0b0b0b"
+    return "Low", SEV_WARNING, "#0b0b0b"
+
+
+CARD_CSS = """
+<style>
+  .dh-strip { display:flex; gap:2rem; flex-wrap:wrap; padding:.4rem 0 1rem;
+              border-bottom:1px solid rgba(128,128,128,.2); margin-bottom:1rem; }
+  .dh-strip .n { font-size:1.5rem; font-weight:700; line-height:1.1; }
+  .dh-strip .l { font-size:.78rem; color:#898781; text-transform:uppercase; letter-spacing:.04em; }
+  .dh-head { border-left:5px solid var(--sev); padding:.1rem 0 .1rem .8rem; margin:.1rem 0 .6rem; }
+  .dh-pill { display:inline-block; background:var(--sev); color:var(--sevink); font-size:.7rem;
+             font-weight:700; letter-spacing:.04em; padding:.1rem .5rem; border-radius:999px;
+             text-transform:uppercase; vertical-align:middle; }
+  .dh-title { font-size:1.08rem; font-weight:700; margin-left:.5rem; vertical-align:middle; }
+  .dh-sub { color:#898781; font-size:.9rem; margin-top:.2rem; }
+  .dh-one { font-size:.95rem; margin-top:.25rem; }
+</style>
+"""
+
 
 # ---------------------------------------------------------------- helpers
 def get_engine():
@@ -91,51 +121,48 @@ run_id = st.session_state.get("run_id") or store.latest_run_id(engine)
 st.sidebar.divider()
 st.sidebar.caption(f"Storage: {engine.dialect.name}" + (" (local file, resets on most hosts)" if engine.dialect.name == "sqlite" else ""))
 
-# ---------------------------------------------------------------- main
-st.title("Which returns should we investigate first?")
-if not run_id:
-    st.info("No analysis yet. Choose data and click **Run analysis** in the sidebar.")
-    st.stop()
+# ---------------------------------------------------------------- card renderer
+def one_liner(ev: dict) -> str:
+    """Primary reason + where on the body, in one phrase, from the evidence."""
+    parts = []
+    if ev.get("top_reasons"):
+        top = ev["top_reasons"][0]
+        label = (top.get("primary_reason") or top.get("reason") or "").replace("_", " ").strip().lower()
+        if label:
+            parts.append(f"Mostly {label}")
+    if ev.get("body_areas"):
+        parts.append(", ".join(b["area"].lower() for b in ev["body_areas"][:2]))
+    return " · ".join(parts)
 
-report = store.get_run_report(engine, run_id) or {}
-pipe, applied, cls = report.get("pipeline", {}), report.get("applied", {}), report.get("classification", {})
-st.caption(f"Run `{run_id}` · models: {report.get('models', {}).get('fast')} / {report.get('models', {}).get('strong')}")
 
-tab_briefs, tab_rates, tab_fail, tab_try, tab_cost = st.tabs(
-    ["Briefs for review", "Return rates", "What it could not do", "Try a comment", "Run & cost"])
-
-# ---- Briefs
-with tab_briefs:
-    recs = report.get("recommendations", {})
-    c = st.columns(5)
-    c[0].metric("Returns analysed", f"{pipe.get('total_returns', 0):,}")
-    c[1].metric("'Other' returns with a comment", f"{pipe.get('other_with_comment', 0):,}")
-    c[2].metric("Comments classified", f"{applied.get('applied', 0):,}")
-    c[3].metric("Left as unclear", f"{applied.get('low_confidence', 0) + applied.get('failed', 0):,}",
-                help="Too vague or too uncertain to trust. Shown, not guessed.")
-    c[4].metric("Briefs needing manual check", recs.get("needs_manual_review", 0))
-    if applied.get("still_pending"):
-        st.warning(f"{applied['still_pending']} comments were not processed (budget or limit reached). They are NOT counted in any reason.")
-
-    me = st.text_input("Your name (saved with your decision)", key="reviewer")
-    rows = store.list_insights(engine, run_id)
-    if not rows:
-        st.info("No product or size stands out enough to flag in this data.")
-    for r in rows:
-        rec = r["recommendation"] or {}
-        icon = STATUS_ICON.get(r["review_status"], "")
-        title = f"{icon} {rec.get('headline', r['product_name'])}  ·  {pct(r['return_rate'])} returned ({r['lift']}x the average)"
-        with st.expander(title, expanded=(r["review_status"] == "pending" and r is rows[0])):
-            if r["status"] != "passed_checks":
-                st.error("This brief did NOT pass the automated fact checks. Read the numbers yourself before using it: "
-                         + "; ".join(r["open_issues"] or ["unknown issue"]))
-            if rec:
-                st.markdown(f"**{rec.get('explanation', '')}**")
-                st.markdown(f"Suggested next step: {rec.get('suggested_action', '')}")
-            ev = r["evidence"] or {}
+def render_card(r, me, expanded):
+    rec = r["recommendation"] or {}
+    ev = r["evidence"] or {}
+    sev_name, sev_col, sev_ink = severity(r["lift"])
+    icon = STATUS_ICON.get(r["review_status"], "")
+    headline = rec.get("headline", r["product_name"])
+    with st.container(border=True):
+        st.markdown(
+            f'<div class="dh-head" style="--sev:{sev_col}; --sevink:{sev_ink}">'
+            f'<span class="dh-pill">{sev_name}</span>'
+            f'<span class="dh-title">{icon} {headline}</span>'
+            f'<div class="dh-sub">{pct(r["return_rate"])} returned · {r["lift"]}× the average · '
+            f'{STATUS_ICON.get(r["review_status"], "")} {r["review_status"]}</div>'
+            + (f'<div class="dh-one">{one_liner(ev)}</div>' if one_liner(ev) else "")
+            + "</div>",
+            unsafe_allow_html=True)
+        if r["status"] != "passed_checks":
+            st.error("This brief did NOT pass the automated fact checks. Read the numbers yourself before using it: "
+                     + "; ".join(r["open_issues"] or ["unknown issue"]))
+        if rec:
+            st.markdown(rec.get("explanation", ""))
+            if rec.get("suggested_action"):
+                st.markdown(f"**Suggested next step:** {rec['suggested_action']}")
+        with st.expander("Evidence", expanded=expanded):
             m = st.columns(4)
             m[0].metric("Orders", ev.get("orders")); m[1].metric("Returns", ev.get("returns"))
-            m[2].metric("Return rate", f"{ev.get('return_rate_pct')}%"); m[3].metric("Overall rate", f"{ev.get('overall_return_rate_pct')}%")
+            m[2].metric("Return rate", f"{ev.get('return_rate_pct')}%")
+            m[3].metric("Overall rate", f"{ev.get('overall_return_rate_pct')}%")
             if ev.get("top_reasons"):
                 st.dataframe(pd.DataFrame(ev["top_reasons"]), hide_index=True)
             if ev.get("body_areas"):
@@ -146,93 +173,132 @@ with tab_briefs:
                 st.markdown("**What customers wrote (examples):**")
                 for t in r["sample_comments"]:
                     st.markdown(f"> {t}")
-            st.divider()
-            k = r["insight_id"]
-            choice = st.radio("Your decision", list(REVIEW_LABELS), format_func=REVIEW_LABELS.get, horizontal=True, key=f"d_{k}",
-                              index=list(REVIEW_LABELS).index(r["review_status"]) if r["review_status"] in REVIEW_LABELS else 0)
-            note = st.text_area("Note (optional)", value=r["review_note"] or "", key=f"n_{k}")
-            if st.button("Save decision", key=f"s_{k}"):
-                store.set_review(engine, run_id, r["insight_id"], choice, me or None, note or None)
-                st.rerun()
-            if r["review_status"] != "pending":
-                st.caption(f"Current: {r['review_status']} by {r['reviewer'] or 'unknown'}")
+        k = r["insight_id"]
+        choice = st.radio("Your decision", list(REVIEW_LABELS), format_func=REVIEW_LABELS.get, horizontal=True, key=f"d_{k}",
+                          index=list(REVIEW_LABELS).index(r["review_status"]) if r["review_status"] in REVIEW_LABELS else 0)
+        note = st.text_area("Note (optional)", value=r["review_note"] or "", key=f"n_{k}")
+        if st.button("Save decision", key=f"s_{k}"):
+            store.set_review(engine, run_id, r["insight_id"], choice, me or None, note or None)
+            st.rerun()
+        if r["review_status"] != "pending":
+            st.caption(f"Current: {r['review_status']} by {r['reviewer'] or 'unknown'}")
 
-# ---- Rates
-with tab_rates:
-    bp = pd.DataFrame(report.get("by_product", []))
-    if bp.empty:
-        st.info("No data.")
-    else:
-        st.subheader("Return rate by product")
-        st.bar_chart(bp.set_index("product_name")["return_rate"])
-        st.dataframe(bp, hide_index=True)
-        st.subheader("By size")
-        st.dataframe(pd.DataFrame(report.get("by_size", [])), hide_index=True)
 
-# ---- Failures, on purpose visible
-with tab_fail:
-    st.markdown("Everything the system skipped, could not read, or was not sure about is listed here.")
-    st.subheader("Rows rejected before analysis")
-    rej = pd.DataFrame(report.get("rejected_by_reason", []))
-    if rej.empty:
-        st.success("None.")
-    else:
-        st.dataframe(rej, hide_index=True)
-        with st.expander("See the rejected records"):
-            st.dataframe(pd.DataFrame(report.get("rejected_sample", [])), hide_index=True)
-    st.subheader("Kept, but with missing detail")
-    st.write(f"Unknown size: **{pipe.get('returns_unknown_size', 0)}** returns · Unknown colour: **{pipe.get('returns_unknown_colour', 0)}** returns")
-    st.subheader("Comments the model was not sure about")
-    unclear = store.get_returns(engine, primary_reason="UNCLEAR", limit=40)
-    st.write(f"Marked **UNCLEAR** (confidence below {CONFIDENCE_THRESHOLD}, no real reason given, or the model call failed): "
-             f"**{applied.get('low_confidence', 0) + applied.get('failed', 0)}** in this run plus vague ones like 'ok ok'.")
-    if len(unclear):
-        st.dataframe(unclear[["return_id", "product_name", "return_comment", "classification_source", "confidence"]],
-                     hide_index=True)
-    st.subheader("Skipped to protect the budget")
-    skipped = cls.get("skipped_budget", 0) + cls.get("left_unprocessed_limit", 0)
-    st.warning(f"{skipped} distinct comments were not sent to the model.") if skipped else st.success("None.")
-    bad = [r for r in store.list_insights(engine, run_id) if r["status"] != "passed_checks"]
-    st.subheader("Briefs that failed the fact check")
-    st.warning(f"{len(bad)} brief(s) need a manual read: " + ", ".join(b["product_name"] for b in bad)) if bad else st.success("None.")
+# ---------------------------------------------------------------- main
+st.markdown(CARD_CSS, unsafe_allow_html=True)
+st.title("Which returns should we investigate first?")
+if not run_id:
+    st.info("No analysis yet. Choose data and click **Run analysis** in the sidebar.")
+    st.stop()
 
-# ---- Try a comment (live failure demo)
-with tab_try:
-    st.markdown("Type a return comment, in English, Hindi or Hinglish, and see how it would be read.")
-    txt = st.text_input("Comment", value="M size shoulders pe bahut tight hai")
-    if st.button("Classify") and txt.strip():
-        try:
-            if live:
-                check_credentials(fast, strong)
-            res, _ = classify_comments([txt], fast, strong, CostTracker(max_calls=4, max_usd=0.05), cache=None, fallback=fallback)
-            out = res.get(txt.strip().lower())
-            if out is None:
-                st.warning("Not processed.")
-            else:
-                trusted = out.confidence >= CONFIDENCE_THRESHOLD and out.source != "failed"
-                st.write(f"**{out.primary} / {out.sub}**" + (f" · area: {out.body_area}" if out.body_area != "NONE" else "")
-                         + f" · confidence {out.confidence:.2f} · via {out.source}")
-                (st.success if trusted else st.error)(
-                    "Counted in the analysis." if trusted else "Too uncertain: this would be shown as UNCLEAR, not counted as a reason.")
-        except AuthError as e:
-            st.error(f"Cannot use live models: {e}")
-        except Exception as e:
-            st.error(f"Failed: {type(e).__name__}: {e}")
+report = store.get_run_report(engine, run_id) or {}
+pipe, applied, cls = report.get("pipeline", {}), report.get("applied", {}), report.get("classification", {})
+st.caption(f"Run `{run_id}` · models: {report.get('models', {}).get('fast')} / {report.get('models', {}).get('strong')}")
 
-# ---- Cost
-with tab_cost:
-    cost = report.get("cost", {})
-    c = st.columns(3)
-    c[0].metric("Model calls this run", cost.get("calls", 0))
-    c[1].metric("Estimated cost (USD)", f"${cost.get('estimated_usd', 0):.4f}")
-    c[2].metric("Cache hits", cls.get("cache_hits", 0))
-    st.json({"classification": cls, "cost": cost, "recommendations": report.get("recommendations")}, expanded=False)
-    if report.get("classifier_eval"):
-        st.subheader("Accuracy on the demo data (ground truth available)")
-        st.json(report["classifier_eval"], expanded=False)
-        if not live:
-            st.caption("Offline rules were written against the same templates as the demo data, so this number is not meaningful.")
-    st.subheader("What one weekly run costs at Dhaga's volume")
-    ef, es, _ = specs_from_env()
-    st.code("\n".join(weekly_cost(ef, es)))
-    st.caption("[brief] = stated in the case study, [assumed] = our estimate.")
+tab_review, tab_team = st.tabs(["Review", "For the team"])
+
+# ---- Neha's review workspace: ranked worklist, worst first, pending first
+with tab_review:
+    rows = store.list_insights(engine, run_id)
+    rows = sorted(rows, key=lambda r: (r["review_status"] != "pending", -(r["lift"] or 0)))
+    unclear_n = applied.get("low_confidence", 0) + applied.get("failed", 0)
+    to_investigate = sum(1 for r in rows if r["review_status"] == "pending")
+    st.markdown(
+        '<div class="dh-strip">'
+        f'<div><div class="n">{pipe.get("total_returns", 0):,}</div><div class="l">returns analysed</div></div>'
+        f'<div><div class="n">{to_investigate}</div><div class="l">to investigate</div></div>'
+        f'<div><div class="n">{applied.get("applied", 0):,}</div><div class="l">comments read</div></div>'
+        f'<div><div class="n">{unclear_n:,}</div><div class="l">left unclear</div></div>'
+        "</div>", unsafe_allow_html=True)
+    if applied.get("still_pending"):
+        st.warning(f"{applied['still_pending']} comments were not processed (budget or limit reached). They are NOT counted in any reason.")
+
+    me = st.text_input("Your name (saved with your decision)", key="reviewer")
+    if not rows:
+        st.info("No product or size stands out enough to flag in this data.")
+    for i, r in enumerate(rows):
+        render_card(r, me, expanded=(i == 0 and r["review_status"] == "pending"))
+
+# ---- For the team: the dev / cost / debug views, out of Neha's way
+with tab_team:
+    tab_rates, tab_fail, tab_try, tab_cost = st.tabs(
+        ["Return rates", "What it could not do", "Try a comment", "Run & cost"])
+
+    with tab_rates:
+        bp = pd.DataFrame(report.get("by_product", []))
+        if bp.empty:
+            st.info("No data.")
+        else:
+            st.subheader("Return rate by product")
+            st.bar_chart(bp.set_index("product_name")["return_rate"])
+            st.dataframe(bp, hide_index=True)
+            st.subheader("By size")
+            st.dataframe(pd.DataFrame(report.get("by_size", [])), hide_index=True)
+
+    # ---- Failures, on purpose visible
+    with tab_fail:
+        st.markdown("Everything the system skipped, could not read, or was not sure about is listed here.")
+        st.subheader("Rows rejected before analysis")
+        rej = pd.DataFrame(report.get("rejected_by_reason", []))
+        if rej.empty:
+            st.success("None.")
+        else:
+            st.dataframe(rej, hide_index=True)
+            with st.expander("See the rejected records"):
+                st.dataframe(pd.DataFrame(report.get("rejected_sample", [])), hide_index=True)
+        st.subheader("Kept, but with missing detail")
+        st.write(f"Unknown size: **{pipe.get('returns_unknown_size', 0)}** returns · Unknown colour: **{pipe.get('returns_unknown_colour', 0)}** returns")
+        st.subheader("Comments the model was not sure about")
+        unclear = store.get_returns(engine, primary_reason="UNCLEAR", limit=40)
+        st.write(f"Marked **UNCLEAR** (confidence below {CONFIDENCE_THRESHOLD}, no real reason given, or the model call failed): "
+                 f"**{applied.get('low_confidence', 0) + applied.get('failed', 0)}** in this run plus vague ones like 'ok ok'.")
+        if len(unclear):
+            st.dataframe(unclear[["return_id", "product_name", "return_comment", "classification_source", "confidence"]],
+                         hide_index=True)
+        st.subheader("Skipped to protect the budget")
+        skipped = cls.get("skipped_budget", 0) + cls.get("left_unprocessed_limit", 0)
+        st.warning(f"{skipped} distinct comments were not sent to the model.") if skipped else st.success("None.")
+        bad = [r for r in store.list_insights(engine, run_id) if r["status"] != "passed_checks"]
+        st.subheader("Briefs that failed the fact check")
+        st.warning(f"{len(bad)} brief(s) need a manual read: " + ", ".join(b["product_name"] for b in bad)) if bad else st.success("None.")
+
+    # ---- Try a comment (live failure demo)
+    with tab_try:
+        st.markdown("Type a return comment, in English, Hindi or Hinglish, and see how it would be read.")
+        txt = st.text_input("Comment", value="M size shoulders pe bahut tight hai")
+        if st.button("Classify") and txt.strip():
+            try:
+                if live:
+                    check_credentials(fast, strong)
+                res, _ = classify_comments([txt], fast, strong, CostTracker(max_calls=4, max_usd=0.05), cache=None, fallback=fallback)
+                out = res.get(txt.strip().lower())
+                if out is None:
+                    st.warning("Not processed.")
+                else:
+                    trusted = out.confidence >= CONFIDENCE_THRESHOLD and out.source != "failed"
+                    st.write(f"**{out.primary} / {out.sub}**" + (f" · area: {out.body_area}" if out.body_area != "NONE" else "")
+                             + f" · confidence {out.confidence:.2f} · via {out.source}")
+                    (st.success if trusted else st.error)(
+                        "Counted in the analysis." if trusted else "Too uncertain: this would be shown as UNCLEAR, not counted as a reason.")
+            except AuthError as e:
+                st.error(f"Cannot use live models: {e}")
+            except Exception as e:
+                st.error(f"Failed: {type(e).__name__}: {e}")
+
+    # ---- Cost
+    with tab_cost:
+        cost = report.get("cost", {})
+        c = st.columns(3)
+        c[0].metric("Model calls this run", cost.get("calls", 0))
+        c[1].metric("Estimated cost (USD)", f"${cost.get('estimated_usd', 0):.4f}")
+        c[2].metric("Cache hits", cls.get("cache_hits", 0))
+        st.json({"classification": cls, "cost": cost, "recommendations": report.get("recommendations")}, expanded=False)
+        if report.get("classifier_eval"):
+            st.subheader("Accuracy on the demo data (ground truth available)")
+            st.json(report["classifier_eval"], expanded=False)
+            if not live:
+                st.caption("Offline rules were written against the same templates as the demo data, so this number is not meaningful.")
+        st.subheader("What one weekly run costs at Dhaga's volume")
+        ef, es, _ = specs_from_env()
+        st.code("\n".join(weekly_cost(ef, es)))
+        st.caption("[brief] = stated in the case study, [assumed] = our estimate.")
