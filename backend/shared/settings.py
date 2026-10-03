@@ -48,6 +48,8 @@ class Settings(BaseSettings):
     delay_priority_days: int = 5
     return_window_days: int = 7          # confirm against the Returns Policy PDF
     max_draft_attempts: int = 2          # first draft + one regeneration
+    bulk_min_confidence: float = 0.75    # a draft joins the bulk-review queue only at or above this
+    bulk_max_tickets: int = 20           # most tickets one bulk-draft run may send to the models
 
     @property
     def supabase_configured(self) -> bool:

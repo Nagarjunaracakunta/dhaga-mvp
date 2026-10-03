@@ -41,6 +41,9 @@ export const api = {
   analyzeText: (body) => request("/api/cx/analyze", { method: "POST", body }),
   order: (number) => request(`/api/cx/orders/${encodeURIComponent(number)}`),
   cxMetrics: () => request("/api/cx/metrics"),
+  bulkQueue: () => request("/api/cx/bulk/queue"),
+  bulkDraft: (limit) => request("/api/cx/bulk/draft", { method: "POST", body: { limit } }),
+  bulkApprove: (items) => request("/api/cx/bulk/approve", { method: "POST", body: { items } }),
 
   // Returns Insights
   returnsSummary: () => request("/api/returns/summary"),

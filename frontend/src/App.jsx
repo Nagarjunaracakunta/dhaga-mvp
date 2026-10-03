@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
-import { Gauge, LayoutGrid, MessagesSquare, PackageSearch, ShieldCheck, Spool, Zap } from "lucide-react";
+import { CopyCheck, Gauge, LayoutGrid, MessagesSquare, PackageSearch, ShieldCheck, Spool, Zap } from "lucide-react";
 import { api } from "./api.js";
 import { SystemBanner, SystemBox } from "./components/StatusBar.jsx";
 import DemoModal from "./components/DemoModal.jsx";
 import Overview from "./pages/Overview.jsx";
 import CxInbox from "./pages/CxInbox.jsx";
 import CxMetrics from "./pages/CxMetrics.jsx";
+import RepeatedQuestions from "./pages/RepeatedQuestions.jsx";
 import Returns from "./pages/Returns.jsx";
 import DataQuality from "./pages/DataQuality.jsx";
 
@@ -16,6 +17,7 @@ const NAV = [
     group: "Customer support",
     items: [
       { to: "/cx", label: "Support inbox", icon: MessagesSquare },
+      { to: "/cx/repeated", label: "Repeated questions", icon: CopyCheck },
       { to: "/cx/metrics", label: "Copilot metrics", icon: Gauge },
     ],
   },
@@ -84,6 +86,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Overview key={refreshKey} onDemo={() => setDemoOpen(true)} />} />
         <Route path="/cx" element={<CxInbox key={refreshKey} />} />
+        <Route path="/cx/repeated" element={<RepeatedQuestions key={refreshKey} />} />
         <Route path="/cx/metrics" element={<CxMetrics key={refreshKey} />} />
         <Route path="/returns" element={<Returns />} />
         <Route path="/returns/quality" element={<DataQuality />} />

@@ -312,3 +312,18 @@ table.t tbody tr:hover td { background: var(--surface-2); }
 }
 .inbox > .span-rest { grid-column: 2 / -1; }
 @media (max-width: 1020px) { .inbox > .span-rest { grid-column: auto; } }
+
+/* repeated questions: group review */
+.bulk-list { display: grid; }
+.bulk-item { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.bulk-item:last-child { border-bottom: 0; }
+.bulk-item:hover { background: var(--surface-2); }
+.bulk-item[data-picked="true"] { background: var(--primary-soft); }
+.bulk-item input { width: 17px; height: 17px; margin-top: 2px; accent-color: var(--primary); }
+.bulk-main { display: grid; gap: 8px; min-width: 0; }
+.bulk-top { display: flex; gap: 6px 10px; align-items: center; flex-wrap: wrap; }
+.bulk-top .mono { font-size: 12px; }
+.bulk-msg { font-size: 13px; }
+.bulk-item .quote { white-space: pre-wrap; line-height: 1.55; }
+.bulk-edit { font-size: 12.5px; font-weight: 600; text-decoration: none; justify-self: start; }
+.bulk-edit:hover { text-decoration: underline; }

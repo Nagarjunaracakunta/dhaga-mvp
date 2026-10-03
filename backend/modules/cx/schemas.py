@@ -161,3 +161,62 @@ class CXMetrics(BaseModel):
     avg_latency_ms: Optional[int]
     avg_cost_usd: Optional[float]
     total_cost_usd: float
+
+
+# ---------- Bulk drafting for repeated questions ----------
+class BulkDraftRequest(BaseModel):
+    limit: int = Field(10, ge=1, le=50, description="How many open tickets to draft, oldest first")
+
+
+class BulkDraftResponse(BaseModel):
+    analysed: int
+    ready: int = Field(description="Drafts that joined the bulk-review queue")
+    needs_person: int
+    below_threshold: int = Field(description="Drafted, but intent confidence under the bulk threshold")
+    failed: int
+    cost_usd: float
+
+
+class BulkItem(BaseModel):
+    ticket_number: str
+    customer_name: str
+    message: str
+    interaction_id: str
+    confidence: float
+    draft: str
+    order_number: Optional[str] = None
+    order_status: Optional[str] = None
+    repeat_count: int = Field(1, description="Open tickets about the same order")
+
+
+class BulkGroup(BaseModel):
+    intent: str
+    count: int
+    items: list[BulkItem]
+
+
+class BulkQueue(BaseModel):
+    min_confidence: float
+    max_per_run: int
+    open_tickets: int
+    groups: list[BulkGroup]
+
+
+class BulkApproveItem(BaseModel):
+    ticket_ref: str
+    interaction_id: str
+
+
+class BulkApproveRequest(BaseModel):
+    items: list[BulkApproveItem] = Field(min_length=1, max_length=100)
+
+
+class BulkApproveResult(BaseModel):
+    ticket_ref: str
+    ok: bool
+    error: Optional[str] = None
+
+
+class BulkApproveResponse(BaseModel):
+    approved: int
+    results: list[BulkApproveResult]

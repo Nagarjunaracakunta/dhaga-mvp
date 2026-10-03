@@ -3,9 +3,10 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
 
-from . import service
+from . import bulk, service
 from .copilot import Deps
-from .schemas import (AnalyzeTextRequest, CopilotResult, CXMetrics, DecisionRequest, DecisionResponse,
+from .schemas import (AnalyzeTextRequest, BulkApproveRequest, BulkApproveResponse, BulkDraftRequest,
+                      BulkDraftResponse, BulkQueue, CopilotResult, CXMetrics, DecisionRequest, DecisionResponse,
                       TicketDetail, TicketSummary)
 
 router = APIRouter(tags=["cx"])
@@ -49,3 +50,21 @@ def get_order(order_number: str, deps: Deps = Depends(service.get_deps)):
 @router.get("/metrics", response_model=CXMetrics)
 def get_metrics(deps: Deps = Depends(service.get_deps)):
     return service.metrics(deps)
+
+
+@router.get("/bulk/queue", response_model=BulkQueue)
+def bulk_queue(deps: Deps = Depends(service.get_deps)):
+    """Drafts ready for group review: passed checks, intent confidence >= the bulk threshold, not yet decided."""
+    return bulk.queue(deps)
+
+
+@router.post("/bulk/draft", response_model=BulkDraftResponse)
+def bulk_draft(body: BulkDraftRequest, deps: Deps = Depends(service.get_deps)):
+    """Run Copilot on the oldest open tickets. Costs model credit, so the batch size is capped."""
+    return bulk.draft_open_tickets(deps, body.limit)
+
+
+@router.post("/bulk/approve", response_model=BulkApproveResponse)
+def bulk_approve(body: BulkApproveRequest, deps: Deps = Depends(service.get_deps)):
+    """An agent approves the drafts they selected. Each one is checked again before it is recorded."""
+    return bulk.approve(deps, body)
