@@ -92,9 +92,9 @@
     "attempts": 1,
     "open_issues": [],
     "recommendation": {
-      "headline": "Investigate Floral Midi Dress (size L)",
-      "explanation": "48 of 115 orders (41.7%) were returned, versus 12.5% overall. The most common reason is fit / too_tight: 28 returns (58.3%).",
-      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+      "headline": "Floral Midi Dress Size L: High Return Rate",
+      "explanation": "The Floral Midi Dress in size L has a return rate of 41.7%, significantly higher than the overall rate of 12.5%, with a 3.35 times lift. The main reason is fit issues, particularly being too tight (58.3% of returns) and affecting the shoulders (15 instances).",
+      "suggested_action": "Review the sizing and fit specifications for the shoulders of the Floral Midi Dress in size L."
     }
   },
   {
@@ -192,9 +192,9 @@
     "attempts": 1,
     "open_issues": [],
     "recommendation": {
-      "headline": "Investigate Floral Midi Dress (size M)",
-      "explanation": "33 of 102 orders (32.4%) were returned, versus 12.5% overall. The most common reason is fit / too_tight: 21 returns (63.6%).",
-      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+      "headline": "Floral Midi Dress Size M: High Return Rate Due to Fit Issues",
+      "explanation": "The Floral Midi Dress in size M has a return rate of 32.4%, significantly higher than the overall rate of 12.5%. The main reason for returns is fit, specifically being too tight, accounting for 63.6% of returns. The shoulders are the most frequently mentioned area, with 11 reports.",
+      "suggested_action": "Review the shoulder measurements for the Floral Midi Dress in size M."
     }
   },
   {
@@ -289,12 +289,12 @@
       "unclassified_share_pct": 0.0
     },
     "status": "passed_checks",
-    "attempts": 1,
+    "attempts": 3,
     "open_issues": [],
     "recommendation": {
-      "headline": "Investigate Chikankari Top (colour Mustard)",
-      "explanation": "44 of 136 orders (32.4%) were returned, versus 12.5% overall. The most common reason is colour / listing_difference: 30 returns (68.2%).",
-      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+      "headline": "High Return Rate for Mustard Chikankari Top",
+      "explanation": "The return rate for the mustard Chikankari top is 32.4%, significantly higher than the overall rate of 12.5%. The primary reason, accounting for 68.2% of returns, is a colour discrepancy between the product and its listing.",
+      "suggested_action": "Review the product listing to ensure the mustard colour is accurately represented."
     }
   },
   {
@@ -389,9 +389,9 @@
     "attempts": 1,
     "open_issues": [],
     "recommendation": {
-      "headline": "Investigate Chikankari Top (size S)",
-      "explanation": "27 of 104 orders (26.0%) were returned, versus 12.5% overall. The most common reason is colour / listing_difference: 16 returns (59.3%).",
-      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+      "headline": "High Return Rate for Chikankari Top Size S",
+      "explanation": "The Chikankari Top in size S has a return rate of 26.0%, significantly higher than the overall rate of 12.5%. The main issue appears to be a discrepancy between the product's color and its listing, accounting for 59.3% of returns. Fit issues, particularly around the waist, are also noted but less prevalent.",
+      "suggested_action": "Review the product listing to ensure the color is accurately represented."
     }
   },
   {
@@ -487,12 +487,12 @@
       "unclassified_share_pct": 0.0
     },
     "status": "passed_checks",
-    "attempts": 1,
+    "attempts": 2,
     "open_issues": [],
     "recommendation": {
-      "headline": "Investigate Anarkali Suit",
-      "explanation": "80 of 349 orders (22.9%) were returned, versus 12.5% overall. The most common reason is quality / unspecified: 32 returns (40.0%).",
-      "suggested_action": "Review the product listing and measurements for this segment against the returned-item comments."
+      "headline": "High Return Rate for Anarkali Suit",
+      "explanation": "The Anarkali Suit has a return rate of 22.9%, significantly higher than the overall rate of 12.5%. Quality issues are the top reason for returns, accounting for 40.0% of cases. Fit issues, particularly being too tight, are also noted, with waist and length being common problem areas.",
+      "suggested_action": "Audit recent production batches for quality issues and verify fit measurements against size specifications."
     }
   }
 ]
