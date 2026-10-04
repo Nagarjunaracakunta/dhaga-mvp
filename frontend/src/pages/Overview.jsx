@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Bot, ClipboardCheck, Inbox, MessageSquareText, PackageX, RotateCcw, TriangleAlert, Zap } from "lucide-react";
 import { api } from "../api.js";
 import { num, pct, useApi } from "../useApi.js";
-import { Empty, ErrorBox, IntentPill, PageHeader, Panel, Skeleton, Stat, StatusPill } from "../components/ui.jsx";
+import { Empty, ErrorBox, PageHeader, Panel, Skeleton, Stat, StatusPill } from "../components/ui.jsx";
 
 const STEPS = [
   ["Classify", "Haiku reads the message, English or Hinglish, and picks the intent."],
@@ -36,7 +36,7 @@ export default function Overview({ onDemo }) {
       />
 
       <div className="grid stats">
-        <Stat label="Open tickets" value={num((counts.data?.open ?? 0) + (counts.data?.needs_person ?? 0) + (counts.data?.drafted ?? 0))} sub={`${num(counts.data?.drafted ?? 0)} with a Copilot draft ready`} icon={Inbox} loading={counts.loading} />
+        <Stat label="Open tickets" value={num(counts.data?.open)} sub={`+ ${num(counts.data?.needs_person ?? 0)} need a person · ${num(counts.data?.drafted ?? 0)} drafts ready`} icon={Inbox} loading={counts.loading} />
         <Stat label="Resolved" value={num(byStatus.RESOLVED ?? 0)} sub={`${num(byStatus.ESCALATED ?? 0)} escalated to a person`} icon={MessageSquareText} tone="green" loading={cx.loading} />
         <Stat label="Return rate" value={pct(s?.return_rate)} sub={s ? `${num(s.total_returns)} of ${num(s.total_orders)} orders` : ""} icon={RotateCcw} tone="red" loading={summary.loading} />
         <Stat label='"Other" with a comment' value={num(s?.other_with_comment)} sub="Explained by AI, checked by people" icon={Bot} tone="amber" loading={summary.loading} />
@@ -44,7 +44,7 @@ export default function Overview({ onDemo }) {
       </div>
 
       <div className="grid three">
-        <Panel icon={Inbox} title="Tickets waiting" subtitle="Open, most urgent first" bodyClass=""
+        <Panel icon={Inbox} title="Tickets waiting" subtitle={counts.data ? `Top of the ${num(counts.data.open)} open tickets, most urgent first` : "Open, most urgent first"} bodyClass=""
           actions={<button className="btn sm" onClick={() => navigate("/cx")}>Inbox <ArrowRight size={13} /></button>}>
           {open.loading ? <div className="panel-body"><Skeleton rows={4} height={36} /></div>
             : open.error ? <div className="panel-body"><ErrorBox error={open.error} onRetry={open.reload} /></div>
@@ -53,7 +53,11 @@ export default function Overview({ onDemo }) {
                 {open.data.map((t) => (
                   <button key={t.ticket_id} className="rowlink" onClick={() => navigate(`/cx?t=${t.ticket_number}`)}>
                     <span className="main">{t.customer_name}</span>
-                    <span className="side">{t.last_intent ? <IntentPill intent={t.last_intent} /> : <StatusPill status={t.status} />}</span>
+                    <span className="side">
+                      {t.days_late >= 7 && <span className="pill red">{num(t.days_late)} days late</span>}
+                      {t.repeat_count > 1 && <span className="pill amber">Asked {t.repeat_count}×</span>}
+                      {t.days_late < 7 && t.repeat_count < 2 && <StatusPill status={t.status} />}
+                    </span>
                     <span className="sub">{t.message}</span>
                   </button>
                 ))}
