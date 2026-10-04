@@ -8,6 +8,8 @@ import pandas as pd
 from backend.shared.db import execute, get_supabase
 
 log = logging.getLogger(__name__)
+BRIEF_COLUMNS = {"insight_id", "product_id", "product_name", "brief", "status", "open_issues", "attempts", "model",
+                 "cost_usd"}
 WORKFLOW = "RETURNS_CLASSIFIER"
 FIELDS = ["ai_category", "ai_subcategory", "ai_confidence", "final_category"]
 
@@ -73,7 +75,9 @@ class SupabaseStore:
             log.exception("Could not log the returns classification run")
 
     def save_brief(self, record: dict) -> None:
-        get_supabase().table("returns_briefs").upsert(record, on_conflict="insight_id").execute()
+        # Only the columns in db/returns_tables.sql; extra fields (e.g. latency_ms, used for the run log) are rejected
+        row = {k: v for k, v in record.items() if k in BRIEF_COLUMNS}
+        get_supabase().table("returns_briefs").upsert(row, on_conflict="insight_id").execute()
 
     def get_briefs(self) -> list[dict]:
         return execute(get_supabase().table("returns_briefs").select("*")).data or []

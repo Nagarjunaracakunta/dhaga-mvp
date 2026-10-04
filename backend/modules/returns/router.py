@@ -98,7 +98,8 @@ def generate_briefs(body: BriefRequest = BriefRequest()):
     insights = _result(refresh=True).candidate_insights[: body.top_k]
     if not insights:
         return {"generated": 0, "message": "No flagged insights to brief."}
-    existing = {b["insight_id"] for b in store.get_briefs()} if not body.redo else set()
+    # Keep briefs that passed; ones that need a manual read are written again (e.g. after a model hiccup)
+    existing = {b["insight_id"] for b in store.get_briefs() if b.get("status") == "passed_checks"} if not body.redo else set()
     generated, cost, manual = 0, 0.0, 0
     for ins in insights:
         if ins["insight_id"] in existing:

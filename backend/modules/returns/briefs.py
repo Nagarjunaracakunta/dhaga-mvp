@@ -78,7 +78,7 @@ def generate_brief(llm: LLM, settings: Settings, insight: dict) -> dict:
             user += f"\n<reviewer_feedback>\n{feedback}\n</reviewer_feedback>"
         try:
             w = llm.parse(model=settings.model_returns_strong, system=WRITE_SYSTEM, user=user,
-                          output_format=Brief, max_tokens=400, temperature=0.3)
+                          output_format=Brief, max_tokens=800, temperature=0.3)
         except Exception as e:
             return _manual(insight, {}, [f"writer unavailable: {e}"], attempt, cost, start, settings)
         cost += w.cost_usd
