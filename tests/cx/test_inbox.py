@@ -51,3 +51,14 @@ def test_ticket_detail_lists_the_customers_other_tickets(client, repo):
     t = next(iter(repo.tickets.values()))
     detail = client.get(f"/api/cx/tickets/{t['ticket_number']}").json()
     assert all(h["ticket_number"] != t["ticket_number"] for h in detail["history"])
+
+
+def test_in_progress_without_a_copilot_draft_is_not_called_drafted(client, repo):
+    """Seeded tickets can be IN_PROGRESS in the database with no Copilot run; they are not 'Draft ready'."""
+    t = next(t for t in repo.tickets.values() if t["status"] == "OPEN")
+    t["status"] = "DRAFTED"  # what IN_PROGRESS in Supabase maps to
+    page = client.get("/api/cx/inbox", params={"q": t["ticket_number"]}).json()
+    assert page["items"][0]["status"] == "IN_PROGRESS"
+    assert t["ticket_number"] in [i["ticket_number"] for i in
+                                  client.get("/api/cx/inbox", params={"view": "open", "limit": 200}).json()["items"]]
+    assert client.get(f"/api/cx/tickets/{t['ticket_number']}").json()["ticket"]["status"] == "IN_PROGRESS"

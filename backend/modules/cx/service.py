@@ -68,14 +68,30 @@ def ticket_detail(deps: Deps, ref: str) -> TicketDetail:
     last = deps.repo.latest_interactions([ticket.ticket_id]).get(ticket.ticket_id)
     last_result = {**_output(last), "interaction_id": last["interaction_id"],
                    "human_action": last.get("human_action")} if last else None
-    history = [TicketSummary(ticket_id=t.ticket_id, ticket_number=t.ticket_number, customer_name=t.customer_name,
-                             channel=t.channel, message=t.message, status=t.status, created_at=t.created_at)
-               for t in deps.repo.customer_tickets(ticket.customer_id, 6) if t.ticket_id != ticket.ticket_id][:5]
+    ticket.status = _shown_status(ticket.status, (last_result or {}).get("status"), (last_result or {}).get("human_action"))
+    others = [t for t in deps.repo.customer_tickets(ticket.customer_id, 6) if t.ticket_id != ticket.ticket_id][:5]
+    runs = deps.repo.latest_interactions([t.ticket_id for t in others]) if others else {}
+    history = []
+    for t in others:
+        run = runs.get(t.ticket_id) or {}
+        history.append(TicketSummary(
+            ticket_id=t.ticket_id, ticket_number=t.ticket_number, customer_name=t.customer_name, channel=t.channel,
+            message=t.message, created_at=t.created_at,
+            status=_shown_status(t.status, _output(run).get("status"), run.get("human_action"))))
     return TicketDetail(ticket=ticket, order=order, facts=facts, last_result=last_result, history=history)
 
 
 # ---------- Inbox: search, views and priority over every ticket ----------
-ACTIVE = {"OPEN", "DRAFTED"}
+ACTIVE = {"OPEN", "IN_PROGRESS", "DRAFTED"}
+HAS_DRAFT = {"DRAFTED", "NEEDS_INFO"}
+
+
+def _shown_status(status: str, result: Optional[str], human_action: Optional[str]) -> str:
+    """The database marks some tickets IN_PROGRESS (shown to us as DRAFTED) without any Copilot run.
+    Only call it a draft when Copilot actually wrote one that nobody has decided on yet."""
+    if status == "DRAFTED" and not (result in HAS_DRAFT and not human_action):
+        return "IN_PROGRESS"
+    return status
 NOT_IN_TRANSIT = {"DELIVERED", "CANCELLED", "RTO", "RETURNED"}
 URGENT_DAYS_LATE = 7
 
@@ -91,7 +107,7 @@ def _days_late(row: dict, today: date) -> Optional[int]:
 def _view(item: InboxItem) -> str:
     if item.needs_person:
         return "needs_person"
-    return {"OPEN": "open", "DRAFTED": "drafted", "RESOLVED": "resolved", "ESCALATED": "escalated"}.get(item.status, "open")
+    return {"DRAFTED": "drafted", "RESOLVED": "resolved", "ESCALATED": "escalated"}.get(item.status, "open")
 
 
 def _priority(item: InboxItem):
@@ -110,15 +126,16 @@ def inbox(deps: Deps, view: str, intent: Optional[str], q: Optional[str], sort: 
     items = []
     for r in index:
         res = results.get(r["ticket_id"]) or {}
-        active = r["status"] in ACTIVE
+        status = _shown_status(r["status"], res.get("result"), res.get("human_action"))
+        active = status in ACTIVE
         late = _days_late(r, today)
         repeat = repeats.get(r.get("order_id"), 1) if active else 1
         items.append(InboxItem(
             ticket_id=r["ticket_id"], ticket_number=r["ticket_number"], customer_name=r["customer_name"],
-            channel=r.get("channel"), message=r["message"], status=r["status"], created_at=r.get("created_at"),
+            channel=r.get("channel"), message=r["message"], status=status, created_at=r.get("created_at"),
             last_intent=res.get("intent"), last_result=res.get("result"), order_number=r.get("order_number"),
             days_late=late, repeat_count=repeat,
-            needs_person=r["status"] == "OPEN" and res.get("result") == "NEEDS_HUMAN" and not res.get("human_action"),
+            needs_person=status in ("OPEN", "IN_PROGRESS") and res.get("result") == "NEEDS_HUMAN" and not res.get("human_action"),
             urgent=active and ((late or 0) >= URGENT_DAYS_LATE or repeat > 1),
         ))
 

@@ -37,10 +37,10 @@ export function Stat({ label: k, value, sub, icon: Icon, tone = "violet", loadin
 }
 
 const STATUS_TONE = {
-  OPEN: "grey", DRAFTED: "violet", RESOLVED: "green", ESCALATED: "red",
+  OPEN: "grey", IN_PROGRESS: "grey", DRAFTED: "violet", RESOLVED: "green", ESCALATED: "red",
   NEEDS_HUMAN: "red", NEEDS_INFO: "amber",
 };
-const STATUS_TEXT = { DRAFTED: "Draft ready", NEEDS_HUMAN: "Needs a person", NEEDS_INFO: "Needs info" };
+const STATUS_TEXT = { IN_PROGRESS: "In progress", DRAFTED: "Draft ready", NEEDS_HUMAN: "Needs a person", NEEDS_INFO: "Needs info" };
 
 export function StatusPill({ status }) {
   if (!status) return null;

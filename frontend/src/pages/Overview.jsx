@@ -18,6 +18,7 @@ const CATEGORY = { FIT: "Fit", COLOUR: "Colour", QUALITY: "Quality", DAMAGE: "Da
 export default function Overview({ onDemo }) {
   const navigate = useNavigate();
   const cx = useApi(() => api.cxMetrics(), []);
+  const counts = useApi(() => api.inbox({ limit: 1 }).then((p) => p.counts), []);
   const open = useApi(() => api.inbox({ view: "open", sort: "priority", limit: 6 }).then((p) => p.items), []);
   const review = useApi(() => api.returnsReviewQueue({ limit: 6 }), []);
   const summary = useApi(() => api.returnsSummary(), []);
@@ -35,7 +36,7 @@ export default function Overview({ onDemo }) {
       />
 
       <div className="grid stats">
-        <Stat label="Open tickets" value={num((byStatus.OPEN ?? 0) + (byStatus.DRAFTED ?? 0))} sub={`${num(byStatus.DRAFTED ?? 0)} with a draft ready`} icon={Inbox} loading={cx.loading} />
+        <Stat label="Open tickets" value={num((counts.data?.open ?? 0) + (counts.data?.needs_person ?? 0) + (counts.data?.drafted ?? 0))} sub={`${num(counts.data?.drafted ?? 0)} with a Copilot draft ready`} icon={Inbox} loading={counts.loading} />
         <Stat label="Resolved" value={num(byStatus.RESOLVED ?? 0)} sub={`${num(byStatus.ESCALATED ?? 0)} escalated to a person`} icon={MessageSquareText} tone="green" loading={cx.loading} />
         <Stat label="Return rate" value={pct(s?.return_rate)} sub={s ? `${num(s.total_returns)} of ${num(s.total_orders)} orders` : ""} icon={RotateCcw} tone="red" loading={summary.loading} />
         <Stat label='"Other" with a comment' value={num(s?.other_with_comment)} sub="Explained by AI, checked by people" icon={Bot} tone="amber" loading={summary.loading} />
