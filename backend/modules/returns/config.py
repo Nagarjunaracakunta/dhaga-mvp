@@ -67,3 +67,12 @@ MIN_RETURNS_FOR_INSIGHT_SUPABASE = 8   # live data is smaller: 563 returns over 
 LIFT_THRESHOLD = 1.5           # cell return rate must be >= 1.5x the overall rate
 PARENT_LIFT_THRESHOLD = 1.4    # a size/colour cell must beat its own product's rate by this much
 MAX_SAMPLE_COMMENTS = 5
+
+# ---- Classifier escalation (routing) ----
+ESCALATE_BELOW = 0.70          # fast-model confidence under this is retried on the strong model
+MAX_ESCALATION_SHARE = 0.20    # never escalate more than 20% of the comments in one run (cost cap)
+
+# ---- Brief generation (evaluator-optimizer) ----
+TOP_K_BRIEFS = 5          # only the top-K flagged insights get an LLM brief
+MAX_BRIEF_ATTEMPTS = 3    # write -> check -> regenerate loop
+MAX_BRIEF_WORDS = 80      # explanation length cap (deterministic check)

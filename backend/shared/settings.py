@@ -31,8 +31,9 @@ class Settings(BaseSettings):
     cx_today: Optional[date] = None
 
     # ---- Models ----
-    model_fast: str = "claude-haiku-4-5"     # classify + check, temperature 0
-    model_strong: str = "claude-opus-5-5"    # draft replies, effort low
+    model_fast: str = "claude-haiku-4-5"            # classify + check, temperature 0
+    model_strong: str = "claude-opus-5-5"           # CX draft replies, effort low
+    model_returns_strong: str = "claude-sonnet-5-5"  # returns escalation + brief writer (accepts temp 0)
     draft_effort: str = "low"
     llm_timeout_s: float = 60.0
 

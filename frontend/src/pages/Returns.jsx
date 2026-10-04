@@ -27,7 +27,8 @@ export default function Returns() {
   const breakdown = useApi(() => api.returnsBreakdown(by), [by]);
   const products = useApi(() => api.returnsProducts(), []);
   const queue = useApi(() => api.returnsReviewQueue(), []);
-  const refreshAll = () => [summary, insights, reasons, breakdown, products, queue].forEach((x) => x.reload());
+  const briefs = useApi(() => api.returnsBriefs(), []);
+  const refreshAll = () => [summary, insights, reasons, breakdown, products, queue, briefs].forEach((x) => x.reload());
 
   const s = summary.data;
   const baseline = s?.return_rate ?? 0;
@@ -61,6 +62,8 @@ export default function Returns() {
       </div>
 
       <ClassifyPanel s={s} queue={queue} onChanged={refreshAll} toast={toast} />
+
+      <BriefsPanel briefs={briefs} onChanged={refreshAll} toast={toast} />
 
       <Panel icon={TriangleAlert} title="Flagged segments" subtitle="Click a card to see the reason mix and what customers wrote">
         {insights.loading ? <Skeleton rows={2} height={90} />
@@ -221,6 +224,97 @@ function ClassifyPanel({ s, queue, onChanged, toast }) {
           )}
       </div>
     </Panel>
+  );
+}
+
+const BRIEF_SEVERITY = (lift) => (lift >= 2 ? ["High", "pink"] : lift >= 1.6 ? ["Medium", "amber"] : ["Low", "grey"]);
+const BRIEF_REVIEW = [["approved", "Approve"], ["needs_followup", "Follow up"], ["dismissed", "Dismiss"]];
+
+function BriefsPanel({ briefs, onChanged, toast }) {
+  const [running, setRunning] = useState(false);
+  const [error, setError] = useState(null);
+
+  async function generate() {
+    setRunning(true);
+    setError(null);
+    try {
+      const r = await api.returnsGenerateBriefs({ topK: 5 });
+      toast(r.generated ? `${r.generated} brief(s) written for $${(r.cost_usd ?? 0).toFixed(3)} · ${r.needs_manual_review ?? 0} need a manual read` : r.message);
+      onChanged();
+    } catch (e) {
+      setError(e);
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  const rows = briefs.data ?? [];
+  return (
+    <Panel icon={Sparkles} title="Investigation briefs"
+      subtitle="Claude Sonnet writes a short brief for each flagged segment; a second model fact-checks it before you see it."
+      actions={<button className="btn hot" disabled={running} onClick={generate}>
+        <Sparkles size={15} /> {running ? "Writing…" : "Generate briefs for the top segments"}
+      </button>}>
+      <div style={{ display: "grid", gap: 12 }}>
+        {error && <ErrorBox error={error} onRetry={generate} />}
+        {briefs.loading ? <Skeleton rows={2} height={90} />
+          : briefs.error ? <ErrorBox error={briefs.error} onRetry={briefs.reload} />
+          : rows.length === 0 ? <p className="muted" style={{ margin: 0 }}>No briefs yet. Click "Generate briefs" to write one for each flagged segment.</p>
+          : rows.map((b) => {
+            const lift = b.evidence?.lift ?? 0;
+            const [sev, tone] = BRIEF_SEVERITY(lift);
+            return (
+              <div className="quote" key={b.insight_id} style={{ display: "grid", gap: 8 }}>
+                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                  <span className={`pill ${tone}`}>{sev}</span>
+                  <b>{b.brief?.headline || b.product_name}</b>
+                  {b.stale && <span className="pill grey">stale</span>}
+                </div>
+                {b.status === "needs_manual_review" && (
+                  <div className="callout amber"><TriangleAlert size={18} />
+                    <p><b>Did not pass the automated fact check — read the numbers yourself</b>{(b.open_issues || []).join("; ")}</p></div>
+                )}
+                {b.brief?.explanation && <span>{b.brief.explanation}</span>}
+                {b.brief?.suggested_action && <span className="muted"><b>Suggested next step:</b> {b.brief.suggested_action}</span>}
+                {b.evidence && (
+                  <span className="muted" style={{ fontSize: 12.5 }}>
+                    {pct(b.evidence.return_rate_pct / 100)} returned · {b.evidence.lift}× average · {num(b.evidence.returns)}/{num(b.evidence.orders)} orders
+                  </span>
+                )}
+                <BriefReview insightId={b.insight_id} current={b.review_status} onChanged={onChanged} toast={toast} />
+              </div>
+            );
+          })}
+      </div>
+    </Panel>
+  );
+}
+
+function BriefReview({ insightId, current, onChanged, toast }) {
+  const [status, setStatus] = useState(current && current !== "pending" ? current : "approved");
+  const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
+  async function save() {
+    setBusy(true);
+    try {
+      await api.returnsBriefReview(insightId, status, note);
+      toast(`Saved: ${status.replace("_", " ")}`);
+      onChanged();
+    } catch (e) {
+      toast(e.message, "bad");
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+      <select className="select" style={{ padding: "4px 8px", fontSize: 12 }} value={status} onChange={(e) => setStatus(e.target.value)} aria-label="Your decision">
+        {BRIEF_REVIEW.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+      </select>
+      <input className="select" style={{ padding: "4px 8px", fontSize: 12, flex: 1, minWidth: 140 }} placeholder="note (optional)" value={note} onChange={(e) => setNote(e.target.value)} />
+      <button className="btn sm" disabled={busy} onClick={save}><Check size={13} /> Save</button>
+      {current && current !== "pending" && <span className="muted" style={{ fontSize: 12 }}>current: {current.replace("_", " ")}</span>}
+    </div>
   );
 }
 
