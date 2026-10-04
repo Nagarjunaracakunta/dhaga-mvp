@@ -67,8 +67,10 @@ def code_check(reply: str, facts: Optional[OrderFacts]) -> list[str]:
 
 
 def model_check(llm: LLM, settings: Settings, *, message: str, reply: str, facts: OrderFacts,
-                policy: Optional[Policy]) -> LLMResult[DraftCheck]:
+                policy: Optional[Policy], today: Optional[date] = None) -> LLMResult[DraftCheck]:
     user = "\n\n".join([
+        # Without today's date the reviewer judged past dates against its own idea of "now"
+        f"<today>{(today or date.today()).isoformat()}</today>",
         f"<customer_message>\n{message}\n</customer_message>",
         f"<order_facts>\n{json.dumps(facts.model_dump(mode='json'), indent=2)}\n</order_facts>",
         f"<policy>\n{policy.text if policy else 'No policy document available.'}\n</policy>",

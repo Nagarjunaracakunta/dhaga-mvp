@@ -148,7 +148,7 @@ def _step_draft_and_check(st):
         if not issues and not run.fallback:
             try:
                 verdict = run.add(checker.model_check(deps.llm, s, message=st["message"], reply=draft, facts=facts,
-                                                      policy=policy))
+                                                      policy=policy, today=deps.today()))
                 issues = [] if verdict.passed else (verdict.issues or ["Reviewer model rejected the draft."])
             except LLMUnavailable as e:
                 run.notes.append(f"Model check skipped: {e}")
