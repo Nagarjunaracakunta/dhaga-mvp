@@ -10,7 +10,8 @@ from backend.shared.errors import AppError, NotFound
 from backend.shared.llm import get_llm
 from backend.shared.settings import get_settings
 
-from . import aggregation, classifier
+from . import aggregation, briefs, classifier
+from .config import TOP_K_BRIEFS
 from .pipeline import run_pipeline
 from .store import MemoryStore, SupabaseStore
 
@@ -81,6 +82,60 @@ def rejected():
     return _records(_result().rejected)
 
 
+# ---------------- Stage 3: LLM investigation briefs (evaluator-optimizer) ----------------
+class BriefRequest(BaseModel):
+    top_k: int = TOP_K_BRIEFS
+    redo: bool = False
+
+
+@router.post("/briefs")
+def generate_briefs(body: BriefRequest = BriefRequest()):
+    """Write + fact-check a brief for each of the top-K flagged insights, and save them."""
+    store = get_store()
+    insights = _result(refresh=True).candidate_insights[: body.top_k]
+    if not insights:
+        return {"generated": 0, "message": "No flagged insights to brief."}
+    existing = {b["insight_id"] for b in store.get_briefs()} if not body.redo else set()
+    generated, cost, manual = 0, 0.0, 0
+    for ins in insights:
+        if ins["insight_id"] in existing:
+            continue
+        out = briefs.generate_brief(get_llm(), get_settings(), ins)
+        store.save_brief(out)
+        store.log_run({"model_name": out["model"], "prompt_version": briefs.WRITE_VERSION,
+                       "input_summary": f"brief for {ins['insight_id']}",
+                       "output": {"status": out["status"], "attempts": out["attempts"], "cost_usd": out["cost_usd"]},
+                       "evaluation_status": "PASSED" if out["status"] == "passed_checks" else "REVIEW_REQUIRED",
+                       "processing_time_ms": out["latency_ms"]})
+        generated += 1
+        cost += out["cost_usd"]
+        manual += out["status"] == "needs_manual_review"
+    return {"generated": generated, "needs_manual_review": manual, "cost_usd": round(cost, 6)}
+
+
+@router.get("/briefs")
+def list_briefs():
+    """Persisted briefs, enriched with current evidence; marked stale if no longer flagged."""
+    live = {i["insight_id"]: i for i in _result().candidate_insights}
+    out = []
+    for b in sorted(get_store().get_briefs(), key=lambda b: live.get(b["insight_id"], {}).get("lift", 0), reverse=True):
+        ins = live.get(b["insight_id"])
+        out.append({**b, "stale": ins is None, "evidence": briefs.build_evidence(ins) if ins else None})
+    return out
+
+
+class BriefReviewRequest(BaseModel):
+    status: Literal["approved", "needs_followup", "dismissed", "pending"]
+    reviewer: Optional[str] = None
+    note: Optional[str] = None
+
+
+@router.post("/briefs/{insight_id:path}/review")
+def review_brief(insight_id: str, body: BriefReviewRequest):
+    get_store().set_brief_review(insight_id, body.status, body.reviewer, body.note)
+    return {"insight_id": insight_id, "review_status": body.status}
+
+
 # ---------------- Stage 2: classify "Other" comments, then a person reviews ----------------
 class ClassifyRequest(BaseModel):
     limit: int = 300          # cap one run; each comment costs about $0.001
@@ -105,11 +160,13 @@ def classify(body: ClassifyRequest = ClassifyRequest()):
     get_store().log_run({"model_name": run["model"], "prompt_version": run["prompt_version"],
                          "input_summary": f"{len(todo)} Other return comments",
                          "output": {"classified": len(run["results"]), "failed": len(run["failed"]),
-                                    "needs_review": review, "cost_usd": run["cost_usd"]},
+                                    "needs_review": review, "escalated": run.get("escalated", 0),
+                                    "cost_usd": run["cost_usd"]},
                          "evaluation_status": "REVIEW_REQUIRED" if review else "PASSED",
                          "processing_time_ms": run["latency_ms"]})
     _result(refresh=True)
     return {"classified": len(run["results"]), "failed": len(run["failed"]), "needs_review": review,
+            "escalated": run.get("escalated", 0),
             "cost_usd": run["cost_usd"], "latency_ms": run["latency_ms"],
             "failed_examples": list(run["failed"].values())[:3]}
 

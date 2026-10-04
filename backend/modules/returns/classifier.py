@@ -15,7 +15,9 @@ from pydantic import BaseModel, Field
 from backend.shared.llm import LLM, LLMUnavailable, parse_many
 from backend.shared.settings import Settings
 
-PROMPT_VERSION = "classify_return_v1"
+from .config import ESCALATE_BELOW, MAX_ESCALATION_SHARE
+
+PROMPT_VERSION = "classify_return_v2"
 SYSTEM = (Path(__file__).parent / "prompts" / f"{PROMPT_VERSION}.md").read_text()
 CATEGORIES = ["FIT", "COLOUR", "QUALITY", "DAMAGE", "WRONG_ITEM", "CHANGED_MIND", "UNCLEAR"]
 REVIEW_BELOW = 0.70  # confidence under this goes to the review queue
@@ -65,8 +67,31 @@ def classify_comments(llm: LLM, settings: Settings, comments: dict[str, str]) ->
             results[rid] = {"ai_category": c.category, "ai_subcategory": subcategory(c),
                             "ai_confidence": round(c.confidence, 4)}
             cost += out.cost_usd
+
+    # Routing: retry the least-confident answers on the stronger model, capped at a share of the run
+    # (but allow at least one, so small runs and the single-comment demo can still escalate).
+    cap = max(1, int(len(ids) * MAX_ESCALATION_SHARE))
+    uncertain = sorted((rid for rid in results if results[rid]["ai_confidence"] < ESCALATE_BELOW),
+                       key=lambda r: results[r]["ai_confidence"])[:cap]
+    escalated = 0
+    for rid in uncertain:
+        try:
+            out = llm.parse(model=settings.model_returns_strong, system=SYSTEM,
+                            user=f"<comment>\n{comments[rid]}\n</comment>",
+                            output_format=ReturnClassification, max_tokens=256, temperature=0)
+        except Exception:        # strong model down -> keep the fast answer, stay visible
+            continue
+        cost += out.cost_usd
+        escalated += 1
+        c = out.parsed
+        c.confidence = min(max(c.confidence, 0.0), 1.0)
+        if round(c.confidence, 4) >= results[rid]["ai_confidence"]:
+            results[rid] = {"ai_category": c.category, "ai_subcategory": subcategory(c),
+                            "ai_confidence": round(c.confidence, 4)}
+
     return {"results": results, "failed": failed, "cost_usd": round(cost, 6),
             "latency_ms": int((time.perf_counter() - start) * 1000), "model": settings.model_fast,
+            "strong_model": settings.model_returns_strong, "escalated": escalated,
             "prompt_version": PROMPT_VERSION}
 
 

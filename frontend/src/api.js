@@ -53,4 +53,12 @@ export const api = {
   returnsReviewQueue: (params) => request("/api/returns/review-queue", { params }),
   returnsReview: (returnId, category) =>
     request(`/api/returns/${encodeURIComponent(returnId)}/review`, { method: "POST", body: { category } }),
+
+  // Returns investigation briefs
+  returnsBriefs: () => request("/api/returns/briefs"),
+  returnsGenerateBriefs: ({ topK = 5 } = {}) =>
+    request("/api/returns/briefs", { method: "POST", body: { top_k: topK } }),
+  returnsBriefReview: (insightId, status, note) =>
+    request(`/api/returns/briefs/${encodeURIComponent(insightId)}/review`,
+      { method: "POST", body: { status, reviewer: "neha", note } }),
 };
