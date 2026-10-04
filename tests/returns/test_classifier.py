@@ -97,3 +97,41 @@ def test_insights_carry_sample_returns_with_reasons(client):
     samples = [s for i in ins for s in i["sample_returns"]]
     assert samples and all({"comment", "reason", "source"} <= s.keys() for s in samples)
     assert any(s["source"] in ("ai", "ai_review") for s in samples)
+
+
+def low(conf=0.4):
+    return classifier.ReturnClassification(category="FIT", sub_reason="NONE", body_area="NONE", confidence=conf)
+
+
+def test_low_confidence_is_escalated_to_the_strong_model_capped_at_20pct():
+    # 10 comments: first 5 come back low-confidence on the fast model, rest are confident.
+    def fn(user):
+        return low() if "escalate" in user else fit()
+    llm = FakeLLM(fn)
+    comments = {f"r{i}": ("escalate me" if i < 5 else "fits fine") for i in range(10)}
+    run = classifier.classify_comments(llm, settings(), comments)
+    strong_calls = [c for c in llm.calls if c["model"] == "claude-sonnet-5-5"]
+    # cap is 20% of 10 = 2, so only 2 of the 5 low-confidence comments are escalated
+    assert run["escalated"] == 2
+    assert len(strong_calls) == 2
+    assert all(c["temperature"] == 0 for c in strong_calls)
+    assert run["strong_model"] == "claude-sonnet-5-5"
+
+
+def test_escalation_keeps_the_higher_confidence_answer():
+    # fast says FIT@0.4; strong says QUALITY@0.9 -> strong wins
+    class TwoModel:
+        def __init__(self):
+            self.calls = []
+
+        def parse(self, *, model, system, user, output_format, max_tokens, temperature=None, effort=None,
+                  allow_fallback_model=False):
+            self.calls.append({"model": model, "temperature": temperature})
+            parsed = (classifier.ReturnClassification(category="QUALITY", sub_reason="FABRIC", body_area="NONE", confidence=0.9)
+                      if model == "claude-sonnet-5-5" else low())
+            return LLMResult(parsed=parsed, model=model, input_tokens=10, output_tokens=5, cost_usd=0.001, latency_ms=1)
+    llm = TwoModel()
+    run = classifier.classify_comments(llm, settings(), {"r0": "unclear text"})
+    assert run["results"]["r0"]["ai_category"] == "QUALITY"
+    assert run["results"]["r0"]["ai_confidence"] == 0.9
+    assert run["escalated"] == 1

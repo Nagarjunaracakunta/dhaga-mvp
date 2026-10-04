@@ -1,5 +1,6 @@
 """Where return classifications are saved. Supabase writes the returns table; Memory is for the demo CSVs."""
 import logging
+from datetime import datetime, timezone
 from typing import Optional
 
 import pandas as pd
@@ -16,6 +17,7 @@ class MemoryStore:
 
     def __init__(self):
         self.rows: dict[str, dict] = {}
+        self.briefs: dict[str, dict] = {}
 
     def save_ai(self, results: dict[str, dict], returns: pd.DataFrame) -> None:
         for rid, fields in results.items():
@@ -38,6 +40,18 @@ class MemoryStore:
     def log_run(self, row: dict) -> None:
         pass
 
+    def save_brief(self, record: dict) -> None:
+        iid = record["insight_id"]
+        existing = self.briefs.get(iid, {"review_status": "pending", "reviewer": None, "review_note": None})
+        self.briefs[iid] = {**existing, **record}
+
+    def get_briefs(self) -> list[dict]:
+        return list(self.briefs.values())
+
+    def set_brief_review(self, insight_id, status, reviewer=None, note=None) -> None:
+        self.briefs.setdefault(insight_id, {"insight_id": insight_id})
+        self.briefs[insight_id].update(review_status=status, reviewer=reviewer, review_note=note)
+
 
 class SupabaseStore:
     def save_ai(self, results: dict[str, dict], returns: pd.DataFrame) -> None:
@@ -57,3 +71,14 @@ class SupabaseStore:
             get_supabase().table("ai_interactions").insert({"workflow": WORKFLOW, **row}).execute()
         except Exception:
             log.exception("Could not log the returns classification run")
+
+    def save_brief(self, record: dict) -> None:
+        get_supabase().table("returns_briefs").upsert(record, on_conflict="insight_id").execute()
+
+    def get_briefs(self) -> list[dict]:
+        return get_supabase().table("returns_briefs").select("*").execute().data or []
+
+    def set_brief_review(self, insight_id, status, reviewer=None, note=None) -> None:
+        get_supabase().table("returns_briefs").update(
+            {"review_status": status, "reviewer": reviewer, "review_note": note,
+             "reviewed_at": datetime.now(timezone.utc).isoformat()}).eq("insight_id", insight_id).execute()

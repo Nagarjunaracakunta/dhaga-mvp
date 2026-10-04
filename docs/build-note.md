@@ -99,3 +99,26 @@ Returns runs on the same Supabase data: 563 returns, 216 of them "Other" with a 
 **Known gaps:**
 - **Order dates:** many in-transit orders in the synthetic data are months past their expected date, so drafts mention very long delays (set `CX_TODAY` for demos).
 - **Placeholder policies:** the policy texts are placeholders until the real PDFs are uploaded to the `Dhaga` storage bucket.
+
+## Returns analysis enhancement (4 October 2026)
+
+Two patterns were added on top of the single-model classifier, plus a richer prompt and insight-level review.
+
+| Step | What it does | Code or model | Model / temp | Why |
+|---|---|---|---|---|
+| Escalate | Retry the least-confident classifications (<0.70) on a stronger model, capped at 20% of the run | **Model** (routing) | Claude Sonnet 5.5, **temp 0** | Harder Hinglish calls get a better answer before a human is bothered |
+| Brief write | Turn a flagged segment's numbers into a short plain-language brief | **Model** | Claude Sonnet 5.5, **temp 0.3** | Prose + judgment; regeneration must differ |
+| Brief checks | Product named, a real return-rate number cited, ≤80 words, action present | Code | – | Free, exact; runs before any judge call |
+| Brief judge | Fact-check the draft against the evidence JSON; return pass + issues | **Model** | Claude Haiku 4.5, **temp 0** | Cheap verdict; feeds the regenerate loop |
+| Brief review | Approve / follow up / dismiss + note, saved to `returns_briefs` | **Human** (Neha) | – | The human-in-the-loop control the brief asks for |
+
+**Routing** (escalation): without it, every uncertain comment lands on a person. With it, only the top-20% least-confident get a second, stronger read; the rest of the cost stays on Haiku. The strong model is a **returns-specific** setting (`model_returns_strong`), so CX drafting (Opus) is untouched.
+
+**Evaluator-optimizer** (brief writer ↔ judge, ≤3 attempts): deterministic checks catch the cheap failures for free; the Haiku judge catches factual drift; anything still failing after 3 tries is saved as `needs_manual_review` and shown with a red banner — a visible gap, never a silent wrong answer.
+
+**Cost line** (per weekly run, arithmetic shown). Classify is unchanged at ~$0.00105/comment. Escalation adds, for ≤20% of comments, one Sonnet call (~400 in + 30 out → 400/1e6×$2 + 30/1e6×$10 ≈ $0.0011 each): at 6,550 Other-with-comment/week [48,000 orders × 31% returns × 44% Other, calc], 20% × 6,550 × $0.0011 ≈ **$1.44/week** [assumed token sizes]. Briefs: top-5 segments × ~1.5 Sonnet writes (~400 in + 150 out ≈ $0.0023) + 1 Haiku judge (~500 in + 30 out ≈ $0.0007) ≈ **$0.02/run** [assumed]. The brief cost is negligible because it runs on 5 segments, not 6,550 comments. `[calc]`/case-study numbers vs `[assumed]` token sizes are marked so the CTO can tell them apart.
+
+### What broke that we did not expect (this change)
+
+6. **The strong model couldn't run the classifier.** `model_strong` is Opus 5.5, which **rejects `temperature`** — but classification must be deterministic at temp 0. Rather than change the shared setting (and silently alter CX drafting), we added a returns-only `model_returns_strong = claude-sonnet-5-5`, which accepts temp 0 and is half Opus's price.
+7. **The 20% cap rounded to zero on small runs.** `int(1 × 0.20) = 0`, so the single-comment "Try it" path would never escalate. The cap is now `max(1, …)`, so small runs and the demo can still escalate exactly one.
